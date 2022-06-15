@@ -2,6 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 const NODE_ENV = process.env.NODE_ENV;
+const GLOBAL_CSS_REGEXP = /\.global\.css$/;
 
 module.exports = {
     target: "node",
@@ -22,7 +23,7 @@ module.exports = {
                 use: ['ts-loader']
             }, 
             { //настройка для css modules(убираем настройки стилей, оставляем только настройки селекторов)
-                test: /\.less$/,
+                test: /\.css$/,
                 use: [
                     {
                         loader: 'css-loader',
@@ -34,8 +35,13 @@ module.exports = {
                             onlyLocals: true,
                         }
                     },
-                    'less-loader',
-                ],
+                ], 
+                exclude: GLOBAL_CSS_REGEXP
+            },
+            {
+                /** настройка глобального CSS файла */
+                test: GLOBAL_CSS_REGEXP,
+                use: ['css-loader']
             }
         ]
     },

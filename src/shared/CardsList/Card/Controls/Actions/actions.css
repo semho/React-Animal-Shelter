@@ -1,0 +1,9 @@
+.actions > button:first-child {
+    margin-right: 15px;
+}
+
+@media all and (min-width: 1024px) {
+    .actions {
+      display: none;
+    }
+  }
