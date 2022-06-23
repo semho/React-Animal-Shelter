@@ -11,7 +11,7 @@ export function MenuItemsList({ postId }: IMenuItemsListProps) {
   return (
     <ul className={styles.menuItemsList}>
       <li className={styles.menuItem}>
-        <Icon name={EIcons.comments} size={20}/>
+        <Icon name={EIcons.comments} size={12}/>
         <Text size={12} color={EColor.grey99}>Комментарии</Text>
       </li>
       
