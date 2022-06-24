@@ -8,9 +8,11 @@ import { CardsList } from "./shared/CardsList";
 import { useToken } from "./hooks/useToken";
 import { tokenContext } from "./shared/context/tokenContext";
 import { UserContextProvider } from "./shared/context/userContext";
+import { usePostsData } from "./hooks/usePostsData";
 
 function AppComponent() {
   const [token] = useToken();
+  const [posts] = usePostsData();
 
   return (
     <tokenContext.Provider value={token}>
