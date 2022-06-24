@@ -14,7 +14,7 @@ module.exports = {
         filename: "server.js"
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     },
     externals: [nodeExternals()],
     module: {
