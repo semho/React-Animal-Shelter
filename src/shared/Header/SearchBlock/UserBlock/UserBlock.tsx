@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './userblock.css';
 import { Icon, EIcons } from './../../../Icons/Icon';
 import { Text, EColor } from './../../../Text'
- 
+
 interface IUserBlockProps {
   avatarSrc ?: string,
   username ?: string
@@ -15,7 +15,7 @@ export function UserBlock({avatarSrc, username}: IUserBlockProps) {
     >
       <div className={styles.avatarBox}>
         {avatarSrc
-          ? <img src={avatarSrc.replace(/amp;/g, '')} alt="user avatar" className={styles.avatarImage} />
+          ? <img src={avatarSrc} alt="user avatar" className={styles.avatarImage} />
           : <Icon name={EIcons.anon} size={50} color={'#D9D9D9'} />
         }
       </div>

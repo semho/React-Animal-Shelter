@@ -1,22 +1,47 @@
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { tokenContext } from '../shared/context/tokenContext';
+
+interface IParentObj {
+  kind?: string,
+  data: {
+    id: string,
+    author: string,
+    title: string,
+    selftext: string,
+  }
+}
+
+interface INewObj {
+  id?: string,
+  author?: string,
+  title?: string,
+  selftext?: string,
+}
+
+interface IArrObj extends Array<INewObj>{}
 
 export function usePostsData() {
-  const [postsData, setPostsData] = useState('');
-  const token = useContext(tokenContext);
+
+  const [postsData, setPostsData] = useState<IArrObj>([]);
+
   useEffect(() => {
-    axios.get('https://oauth.reddit.com/best', {
-      headers: { Authorization: `bearer ${token}` }
+    axios.get('https://api.reddit.com/best', {
     })
       .then((resp) => {
-        const postsData = resp.data;
-        console.log(resp);
-        setPostsData(postsData);
+        const postsData = resp.data.data.children;
+        const newArrObj: IArrObj = postsData.map( (item: IParentObj) => {
+          const container: INewObj = { };
+          container.id = item.data.id;
+          container.author = item.data.author;
+          container.title = item.data.title;
+          container.selftext = item.data.selftext;
 
+          return container;
+        });
+        setPostsData(newArrObj);
       })
       .catch(console.log);
-    }, [token]);
+    }, []);
 
-    return [postsData];
+    return postsData;
 }

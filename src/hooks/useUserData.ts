@@ -14,7 +14,8 @@ export function useUserData() {
 
     useEffect(() => {
     axios.get('https://oauth.reddit.com/api/v1/me', {
-        headers: { Authorization: `bearer ${token}` }
+        headers: { Authorization: `bearer ${token}` },
+        params: { raw_json: 1 },
     })
         .then((resp) => {
         const userData = resp.data;
