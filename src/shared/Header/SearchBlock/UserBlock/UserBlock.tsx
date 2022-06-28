@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './userblock.css';
 import { Icon, EIcons } from './../../../Icons/Icon';
 import { Text, EColor } from './../../../Text'
- 
+
 interface IUserBlockProps {
   avatarSrc ?: string,
   username ?: string

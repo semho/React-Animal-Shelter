@@ -5,16 +5,30 @@ import { Layout } from "./shared/Layout";
 import { Header } from "./shared/Header/Header";
 import { Content } from "./shared/Content";
 import { CardsList } from "./shared/CardsList";
+import { useToken } from "./hooks/useToken";
+import { tokenContext } from "./shared/context/tokenContext";
+import { UserContextProvider } from "./shared/context/userContext";
+import { PostsContextProvider } from "./shared/context/postsContext";
+import { PostsList } from "./shared/Content/PostsList";
 
 function AppComponent() {
-    return (
+  const [token] = useToken();
+
+  return (
+    <tokenContext.Provider value={token}>
+      <UserContextProvider>
+      <PostsContextProvider>
         <Layout>
-            <Header /> 
-            <Content>
-                <CardsList />
-            </Content>
+          <Header/>
+          <Content>
+            <CardsList />
+            <PostsList />
+          </Content>
         </Layout>
-    );
+      </PostsContextProvider>
+      </UserContextProvider>
+    </tokenContext.Provider>
+  );
 }
 
-export const App = hot(AppComponent);
+export const App = hot(() => <AppComponent />);
