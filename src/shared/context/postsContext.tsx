@@ -5,7 +5,9 @@ interface IPostContextData {
   id ?: string,
   author ?: string,
   title ?: string,
-  selftext ?: string,
+  banner?: string,
+  icon_img?: string,
+  created?: number,
 }
 
 interface IPostContextData extends Array<IPostContextData>{}

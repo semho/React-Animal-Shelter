@@ -1,13 +1,17 @@
 import React from 'react';
 import styles from './card.css';
-import { TextContent } from './TextContent';
-import { Preview } from './Preview';
-import { Menu } from './Menu';
-import { Controls } from './Controls';
+import { TextContent } from '../../Content/PostsList/TextContent';
+import { Preview } from '../../Content/PostsList/Preview';
+import { Menu } from '../../Content/PostsList/Menu';
+import { Controls } from '../../Content/PostsList/Controls';
 
-export function Card() {
+interface ICardProps {
+  id: string;
+}
+
+export function Card({ id }: ICardProps) {
   return (
-    <li className={styles.card}>
+    <li className={styles.card} id={id}>
       <TextContent />
       <Preview />
       <Menu />

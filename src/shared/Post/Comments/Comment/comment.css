@@ -1,0 +1,48 @@
+.comment {
+  display: flex;
+  margin-bottom: 35px;
+}
+
+.clipper {
+  margin-right: 22px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 19px;
+  overflow: hidden;
+}
+
+.clipper svg {
+  margin-bottom: 20px;
+}
+
+.clipperDivider {
+  flex: 1 0;
+  width: 3px;
+  background-color: var(--greyEC);
+}
+
+.userComment {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+}
+
+.userCommentTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userCommentTitle div:first-child {
+  margin-right: 5px;
+}
+
+.userCommentTitle span{
+  margin-right: 4px;
+}
+
+.group {
+  padding: 2px 7px 4px 7px;
+  background: var(--greyEC);
+}

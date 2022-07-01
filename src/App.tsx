@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./main.global.css";
 import { hot } from "react-hot-loader/root";
 import { Layout } from "./shared/Layout";
@@ -10,24 +10,27 @@ import { tokenContext } from "./shared/context/tokenContext";
 import { UserContextProvider } from "./shared/context/userContext";
 import { PostsContextProvider } from "./shared/context/postsContext";
 import { PostsList } from "./shared/Content/PostsList";
+import { CommentContextProvider } from "./shared/context/commentContext";
 
 function AppComponent() {
   const [token] = useToken();
 
   return (
-    <tokenContext.Provider value={token}>
-      <UserContextProvider>
-      <PostsContextProvider>
-        <Layout>
-          <Header/>
-          <Content>
-            <CardsList />
-            <PostsList />
-          </Content>
-        </Layout>
-      </PostsContextProvider>
-      </UserContextProvider>
-    </tokenContext.Provider>
+    <CommentContextProvider>
+      <tokenContext.Provider value={token}>
+        <UserContextProvider>
+        <PostsContextProvider>
+          <Layout>
+            <Header/>
+            <Content>
+              <CardsList />
+              <PostsList />
+            </Content>
+          </Layout>
+        </PostsContextProvider>
+        </UserContextProvider>
+      </tokenContext.Provider>
+    </CommentContextProvider>
   );
 }
 
