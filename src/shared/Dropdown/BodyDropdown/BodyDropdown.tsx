@@ -3,14 +3,12 @@ import styles from './bodydropdown.css';
 import { MenuItemsList } from '../../Content/PostsList/Menu/MenuItemsList';
 import { Text } from '../../Text';
 import { EColor } from '../../Text';
-import ReactDOM from 'react-dom';
 
 interface IBodyDropdown {
   onClose?: () => void;
-  idPost?: any;
 }
 
-export function BodyDropdown({idPost, onClose}: IBodyDropdown) {
+export function BodyDropdown({onClose}: IBodyDropdown) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,11 +25,7 @@ export function BodyDropdown({idPost, onClose}: IBodyDropdown) {
     }
   }, []);
 
-
-  const node = document.getElementById(idPost);
-  if (!node) return null;
-
-  return ReactDOM.createPortal((
+  return (
     <div className={styles.dropdown} ref={ref}>
       <MenuItemsList postId='test'/>
       <button className={styles.closeButton}>
@@ -40,5 +34,5 @@ export function BodyDropdown({idPost, onClose}: IBodyDropdown) {
         </Text>
       </button>
     </div>
-  ), node);
+  );
 }

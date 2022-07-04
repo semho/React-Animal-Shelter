@@ -4,7 +4,6 @@ import { hot } from "react-hot-loader/root";
 import { Layout } from "./shared/Layout";
 import { Header } from "./shared/Header/Header";
 import { Content } from "./shared/Content";
-import { CardsList } from "./shared/CardsList";
 import { useToken } from "./hooks/useToken";
 import { tokenContext } from "./shared/context/tokenContext";
 import { UserContextProvider } from "./shared/context/userContext";
@@ -28,7 +27,6 @@ function AppComponent() {
           <Layout>
             <Header/>
             <Content>
-              <CardsList />
               <PostsList />
             </Content>
           </Layout>
