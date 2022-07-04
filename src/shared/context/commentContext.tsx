@@ -10,15 +10,15 @@ export const commentContext = React.createContext<CommentContextType>({
   onChange: () => {},
 });
 
-export function CommentContextProvider({children}: {children: React.ReactNode}) {
-  const [commentValue, setCommentValue] = useState('');
+// export function CommentContextProvider({children}: {children: React.ReactNode}) {
+//   const [commentValue, setCommentValue] = useState('');
 
-  return (
-    <commentContext.Provider value={{
-      value: commentValue,
-      onChange: setCommentValue
-    }}>
-      { children }
-    </commentContext.Provider>
-  );
-}
+//   return (
+//     <commentContext.Provider value={{
+//       value: commentValue,
+//       onChange: setCommentValue
+//     }}>
+//       { children }
+//     </commentContext.Provider>
+//   );
+// }

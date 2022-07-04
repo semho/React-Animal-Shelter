@@ -7,10 +7,10 @@ import ReactDOM from 'react-dom';
 
 interface IBodyDropdown {
   onClose?: () => void;
-  idCard?: any;
+  idPost?: any;
 }
 
-export function BodyDropdown({idCard, onClose}: IBodyDropdown) {
+export function BodyDropdown({idPost, onClose}: IBodyDropdown) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function BodyDropdown({idCard, onClose}: IBodyDropdown) {
   }, []);
 
 
-  const node = document.getElementById(idCard);
+  const node = document.getElementById(idPost);
   if (!node) return null;
 
   return ReactDOM.createPortal((

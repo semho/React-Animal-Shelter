@@ -18,19 +18,18 @@ export function Dropdown({ button }: IDropdownProps) {
           //получаем текущую кнопку меню по которой нажали
           const buttonMenu = (event.target as HTMLElement).closest('button');
           if (!buttonMenu) return;
-          //получаем карточку к которой принадлежит кнопка
-          // const currentCard = buttonMenu.parentNode?.parentNode?.parentNode?.parentNode;
-          const currentCard = buttonMenu.parentElement?.parentElement?.parentElement?.parentElement;
-          const idCard = currentCard?.id;
-          setIdElement(idCard);
+          //получаем пост к которой принадлежит кнопка
+          const currentPost = buttonMenu.parentElement?.parentElement?.parentElement?.parentElement;
+          const idPost = currentPost?.id;
+          setIdElement(idPost);
         }}>
           { button }
         </div>
         {isDropdownOpen && (
           <div className={styles.listContainer}>
             <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
-              {/* передаем id карточки в модальное окно меню */}
-              <BodyDropdown idCard={idElement} onClose={() => { setIsDropdownOpen(false); }}/>
+              {/* передаем id поста в модальное окно меню */}
+              <BodyDropdown idPost={idElement} onClose={() => { setIsDropdownOpen(false); }}/>
             </div>
           </div>
         )}
