@@ -4,7 +4,7 @@ import { RootState, updateComment } from '../../store';
 import { CommentForm } from '../CommentForm/CommentForm';
 
 export function CommentFormContainer() {
-  const value = useSelector<RootState, string>(state => state.commentText);
+  const value = useSelector<RootState, string | undefined>(state => state.commentText);
   const dispatch = useDispatch();
 
   function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {

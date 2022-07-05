@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useContext } from 'react';
 import styles from './commentform.css';
 
 type Props = {
-  value: string;
+  value: string | undefined;
   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit: (event: FormEvent) => void;
 }
