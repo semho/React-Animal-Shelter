@@ -35,6 +35,13 @@ export function Dropdown({ button }: IDropdownProps) {
     <div>
         <div ref={setReferenceElement} onClick={(event) => {
           setIsDropdownOpen(!isDropdownOpen);
+          // //получаем текущую кнопку меню по которой нажали
+          // const buttonMenu = (event.target as HTMLElement).closest('button');
+          // if (!buttonMenu) return;
+          // //получаем пост к которой принадлежит кнопка
+          // const currentPost = buttonMenu.parentElement?.parentElement?.parentElement?.parentElement;
+          // const idPost = currentPost?.id;
+          // setIdElement(idPost);
         }}>
           { button }
         </div>
@@ -51,37 +58,6 @@ export function Dropdown({ button }: IDropdownProps) {
           </div>
         )}
     </div>
-
-
-// <div className={styles.container}>
-    //     <div onClick={(event) => {
-    //       setIsDropdownOpen(!isDropdownOpen);
-    //       // //получаем текущую кнопку меню по которой нажали
-    //       // const buttonMenu = (event.target as HTMLElement).closest('button');
-    //       // if (!buttonMenu) return;
-    //       // //получаем пост к которой принадлежит кнопка
-    //       // const currentPost = buttonMenu.parentElement?.parentElement?.parentElement?.parentElement;
-    //       // const idPost = currentPost?.id;
-    //       // setIdElement(idPost);
-    //     }}>
-    //       { button }
-    //     </div>
-    //     <button type="button" ref={setReferenceElement}>
-    //       Reference
-    //     </button>
-    //     {isDropdownOpen && (
-    //       <div className={styles.listContainer}>
-    //         <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
-    //           {ReactDOM.createPortal(
-    //             <div ref={setPopperElement} style={styles.popper} {...attributes.popper}>
-    //               <BodyDropdown onClose={() => { setIsDropdownOpen(false); }}/>
-    //             </div>,
-    //             node
-    //           )}
-    //         </div>
-    //       </div>
-    //     )}
-    // </div>
   );
 }
 
