@@ -1,0 +1,28 @@
+.userCommentBottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.userCommentControls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.userCommentControls button {
+  display: flex;
+  align-items: center;
+}
+
+.userCommentControls button:hover > span {
+  color: var(--orange);
+}
+
+.userCommentControls button:hover path {
+  fill: var(--orange);
+}
+
+.userCommentControls span {
+  padding-left: 6px;
+  padding-right: 27px;
+}

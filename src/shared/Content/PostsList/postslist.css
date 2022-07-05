@@ -1,10 +1,65 @@
-.postsList {
-  padding: 0 40px;
-}
 
 .divider {
   margin-top: 10px;
   height: 1px;
   width: 100%;
   background-color: var(--greyEC);
+}
+
+@media all and (min-width: 1024px) {
+  .postsList {
+    padding: 40px 0;
+  }
+}
+
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.post {
+  position: relative;
+  background-color: var(--white);
+  border-radius: 7px;
+  padding: 20px 20px 10px;
+  display: flex;
+  flex-flow: row wrap;
+}
+.post > *, .textContent > * {
+  flex: 1 1 100%;
+}
+.post > * + * {
+  padding: 13px 0 0 !important;
+}
+.post:hover h2 a, .post:focus-within h2 a {
+  color: var(--orange);
+}
+
+@media all and (min-width: 1024px) {
+  .post {
+    background-color: transparent;
+    flex-flow: row nowrap;
+    max-height: 107px;
+    padding: 0 40px;
+  }
+  .post > * {
+    flex: 0 0;
+  }
+  .post > * + * {
+    padding: 0;
+  }
+}
+
+@media all and (min-width: 1540px) {
+  .post {
+    padding: 20px 60px;
+    max-height: 147px;
+    cursor: pointer;
+  }
+  .post:hover, .post:focus-within {
+    outline: 1px solid var(--grey-demi-dark);
+  }
 }
