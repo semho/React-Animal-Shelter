@@ -1,12 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export function useToken() {
-    const [token, setToken] = useState('');
-    useEffect(() => {
-        if (window.__token__) {
-            setToken(window.__token__);
-        }
-    }, []);
 
-    return [token];
+  let token = '';
+  if (typeof window !== 'undefined') {
+    // localStorage.clear();
+    if (localStorage.getItem('token') !== 'undefined') {
+      token = localStorage.getItem('token') || window.__token__;
+    } else {
+      token =  window.__token__;
+    }
+
+    useEffect(() => {
+      if (token !== '') {
+        localStorage.setItem('token', token);
+      }
+    }, [])
+  }
+
+  return [token];
 }
