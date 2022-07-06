@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './post.css';
 import ReactDOM from 'react-dom';
-import { CommentForm } from '../CommentForm';
 import { Comments } from './Comments';
+import { CommentFormContainer } from '../CommentFormContainer';
 
 interface IPost {
   onClose?: () => void;
@@ -37,7 +37,7 @@ export function Post(props: IPost) {
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae iure facilis pariatur, aliquid esse architecto illum, dolor temporibus facere, perferendis autem tenetur commodi odit aut quod explicabo quisquam reiciendis soluta!</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quasi ipsum eos possimus ratione ipsam cupiditate, iste repellendus dicta, maiores quos aperiam hic corporis. Libero facilis suscipit optio similique? Ratione?</p>
       </div>
-      <CommentForm />
+      <CommentFormContainer />
       <Comments />
     </div>
   ), node);
