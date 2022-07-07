@@ -7,27 +7,57 @@ import { Content } from "./shared/Content";
 import { useToken } from "./hooks/useToken";
 import { PostsContextProvider } from "./shared/context/postsContext";
 import { PostsList } from "./shared/Content/PostsList";
-import { Action, applyMiddleware, createStore } from "redux";
+import { Action, applyMiddleware, createStore, Middleware, AnyAction } from "redux";
 import { Provider, useDispatch } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { rootReducer, RootState, setToken } from "./shared/store/store";
-import thunk, { ThunkAction } from "redux-thunk";
+import thunk, { ThunkAction, ThunkDispatch  } from "redux-thunk";
+import { getDefaultMiddleware, configureStore } from "@reduxjs/toolkit";
 
+
+//старое рабочее решение
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk),
 ));
+
+//новое решение - конфигурация store/ не работает объект me из редьюсера
+// const middleware = getDefaultMiddleware({
+//   immutableCheck: false,
+//   serializableCheck: false,
+//   thunk: true,
+// });
+
+// export const store = configureStore({
+//  reducer: rootReducer,
+//  middleware,
+//  devTools: process.env.NODE_ENV !== 'production',
+// });
+
+
+
 
 function AppComponent() {
 
   const [token] = useToken();
 
-  const dispatch: any = useDispatch();
+  //работает
+  // const dispatch = useDispatch();
 
-  const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
-    dispatch(setToken(token));
-  }
+  // const saveToken: any = (token: string): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
+  //   dispatch(setToken(token));
+  // }
 
-  dispatch(saveToken());
+  // dispatch(saveToken());
+
+
+  //не работает
+    const saveToken =
+    (token: string): ThunkAction<void, RootState, unknown, AnyAction> =>
+    async dispatch => {
+      dispatch(setToken(token))
+    }
+
+
 
   return (
     <PostsContextProvider>

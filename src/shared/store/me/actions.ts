@@ -38,15 +38,21 @@ export const meRequestError: ActionCreator<MeRequestErrorAction> = (error: strin
 
 export const meRequestAsync = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
   dispatch(meRequest());
+
   axios.get('https://oauth.reddit.com/api/v1/me', {
     headers: { Authorization: `bearer ${getState().token}` },
     params: { raw_json: 1 },
   })
     .then((resp) => {
+
+      console.log(resp)
       const userData = resp.data;
       dispatch(meRequestSuccess({name: userData.name, iconImg: userData.icon_img}));
     })
     .catch((error) => {
+
+      console.log(error)
+
       console.log(error);
       dispatch(meRequestError(String(error)));
     });
