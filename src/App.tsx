@@ -37,7 +37,7 @@ export const store = createStore(rootReducer, composeWithDevTools(
 function AppComponent() {
 
   const dispatch = useAppDispatch();
-  // const dispatch: any = useDispatch();
+  // const dispatch = useDispatch();
 
   const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
     const [token] = useToken();

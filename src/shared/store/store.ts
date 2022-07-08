@@ -1,15 +1,18 @@
-import { createAction, createReducer, createSlice } from "@reduxjs/toolkit";
-import { ActionCreator, Reducer } from "redux";
+import { createAction, createReducer, createSlice, ThunkAction } from "@reduxjs/toolkit";
+import { Action, ActionCreator, AnyAction, Reducer } from "redux";
 import { MeRequestAction, MeRequestErrorAction, MeRequestSuccessAction, ME_REQUEST, ME_REQUEST_ERROR, ME_REQUEST_SUCCESS } from "./me/actions";
 import { meReducer, MeState } from "./me/reducer";
 import { store } from "../../App";
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 export type RootState = {
   commentText: string,
   token: string,
   me: MeState,
 }
-export type AppDispatch = typeof store.dispatch;
+// export type AppDispatch = typeof store.dispatch;
+// export type AppDispatch = ThunkAction<void, RootState, unknown, Action<string>>;
+export type AppDispatch = ThunkDispatch<RootState, any, Action<string>>;
 
 const initialState: RootState = {
   commentText: 'Привет, SkillBox!',
