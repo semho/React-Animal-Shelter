@@ -2,12 +2,15 @@ import { createAction, createReducer, createSlice } from "@reduxjs/toolkit";
 import { ActionCreator, Reducer } from "redux";
 import { MeRequestAction, MeRequestErrorAction, MeRequestSuccessAction, ME_REQUEST, ME_REQUEST_ERROR, ME_REQUEST_SUCCESS } from "./me/actions";
 import { meReducer, MeState } from "./me/reducer";
+import { store } from "../../App";
 
 export type RootState = {
   commentText: string,
   token: string,
   me: MeState,
 }
+export type AppDispatch = typeof store.dispatch;
+
 const initialState: RootState = {
   commentText: 'Привет, SkillBox!',
   token: '',

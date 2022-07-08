@@ -13,10 +13,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { rootReducer, RootState, setToken } from "./shared/store/store";
 import thunk, { ThunkAction, ThunkDispatch  } from "redux-thunk";
 import { getDefaultMiddleware, configureStore } from "@reduxjs/toolkit";
-
+import { useAppDispatch } from "./hooks/hooks";
 
 //старое рабочее решение
-const store = createStore(rootReducer, composeWithDevTools(
+export const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk),
 ));
 
@@ -34,28 +34,26 @@ const store = createStore(rootReducer, composeWithDevTools(
 // });
 
 
-
-
 function AppComponent() {
 
-  const [token] = useToken();
+  const dispatch = useAppDispatch();
+  // const dispatch: any = useDispatch();
 
-  //работает
-  // const dispatch = useDispatch();
+  const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
+    const [token] = useToken();
+    dispatch(setToken(token));
 
-  // const saveToken: any = (token: string): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
-  //   dispatch(setToken(token));
-  // }
+  }
 
-  // dispatch(saveToken());
+  dispatch(saveToken());
 
 
-  //не работает
-    const saveToken =
-    (token: string): ThunkAction<void, RootState, unknown, AnyAction> =>
-    async dispatch => {
-      dispatch(setToken(token))
-    }
+  // //не работает
+  //   const saveToken =
+  //   (token: string): ThunkAction<void, RootState, unknown, AnyAction> =>
+  //   async dispatch => {
+  //     dispatch(setToken(token))
+  //   }
 
 
 
