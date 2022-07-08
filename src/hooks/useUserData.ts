@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { IUserData, meRequestAsync } from '../shared/store/me/actions';
-import { RootState } from '../shared/store/store';
 import { useAppDispatch, useAppSelector } from './hooks';
 
 export function useUserData() {

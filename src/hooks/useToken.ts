@@ -12,11 +12,20 @@ export function useToken() {
     }
 
     useEffect(() => {
-      if (token !== '') {
+      if (token && token.length > 0 && token !== 'undefined') {
         localStorage.setItem('token', token);
       }
-    }, [])
+    }, [token])
   }
+
+  // const [token, setToken] = useState('');
+
+  // useEffect(() => {
+  //   if (window.__token__) {
+  //       setToken(window.__token__);
+  //   }
+  // }, []);
+
 
   return [token];
 }

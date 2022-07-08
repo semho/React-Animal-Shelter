@@ -44,12 +44,12 @@ export const meRequestAsync = (): ThunkAction<void, RootState, unknown, Action<s
     params: { raw_json: 1 },
   })
     .then((resp) => {
-
-      console.log(resp)
       const userData = resp.data;
       dispatch(meRequestSuccess({name: userData.name, iconImg: userData.icon_img}));
     })
     .catch((error) => {
+      //очищаю хранилище от токена, если пригла ошибка, для того чтобы снова перелогиниться
+      localStorage.clear();
       console.log(error);
       dispatch(meRequestError(String(error)));
     });
