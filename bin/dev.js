@@ -1,12 +1,12 @@
 const webpack = require('webpack');
 const [webpackClientConfig, webpackServerConfig] = require('../webpack.config');    //деструкция на общий конфиг
-const nodemon = require('nodemon');                 
+const nodemon = require('nodemon');
 const path = require('path');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const express = require('express');                                                 //рекварим новый сервер
 
-const hmrServer = express();                            
+const hmrServer = express();
 const clientCompiler = webpack(webpackClientConfig);                                //подключаем к нему конфиг клиента
 
 hmrServer.use(webpackDevMiddleware(clientCompiler, {
@@ -42,10 +42,10 @@ compiler.run((err) => {                                                         
         console.log('Compilation was successfully');
     });
 
-    nodemon({                               
+    nodemon({
         script: path.resolve(__dirname, '../dist/server/server.js'),                //запускаем скрипт сервера
-        watch: [ 
-            path.resolve(__dirname, '../dist/server'),                              
+        watch: [
+            path.resolve(__dirname, '../dist/server'),
             path.resolve(__dirname, '../dist/client'),
         ]
     });
