@@ -8,22 +8,23 @@ import { useToken } from "./hooks/useToken";
 import { PostsContextProvider } from "./shared/context/postsContext";
 import { PostsList } from "./shared/Content/PostsList";
 import { Action, applyMiddleware, createStore } from "redux";
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { rootReducer, RootState, setToken } from "./shared/store/store";
+import { rootReducer, RootState, setToken} from "./shared/store/store";
 import thunk, { ThunkAction } from "redux-thunk";
+import { useAppDispatch } from "./hooks/hooks";
 
-const store = createStore(rootReducer, composeWithDevTools(
+//старое рабочее решение
+export const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk),
 ));
 
+
 function AppComponent() {
 
-  const [token] = useToken();
-
-  const dispatch: any = useDispatch();
-
+  const dispatch = useAppDispatch();
   const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
+    const [token] = useToken();
     dispatch(setToken(token));
   }
 

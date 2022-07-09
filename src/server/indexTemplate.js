@@ -7,7 +7,11 @@ export const indexTemplate = (content, token) => `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/static/client.js" type="application/javascript"></script>
     <script >
-        window.__token__ = '${token}'
+      const token = '${token}';
+      window.__token__ = token;
+      if (token && token.length > 0 && token !== 'undefined') {
+        localStorage.setItem('token', token);
+      }
     </script>
     <title>Reddit</title>
 </head>

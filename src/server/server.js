@@ -28,7 +28,9 @@ app.get('/auth', (req, res) => {
         indexTemplate(ReactDom.renderToString(App()), data['access_token']),
       );
     })
-    .catch(console.log)
+    .catch((error) => {
+      console.log(error);
+    })
 });
 
 app.listen(3000, () => {

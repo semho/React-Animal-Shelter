@@ -38,6 +38,7 @@ export const meRequestError: ActionCreator<MeRequestErrorAction> = (error: strin
 
 export const meRequestAsync = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch, getState) => {
   dispatch(meRequest());
+
   axios.get('https://oauth.reddit.com/api/v1/me', {
     headers: { Authorization: `bearer ${getState().token}` },
     params: { raw_json: 1 },
@@ -47,6 +48,8 @@ export const meRequestAsync = (): ThunkAction<void, RootState, unknown, Action<s
       dispatch(meRequestSuccess({name: userData.name, iconImg: userData.icon_img}));
     })
     .catch((error) => {
+      //очищаю хранилище от токена, если пригла ошибка, для того чтобы снова перелогиниться
+      localStorage.clear();
       console.log(error);
       dispatch(meRequestError(String(error)));
     });
