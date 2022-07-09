@@ -39,7 +39,7 @@ export function PostsList() {
   const [errorLoading, setErrorLoading] = useState('');
   const [nextAfter, setNextAfter] = useState('');
   const [loadMore, setLoadMore] = useState(true);
-  const [numberLoad, setNumberLoad] = useState<number>(1);
+  const [numberLoad, setNumberLoad] = useState<number>(0);
 
   const bottomOfList = useRef<HTMLDivElement>(null);
 
@@ -48,7 +48,6 @@ export function PostsList() {
   }
 
   useEffect(() => {
-
     async function load() {
       setLoading(true);
       setErrorLoading('');
@@ -73,23 +72,27 @@ export function PostsList() {
           });
 
         setNextAfter(after);
-        setPosts(prevNewArrObj => prevNewArrObj.concat(...newArrObj));
+        setPosts(prevNewArrObj => prevNewArrObj.concat(newArrObj));
+        setNumberLoad(numberLoad + 1);
       } catch (error) {
         setErrorLoading(String(error));
       }
       setLoading(false);
     }
-
+    console.log(posts)
     const observer = new IntersectionObserver((entries) => {
 
       if (entries[0].isIntersecting && loadMore) {
         load();
-        setNumberLoad(numberLoad + 1);
       }
 
-      if (numberLoad % 3 == 0) {
+      console.log(loadMore);
+
+      if (numberLoad == 3) {
         setLoadMore(false);
+        setNumberLoad(0);
       }
+
     }, {
       rootMargin: '10px',
     });
