@@ -14,11 +14,9 @@ import { rootReducer, RootState, setToken} from "./shared/store/store";
 import thunk, { ThunkAction } from "redux-thunk";
 import { useAppDispatch } from "./hooks/hooks";
 
-//старое рабочее решение
 export const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk),
 ));
-
 
 function AppComponent() {
 

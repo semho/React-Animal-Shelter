@@ -9,6 +9,12 @@ const GLOBAL_CSS_REGEXP = /\.global\.css$/;
 const DEV_PLUGINS =  [ new HotModuleReplacementPlugin(), new CleanWebpackPlugin() ];
 const COMMON_PLUGINS = [ new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` }) ];
 
+/** плагин для измерения скорости билда приложения */
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+// const smp = new SpeedMeasurePlugin();
+
+
+
 function setupDevtool() {
     if (IS_DEV) return 'eval';
     if (IS_PROD) return false;
@@ -35,12 +41,14 @@ module.exports = {
         rules: [
             {
                 test: /\.[tj]sx?$/,
+                exclude: /node_modules/,
                 use: ['ts-loader']
             },
-            { //настройка дла css modules
+            { /** настройка дла css modules */
                 test: /\.css$/,
+                exclude: /node_modules/,
                 use: [
-                    'style-loader', 
+                    'style-loader',
                     {
                         loader: 'css-loader',
                         options: {
@@ -53,13 +61,14 @@ module.exports = {
                                 localIdentName: '[name]__[local]--[hash:base64:5]',
                             }
                         }
-                    }, 
+                    },
                 ],
                 exclude: GLOBAL_CSS_REGEXP
             },
             {
                 /** настройка глобального CSS файла */
                 test: GLOBAL_CSS_REGEXP,
+                exclude: /node_modules/,
                 use: ['style-loader', 'css-loader']
             }
         ]
