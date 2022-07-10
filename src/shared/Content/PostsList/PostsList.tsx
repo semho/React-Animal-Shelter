@@ -38,10 +38,12 @@ export function PostsList() {
   const [loading, setLoading] = useState(false);
   const [errorLoading, setErrorLoading] = useState('');
   const [nextAfter, setNextAfter] = useState('');
-  const [loadMore, setLoadMore] = useState(true);
+  const [loadMore, setLoadMore] = useState(false);
   const [numberLoad, setNumberLoad] = useState<number>(0);
 
   const bottomOfList = useRef<HTMLDivElement>(null);
+
+  const [firstLoad, setFirstLoad] = useState(true);
 
   function handleClick() {
     setLoadMore(true);
@@ -79,7 +81,19 @@ export function PostsList() {
       }
       setLoading(false);
     }
-    console.log(posts)
+    console.log(posts);
+
+    console.log(nextAfter);
+
+    if (firstLoad) {
+
+      load();
+
+      setFirstLoad(false);
+
+      console.log(numberLoad)
+    }
+
     const observer = new IntersectionObserver((entries) => {
 
       if (entries[0].isIntersecting && loadMore) {
@@ -106,7 +120,8 @@ export function PostsList() {
         observer.unobserve(bottomOfList.current);
       }
     }
-  }, [bottomOfList.current, nextAfter, loadMore, numberLoad]);
+
+  }, [bottomOfList.current, nextAfter, loadMore, numberLoad, firstLoad]);
 
   return (
     <ul className={styles.postsList}>
