@@ -40,67 +40,65 @@ export function PostsList() {
   const [nextAfter, setNextAfter] = useState('');
   const [loadMore, setLoadMore] = useState(false);
   const [numberLoad, setNumberLoad] = useState<number>(0);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const bottomOfList = useRef<HTMLDivElement>(null);
 
-  const [firstLoad, setFirstLoad] = useState(true);
+  const LIMIT = 10;
+  const COUNT_PRELOADING = 3;
 
   function handleClick() {
     setLoadMore(true);
   }
+  async function load() {
+    setLoading(true);
+    setErrorLoading('');
+
+    try {
+      const { data: { data: { after, children } } } = await axios.get('https://api.reddit.com/best?sr_detail=true', {
+        params: {
+          limit: LIMIT,
+          after: nextAfter,
+        }
+      });
+        const newArrObj: IArrObj = children.map( (item: IParentObj) => {
+          const container: INewObj = { };
+          container.id = item.data.id;
+          container.author = item.data.author;
+          container.title = item.data.title;
+          container.banner = item.data.sr_detail.banner_img;
+          container.icon_img = item.data.sr_detail.icon_img;
+          container.created = item.data.created_utc;
+
+          return container;
+        });
+
+      setNextAfter(after);
+      setPosts(prevNewArrObj => prevNewArrObj.concat(newArrObj));
+      setNumberLoad(numberLoad + 1);
+    } catch (error) {
+      setErrorLoading(String(error));
+    }
+    setLoading(false);
+  }
 
   useEffect(() => {
-    async function load() {
-      setLoading(true);
-      setErrorLoading('');
-
-      try {
-        const { data: { data: { after, children } } } = await axios.get('https://api.reddit.com/best?sr_detail=true', {
-          params: {
-            limit: 10,
-            after: nextAfter,
-          }
-        });
-          const newArrObj: IArrObj = children.map( (item: IParentObj) => {
-            const container: INewObj = { };
-            container.id = item.data.id;
-            container.author = item.data.author;
-            container.title = item.data.title;
-            container.banner = item.data.sr_detail.banner_img;
-            container.icon_img = item.data.sr_detail.icon_img;
-            container.created = item.data.created_utc;
-
-            return container;
-          });
-
-        setNextAfter(after);
-        setPosts(prevNewArrObj => prevNewArrObj.concat(newArrObj));
-        setNumberLoad(numberLoad + 1);
-      } catch (error) {
-        setErrorLoading(String(error));
-      }
-      setLoading(false);
-    }
-    console.log(posts);
-
-    console.log(nextAfter);
-
-    if (firstLoad) {
-
-      load();
-
-      setFirstLoad(false);
-
-      console.log(numberLoad)
-    }
 
     const observer = new IntersectionObserver((entries) => {
-
       if (entries[0].isIntersecting && loadMore) {
         load();
       }
 
-      console.log(loadMore);
+      if (firstLoad) {
+        load();
+        setFirstLoad(false);
+      } else if (!firstLoad && posts.length < (COUNT_PRELOADING * LIMIT) && entries[0].isIntersecting) {
+        if (numberLoad == 1 ) {
+          load();
+        } else if (numberLoad == 2) {
+          load();
+        }
+      }
 
       if (numberLoad == 3) {
         setLoadMore(false);
