@@ -63,3 +63,18 @@ button {
     outline: 1px solid var(--grey-demi-dark);
   }
 }
+
+.btnMore {
+  width: 220px;
+  height: 50px;
+  background: #CC6633;
+  border-radius: 0px 0px 3px 0px;
+  align-self: flex-end;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #FFFFFF;
+}

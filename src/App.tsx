@@ -29,14 +29,12 @@ function AppComponent() {
   dispatch(saveToken());
 
   return (
-    <PostsContextProvider>
-      <Layout>
-        <Header/>
-        <Content>
-          <PostsList />
-        </Content>
-      </Layout>
-    </PostsContextProvider>
+    <Layout>
+      <Header/>
+      <Content>
+        <PostsList />
+      </Content>
+    </Layout>
   );
 }
 
