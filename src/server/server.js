@@ -23,7 +23,9 @@ app.get('/auth', (req, res) => {
       );
     })
     .catch((error) => {
-      console.log(error);
+
+      res.redirect('/posts');
+      console.log('Message: ' + error.message);
     })
 });
 
