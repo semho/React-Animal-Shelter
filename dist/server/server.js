@@ -349,18 +349,17 @@ var helmet_1 = __importDefault(__webpack_require__(115));
 var PORT = process.env.PORT || 3000;
 var IS_DEV = "production" !== 'production';
 var app = express_1.default();
-// if (!IS_DEV) {
-app.use(compression_1.default());
-// app.use(helmet.dnsPrefetchControl({ allow: false }));
-app.use(helmet_1.default({
-    contentSecurityPolicy: false
-}), helmet_1.default.crossOriginEmbedderPolicy({ policy: "credentialless" }));
-// }
+if (!IS_DEV) {
+    app.use(compression_1.default());
+    app.use(helmet_1.default({
+        contentSecurityPolicy: false
+    }), helmet_1.default.crossOriginEmbedderPolicy({ policy: "credentialless" }));
+}
 app.use('/static', express_1.default.static('./dist/client'));
 app.get('/auth', function (req, res) {
-    console.log("ID: " + '9PRgtMtHs-M5_AK4od9OKw' + (" Secret: " + process.env.SECRET) + (" code: " + req.query.code));
+    console.log("ID: " + 's559te2-wxRpGELoMinJWA' + (" Secret: " + process.env.SECRET) + (" code: " + req.query.code));
     axios_1.default.post('https://www.reddit.com/api/v1/access_token', "grant_type=authorization_code&code=" + req.query.code + "&redirect_uri=" + process.env.DOMAIN + "/auth", {
-        auth: { username: '9PRgtMtHs-M5_AK4od9OKw', password: process.env.SECRET },
+        auth: { username: 's559te2-wxRpGELoMinJWA', password: process.env.SECRET },
         headers: { 'Content-type': 'application/x-www-form-urlencoded' }
     })
         .then(function (_a) {
@@ -781,7 +780,7 @@ var Icon_1 = __webpack_require__(5);
 var Text_1 = __webpack_require__(1);
 function UserBlock(_a) {
     var avatarSrc = _a.avatarSrc, username = _a.username, loading = _a.loading;
-    return (react_1.default.createElement("a", { href: "https://www.reddit.com/api/v1/authorize?client_id=" + '9PRgtMtHs-M5_AK4od9OKw' + "&response_type=code&state=random_string&redirect_uri=" + process.env.DOMAIN + "/auth&duration=permanent&scope=read submit identity", className: userblock_css_1.default.userBox },
+    return (react_1.default.createElement("a", { href: "https://www.reddit.com/api/v1/authorize?client_id=" + 's559te2-wxRpGELoMinJWA' + "&response_type=code&state=random_string&redirect_uri=" + process.env.DOMAIN + "/auth&duration=permanent&scope=read submit identity", className: userblock_css_1.default.userBox },
         react_1.default.createElement("div", { className: userblock_css_1.default.avatarBox }, avatarSrc
             ? react_1.default.createElement("img", { src: avatarSrc, alt: "user avatar", className: userblock_css_1.default.avatarImage })
             : react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.anon, size: 50, color: '#D9D9D9' })),
@@ -1189,6 +1188,7 @@ function PostsList() {
                     case 0:
                         setLoading(true);
                         setErrorLoading('');
+                        console.log("ID: " + 's559te2-wxRpGELoMinJWA' + " Secret: " + process.env.SECRET);
                         _b.label = 1;
                     case 1:
                         _b.trys.push([1, 3, , 4]);

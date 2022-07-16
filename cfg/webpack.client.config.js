@@ -10,6 +10,7 @@ const DEV_PLUGINS =  [ new HotModuleReplacementPlugin(), new CleanWebpackPlugin(
 const COMMON_PLUGINS = [ new DefinePlugin({
   'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
   'process.env.DOMAIN': `'${process.env.DOMAIN}'`,
+  'process.env.SECRET': `'${process.env.SECRET}'`,
 }) ];
 
 /** плагин для измерения скорости билда приложения */
