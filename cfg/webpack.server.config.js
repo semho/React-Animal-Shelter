@@ -22,7 +22,7 @@ module.exports = {
             {
                 test: /\.[tj]sx?$/,
                 use: ['ts-loader']
-            }, 
+            },
             { //настройка для css modules(убираем настройки стилей, оставляем только настройки селекторов)
                 test: /\.css$/,
                 use: [
@@ -36,7 +36,7 @@ module.exports = {
                             onlyLocals: true,
                         }
                     },
-                ], 
+                ],
                 exclude: GLOBAL_CSS_REGEXP
             },
             {
@@ -49,5 +49,7 @@ module.exports = {
     optimization: {
         minimize: false,
     },
-    plugins: [ new DefinePlugin({ 'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'` }) ]
+    plugins: [ new DefinePlugin({
+      'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
+    }) ]
 };
