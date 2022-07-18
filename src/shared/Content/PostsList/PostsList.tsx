@@ -53,9 +53,6 @@ export function PostsList() {
   async function load() {
     setLoading(true);
     setErrorLoading('');
-    console.log(
-      `ID: ${process.env.CLIENT_ID} Secret: ${process.env.SECRET}`
-    );
     try {
       const { data: { data: { after, children } } } = await axios.get('https://api.reddit.com/best?sr_detail=true', {
         params: {
