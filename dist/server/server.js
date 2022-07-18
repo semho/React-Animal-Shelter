@@ -81,2712 +81,1367 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/server/server.js");
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\n/*\r\n  MIT License http://www.opensource.org/licenses/mit-license.php\r\n  Author Tobias Koppers @sokra\r\n*/\r\n// css base code, injected by the css-loader\r\n// eslint-disable-next-line func-names\r\nmodule.exports = function (useSourceMap) {\r\n    var list = []; // return the list of modules as css string\r\n    list.toString = function toString() {\r\n        return this.map(function (item) {\r\n            var content = cssWithMappingToString(item, useSourceMap);\r\n            if (item[2]) {\r\n                return \"@media \".concat(item[2], \" {\").concat(content, \"}\");\r\n            }\r\n            return content;\r\n        }).join('');\r\n    }; // import a list of modules into the list\r\n    // eslint-disable-next-line func-names\r\n    list.i = function (modules, mediaQuery, dedupe) {\r\n        if (typeof modules === 'string') {\r\n            // eslint-disable-next-line no-param-reassign\r\n            modules = [[null, modules, '']];\r\n        }\r\n        var alreadyImportedModules = {};\r\n        if (dedupe) {\r\n            for (var i = 0; i < this.length; i++) {\r\n                // eslint-disable-next-line prefer-destructuring\r\n                var id = this[i][0];\r\n                if (id != null) {\r\n                    alreadyImportedModules[id] = true;\r\n                }\r\n            }\r\n        }\r\n        for (var _i = 0; _i < modules.length; _i++) {\r\n            var item = [].concat(modules[_i]);\r\n            if (dedupe && alreadyImportedModules[item[0]]) {\r\n                // eslint-disable-next-line no-continue\r\n                continue;\r\n            }\r\n            if (mediaQuery) {\r\n                if (!item[2]) {\r\n                    item[2] = mediaQuery;\r\n                }\r\n                else {\r\n                    item[2] = \"\".concat(mediaQuery, \" and \").concat(item[2]);\r\n                }\r\n            }\r\n            list.push(item);\r\n        }\r\n    };\r\n    return list;\r\n};\r\nfunction cssWithMappingToString(item, useSourceMap) {\r\n    var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring\r\n    var cssMapping = item[3];\r\n    if (!cssMapping) {\r\n        return content;\r\n    }\r\n    if (useSourceMap && typeof btoa === 'function') {\r\n        var sourceMapping = toComment(cssMapping);\r\n        var sourceURLs = cssMapping.sources.map(function (source) {\r\n            return \"/*# sourceURL=\".concat(cssMapping.sourceRoot || '').concat(source, \" */\");\r\n        });\r\n        return [content].concat(sourceURLs).concat([sourceMapping]).join('\\n');\r\n    }\r\n    return [content].join('\\n');\r\n} // Adapted from convert-source-map (MIT)\r\nfunction toComment(sourceMap) {\r\n    // eslint-disable-next-line no-undef\r\n    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));\r\n    var data = \"sourceMappingURL=data:application/json;charset=utf-8;base64,\".concat(base64);\r\n    return \"/*# \".concat(data, \" */\");\r\n}\r\n\n\n//# sourceURL=webpack:///./node_modules/css-loader/dist/runtime/api.js?");
+
+/***/ }),
+
+/***/ "./node_modules/recoil/es/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/recoil/es/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __extends = (this && this.__extends) || (function () {\r\n    var extendStatics = function (d, b) {\r\n        extendStatics = Object.setPrototypeOf ||\r\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\r\n            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };\r\n        return extendStatics(d, b);\r\n    };\r\n    return function (d, b) {\r\n        if (typeof b !== \"function\" && b !== null)\r\n            throw new TypeError(\"Class extends value \" + String(b) + \" is not a constructor or null\");\r\n        extendStatics(d, b);\r\n        function __() { this.constructor = d; }\r\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\r\n    };\r\n})();\r\nvar __assign = (this && this.__assign) || function () {\r\n    __assign = Object.assign || function(t) {\r\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\r\n            s = arguments[i];\r\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\r\n                t[p] = s[p];\r\n        }\r\n        return t;\r\n    };\r\n    return __assign.apply(this, arguments);\r\n};\r\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\r\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\r\n    return new (P || (P = Promise))(function (resolve, reject) {\r\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\r\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\r\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\r\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\r\n    });\r\n};\r\nvar __generator = (this && this.__generator) || function (thisArg, body) {\r\n    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;\r\n    return g = { next: verb(0), \"throw\": verb(1), \"return\": verb(2) }, typeof Symbol === \"function\" && (g[Symbol.iterator] = function() { return this; }), g;\r\n    function verb(n) { return function (v) { return step([n, v]); }; }\r\n    function step(op) {\r\n        if (f) throw new TypeError(\"Generator is already executing.\");\r\n        while (_) try {\r\n            if (f = 1, y && (t = op[0] & 2 ? y[\"return\"] : op[0] ? y[\"throw\"] || ((t = y[\"return\"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;\r\n            if (y = 0, t) op = [op[0] & 2, t.value];\r\n            switch (op[0]) {\r\n                case 0: case 1: t = op; break;\r\n                case 4: _.label++; return { value: op[1], done: false };\r\n                case 5: _.label++; y = op[1]; op = [0]; continue;\r\n                case 7: op = _.ops.pop(); _.trys.pop(); continue;\r\n                default:\r\n                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }\r\n                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }\r\n                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }\r\n                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }\r\n                    if (t[2]) _.ops.pop();\r\n                    _.trys.pop(); continue;\r\n            }\r\n            op = body.call(thisArg, _);\r\n        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }\r\n        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };\r\n    }\r\n};\r\nvar __rest = (this && this.__rest) || function (s, e) {\r\n    var t = {};\r\n    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)\r\n        t[p] = s[p];\r\n    if (s != null && typeof Object.getOwnPropertySymbols === \"function\")\r\n        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {\r\n            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))\r\n                t[p[i]] = s[p[i]];\r\n        }\r\n    return t;\r\n};\r\nvar __spreadArray = (this && this.__spreadArray) || function (to, from) {\r\n    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)\r\n        to[j] = from[i];\r\n    return to;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.waitForNone = exports.waitForAny = exports.waitForAllSettled = exports.waitForAll = exports.useSetRecoilState = exports.useRetain = exports.useResetRecoilState = exports.useRecoilValue_TRANSITION_SUPPORT_UNSTABLE = exports.useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE = exports.useRecoilValueLoadable = exports.useRecoilValue = exports.useRecoilTransaction_UNSTABLE = exports.useRecoilTransactionObserver_UNSTABLE = exports.useRecoilStoreID = exports.useRecoilState_TRANSITION_SUPPORT_UNSTABLE = exports.useRecoilStateLoadable = exports.useRecoilState = exports.useRecoilSnapshot = exports.useRecoilRefresher_UNSTABLE = exports.useRecoilCallback = exports.useRecoilBridgeAcrossReactRoots_UNSTABLE = exports.useGotoRecoilSnapshot = exports.useGetRecoilValueInfo_UNSTABLE = exports.snapshot_UNSTABLE = exports.selectorFamily = exports.selector = exports.retentionZone = exports.readOnlySelector = exports.noWait = exports.isRecoilValue = exports.errorSelector = exports.constSelector = exports.atomFamily = exports.atom = exports.RecoilRoot = exports.RecoilLoadable = exports.DefaultValue = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ \"react-dom\"));\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction err(message) {\r\n    var error = new Error(message); // In V8, Error objects keep the closure scope chain alive until the\r\n    // err.stack property is accessed.\r\n    if (error.stack === undefined) {\r\n        // IE sets the stack only if error is thrown\r\n        try {\r\n            throw error;\r\n        }\r\n        catch (_) { } // eslint-disable-line fb-www/no-unused-catch-bindings, no-empty\r\n    }\r\n    return error;\r\n}\r\nvar err_1 = err;\r\n// @oss-only\r\nvar Recoil_err = err_1;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n// Split declaration and implementation to allow this function to pretend to\r\n// check for actual instance of Promise instead of something with a `then`\r\n// method.\r\n// eslint-disable-next-line no-redeclare\r\nfunction isPromise(p) {\r\n    return !!p && typeof p.then === 'function';\r\n}\r\nvar Recoil_isPromise = isPromise;\r\nfunction nullthrows(x, message) {\r\n    if (x != null) {\r\n        return x;\r\n    }\r\n    throw Recoil_err(message !== null && message !== void 0 ? message : 'Got unexpected null or undefined');\r\n}\r\nvar Recoil_nullthrows = nullthrows;\r\nfunction _defineProperty(obj, key, value) {\r\n    if (key in obj) {\r\n        Object.defineProperty(obj, key, {\r\n            value: value,\r\n            enumerable: true,\r\n            configurable: true,\r\n            writable: true\r\n        });\r\n    }\r\n    else {\r\n        obj[key] = value;\r\n    }\r\n    return obj;\r\n}\r\nvar BaseLoadable = /** @class */ (function () {\r\n    function BaseLoadable() {\r\n    }\r\n    BaseLoadable.prototype.getValue = function () {\r\n        throw Recoil_err('BaseLoadable');\r\n    };\r\n    BaseLoadable.prototype.toPromise = function () {\r\n        throw Recoil_err('BaseLoadable');\r\n    };\r\n    BaseLoadable.prototype.valueMaybe = function () {\r\n        throw Recoil_err('BaseLoadable');\r\n    };\r\n    BaseLoadable.prototype.valueOrThrow = function () {\r\n        // $FlowFixMe[prop-missing]\r\n        throw Recoil_err(\"Loadable expected value, but in \\\"\" + this.state + \"\\\" state\");\r\n    };\r\n    BaseLoadable.prototype.promiseMaybe = function () {\r\n        throw Recoil_err('BaseLoadable');\r\n    };\r\n    BaseLoadable.prototype.promiseOrThrow = function () {\r\n        // $FlowFixMe[prop-missing]\r\n        throw Recoil_err(\"Loadable expected promise, but in \\\"\" + this.state + \"\\\" state\");\r\n    };\r\n    BaseLoadable.prototype.errorMaybe = function () {\r\n        throw Recoil_err('BaseLoadable');\r\n    };\r\n    BaseLoadable.prototype.errorOrThrow = function () {\r\n        // $FlowFixMe[prop-missing]\r\n        throw Recoil_err(\"Loadable expected error, but in \\\"\" + this.state + \"\\\" state\");\r\n    };\r\n    BaseLoadable.prototype.is = function (other) {\r\n        // $FlowFixMe[prop-missing]\r\n        return other.state === this.state && other.contents === this.contents;\r\n    };\r\n    BaseLoadable.prototype.map = function (_map) {\r\n        throw Recoil_err('BaseLoadable');\r\n    };\r\n    return BaseLoadable;\r\n}());\r\nvar ValueLoadable = /** @class */ (function (_super) {\r\n    __extends(ValueLoadable, _super);\r\n    function ValueLoadable(value) {\r\n        var _this = _super.call(this) || this;\r\n        _defineProperty(_this, \"state\", 'hasValue');\r\n        _defineProperty(_this, \"contents\", void 0);\r\n        _this.contents = value;\r\n        return _this;\r\n    }\r\n    ValueLoadable.prototype.getValue = function () {\r\n        return this.contents;\r\n    };\r\n    ValueLoadable.prototype.toPromise = function () {\r\n        return Promise.resolve(this.contents);\r\n    };\r\n    ValueLoadable.prototype.valueMaybe = function () {\r\n        return this.contents;\r\n    };\r\n    ValueLoadable.prototype.valueOrThrow = function () {\r\n        return this.contents;\r\n    };\r\n    ValueLoadable.prototype.promiseMaybe = function () {\r\n        return undefined;\r\n    };\r\n    ValueLoadable.prototype.errorMaybe = function () {\r\n        return undefined;\r\n    };\r\n    ValueLoadable.prototype.map = function (map) {\r\n        var _this = this;\r\n        try {\r\n            var next = map(this.contents);\r\n            return Recoil_isPromise(next) ? loadableWithPromise(next) : isLoadable(next) ? next : loadableWithValue(next);\r\n        }\r\n        catch (e) {\r\n            return Recoil_isPromise(e) ? // If we \"suspended\", then try again.\r\n                // errors and subsequent retries will be handled in 'loading' case\r\n                // $FlowFixMe[prop-missing]\r\n                loadableWithPromise(e.next(function () { return _this.map(map); })) : loadableWithError(e);\r\n        }\r\n    };\r\n    return ValueLoadable;\r\n}(BaseLoadable));\r\nvar ErrorLoadable = /** @class */ (function (_super) {\r\n    __extends(ErrorLoadable, _super);\r\n    function ErrorLoadable(error) {\r\n        var _this = _super.call(this) || this;\r\n        _defineProperty(_this, \"state\", 'hasError');\r\n        _defineProperty(_this, \"contents\", void 0);\r\n        _this.contents = error;\r\n        return _this;\r\n    }\r\n    ErrorLoadable.prototype.getValue = function () {\r\n        throw this.contents;\r\n    };\r\n    ErrorLoadable.prototype.toPromise = function () {\r\n        return Promise.reject(this.contents);\r\n    };\r\n    ErrorLoadable.prototype.valueMaybe = function () {\r\n        return undefined;\r\n    };\r\n    ErrorLoadable.prototype.promiseMaybe = function () {\r\n        return undefined;\r\n    };\r\n    ErrorLoadable.prototype.errorMaybe = function () {\r\n        return this.contents;\r\n    };\r\n    ErrorLoadable.prototype.errorOrThrow = function () {\r\n        return this.contents;\r\n    };\r\n    ErrorLoadable.prototype.map = function (_map) {\r\n        // $FlowIssue[incompatible-return]\r\n        return this;\r\n    };\r\n    return ErrorLoadable;\r\n}(BaseLoadable));\r\nvar LoadingLoadable = /** @class */ (function (_super) {\r\n    __extends(LoadingLoadable, _super);\r\n    function LoadingLoadable(promise) {\r\n        var _this = _super.call(this) || this;\r\n        _defineProperty(_this, \"state\", 'loading');\r\n        _defineProperty(_this, \"contents\", void 0);\r\n        _this.contents = promise;\r\n        return _this;\r\n    }\r\n    LoadingLoadable.prototype.getValue = function () {\r\n        throw this.contents;\r\n    };\r\n    LoadingLoadable.prototype.toPromise = function () {\r\n        return this.contents;\r\n    };\r\n    LoadingLoadable.prototype.valueMaybe = function () {\r\n        return undefined;\r\n    };\r\n    LoadingLoadable.prototype.promiseMaybe = function () {\r\n        return this.contents;\r\n    };\r\n    LoadingLoadable.prototype.promiseOrThrow = function () {\r\n        return this.contents;\r\n    };\r\n    LoadingLoadable.prototype.errorMaybe = function () {\r\n        return undefined;\r\n    };\r\n    LoadingLoadable.prototype.map = function (map) {\r\n        var _this = this;\r\n        return loadableWithPromise(this.contents.then(function (value) {\r\n            var next = map(value);\r\n            if (isLoadable(next)) {\r\n                var nextLoadable = next;\r\n                switch (nextLoadable.state) {\r\n                    case 'hasValue':\r\n                        return nextLoadable.contents;\r\n                    case 'hasError':\r\n                        throw nextLoadable.contents;\r\n                    case 'loading':\r\n                        return nextLoadable.contents;\r\n                }\r\n            } // $FlowIssue[incompatible-return]\r\n            return next;\r\n        }).catch(function (e) {\r\n            if (Recoil_isPromise(e)) {\r\n                // we were \"suspended,\" try again\r\n                return e.then(function () { return _this.map(map).contents; });\r\n            }\r\n            throw e;\r\n        }));\r\n    };\r\n    return LoadingLoadable;\r\n}(BaseLoadable));\r\nfunction loadableWithValue(value) {\r\n    return Object.freeze(new ValueLoadable(value));\r\n}\r\nfunction loadableWithError(error) {\r\n    return Object.freeze(new ErrorLoadable(error));\r\n}\r\nfunction loadableWithPromise(promise) {\r\n    return Object.freeze(new LoadingLoadable(promise));\r\n}\r\nfunction loadableLoading() {\r\n    return Object.freeze(new LoadingLoadable(new Promise(function () { })));\r\n}\r\nfunction loadableAllArray(inputs) {\r\n    return inputs.every(function (i) { return i.state === 'hasValue'; }) ? loadableWithValue(inputs.map(function (i) { return i.contents; })) : inputs.some(function (i) { return i.state === 'hasError'; }) ? loadableWithError(Recoil_nullthrows(inputs.find(function (i) { return i.state === 'hasError'; }), 'Invalid loadable passed to loadableAll').contents) : loadableWithPromise(Promise.all(inputs.map(function (i) { return i.contents; })));\r\n}\r\nfunction loadableAll(inputs) {\r\n    var unwrapedInputs = Array.isArray(inputs) ? inputs : Object.getOwnPropertyNames(inputs).map(function (key) { return inputs[key]; });\r\n    var normalizedInputs = unwrapedInputs.map(function (x) { return isLoadable(x) ? x : Recoil_isPromise(x) ? loadableWithPromise(x) : loadableWithValue(x); });\r\n    var output = loadableAllArray(normalizedInputs);\r\n    return Array.isArray(inputs) ? // $FlowIssue[incompatible-return]\r\n        output : // Object.getOwnPropertyNames() has consistent key ordering with ES6\r\n        // $FlowIssue[incompatible-call]\r\n        output.map(function (outputs) { return Object.getOwnPropertyNames(inputs).reduce(function (out, key, idx) {\r\n            var _a;\r\n            return (__assign(__assign({}, out), (_a = {}, _a[key] = outputs[idx], _a)));\r\n        }, {}); });\r\n}\r\nfunction isLoadable(x) {\r\n    return x instanceof BaseLoadable;\r\n}\r\nvar LoadableStaticInterface = {\r\n    of: function (value) { return Recoil_isPromise(value) ? loadableWithPromise(value) : isLoadable(value) ? value : loadableWithValue(value); },\r\n    error: function (error) { return loadableWithError(error); },\r\n    // $FlowIssue[incompatible-return]\r\n    loading: function () { return loadableLoading(); },\r\n    // $FlowIssue[unclear-type]\r\n    all: loadableAll,\r\n    isLoadable: isLoadable\r\n};\r\nvar Recoil_Loadable = {\r\n    loadableWithValue: loadableWithValue,\r\n    loadableWithError: loadableWithError,\r\n    loadableWithPromise: loadableWithPromise,\r\n    loadableLoading: loadableLoading,\r\n    loadableAll: loadableAll,\r\n    isLoadable: isLoadable,\r\n    RecoilLoadable: LoadableStaticInterface\r\n};\r\nvar Recoil_Loadable_1 = Recoil_Loadable.loadableWithValue;\r\nvar Recoil_Loadable_2 = Recoil_Loadable.loadableWithError;\r\nvar Recoil_Loadable_3 = Recoil_Loadable.loadableWithPromise;\r\nvar Recoil_Loadable_4 = Recoil_Loadable.loadableLoading;\r\nvar Recoil_Loadable_5 = Recoil_Loadable.loadableAll;\r\nvar Recoil_Loadable_6 = Recoil_Loadable.isLoadable;\r\nvar Recoil_Loadable_7 = Recoil_Loadable.RecoilLoadable;\r\nvar Recoil_Loadable$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    loadableWithValue: Recoil_Loadable_1,\r\n    loadableWithError: Recoil_Loadable_2,\r\n    loadableWithPromise: Recoil_Loadable_3,\r\n    loadableLoading: Recoil_Loadable_4,\r\n    loadableAll: Recoil_Loadable_5,\r\n    isLoadable: Recoil_Loadable_6,\r\n    RecoilLoadable: Recoil_Loadable_7\r\n});\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nvar gks = new Map().set('recoil_hamt_2020', true).set('recoil_sync_external_store', true).set('recoil_suppress_rerender_in_callback', true).set('recoil_memory_managament_2020', true);\r\nfunction Recoil_gkx_OSS(gk) {\r\n    var _gks$get;\r\n    return (_gks$get = gks.get(gk)) !== null && _gks$get !== void 0 ? _gks$get : false;\r\n}\r\nRecoil_gkx_OSS.setPass = function (gk) {\r\n    gks.set(gk, true);\r\n};\r\nRecoil_gkx_OSS.setFail = function (gk) {\r\n    gks.set(gk, false);\r\n};\r\nRecoil_gkx_OSS.clear = function () {\r\n    gks.clear();\r\n};\r\nvar Recoil_gkx = Recoil_gkx_OSS; // @oss-only\r\nvar _createMutableSource, _useMutableSource, _useSyncExternalStore;\r\nvar createMutableSource = // flowlint-next-line unclear-type:off\r\n (_createMutableSource = react_1.default.createMutableSource) !== null && _createMutableSource !== void 0 ? _createMutableSource : react_1.default.unstable_createMutableSource;\r\nvar useMutableSource = // flowlint-next-line unclear-type:off\r\n (_useMutableSource = react_1.default.useMutableSource) !== null && _useMutableSource !== void 0 ? _useMutableSource : react_1.default.unstable_useMutableSource; // https://github.com/reactwg/react-18/discussions/86\r\nvar useSyncExternalStore = // flowlint-next-line unclear-type:off\r\n (_useSyncExternalStore = react_1.default.useSyncExternalStore) !== null && _useSyncExternalStore !== void 0 ? _useSyncExternalStore : // flowlint-next-line unclear-type:off\r\n    react_1.default.unstable_useSyncExternalStore;\r\n/**\r\n * mode: The React API and approach to use for syncing state with React\r\n * early: Re-renders from Recoil updates occur:\r\n *    1) earlier\r\n *    2) in sync with React updates in the same batch\r\n *    3) before transaction observers instead of after.\r\n * concurrent: Is the current mode compatible with Concurrent Mode and useTransition()\r\n */\r\nfunction reactMode() {\r\n    // NOTE: This mode is currently broken with some Suspense cases\r\n    // see Recoil_selector-test.js\r\n    if (Recoil_gkx('recoil_transition_support')) {\r\n        return {\r\n            mode: 'TRANSITION_SUPPORT',\r\n            early: true,\r\n            concurrent: true\r\n        };\r\n    }\r\n    if (Recoil_gkx('recoil_sync_external_store') && useSyncExternalStore != null) {\r\n        return {\r\n            mode: 'SYNC_EXTERNAL_STORE',\r\n            early: true,\r\n            concurrent: false\r\n        };\r\n    }\r\n    if (Recoil_gkx('recoil_mutable_source') && useMutableSource != null && typeof window !== 'undefined' && !window.$disableRecoilValueMutableSource_TEMP_HACK_DO_NOT_USE) {\r\n        return Recoil_gkx('recoil_suppress_rerender_in_callback') ? {\r\n            mode: 'MUTABLE_SOURCE',\r\n            early: true,\r\n            concurrent: true\r\n        } : {\r\n            mode: 'MUTABLE_SOURCE',\r\n            early: false,\r\n            concurrent: false\r\n        };\r\n    }\r\n    return Recoil_gkx('recoil_suppress_rerender_in_callback') ? {\r\n        mode: 'LEGACY',\r\n        early: true,\r\n        concurrent: false\r\n    } : {\r\n        mode: 'LEGACY',\r\n        early: false,\r\n        concurrent: false\r\n    };\r\n} // TODO Need to figure out if there is a standard/open-source equivalent to see if hot module replacement is happening:\r\nfunction isFastRefreshEnabled() {\r\n    // @fb-only: const {isAcceptingUpdate} = require('__debug');\r\n    // @fb-only: return typeof isAcceptingUpdate === 'function' && isAcceptingUpdate();\r\n    return false; // @oss-only\r\n}\r\nvar Recoil_ReactMode = {\r\n    createMutableSource: createMutableSource,\r\n    useMutableSource: useMutableSource,\r\n    useSyncExternalStore: useSyncExternalStore,\r\n    reactMode: reactMode,\r\n    isFastRefreshEnabled: isFastRefreshEnabled\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n// eslint-disable-next-line no-unused-vars\r\nvar AbstractRecoilValue = /** @class */ (function () {\r\n    function AbstractRecoilValue(newKey) {\r\n        _defineProperty(this, \"key\", void 0);\r\n        this.key = newKey;\r\n    }\r\n    AbstractRecoilValue.prototype.toJSON = function () {\r\n        return {\r\n            key: this.key\r\n        };\r\n    };\r\n    return AbstractRecoilValue;\r\n}());\r\nvar RecoilState = /** @class */ (function (_super) {\r\n    __extends(RecoilState, _super);\r\n    function RecoilState() {\r\n        return _super !== null && _super.apply(this, arguments) || this;\r\n    }\r\n    return RecoilState;\r\n}(AbstractRecoilValue));\r\nvar RecoilValueReadOnly = /** @class */ (function (_super) {\r\n    __extends(RecoilValueReadOnly, _super);\r\n    function RecoilValueReadOnly() {\r\n        return _super !== null && _super.apply(this, arguments) || this;\r\n    }\r\n    return RecoilValueReadOnly;\r\n}(AbstractRecoilValue));\r\nfunction isRecoilValue(x) {\r\n    return x instanceof RecoilState || x instanceof RecoilValueReadOnly;\r\n}\r\nvar Recoil_RecoilValue = {\r\n    AbstractRecoilValue: AbstractRecoilValue,\r\n    RecoilState: RecoilState,\r\n    RecoilValueReadOnly: RecoilValueReadOnly,\r\n    isRecoilValue: isRecoilValue\r\n};\r\nvar Recoil_RecoilValue_1 = Recoil_RecoilValue.AbstractRecoilValue;\r\nvar Recoil_RecoilValue_2 = Recoil_RecoilValue.RecoilState;\r\nvar Recoil_RecoilValue_3 = Recoil_RecoilValue.RecoilValueReadOnly;\r\nvar Recoil_RecoilValue_4 = Recoil_RecoilValue.isRecoilValue;\r\nvar Recoil_RecoilValue$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    AbstractRecoilValue: Recoil_RecoilValue_1,\r\n    RecoilState: Recoil_RecoilValue_2,\r\n    RecoilValueReadOnly: Recoil_RecoilValue_3,\r\n    isRecoilValue: Recoil_RecoilValue_4\r\n});\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction sprintf(format) {\r\n    var args = [];\r\n    for (var _a = 1; _a < arguments.length; _a++) {\r\n        args[_a - 1] = arguments[_a];\r\n    }\r\n    var index = 0;\r\n    return format.replace(/%s/g, function () { return String(args[index++]); });\r\n}\r\nvar sprintf_1 = sprintf;\r\nfunction expectationViolation(format) {\r\n    var args = [];\r\n    for (var _a = 1; _a < arguments.length; _a++) {\r\n        args[_a - 1] = arguments[_a];\r\n    }\r\n    if (true) {\r\n        var message = sprintf_1.call.apply(sprintf_1, __spreadArray([null, format], args));\r\n        var error = new Error(message);\r\n        error.name = 'Expectation Violation';\r\n        console.error(error);\r\n    }\r\n}\r\nvar expectationViolation_1 = expectationViolation;\r\n// @oss-only\r\nvar Recoil_expectationViolation = expectationViolation_1;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Creates a new iterable whose output is generated by passing the input\r\n * iterable's values through the mapper function.\r\n */\r\nfunction mapIterable(iterable, callback) {\r\n    // Use generator to create iterable/iterator\r\n    return function () {\r\n        var index, _a, iterable_1, value;\r\n        return __generator(this, function (_b) {\r\n            switch (_b.label) {\r\n                case 0:\r\n                    index = 0;\r\n                    _a = 0, iterable_1 = iterable;\r\n                    _b.label = 1;\r\n                case 1:\r\n                    if (!(_a < iterable_1.length)) return [3 /*break*/, 4];\r\n                    value = iterable_1[_a];\r\n                    return [4 /*yield*/, callback(value, index++)];\r\n                case 2:\r\n                    _b.sent();\r\n                    _b.label = 3;\r\n                case 3:\r\n                    _a++;\r\n                    return [3 /*break*/, 1];\r\n                case 4: return [2 /*return*/];\r\n            }\r\n        });\r\n    }();\r\n}\r\nvar Recoil_mapIterable = mapIterable;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction recoverableViolation(message, _projectName, _a) {\r\n    var _b = _a === void 0 ? {} : _a, error = _b.error;\r\n    if (true) {\r\n        console.error(message, error);\r\n    }\r\n    return null;\r\n}\r\nvar recoverableViolation_1 = recoverableViolation;\r\n// @oss-only\r\nvar Recoil_recoverableViolation = recoverableViolation_1;\r\nvar isFastRefreshEnabled$1 = Recoil_ReactMode.isFastRefreshEnabled;\r\nvar DefaultValue = /** @class */ (function () {\r\n    function DefaultValue() {\r\n    }\r\n    return DefaultValue;\r\n}());\r\nvar DEFAULT_VALUE = new DefaultValue();\r\n// flowlint-next-line unclear-type:off\r\nvar nodes = new Map(); // flowlint-next-line unclear-type:off\r\nvar recoilValues = new Map();\r\n/* eslint-disable no-redeclare */\r\nfunction recoilValuesForKeys(keys) {\r\n    return Recoil_mapIterable(keys, function (key) { return Recoil_nullthrows(recoilValues.get(key)); });\r\n}\r\nfunction registerNode(node) {\r\n    if (nodes.has(node.key)) {\r\n        var message = \"Duplicate atom key \\\"\" + node.key + \"\\\". This is a FATAL ERROR in\\n      production. But it is safe to ignore this warning if it occurred because of\\n      hot module replacement.\";\r\n        if (true) {\r\n            // TODO Figure this out for open-source\r\n            if (!isFastRefreshEnabled$1()) {\r\n                Recoil_expectationViolation(message, 'recoil');\r\n            }\r\n        }\r\n        else {}\r\n    }\r\n    nodes.set(node.key, node);\r\n    var recoilValue = node.set == null ? new Recoil_RecoilValue$1.RecoilValueReadOnly(node.key) : new Recoil_RecoilValue$1.RecoilState(node.key);\r\n    recoilValues.set(node.key, recoilValue);\r\n    return recoilValue;\r\n}\r\n/* eslint-enable no-redeclare */\r\nvar NodeMissingError = /** @class */ (function (_super) {\r\n    __extends(NodeMissingError, _super);\r\n    function NodeMissingError() {\r\n        return _super !== null && _super.apply(this, arguments) || this;\r\n    }\r\n    return NodeMissingError;\r\n}(Error)); // flowlint-next-line unclear-type:off\r\nfunction getNode(key) {\r\n    var node = nodes.get(key);\r\n    if (node == null) {\r\n        throw new NodeMissingError(\"Missing definition for RecoilValue: \\\"\" + key + \"\\\"\\\"\");\r\n    }\r\n    return node;\r\n} // flowlint-next-line unclear-type:off\r\nfunction getNodeMaybe(key) {\r\n    return nodes.get(key);\r\n}\r\nvar configDeletionHandlers = new Map();\r\nfunction deleteNodeConfigIfPossible(key) {\r\n    var _node$shouldDeleteCon;\r\n    if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n        return;\r\n    }\r\n    var node = nodes.get(key);\r\n    if (node !== null && node !== void 0 && (_node$shouldDeleteCon = node.shouldDeleteConfigOnRelease) !== null && _node$shouldDeleteCon !== void 0 && _node$shouldDeleteCon.call(node)) {\r\n        var _getConfigDeletionHan;\r\n        nodes.delete(key);\r\n        (_getConfigDeletionHan = getConfigDeletionHandler(key)) === null || _getConfigDeletionHan === void 0 ? void 0 : _getConfigDeletionHan();\r\n        configDeletionHandlers.delete(key);\r\n    }\r\n}\r\nfunction setConfigDeletionHandler(key, fn) {\r\n    if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n        return;\r\n    }\r\n    if (fn === undefined) {\r\n        configDeletionHandlers.delete(key);\r\n    }\r\n    else {\r\n        configDeletionHandlers.set(key, fn);\r\n    }\r\n}\r\nfunction getConfigDeletionHandler(key) {\r\n    return configDeletionHandlers.get(key);\r\n}\r\nvar Recoil_Node = {\r\n    nodes: nodes,\r\n    recoilValues: recoilValues,\r\n    registerNode: registerNode,\r\n    getNode: getNode,\r\n    getNodeMaybe: getNodeMaybe,\r\n    deleteNodeConfigIfPossible: deleteNodeConfigIfPossible,\r\n    setConfigDeletionHandler: setConfigDeletionHandler,\r\n    getConfigDeletionHandler: getConfigDeletionHandler,\r\n    recoilValuesForKeys: recoilValuesForKeys,\r\n    NodeMissingError: NodeMissingError,\r\n    DefaultValue: DefaultValue,\r\n    DEFAULT_VALUE: DEFAULT_VALUE\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction enqueueExecution(s, f) {\r\n    f();\r\n}\r\nvar Recoil_Queue = {\r\n    enqueueExecution: enqueueExecution\r\n};\r\nfunction createCommonjsModule(fn, module) {\r\n    return module = { exports: {} }, fn(module, module.exports), module.exports;\r\n}\r\nvar hamt_1 = createCommonjsModule(function (module) {\r\n    var _typeof = typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\" ? function (obj) {\r\n        return typeof obj;\r\n    } : function (obj) {\r\n        return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj;\r\n    };\r\n    /**\r\n        @fileOverview Hash Array Mapped Trie.\r\n    \r\n        Code based on: https://github.com/exclipy/pdata\r\n    */\r\n    var hamt = {}; // export\r\n    /* Configuration\r\n     ******************************************************************************/\r\n    var SIZE = 5;\r\n    var BUCKET_SIZE = Math.pow(2, SIZE);\r\n    var MASK = BUCKET_SIZE - 1;\r\n    var MAX_INDEX_NODE = BUCKET_SIZE / 2;\r\n    var MIN_ARRAY_NODE = BUCKET_SIZE / 4;\r\n    /*\r\n     ******************************************************************************/\r\n    var nothing = {};\r\n    var constant = function constant(x) {\r\n        return function () {\r\n            return x;\r\n        };\r\n    };\r\n    /**\r\n        Get 32 bit hash of string.\r\n    \r\n        Based on:\r\n        http://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript-jquery\r\n    */\r\n    var hash = hamt.hash = function (str) {\r\n        var type = typeof str === 'undefined' ? 'undefined' : _typeof(str);\r\n        if (type === 'number')\r\n            return str;\r\n        if (type !== 'string')\r\n            str += '';\r\n        var hash = 0;\r\n        for (var i = 0, len = str.length; i < len; ++i) {\r\n            var c = str.charCodeAt(i);\r\n            hash = (hash << 5) - hash + c | 0;\r\n        }\r\n        return hash;\r\n    };\r\n    /* Bit Ops\r\n     ******************************************************************************/\r\n    /**\r\n        Hamming weight.\r\n    \r\n        Taken from: http://jsperf.com/hamming-weight\r\n    */\r\n    var popcount = function popcount(x) {\r\n        x -= x >> 1 & 0x55555555;\r\n        x = (x & 0x33333333) + (x >> 2 & 0x33333333);\r\n        x = x + (x >> 4) & 0x0f0f0f0f;\r\n        x += x >> 8;\r\n        x += x >> 16;\r\n        return x & 0x7f;\r\n    };\r\n    var hashFragment = function hashFragment(shift, h) {\r\n        return h >>> shift & MASK;\r\n    };\r\n    var toBitmap = function toBitmap(x) {\r\n        return 1 << x;\r\n    };\r\n    var fromBitmap = function fromBitmap(bitmap, bit) {\r\n        return popcount(bitmap & bit - 1);\r\n    };\r\n    /* Array Ops\r\n     ******************************************************************************/\r\n    /**\r\n        Set a value in an array.\r\n    \r\n        @param mutate Should the input array be mutated?\r\n        @param at Index to change.\r\n        @param v New value\r\n        @param arr Array.\r\n    */\r\n    var arrayUpdate = function arrayUpdate(mutate, at, v, arr) {\r\n        var out = arr;\r\n        if (!mutate) {\r\n            var len = arr.length;\r\n            out = new Array(len);\r\n            for (var i = 0; i < len; ++i) {\r\n                out[i] = arr[i];\r\n            }\r\n        }\r\n        out[at] = v;\r\n        return out;\r\n    };\r\n    /**\r\n        Remove a value from an array.\r\n    \r\n        @param mutate Should the input array be mutated?\r\n        @param at Index to remove.\r\n        @param arr Array.\r\n    */\r\n    var arraySpliceOut = function arraySpliceOut(mutate, at, arr) {\r\n        var newLen = arr.length - 1;\r\n        var i = 0;\r\n        var g = 0;\r\n        var out = arr;\r\n        if (mutate) {\r\n            i = g = at;\r\n        }\r\n        else {\r\n            out = new Array(newLen);\r\n            while (i < at) {\r\n                out[g++] = arr[i++];\r\n            }\r\n        }\r\n        ++i;\r\n        while (i <= newLen) {\r\n            out[g++] = arr[i++];\r\n        }\r\n        if (mutate) {\r\n            out.length = newLen;\r\n        }\r\n        return out;\r\n    };\r\n    /**\r\n        Insert a value into an array.\r\n    \r\n        @param mutate Should the input array be mutated?\r\n        @param at Index to insert at.\r\n        @param v Value to insert,\r\n        @param arr Array.\r\n    */\r\n    var arraySpliceIn = function arraySpliceIn(mutate, at, v, arr) {\r\n        var len = arr.length;\r\n        if (mutate) {\r\n            var _i = len;\r\n            while (_i >= at) {\r\n                arr[_i--] = arr[_i];\r\n            }\r\n            arr[at] = v;\r\n            return arr;\r\n        }\r\n        var i = 0, g = 0;\r\n        var out = new Array(len + 1);\r\n        while (i < at) {\r\n            out[g++] = arr[i++];\r\n        }\r\n        out[at] = v;\r\n        while (i < len) {\r\n            out[++g] = arr[i++];\r\n        }\r\n        return out;\r\n    };\r\n    /* Node Structures\r\n     ******************************************************************************/\r\n    var LEAF = 1;\r\n    var COLLISION = 2;\r\n    var INDEX = 3;\r\n    var ARRAY = 4;\r\n    /**\r\n        Empty node.\r\n    */\r\n    var empty = {\r\n        __hamt_isEmpty: true\r\n    };\r\n    var isEmptyNode = function isEmptyNode(x) {\r\n        return x === empty || x && x.__hamt_isEmpty;\r\n    };\r\n    /**\r\n        Leaf holding a value.\r\n    \r\n        @member edit Edit of the node.\r\n        @member hash Hash of key.\r\n        @member key Key.\r\n        @member value Value stored.\r\n    */\r\n    var Leaf = function Leaf(edit, hash, key, value) {\r\n        return {\r\n            type: LEAF,\r\n            edit: edit,\r\n            hash: hash,\r\n            key: key,\r\n            value: value,\r\n            _modify: Leaf__modify\r\n        };\r\n    };\r\n    /**\r\n        Leaf holding multiple values with the same hash but different keys.\r\n    \r\n        @member edit Edit of the node.\r\n        @member hash Hash of key.\r\n        @member children Array of collision children node.\r\n    */\r\n    var Collision = function Collision(edit, hash, children) {\r\n        return {\r\n            type: COLLISION,\r\n            edit: edit,\r\n            hash: hash,\r\n            children: children,\r\n            _modify: Collision__modify\r\n        };\r\n    };\r\n    /**\r\n        Internal node with a sparse set of children.\r\n    \r\n        Uses a bitmap and array to pack children.\r\n    \r\n      @member edit Edit of the node.\r\n        @member mask Bitmap that encode the positions of children in the array.\r\n        @member children Array of child nodes.\r\n    */\r\n    var IndexedNode = function IndexedNode(edit, mask, children) {\r\n        return {\r\n            type: INDEX,\r\n            edit: edit,\r\n            mask: mask,\r\n            children: children,\r\n            _modify: IndexedNode__modify\r\n        };\r\n    };\r\n    /**\r\n        Internal node with many children.\r\n    \r\n        @member edit Edit of the node.\r\n        @member size Number of children.\r\n        @member children Array of child nodes.\r\n    */\r\n    var ArrayNode = function ArrayNode(edit, size, children) {\r\n        return {\r\n            type: ARRAY,\r\n            edit: edit,\r\n            size: size,\r\n            children: children,\r\n            _modify: ArrayNode__modify\r\n        };\r\n    };\r\n    /**\r\n        Is `node` a leaf node?\r\n    */\r\n    var isLeaf = function isLeaf(node) {\r\n        return node === empty || node.type === LEAF || node.type === COLLISION;\r\n    };\r\n    /* Internal node operations.\r\n     ******************************************************************************/\r\n    /**\r\n        Expand an indexed node into an array node.\r\n    \r\n      @param edit Current edit.\r\n        @param frag Index of added child.\r\n        @param child Added child.\r\n        @param mask Index node mask before child added.\r\n        @param subNodes Index node children before child added.\r\n    */\r\n    var expand = function expand(edit, frag, child, bitmap, subNodes) {\r\n        var arr = [];\r\n        var bit = bitmap;\r\n        var count = 0;\r\n        for (var i = 0; bit; ++i) {\r\n            if (bit & 1)\r\n                arr[i] = subNodes[count++];\r\n            bit >>>= 1;\r\n        }\r\n        arr[frag] = child;\r\n        return ArrayNode(edit, count + 1, arr);\r\n    };\r\n    /**\r\n        Collapse an array node into a indexed node.\r\n    \r\n      @param edit Current edit.\r\n        @param count Number of elements in new array.\r\n        @param removed Index of removed element.\r\n        @param elements Array node children before remove.\r\n    */\r\n    var pack = function pack(edit, count, removed, elements) {\r\n        var children = new Array(count - 1);\r\n        var g = 0;\r\n        var bitmap = 0;\r\n        for (var i = 0, len = elements.length; i < len; ++i) {\r\n            if (i !== removed) {\r\n                var elem = elements[i];\r\n                if (elem && !isEmptyNode(elem)) {\r\n                    children[g++] = elem;\r\n                    bitmap |= 1 << i;\r\n                }\r\n            }\r\n        }\r\n        return IndexedNode(edit, bitmap, children);\r\n    };\r\n    /**\r\n        Merge two leaf nodes.\r\n    \r\n        @param shift Current shift.\r\n        @param h1 Node 1 hash.\r\n        @param n1 Node 1.\r\n        @param h2 Node 2 hash.\r\n        @param n2 Node 2.\r\n    */\r\n    var mergeLeaves = function mergeLeaves(edit, shift, h1, n1, h2, n2) {\r\n        if (h1 === h2)\r\n            return Collision(edit, h1, [n2, n1]);\r\n        var subH1 = hashFragment(shift, h1);\r\n        var subH2 = hashFragment(shift, h2);\r\n        return IndexedNode(edit, toBitmap(subH1) | toBitmap(subH2), subH1 === subH2 ? [mergeLeaves(edit, shift + SIZE, h1, n1, h2, n2)] : subH1 < subH2 ? [n1, n2] : [n2, n1]);\r\n    };\r\n    /**\r\n        Update an entry in a collision list.\r\n    \r\n        @param mutate Should mutation be used?\r\n        @param edit Current edit.\r\n        @param keyEq Key compare function.\r\n        @param hash Hash of collision.\r\n        @param list Collision list.\r\n        @param f Update function.\r\n        @param k Key to update.\r\n        @param size Size ref.\r\n    */\r\n    var updateCollisionList = function updateCollisionList(mutate, edit, keyEq, h, list, f, k, size) {\r\n        var len = list.length;\r\n        for (var i = 0; i < len; ++i) {\r\n            var child = list[i];\r\n            if (keyEq(k, child.key)) {\r\n                var value = child.value;\r\n                var _newValue = f(value);\r\n                if (_newValue === value)\r\n                    return list;\r\n                if (_newValue === nothing) {\r\n                    --size.value;\r\n                    return arraySpliceOut(mutate, i, list);\r\n                }\r\n                return arrayUpdate(mutate, i, Leaf(edit, h, k, _newValue), list);\r\n            }\r\n        }\r\n        var newValue = f();\r\n        if (newValue === nothing)\r\n            return list;\r\n        ++size.value;\r\n        return arrayUpdate(mutate, len, Leaf(edit, h, k, newValue), list);\r\n    };\r\n    var canEditNode = function canEditNode(edit, node) {\r\n        return edit === node.edit;\r\n    };\r\n    /* Editing\r\n     ******************************************************************************/\r\n    var Leaf__modify = function Leaf__modify(edit, keyEq, shift, f, h, k, size) {\r\n        if (keyEq(k, this.key)) {\r\n            var _v = f(this.value);\r\n            if (_v === this.value)\r\n                return this;\r\n            else if (_v === nothing) {\r\n                --size.value;\r\n                return empty;\r\n            }\r\n            if (canEditNode(edit, this)) {\r\n                this.value = _v;\r\n                return this;\r\n            }\r\n            return Leaf(edit, h, k, _v);\r\n        }\r\n        var v = f();\r\n        if (v === nothing)\r\n            return this;\r\n        ++size.value;\r\n        return mergeLeaves(edit, shift, this.hash, this, h, Leaf(edit, h, k, v));\r\n    };\r\n    var Collision__modify = function Collision__modify(edit, keyEq, shift, f, h, k, size) {\r\n        if (h === this.hash) {\r\n            var canEdit = canEditNode(edit, this);\r\n            var list = updateCollisionList(canEdit, edit, keyEq, this.hash, this.children, f, k, size);\r\n            if (list === this.children)\r\n                return this;\r\n            return list.length > 1 ? Collision(edit, this.hash, list) : list[0]; // collapse single element collision list\r\n        }\r\n        var v = f();\r\n        if (v === nothing)\r\n            return this;\r\n        ++size.value;\r\n        return mergeLeaves(edit, shift, this.hash, this, h, Leaf(edit, h, k, v));\r\n    };\r\n    var IndexedNode__modify = function IndexedNode__modify(edit, keyEq, shift, f, h, k, size) {\r\n        var mask = this.mask;\r\n        var children = this.children;\r\n        var frag = hashFragment(shift, h);\r\n        var bit = toBitmap(frag);\r\n        var indx = fromBitmap(mask, bit);\r\n        var exists = mask & bit;\r\n        var current = exists ? children[indx] : empty;\r\n        var child = current._modify(edit, keyEq, shift + SIZE, f, h, k, size);\r\n        if (current === child)\r\n            return this;\r\n        var canEdit = canEditNode(edit, this);\r\n        var bitmap = mask;\r\n        var newChildren = void 0;\r\n        if (exists && isEmptyNode(child)) {\r\n            // remove\r\n            bitmap &= ~bit;\r\n            if (!bitmap)\r\n                return empty;\r\n            if (children.length <= 2 && isLeaf(children[indx ^ 1]))\r\n                return children[indx ^ 1]; // collapse\r\n            newChildren = arraySpliceOut(canEdit, indx, children);\r\n        }\r\n        else if (!exists && !isEmptyNode(child)) {\r\n            // add\r\n            if (children.length >= MAX_INDEX_NODE)\r\n                return expand(edit, frag, child, mask, children);\r\n            bitmap |= bit;\r\n            newChildren = arraySpliceIn(canEdit, indx, child, children);\r\n        }\r\n        else {\r\n            // modify\r\n            newChildren = arrayUpdate(canEdit, indx, child, children);\r\n        }\r\n        if (canEdit) {\r\n            this.mask = bitmap;\r\n            this.children = newChildren;\r\n            return this;\r\n        }\r\n        return IndexedNode(edit, bitmap, newChildren);\r\n    };\r\n    var ArrayNode__modify = function ArrayNode__modify(edit, keyEq, shift, f, h, k, size) {\r\n        var count = this.size;\r\n        var children = this.children;\r\n        var frag = hashFragment(shift, h);\r\n        var child = children[frag];\r\n        var newChild = (child || empty)._modify(edit, keyEq, shift + SIZE, f, h, k, size);\r\n        if (child === newChild)\r\n            return this;\r\n        var canEdit = canEditNode(edit, this);\r\n        var newChildren = void 0;\r\n        if (isEmptyNode(child) && !isEmptyNode(newChild)) {\r\n            // add\r\n            ++count;\r\n            newChildren = arrayUpdate(canEdit, frag, newChild, children);\r\n        }\r\n        else if (!isEmptyNode(child) && isEmptyNode(newChild)) {\r\n            // remove\r\n            --count;\r\n            if (count <= MIN_ARRAY_NODE)\r\n                return pack(edit, count, frag, children);\r\n            newChildren = arrayUpdate(canEdit, frag, empty, children);\r\n        }\r\n        else {\r\n            // modify\r\n            newChildren = arrayUpdate(canEdit, frag, newChild, children);\r\n        }\r\n        if (canEdit) {\r\n            this.size = count;\r\n            this.children = newChildren;\r\n            return this;\r\n        }\r\n        return ArrayNode(edit, count, newChildren);\r\n    };\r\n    empty._modify = function (edit, keyEq, shift, f, h, k, size) {\r\n        var v = f();\r\n        if (v === nothing)\r\n            return empty;\r\n        ++size.value;\r\n        return Leaf(edit, h, k, v);\r\n    };\r\n    /*\r\n     ******************************************************************************/\r\n    function Map(editable, edit, config, root, size) {\r\n        this._editable = editable;\r\n        this._edit = edit;\r\n        this._config = config;\r\n        this._root = root;\r\n        this._size = size;\r\n    }\r\n    Map.prototype.setTree = function (newRoot, newSize) {\r\n        if (this._editable) {\r\n            this._root = newRoot;\r\n            this._size = newSize;\r\n            return this;\r\n        }\r\n        return newRoot === this._root ? this : new Map(this._editable, this._edit, this._config, newRoot, newSize);\r\n    };\r\n    /* Queries\r\n     ******************************************************************************/\r\n    /**\r\n        Lookup the value for `key` in `map` using a custom `hash`.\r\n    \r\n        Returns the value or `alt` if none.\r\n    */\r\n    var tryGetHash = hamt.tryGetHash = function (alt, hash, key, map) {\r\n        var node = map._root;\r\n        var shift = 0;\r\n        var keyEq = map._config.keyEq;\r\n        while (true) {\r\n            switch (node.type) {\r\n                case LEAF:\r\n                    {\r\n                        return keyEq(key, node.key) ? node.value : alt;\r\n                    }\r\n                case COLLISION:\r\n                    {\r\n                        if (hash === node.hash) {\r\n                            var children = node.children;\r\n                            for (var i = 0, len = children.length; i < len; ++i) {\r\n                                var child = children[i];\r\n                                if (keyEq(key, child.key))\r\n                                    return child.value;\r\n                            }\r\n                        }\r\n                        return alt;\r\n                    }\r\n                case INDEX:\r\n                    {\r\n                        var frag = hashFragment(shift, hash);\r\n                        var bit = toBitmap(frag);\r\n                        if (node.mask & bit) {\r\n                            node = node.children[fromBitmap(node.mask, bit)];\r\n                            shift += SIZE;\r\n                            break;\r\n                        }\r\n                        return alt;\r\n                    }\r\n                case ARRAY:\r\n                    {\r\n                        node = node.children[hashFragment(shift, hash)];\r\n                        if (node) {\r\n                            shift += SIZE;\r\n                            break;\r\n                        }\r\n                        return alt;\r\n                    }\r\n                default:\r\n                    return alt;\r\n            }\r\n        }\r\n    };\r\n    Map.prototype.tryGetHash = function (alt, hash, key) {\r\n        return tryGetHash(alt, hash, key, this);\r\n    };\r\n    /**\r\n        Lookup the value for `key` in `map` using internal hash function.\r\n    \r\n        @see `tryGetHash`\r\n    */\r\n    var tryGet = hamt.tryGet = function (alt, key, map) {\r\n        return tryGetHash(alt, map._config.hash(key), key, map);\r\n    };\r\n    Map.prototype.tryGet = function (alt, key) {\r\n        return tryGet(alt, key, this);\r\n    };\r\n    /**\r\n        Lookup the value for `key` in `map` using a custom `hash`.\r\n    \r\n        Returns the value or `undefined` if none.\r\n    */\r\n    var getHash = hamt.getHash = function (hash, key, map) {\r\n        return tryGetHash(undefined, hash, key, map);\r\n    };\r\n    Map.prototype.getHash = function (hash, key) {\r\n        return getHash(hash, key, this);\r\n    };\r\n    /**\r\n        Lookup the value for `key` in `map` using internal hash function.\r\n    \r\n        @see `get`\r\n    */\r\n    var get = hamt.get = function (key, map) {\r\n        return tryGetHash(undefined, map._config.hash(key), key, map);\r\n    };\r\n    Map.prototype.get = function (key, alt) {\r\n        return tryGet(alt, key, this);\r\n    };\r\n    /**\r\n        Does an entry exist for `key` in `map`? Uses custom `hash`.\r\n    */\r\n    var hasHash = hamt.has = function (hash, key, map) {\r\n        return tryGetHash(nothing, hash, key, map) !== nothing;\r\n    };\r\n    Map.prototype.hasHash = function (hash, key) {\r\n        return hasHash(hash, key, this);\r\n    };\r\n    /**\r\n        Does an entry exist for `key` in `map`? Uses internal hash function.\r\n    */\r\n    var has = hamt.has = function (key, map) {\r\n        return hasHash(map._config.hash(key), key, map);\r\n    };\r\n    Map.prototype.has = function (key) {\r\n        return has(key, this);\r\n    };\r\n    var defKeyCompare = function defKeyCompare(x, y) {\r\n        return x === y;\r\n    };\r\n    /**\r\n        Create an empty map.\r\n    \r\n        @param config Configuration.\r\n    */\r\n    hamt.make = function (config) {\r\n        return new Map(0, 0, {\r\n            keyEq: config && config.keyEq || defKeyCompare,\r\n            hash: config && config.hash || hash\r\n        }, empty, 0);\r\n    };\r\n    /**\r\n        Empty map.\r\n    */\r\n    hamt.empty = hamt.make();\r\n    /**\r\n        Does `map` contain any elements?\r\n    */\r\n    var isEmpty = hamt.isEmpty = function (map) {\r\n        return map && !!isEmptyNode(map._root);\r\n    };\r\n    Map.prototype.isEmpty = function () {\r\n        return isEmpty(this);\r\n    };\r\n    /* Updates\r\n     ******************************************************************************/\r\n    /**\r\n        Alter the value stored for `key` in `map` using function `f` using\r\n        custom hash.\r\n    \r\n        `f` is invoked with the current value for `k` if it exists,\r\n        or no arguments if no such value exists. `modify` will always either\r\n        update or insert a value into the map.\r\n    \r\n        Returns a map with the modified value. Does not alter `map`.\r\n    */\r\n    var modifyHash = hamt.modifyHash = function (f, hash, key, map) {\r\n        var size = {\r\n            value: map._size\r\n        };\r\n        var newRoot = map._root._modify(map._editable ? map._edit : NaN, map._config.keyEq, 0, f, hash, key, size);\r\n        return map.setTree(newRoot, size.value);\r\n    };\r\n    Map.prototype.modifyHash = function (hash, key, f) {\r\n        return modifyHash(f, hash, key, this);\r\n    };\r\n    /**\r\n        Alter the value stored for `key` in `map` using function `f` using\r\n        internal hash function.\r\n    \r\n        @see `modifyHash`\r\n    */\r\n    var modify = hamt.modify = function (f, key, map) {\r\n        return modifyHash(f, map._config.hash(key), key, map);\r\n    };\r\n    Map.prototype.modify = function (key, f) {\r\n        return modify(f, key, this);\r\n    };\r\n    /**\r\n        Store `value` for `key` in `map` using custom `hash`.\r\n    \r\n        Returns a map with the modified value. Does not alter `map`.\r\n    */\r\n    var setHash = hamt.setHash = function (hash, key, value, map) {\r\n        return modifyHash(constant(value), hash, key, map);\r\n    };\r\n    Map.prototype.setHash = function (hash, key, value) {\r\n        return setHash(hash, key, value, this);\r\n    };\r\n    /**\r\n        Store `value` for `key` in `map` using internal hash function.\r\n    \r\n        @see `setHash`\r\n    */\r\n    var set = hamt.set = function (key, value, map) {\r\n        return setHash(map._config.hash(key), key, value, map);\r\n    };\r\n    Map.prototype.set = function (key, value) {\r\n        return set(key, value, this);\r\n    };\r\n    /**\r\n        Remove the entry for `key` in `map`.\r\n    \r\n        Returns a map with the value removed. Does not alter `map`.\r\n    */\r\n    var del = constant(nothing);\r\n    var removeHash = hamt.removeHash = function (hash, key, map) {\r\n        return modifyHash(del, hash, key, map);\r\n    };\r\n    Map.prototype.removeHash = Map.prototype.deleteHash = function (hash, key) {\r\n        return removeHash(hash, key, this);\r\n    };\r\n    /**\r\n        Remove the entry for `key` in `map` using internal hash function.\r\n    \r\n        @see `removeHash`\r\n    */\r\n    var remove = hamt.remove = function (key, map) {\r\n        return removeHash(map._config.hash(key), key, map);\r\n    };\r\n    Map.prototype.remove = Map.prototype.delete = function (key) {\r\n        return remove(key, this);\r\n    };\r\n    /* Mutation\r\n     ******************************************************************************/\r\n    /**\r\n        Mark `map` as mutable.\r\n     */\r\n    var beginMutation = hamt.beginMutation = function (map) {\r\n        return new Map(map._editable + 1, map._edit + 1, map._config, map._root, map._size);\r\n    };\r\n    Map.prototype.beginMutation = function () {\r\n        return beginMutation(this);\r\n    };\r\n    /**\r\n        Mark `map` as immutable.\r\n     */\r\n    var endMutation = hamt.endMutation = function (map) {\r\n        map._editable = map._editable && map._editable - 1;\r\n        return map;\r\n    };\r\n    Map.prototype.endMutation = function () {\r\n        return endMutation(this);\r\n    };\r\n    /**\r\n        Mutate `map` within the context of `f`.\r\n        @param f\r\n        @param map HAMT\r\n    */\r\n    var mutate = hamt.mutate = function (f, map) {\r\n        var transient = beginMutation(map);\r\n        f(transient);\r\n        return endMutation(transient);\r\n    };\r\n    Map.prototype.mutate = function (f) {\r\n        return mutate(f, this);\r\n    };\r\n    /* Traversal\r\n     ******************************************************************************/\r\n    /**\r\n        Apply a continuation.\r\n    */\r\n    var appk = function appk(k) {\r\n        return k && lazyVisitChildren(k[0], k[1], k[2], k[3], k[4]);\r\n    };\r\n    /**\r\n        Recursively visit all values stored in an array of nodes lazily.\r\n    */\r\n    var lazyVisitChildren = function lazyVisitChildren(len, children, i, f, k) {\r\n        while (i < len) {\r\n            var child = children[i++];\r\n            if (child && !isEmptyNode(child))\r\n                return lazyVisit(child, f, [len, children, i, f, k]);\r\n        }\r\n        return appk(k);\r\n    };\r\n    /**\r\n        Recursively visit all values stored in `node` lazily.\r\n    */\r\n    var lazyVisit = function lazyVisit(node, f, k) {\r\n        switch (node.type) {\r\n            case LEAF:\r\n                return {\r\n                    value: f(node),\r\n                    rest: k\r\n                };\r\n            case COLLISION:\r\n            case ARRAY:\r\n            case INDEX:\r\n                var children = node.children;\r\n                return lazyVisitChildren(children.length, children, 0, f, k);\r\n            default:\r\n                return appk(k);\r\n        }\r\n    };\r\n    var DONE = {\r\n        done: true\r\n    };\r\n    /**\r\n        Javascript iterator over a map.\r\n    */\r\n    function MapIterator(v) {\r\n        this.v = v;\r\n    }\r\n    MapIterator.prototype.next = function () {\r\n        if (!this.v)\r\n            return DONE;\r\n        var v0 = this.v;\r\n        this.v = appk(v0.rest);\r\n        return v0;\r\n    };\r\n    MapIterator.prototype[Symbol.iterator] = function () {\r\n        return this;\r\n    };\r\n    /**\r\n        Lazily visit each value in map with function `f`.\r\n    */\r\n    var visit = function visit(map, f) {\r\n        return new MapIterator(lazyVisit(map._root, f));\r\n    };\r\n    /**\r\n        Get a Javascsript iterator of `map`.\r\n    \r\n        Iterates over `[key, value]` arrays.\r\n    */\r\n    var buildPairs = function buildPairs(x) {\r\n        return [x.key, x.value];\r\n    };\r\n    var entries = hamt.entries = function (map) {\r\n        return visit(map, buildPairs);\r\n    };\r\n    Map.prototype.entries = Map.prototype[Symbol.iterator] = function () {\r\n        return entries(this);\r\n    };\r\n    /**\r\n        Get array of all keys in `map`.\r\n    \r\n        Order is not guaranteed.\r\n    */\r\n    var buildKeys = function buildKeys(x) {\r\n        return x.key;\r\n    };\r\n    var keys = hamt.keys = function (map) {\r\n        return visit(map, buildKeys);\r\n    };\r\n    Map.prototype.keys = function () {\r\n        return keys(this);\r\n    };\r\n    /**\r\n        Get array of all values in `map`.\r\n    \r\n        Order is not guaranteed, duplicates are preserved.\r\n    */\r\n    var buildValues = function buildValues(x) {\r\n        return x.value;\r\n    };\r\n    var values = hamt.values = Map.prototype.values = function (map) {\r\n        return visit(map, buildValues);\r\n    };\r\n    Map.prototype.values = function () {\r\n        return values(this);\r\n    };\r\n    /* Fold\r\n     ******************************************************************************/\r\n    /**\r\n        Visit every entry in the map, aggregating data.\r\n    \r\n        Order of nodes is not guaranteed.\r\n    \r\n        @param f Function mapping accumulated value, value, and key to new value.\r\n        @param z Starting value.\r\n        @param m HAMT\r\n    */\r\n    var fold = hamt.fold = function (f, z, m) {\r\n        var root = m._root;\r\n        if (root.type === LEAF)\r\n            return f(z, root.value, root.key);\r\n        var toVisit = [root.children];\r\n        var children = void 0;\r\n        while (children = toVisit.pop()) {\r\n            for (var i = 0, len = children.length; i < len;) {\r\n                var child = children[i++];\r\n                if (child && child.type) {\r\n                    if (child.type === LEAF)\r\n                        z = f(z, child.value, child.key);\r\n                    else\r\n                        toVisit.push(child.children);\r\n                }\r\n            }\r\n        }\r\n        return z;\r\n    };\r\n    Map.prototype.fold = function (f, z) {\r\n        return fold(f, z, this);\r\n    };\r\n    /**\r\n        Visit every entry in the map, aggregating data.\r\n    \r\n        Order of nodes is not guaranteed.\r\n    \r\n        @param f Function invoked with value and key\r\n        @param map HAMT\r\n    */\r\n    var forEach = hamt.forEach = function (f, map) {\r\n        return fold(function (_, value, key) {\r\n            return f(value, key, map);\r\n        }, null, map);\r\n    };\r\n    Map.prototype.forEach = function (f) {\r\n        return forEach(f, this);\r\n    };\r\n    /* Aggregate\r\n     ******************************************************************************/\r\n    /**\r\n        Get the number of entries in `map`.\r\n    */\r\n    var count = hamt.count = function (map) {\r\n        return map._size;\r\n    };\r\n    Map.prototype.count = function () {\r\n        return count(this);\r\n    };\r\n    Object.defineProperty(Map.prototype, 'size', {\r\n        get: Map.prototype.count\r\n    });\r\n    /* Export\r\n     ******************************************************************************/\r\n    if (module.exports) {\r\n        module.exports = hamt;\r\n    }\r\n    else {\r\n        undefined.hamt = hamt;\r\n    }\r\n});\r\nvar BuiltInMap = /** @class */ (function () {\r\n    function BuiltInMap(existing) {\r\n        _defineProperty(this, \"_map\", void 0);\r\n        this._map = new Map(existing === null || existing === void 0 ? void 0 : existing.entries());\r\n    }\r\n    BuiltInMap.prototype.keys = function () {\r\n        return this._map.keys();\r\n    };\r\n    BuiltInMap.prototype.entries = function () {\r\n        return this._map.entries();\r\n    };\r\n    BuiltInMap.prototype.get = function (k) {\r\n        return this._map.get(k);\r\n    };\r\n    BuiltInMap.prototype.has = function (k) {\r\n        return this._map.has(k);\r\n    };\r\n    BuiltInMap.prototype.set = function (k, v) {\r\n        this._map.set(k, v);\r\n        return this;\r\n    };\r\n    BuiltInMap.prototype.delete = function (k) {\r\n        this._map.delete(k);\r\n        return this;\r\n    };\r\n    BuiltInMap.prototype.clone = function () {\r\n        return persistentMap(this);\r\n    };\r\n    BuiltInMap.prototype.toMap = function () {\r\n        return new Map(this._map);\r\n    };\r\n    return BuiltInMap;\r\n}());\r\nvar HashArrayMappedTrieMap = /** @class */ (function () {\r\n    // Because hamt.empty is not a function there is no way to introduce type\r\n    // parameters on it, so empty is typed as HAMTPlusMap<string, mixed>.\r\n    // $FlowIssue\r\n    function HashArrayMappedTrieMap(existing) {\r\n        _defineProperty(this, \"_hamt\", hamt_1.empty.beginMutation());\r\n        if (existing instanceof HashArrayMappedTrieMap) {\r\n            var h = existing._hamt.endMutation();\r\n            existing._hamt = h.beginMutation();\r\n            this._hamt = h.beginMutation();\r\n        }\r\n        else if (existing) {\r\n            for (var _a = 0, _b = existing.entries(); _a < _b.length; _a++) {\r\n                var _c = _b[_a], k = _c[0], v = _c[1];\r\n                this._hamt.set(k, v);\r\n            }\r\n        }\r\n    }\r\n    HashArrayMappedTrieMap.prototype.keys = function () {\r\n        return this._hamt.keys();\r\n    };\r\n    HashArrayMappedTrieMap.prototype.entries = function () {\r\n        return this._hamt.entries();\r\n    };\r\n    HashArrayMappedTrieMap.prototype.get = function (k) {\r\n        return this._hamt.get(k);\r\n    };\r\n    HashArrayMappedTrieMap.prototype.has = function (k) {\r\n        return this._hamt.has(k);\r\n    };\r\n    HashArrayMappedTrieMap.prototype.set = function (k, v) {\r\n        this._hamt.set(k, v);\r\n        return this;\r\n    };\r\n    HashArrayMappedTrieMap.prototype.delete = function (k) {\r\n        this._hamt.delete(k);\r\n        return this;\r\n    };\r\n    HashArrayMappedTrieMap.prototype.clone = function () {\r\n        return persistentMap(this);\r\n    };\r\n    HashArrayMappedTrieMap.prototype.toMap = function () {\r\n        return new Map(this._hamt);\r\n    };\r\n    return HashArrayMappedTrieMap;\r\n}());\r\nfunction persistentMap(existing) {\r\n    if (Recoil_gkx('recoil_hamt_2020')) {\r\n        return new HashArrayMappedTrieMap(existing);\r\n    }\r\n    else {\r\n        return new BuiltInMap(existing);\r\n    }\r\n}\r\nvar Recoil_PersistentMap = {\r\n    persistentMap: persistentMap\r\n};\r\nvar Recoil_PersistentMap_1 = Recoil_PersistentMap.persistentMap;\r\nvar Recoil_PersistentMap$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    persistentMap: Recoil_PersistentMap_1\r\n});\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Returns a set containing all of the values from the first set that are not\r\n * present in any of the subsequent sets.\r\n *\r\n * Note: this is written procedurally (i.e., without filterSet) for performant\r\n * use in tight loops.\r\n */\r\nfunction differenceSets(set) {\r\n    var setsWithValuesToRemove = [];\r\n    for (var _a = 1; _a < arguments.length; _a++) {\r\n        setsWithValuesToRemove[_a - 1] = arguments[_a];\r\n    }\r\n    var ret = new Set();\r\n    FIRST: for (var _b = 0, set_1 = set; _b < set_1.length; _b++) {\r\n        var value = set_1[_b];\r\n        for (var _c = 0, setsWithValuesToRemove_1 = setsWithValuesToRemove; _c < setsWithValuesToRemove_1.length; _c++) {\r\n            var otherSet = setsWithValuesToRemove_1[_c];\r\n            if (otherSet.has(value)) {\r\n                continue FIRST;\r\n            }\r\n        }\r\n        ret.add(value);\r\n    }\r\n    return ret;\r\n}\r\nvar Recoil_differenceSets = differenceSets;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Returns a new Map object with the same keys as the original, but with the\r\n * values replaced with the output of the given callback function.\r\n */\r\nfunction mapMap(map, callback) {\r\n    var result = new Map();\r\n    map.forEach(function (value, key) {\r\n        result.set(key, callback(value, key));\r\n    });\r\n    return result;\r\n}\r\nvar Recoil_mapMap = mapMap;\r\nfunction makeGraph() {\r\n    return {\r\n        nodeDeps: new Map(),\r\n        nodeToNodeSubscriptions: new Map()\r\n    };\r\n}\r\nfunction cloneGraph(graph) {\r\n    return {\r\n        nodeDeps: Recoil_mapMap(graph.nodeDeps, function (s) { return new Set(s); }),\r\n        nodeToNodeSubscriptions: Recoil_mapMap(graph.nodeToNodeSubscriptions, function (s) { return new Set(s); })\r\n    };\r\n} // Note that this overwrites the deps of existing nodes, rather than unioning\r\n// the new deps with the old deps.\r\nfunction mergeDepsIntoGraph(key, newDeps, graph, // If olderGraph is given then we will not overwrite changes made to the given\r\n// graph compared with olderGraph:\r\nolderGraph) {\r\n    var nodeDeps = graph.nodeDeps, nodeToNodeSubscriptions = graph.nodeToNodeSubscriptions;\r\n    var oldDeps = nodeDeps.get(key);\r\n    if (oldDeps && olderGraph && oldDeps !== olderGraph.nodeDeps.get(key)) {\r\n        return;\r\n    } // Update nodeDeps:\r\n    nodeDeps.set(key, newDeps); // Add new deps to nodeToNodeSubscriptions:\r\n    var addedDeps = oldDeps == null ? newDeps : Recoil_differenceSets(newDeps, oldDeps);\r\n    for (var _a = 0, addedDeps_1 = addedDeps; _a < addedDeps_1.length; _a++) {\r\n        var dep = addedDeps_1[_a];\r\n        if (!nodeToNodeSubscriptions.has(dep)) {\r\n            nodeToNodeSubscriptions.set(dep, new Set());\r\n        }\r\n        var existing = Recoil_nullthrows(nodeToNodeSubscriptions.get(dep));\r\n        existing.add(key);\r\n    } // Remove removed deps from nodeToNodeSubscriptions:\r\n    if (oldDeps) {\r\n        var removedDeps = Recoil_differenceSets(oldDeps, newDeps);\r\n        for (var _b = 0, removedDeps_1 = removedDeps; _b < removedDeps_1.length; _b++) {\r\n            var dep = removedDeps_1[_b];\r\n            if (!nodeToNodeSubscriptions.has(dep)) {\r\n                return;\r\n            }\r\n            var existing = Recoil_nullthrows(nodeToNodeSubscriptions.get(dep));\r\n            existing.delete(key);\r\n            if (existing.size === 0) {\r\n                nodeToNodeSubscriptions.delete(dep);\r\n            }\r\n        }\r\n    }\r\n}\r\nfunction saveDepsToStore(key, deps, store, version) {\r\n    var _storeState$nextTree, _storeState$previousT, _storeState$previousT2, _storeState$previousT3;\r\n    var storeState = store.getState();\r\n    if (!(version === storeState.currentTree.version || version === ((_storeState$nextTree = storeState.nextTree) === null || _storeState$nextTree === void 0 ? void 0 : _storeState$nextTree.version) || version === ((_storeState$previousT = storeState.previousTree) === null || _storeState$previousT === void 0 ? void 0 : _storeState$previousT.version))) {\r\n        Recoil_recoverableViolation('Tried to save dependencies to a discarded tree');\r\n    } // Merge the dependencies discovered into the store's dependency map\r\n    // for the version that was read:\r\n    var graph = store.getGraph(version);\r\n    mergeDepsIntoGraph(key, deps, graph); // If this version is not the latest version, also write these dependencies\r\n    // into later versions if they don't already have their own:\r\n    if (version === ((_storeState$previousT2 = storeState.previousTree) === null || _storeState$previousT2 === void 0 ? void 0 : _storeState$previousT2.version)) {\r\n        var currentGraph = store.getGraph(storeState.currentTree.version);\r\n        mergeDepsIntoGraph(key, deps, currentGraph, graph);\r\n    }\r\n    if (version === ((_storeState$previousT3 = storeState.previousTree) === null || _storeState$previousT3 === void 0 ? void 0 : _storeState$previousT3.version) || version === storeState.currentTree.version) {\r\n        var _storeState$nextTree2;\r\n        var nextVersion = (_storeState$nextTree2 = storeState.nextTree) === null || _storeState$nextTree2 === void 0 ? void 0 : _storeState$nextTree2.version;\r\n        if (nextVersion !== undefined) {\r\n            var nextGraph = store.getGraph(nextVersion);\r\n            mergeDepsIntoGraph(key, deps, nextGraph, graph);\r\n        }\r\n    }\r\n}\r\nvar Recoil_Graph = {\r\n    cloneGraph: cloneGraph,\r\n    graph: makeGraph,\r\n    saveDepsToStore: saveDepsToStore\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nvar nextTreeStateVersion = 0;\r\nvar getNextTreeStateVersion = function () { return nextTreeStateVersion++; };\r\nvar nextStoreID = 0;\r\nvar getNextStoreID = function () { return nextStoreID++; };\r\nvar nextComponentID = 0;\r\nvar getNextComponentID = function () { return nextComponentID++; };\r\nvar Recoil_Keys = {\r\n    getNextTreeStateVersion: getNextTreeStateVersion,\r\n    getNextStoreID: getNextStoreID,\r\n    getNextComponentID: getNextComponentID\r\n};\r\nvar persistentMap$1 = Recoil_PersistentMap$1.persistentMap;\r\nvar graph = Recoil_Graph.graph;\r\nvar getNextTreeStateVersion$1 = Recoil_Keys.getNextTreeStateVersion;\r\nfunction makeEmptyTreeState() {\r\n    var version = getNextTreeStateVersion$1();\r\n    return {\r\n        version: version,\r\n        stateID: version,\r\n        transactionMetadata: {},\r\n        dirtyAtoms: new Set(),\r\n        atomValues: persistentMap$1(),\r\n        nonvalidatedAtoms: persistentMap$1()\r\n    };\r\n}\r\nfunction makeEmptyStoreState() {\r\n    var currentTree = makeEmptyTreeState();\r\n    return {\r\n        currentTree: currentTree,\r\n        nextTree: null,\r\n        previousTree: null,\r\n        commitDepth: 0,\r\n        knownAtoms: new Set(),\r\n        knownSelectors: new Set(),\r\n        transactionSubscriptions: new Map(),\r\n        nodeTransactionSubscriptions: new Map(),\r\n        nodeToComponentSubscriptions: new Map(),\r\n        queuedComponentCallbacks_DEPRECATED: [],\r\n        suspendedComponentResolvers: new Set(),\r\n        graphsByVersion: new Map().set(currentTree.version, graph()),\r\n        retention: {\r\n            referenceCounts: new Map(),\r\n            nodesRetainedByZone: new Map(),\r\n            retainablesToCheckForRelease: new Set()\r\n        },\r\n        nodeCleanupFunctions: new Map()\r\n    };\r\n}\r\nvar Recoil_State = {\r\n    makeEmptyTreeState: makeEmptyTreeState,\r\n    makeEmptyStoreState: makeEmptyStoreState,\r\n    getNextTreeStateVersion: getNextTreeStateVersion$1\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nvar RetentionZone = /** @class */ (function () {\r\n    function RetentionZone() {\r\n    }\r\n    return RetentionZone;\r\n}());\r\nfunction retentionZone() {\r\n    return new RetentionZone();\r\n}\r\nvar Recoil_RetentionZone = {\r\n    RetentionZone: RetentionZone,\r\n    retentionZone: retentionZone\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * Utilities for working with built-in Maps and Sets without mutating them.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction setByAddingToSet(set, v) {\r\n    var next = new Set(set);\r\n    next.add(v);\r\n    return next;\r\n}\r\nfunction setByDeletingFromSet(set, v) {\r\n    var next = new Set(set);\r\n    next.delete(v);\r\n    return next;\r\n}\r\nfunction mapBySettingInMap(map, k, v) {\r\n    var next = new Map(map);\r\n    next.set(k, v);\r\n    return next;\r\n}\r\nfunction mapByUpdatingInMap(map, k, updater) {\r\n    var next = new Map(map);\r\n    next.set(k, updater(next.get(k)));\r\n    return next;\r\n}\r\nfunction mapByDeletingFromMap(map, k) {\r\n    var next = new Map(map);\r\n    next.delete(k);\r\n    return next;\r\n}\r\nfunction mapByDeletingMultipleFromMap(map, ks) {\r\n    var next = new Map(map);\r\n    ks.forEach(function (k) { return next.delete(k); });\r\n    return next;\r\n}\r\nvar Recoil_CopyOnWrite = {\r\n    setByAddingToSet: setByAddingToSet,\r\n    setByDeletingFromSet: setByDeletingFromSet,\r\n    mapBySettingInMap: mapBySettingInMap,\r\n    mapByUpdatingInMap: mapByUpdatingInMap,\r\n    mapByDeletingFromMap: mapByDeletingFromMap,\r\n    mapByDeletingMultipleFromMap: mapByDeletingMultipleFromMap\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Creates a new iterable whose output is generated by passing the input\r\n * iterable's values through the filter function.\r\n */\r\nfunction filterIterable(iterable, predicate) {\r\n    var index, _a, iterable_2, value;\r\n    return __generator(this, function (_b) {\r\n        switch (_b.label) {\r\n            case 0:\r\n                index = 0;\r\n                _a = 0, iterable_2 = iterable;\r\n                _b.label = 1;\r\n            case 1:\r\n                if (!(_a < iterable_2.length)) return [3 /*break*/, 4];\r\n                value = iterable_2[_a];\r\n                if (!predicate(value, index++)) return [3 /*break*/, 3];\r\n                return [4 /*yield*/, value];\r\n            case 2:\r\n                _b.sent();\r\n                _b.label = 3;\r\n            case 3:\r\n                _a++;\r\n                return [3 /*break*/, 1];\r\n            case 4: return [2 /*return*/];\r\n        }\r\n    });\r\n}\r\nvar Recoil_filterIterable = filterIterable;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Return a proxy object based on the provided base and factories objects.\r\n * The proxy will include all properties of the base object as-is.\r\n * The factories object contains callbacks to obtain the values of the properies\r\n * for its keys.\r\n *\r\n * This is useful for providing users an object where some properties may be\r\n * lazily computed only on first access.\r\n */\r\n// $FlowIssue[unclear-type]\r\nfunction lazyProxy(base, factories) {\r\n    var proxy = new Proxy(base, {\r\n        // Compute and cache lazy property if not already done.\r\n        get: function (target, prop) {\r\n            if (!(prop in target) && prop in factories) {\r\n                target[prop] = factories[prop]();\r\n            }\r\n            return target[prop];\r\n        },\r\n        // This method allows user to iterate keys as normal\r\n        ownKeys: function (target) {\r\n            return Object.keys(target);\r\n        }\r\n    }); // $FlowIssue[incompatible-return]\r\n    return proxy;\r\n}\r\nvar Recoil_lazyProxy = lazyProxy;\r\nvar getNode$1 = Recoil_Node.getNode, getNodeMaybe$1 = Recoil_Node.getNodeMaybe, recoilValuesForKeys$1 = Recoil_Node.recoilValuesForKeys;\r\nvar RetentionZone$1 = Recoil_RetentionZone.RetentionZone;\r\nvar setByAddingToSet$1 = Recoil_CopyOnWrite.setByAddingToSet;\r\n// flowlint-next-line unclear-type:off\r\nvar emptySet = Object.freeze(new Set());\r\nvar ReadOnlyRecoilValueError = /** @class */ (function (_super) {\r\n    __extends(ReadOnlyRecoilValueError, _super);\r\n    function ReadOnlyRecoilValueError() {\r\n        return _super !== null && _super.apply(this, arguments) || this;\r\n    }\r\n    return ReadOnlyRecoilValueError;\r\n}(Error));\r\nfunction initializeRetentionForNode(store, nodeKey, retainedBy) {\r\n    if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n        return function () { return undefined; };\r\n    }\r\n    var nodesRetainedByZone = store.getState().retention.nodesRetainedByZone;\r\n    function addToZone(zone) {\r\n        var set = nodesRetainedByZone.get(zone);\r\n        if (!set) {\r\n            nodesRetainedByZone.set(zone, set = new Set());\r\n        }\r\n        set.add(nodeKey);\r\n    }\r\n    if (retainedBy instanceof RetentionZone$1) {\r\n        addToZone(retainedBy);\r\n    }\r\n    else if (Array.isArray(retainedBy)) {\r\n        for (var _a = 0, retainedBy_1 = retainedBy; _a < retainedBy_1.length; _a++) {\r\n            var zone = retainedBy_1[_a];\r\n            addToZone(zone);\r\n        }\r\n    }\r\n    return function () {\r\n        if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n            return;\r\n        }\r\n        var retention = store.getState().retention;\r\n        function deleteFromZone(zone) {\r\n            var set = retention.nodesRetainedByZone.get(zone);\r\n            set === null || set === void 0 ? void 0 : set.delete(nodeKey);\r\n            if (set && set.size === 0) {\r\n                retention.nodesRetainedByZone.delete(zone);\r\n            }\r\n        }\r\n        if (retainedBy instanceof RetentionZone$1) {\r\n            deleteFromZone(retainedBy);\r\n        }\r\n        else if (Array.isArray(retainedBy)) {\r\n            for (var _a = 0, retainedBy_2 = retainedBy; _a < retainedBy_2.length; _a++) {\r\n                var zone = retainedBy_2[_a];\r\n                deleteFromZone(zone);\r\n            }\r\n        }\r\n    };\r\n}\r\nfunction initializeNodeIfNewToStore(store, treeState, key, trigger) {\r\n    var storeState = store.getState();\r\n    if (storeState.nodeCleanupFunctions.has(key)) {\r\n        return;\r\n    }\r\n    var node = getNode$1(key);\r\n    var retentionCleanup = initializeRetentionForNode(store, key, node.retainedBy);\r\n    var nodeCleanup = node.init(store, treeState, trigger);\r\n    storeState.nodeCleanupFunctions.set(key, function () {\r\n        nodeCleanup();\r\n        retentionCleanup();\r\n    });\r\n}\r\nfunction initializeNode(store, key, trigger) {\r\n    initializeNodeIfNewToStore(store, store.getState().currentTree, key, trigger);\r\n}\r\nfunction cleanUpNode(store, key) {\r\n    var _state$nodeCleanupFun;\r\n    var state = store.getState();\r\n    (_state$nodeCleanupFun = state.nodeCleanupFunctions.get(key)) === null || _state$nodeCleanupFun === void 0 ? void 0 : _state$nodeCleanupFun();\r\n    state.nodeCleanupFunctions.delete(key);\r\n} // Get the current value loadable of a node and update the state.\r\n// Update dependencies and subscriptions for selectors.\r\n// Update saved value validation for atoms.\r\nfunction getNodeLoadable(store, state, key) {\r\n    initializeNodeIfNewToStore(store, state, key, 'get');\r\n    return getNode$1(key).get(store, state);\r\n} // Peek at the current value loadable for a node without any evaluation or state change\r\nfunction peekNodeLoadable(store, state, key) {\r\n    return getNode$1(key).peek(store, state);\r\n} // Write value directly to state bypassing the Node interface as the node\r\n// definitions may not have been loaded yet when processing the initial snapshot.\r\nfunction setUnvalidatedAtomValue_DEPRECATED(state, key, newValue) {\r\n    var _node$invalidate;\r\n    var node = getNodeMaybe$1(key);\r\n    node === null || node === void 0 ? void 0 : (_node$invalidate = node.invalidate) === null || _node$invalidate === void 0 ? void 0 : _node$invalidate.call(node, state);\r\n    return __assign(__assign({}, state), { atomValues: state.atomValues.clone().delete(key), nonvalidatedAtoms: state.nonvalidatedAtoms.clone().set(key, newValue), dirtyAtoms: setByAddingToSet$1(state.dirtyAtoms, key) });\r\n} // Return the discovered dependencies and values to be written by setting\r\n// a node value. (Multiple values may be written due to selectors getting to\r\n// set upstreams; deps may be discovered because of reads in updater functions.)\r\nfunction setNodeValue(store, state, key, newValue) {\r\n    var node = getNode$1(key);\r\n    if (node.set == null) {\r\n        throw new ReadOnlyRecoilValueError(\"Attempt to set read-only RecoilValue: \" + key);\r\n    }\r\n    var set = node.set; // so flow doesn't lose the above refinement.\r\n    initializeNodeIfNewToStore(store, state, key, 'set');\r\n    return set(store, state, newValue);\r\n}\r\nfunction peekNodeInfo(store, state, key) {\r\n    var storeState = store.getState();\r\n    var graph = store.getGraph(state.version);\r\n    var type = getNode$1(key).nodeType;\r\n    return Recoil_lazyProxy({\r\n        type: type\r\n    }, {\r\n        loadable: function () { return peekNodeLoadable(store, state, key); },\r\n        isActive: function () { return storeState.knownAtoms.has(key) || storeState.knownSelectors.has(key); },\r\n        isSet: function () { return type === 'selector' ? false : state.atomValues.has(key); },\r\n        isModified: function () { return state.dirtyAtoms.has(key); },\r\n        // Report current dependencies.  If the node hasn't been evaluated, then\r\n        // dependencies may be missing based on the current state.\r\n        deps: function () {\r\n            var _graph$nodeDeps$get;\r\n            return recoilValuesForKeys$1((_graph$nodeDeps$get = graph.nodeDeps.get(key)) !== null && _graph$nodeDeps$get !== void 0 ? _graph$nodeDeps$get : []);\r\n        },\r\n        // Reports all \"current\" subscribers.  Evaluating other nodes or\r\n        // previous in-progress async evaluations may introduce new subscribers.\r\n        subscribers: function () {\r\n            var _storeState$nodeToCom, _storeState$nodeToCom2;\r\n            return {\r\n                nodes: recoilValuesForKeys$1(Recoil_filterIterable(getDownstreamNodes(store, state, new Set([key])), function (nodeKey) { return nodeKey !== key; })),\r\n                components: Recoil_mapIterable((_storeState$nodeToCom = (_storeState$nodeToCom2 = storeState.nodeToComponentSubscriptions.get(key)) === null || _storeState$nodeToCom2 === void 0 ? void 0 : _storeState$nodeToCom2.values()) !== null && _storeState$nodeToCom !== void 0 ? _storeState$nodeToCom : [], function (_a) {\r\n                    var name = _a[0];\r\n                    return ({\r\n                        name: name\r\n                    });\r\n                })\r\n            };\r\n        }\r\n    });\r\n} // Find all of the recursively dependent nodes\r\nfunction getDownstreamNodes(store, state, keys) {\r\n    var visitedNodes = new Set();\r\n    var visitingNodes = Array.from(keys);\r\n    var graph = store.getGraph(state.version);\r\n    for (var key = visitingNodes.pop(); key; key = visitingNodes.pop()) {\r\n        var _graph$nodeToNodeSubs;\r\n        visitedNodes.add(key);\r\n        var subscribedNodes = (_graph$nodeToNodeSubs = graph.nodeToNodeSubscriptions.get(key)) !== null && _graph$nodeToNodeSubs !== void 0 ? _graph$nodeToNodeSubs : emptySet;\r\n        for (var _a = 0, subscribedNodes_1 = subscribedNodes; _a < subscribedNodes_1.length; _a++) {\r\n            var downstreamNode = subscribedNodes_1[_a];\r\n            if (!visitedNodes.has(downstreamNode)) {\r\n                visitingNodes.push(downstreamNode);\r\n            }\r\n        }\r\n    }\r\n    return visitedNodes;\r\n}\r\nvar Recoil_FunctionalCore = {\r\n    getNodeLoadable: getNodeLoadable,\r\n    peekNodeLoadable: peekNodeLoadable,\r\n    setNodeValue: setNodeValue,\r\n    initializeNode: initializeNode,\r\n    cleanUpNode: cleanUpNode,\r\n    setUnvalidatedAtomValue_DEPRECATED: setUnvalidatedAtomValue_DEPRECATED,\r\n    peekNodeInfo: peekNodeInfo,\r\n    getDownstreamNodes: getDownstreamNodes\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nvar _invalidateMemoizedSnapshot = null;\r\nfunction setInvalidateMemoizedSnapshot(invalidate) {\r\n    _invalidateMemoizedSnapshot = invalidate;\r\n}\r\nfunction invalidateMemoizedSnapshot() {\r\n    var _invalidateMemoizedSn;\r\n    (_invalidateMemoizedSn = _invalidateMemoizedSnapshot) === null || _invalidateMemoizedSn === void 0 ? void 0 : _invalidateMemoizedSn();\r\n}\r\nvar Recoil_SnapshotCache = {\r\n    setInvalidateMemoizedSnapshot: setInvalidateMemoizedSnapshot,\r\n    invalidateMemoizedSnapshot: invalidateMemoizedSnapshot\r\n};\r\nvar getDownstreamNodes$1 = Recoil_FunctionalCore.getDownstreamNodes, getNodeLoadable$1 = Recoil_FunctionalCore.getNodeLoadable, setNodeValue$1 = Recoil_FunctionalCore.setNodeValue;\r\nvar getNextComponentID$1 = Recoil_Keys.getNextComponentID;\r\nvar getNode$2 = Recoil_Node.getNode, getNodeMaybe$2 = Recoil_Node.getNodeMaybe;\r\nvar DefaultValue$1 = Recoil_Node.DefaultValue;\r\nvar reactMode$1 = Recoil_ReactMode.reactMode;\r\nvar AbstractRecoilValue$1 = Recoil_RecoilValue$1.AbstractRecoilValue, RecoilState$1 = Recoil_RecoilValue$1.RecoilState, RecoilValueReadOnly$1 = Recoil_RecoilValue$1.RecoilValueReadOnly, isRecoilValue$1 = Recoil_RecoilValue$1.isRecoilValue;\r\nvar invalidateMemoizedSnapshot$1 = Recoil_SnapshotCache.invalidateMemoizedSnapshot;\r\nfunction getRecoilValueAsLoadable(store, _a, treeState) {\r\n    var key = _a.key;\r\n    if (treeState === void 0) { treeState = store.getState().currentTree; }\r\n    var _storeState$nextTree, _storeState$previousT;\r\n    // Reading from an older tree can cause bugs because the dependencies that we\r\n    // discover during the read are lost.\r\n    var storeState = store.getState();\r\n    if (!(treeState.version === storeState.currentTree.version || treeState.version === ((_storeState$nextTree = storeState.nextTree) === null || _storeState$nextTree === void 0 ? void 0 : _storeState$nextTree.version) || treeState.version === ((_storeState$previousT = storeState.previousTree) === null || _storeState$previousT === void 0 ? void 0 : _storeState$previousT.version))) {\r\n        Recoil_recoverableViolation('Tried to read from a discarded tree');\r\n    }\r\n    var loadable = getNodeLoadable$1(store, treeState, key);\r\n    if (loadable.state === 'loading') {\r\n        loadable.contents.catch(function () {\r\n            /**\r\n             * HACK: intercept thrown error here to prevent an uncaught promise exception. Ideally this would happen closer to selector\r\n             * execution (perhaps introducing a new ERROR class to be resolved by async selectors that are in an error state)\r\n             */\r\n            return;\r\n        });\r\n    }\r\n    return loadable;\r\n}\r\nfunction applyAtomValueWrites(atomValues, writes) {\r\n    var result = atomValues.clone();\r\n    writes.forEach(function (v, k) {\r\n        if (v.state === 'hasValue' && v.contents instanceof DefaultValue$1) {\r\n            result.delete(k);\r\n        }\r\n        else {\r\n            result.set(k, v);\r\n        }\r\n    });\r\n    return result;\r\n}\r\nfunction valueFromValueOrUpdater(store, state, _a, valueOrUpdater) {\r\n    var key = _a.key;\r\n    if (typeof valueOrUpdater === 'function') {\r\n        // Updater form: pass in the current value. Throw if the current value\r\n        // is unavailable (namely when updating an async selector that's\r\n        // pending or errored):\r\n        var current = getNodeLoadable$1(store, state, key);\r\n        if (current.state === 'loading') {\r\n            var msg = \"Tried to set atom or selector \\\"\" + key + \"\\\" using an updater function while the current state is pending, this is not currently supported.\";\r\n            Recoil_recoverableViolation(msg);\r\n            throw Recoil_err(msg);\r\n        }\r\n        else if (current.state === 'hasError') {\r\n            throw current.contents;\r\n        } // T itself may be a function, so our refinement is not sufficient:\r\n        return valueOrUpdater(current.contents); // flowlint-line unclear-type:off\r\n    }\r\n    else {\r\n        return valueOrUpdater;\r\n    }\r\n}\r\nfunction applyAction(store, state, action) {\r\n    if (action.type === 'set') {\r\n        var recoilValue = action.recoilValue, valueOrUpdater = action.valueOrUpdater;\r\n        var newValue = valueFromValueOrUpdater(store, state, recoilValue, valueOrUpdater);\r\n        var writes = setNodeValue$1(store, state, recoilValue.key, newValue);\r\n        for (var _a = 0, _b = writes.entries(); _a < _b.length; _a++) {\r\n            var _c = _b[_a], key = _c[0], loadable = _c[1];\r\n            writeLoadableToTreeState(state, key, loadable);\r\n        }\r\n    }\r\n    else if (action.type === 'setLoadable') {\r\n        var key = action.recoilValue.key, loadable = action.loadable;\r\n        writeLoadableToTreeState(state, key, loadable);\r\n    }\r\n    else if (action.type === 'markModified') {\r\n        var key = action.recoilValue.key;\r\n        state.dirtyAtoms.add(key);\r\n    }\r\n    else if (action.type === 'setUnvalidated') {\r\n        var _node$invalidate;\r\n        // Write value directly to state bypassing the Node interface as the node\r\n        // definitions may not have been loaded yet when processing the initial snapshot.\r\n        var key = action.recoilValue.key, unvalidatedValue = action.unvalidatedValue;\r\n        var node = getNodeMaybe$2(key);\r\n        node === null || node === void 0 ? void 0 : (_node$invalidate = node.invalidate) === null || _node$invalidate === void 0 ? void 0 : _node$invalidate.call(node, state);\r\n        state.atomValues.delete(key);\r\n        state.nonvalidatedAtoms.set(key, unvalidatedValue);\r\n        state.dirtyAtoms.add(key);\r\n    }\r\n    else {\r\n        Recoil_recoverableViolation(\"Unknown action \" + action.type);\r\n    }\r\n}\r\nfunction writeLoadableToTreeState(state, key, loadable) {\r\n    if (loadable.state === 'hasValue' && loadable.contents instanceof DefaultValue$1) {\r\n        state.atomValues.delete(key);\r\n    }\r\n    else {\r\n        state.atomValues.set(key, loadable);\r\n    }\r\n    state.dirtyAtoms.add(key);\r\n    state.nonvalidatedAtoms.delete(key);\r\n}\r\nfunction applyActionsToStore(store, actions) {\r\n    store.replaceState(function (state) {\r\n        var newState = copyTreeState(state);\r\n        for (var _a = 0, actions_1 = actions; _a < actions_1.length; _a++) {\r\n            var action = actions_1[_a];\r\n            applyAction(store, newState, action);\r\n        }\r\n        invalidateDownstreams(store, newState);\r\n        invalidateMemoizedSnapshot$1();\r\n        return newState;\r\n    });\r\n}\r\nfunction queueOrPerformStateUpdate(store, action) {\r\n    if (batchStack.length) {\r\n        var actionsByStore = batchStack[batchStack.length - 1];\r\n        var actions = actionsByStore.get(store);\r\n        if (!actions) {\r\n            actionsByStore.set(store, actions = []);\r\n        }\r\n        actions.push(action);\r\n    }\r\n    else {\r\n        applyActionsToStore(store, [action]);\r\n    }\r\n}\r\nvar batchStack = [];\r\nfunction batchStart() {\r\n    var actionsByStore = new Map();\r\n    batchStack.push(actionsByStore);\r\n    return function () {\r\n        for (var _a = 0, actionsByStore_1 = actionsByStore; _a < actionsByStore_1.length; _a++) {\r\n            var _b = actionsByStore_1[_a], store = _b[0], actions = _b[1];\r\n            applyActionsToStore(store, actions);\r\n        }\r\n        var popped = batchStack.pop();\r\n        if (popped !== actionsByStore) {\r\n            Recoil_recoverableViolation('Incorrect order of batch popping');\r\n        }\r\n    };\r\n}\r\nfunction copyTreeState(state) {\r\n    return __assign(__assign({}, state), { atomValues: state.atomValues.clone(), nonvalidatedAtoms: state.nonvalidatedAtoms.clone(), dirtyAtoms: new Set(state.dirtyAtoms) });\r\n}\r\nfunction invalidateDownstreams(store, state) {\r\n    // Inform any nodes that were changed or downstream of changes so that they\r\n    // can clear out any caches as needed due to the update:\r\n    var downstreams = getDownstreamNodes$1(store, state, state.dirtyAtoms);\r\n    for (var _a = 0, downstreams_1 = downstreams; _a < downstreams_1.length; _a++) {\r\n        var key = downstreams_1[_a];\r\n        var _getNodeMaybe, _getNodeMaybe$invalid;\r\n        (_getNodeMaybe = getNodeMaybe$2(key)) === null || _getNodeMaybe === void 0 ? void 0 : (_getNodeMaybe$invalid = _getNodeMaybe.invalidate) === null || _getNodeMaybe$invalid === void 0 ? void 0 : _getNodeMaybe$invalid.call(_getNodeMaybe, state);\r\n    }\r\n}\r\nfunction setRecoilValue(store, recoilValue, valueOrUpdater) {\r\n    queueOrPerformStateUpdate(store, {\r\n        type: 'set',\r\n        recoilValue: recoilValue,\r\n        valueOrUpdater: valueOrUpdater\r\n    });\r\n}\r\nfunction setRecoilValueLoadable(store, recoilValue, loadable) {\r\n    if (loadable instanceof DefaultValue$1) {\r\n        return setRecoilValue(store, recoilValue, loadable);\r\n    }\r\n    queueOrPerformStateUpdate(store, {\r\n        type: 'setLoadable',\r\n        recoilValue: recoilValue,\r\n        loadable: loadable\r\n    });\r\n}\r\nfunction markRecoilValueModified(store, recoilValue) {\r\n    queueOrPerformStateUpdate(store, {\r\n        type: 'markModified',\r\n        recoilValue: recoilValue\r\n    });\r\n}\r\nfunction setUnvalidatedRecoilValue(store, recoilValue, unvalidatedValue) {\r\n    queueOrPerformStateUpdate(store, {\r\n        type: 'setUnvalidated',\r\n        recoilValue: recoilValue,\r\n        unvalidatedValue: unvalidatedValue\r\n    });\r\n}\r\nfunction subscribeToRecoilValue(store, _a, callback, componentDebugName) {\r\n    var key = _a.key;\r\n    if (componentDebugName === void 0) { componentDebugName = null; }\r\n    var subID = getNextComponentID$1();\r\n    var storeState = store.getState();\r\n    if (!storeState.nodeToComponentSubscriptions.has(key)) {\r\n        storeState.nodeToComponentSubscriptions.set(key, new Map());\r\n    }\r\n    Recoil_nullthrows(storeState.nodeToComponentSubscriptions.get(key)).set(subID, [componentDebugName !== null && componentDebugName !== void 0 ? componentDebugName : '<not captured>', callback]); // Handle the case that, during the same tick that we are subscribing, an atom\r\n    // has been updated by some effect handler. Otherwise we will miss the update.\r\n    var mode = reactMode$1();\r\n    if (mode.early && (mode.mode === 'LEGACY' || mode.mode === 'MUTABLE_SOURCE')) {\r\n        var nextTree = store.getState().nextTree;\r\n        if (nextTree && nextTree.dirtyAtoms.has(key)) {\r\n            callback(nextTree);\r\n        }\r\n    }\r\n    return {\r\n        release: function () {\r\n            var releaseStoreState = store.getState();\r\n            var subs = releaseStoreState.nodeToComponentSubscriptions.get(key);\r\n            if (subs === undefined || !subs.has(subID)) {\r\n                Recoil_recoverableViolation(\"Subscription missing at release time for atom \" + key + \". This is a bug in Recoil.\");\r\n                return;\r\n            }\r\n            subs.delete(subID);\r\n            if (subs.size === 0) {\r\n                releaseStoreState.nodeToComponentSubscriptions.delete(key);\r\n            }\r\n        }\r\n    };\r\n}\r\nfunction refreshRecoilValue(store, recoilValue) {\r\n    var _node$clearCache;\r\n    var currentTree = store.getState().currentTree;\r\n    var node = getNode$2(recoilValue.key);\r\n    (_node$clearCache = node.clearCache) === null || _node$clearCache === void 0 ? void 0 : _node$clearCache.call(node, store, currentTree);\r\n}\r\nvar Recoil_RecoilValueInterface = {\r\n    RecoilValueReadOnly: RecoilValueReadOnly$1,\r\n    AbstractRecoilValue: AbstractRecoilValue$1,\r\n    RecoilState: RecoilState$1,\r\n    getRecoilValueAsLoadable: getRecoilValueAsLoadable,\r\n    setRecoilValue: setRecoilValue,\r\n    setRecoilValueLoadable: setRecoilValueLoadable,\r\n    markRecoilValueModified: markRecoilValueModified,\r\n    setUnvalidatedRecoilValue: setUnvalidatedRecoilValue,\r\n    subscribeToRecoilValue: subscribeToRecoilValue,\r\n    isRecoilValue: isRecoilValue$1,\r\n    applyAtomValueWrites: applyAtomValueWrites,\r\n    // TODO Remove export when deprecating initialStoreState_DEPRECATED in RecoilRoot\r\n    batchStart: batchStart,\r\n    writeLoadableToTreeState: writeLoadableToTreeState,\r\n    invalidateDownstreams: invalidateDownstreams,\r\n    copyTreeState: copyTreeState,\r\n    refreshRecoilValue: refreshRecoilValue\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * The someSet() method tests whether some elements in the given Set pass the\r\n * test implemented by the provided function.\r\n */\r\nfunction someSet(set, callback, context) {\r\n    var iterator = set.entries();\r\n    var current = iterator.next();\r\n    while (!current.done) {\r\n        var entry = current.value;\r\n        if (callback.call(context, entry[1], entry[0], set)) {\r\n            return true;\r\n        }\r\n        current = iterator.next();\r\n    }\r\n    return false;\r\n}\r\nvar Recoil_someSet = someSet;\r\nvar cleanUpNode$1 = Recoil_FunctionalCore.cleanUpNode;\r\nvar deleteNodeConfigIfPossible$1 = Recoil_Node.deleteNodeConfigIfPossible, getNode$3 = Recoil_Node.getNode;\r\nvar RetentionZone$2 = Recoil_RetentionZone.RetentionZone;\r\n// Components that aren't mounted after suspending for this long will be assumed\r\n// to be discarded and their resources released.\r\nvar SUSPENSE_TIMEOUT_MS = 120000;\r\nvar emptySet$1 = new Set();\r\nfunction releaseRetainablesNowOnCurrentTree(store, retainables) {\r\n    var storeState = store.getState();\r\n    var treeState = storeState.currentTree;\r\n    if (storeState.nextTree) {\r\n        Recoil_recoverableViolation('releaseNodesNowOnCurrentTree should only be called at the end of a batch');\r\n        return; // leak memory rather than erase something that's about to be used.\r\n    }\r\n    var nodes = new Set();\r\n    for (var _a = 0, retainables_1 = retainables; _a < retainables_1.length; _a++) {\r\n        var r = retainables_1[_a];\r\n        if (r instanceof RetentionZone$2) {\r\n            for (var _b = 0, _c = nodesRetainedByZone(storeState, r); _b < _c.length; _b++) {\r\n                var n = _c[_b];\r\n                nodes.add(n);\r\n            }\r\n        }\r\n        else {\r\n            nodes.add(r);\r\n        }\r\n    }\r\n    var releasableNodes = findReleasableNodes(store, nodes);\r\n    for (var _d = 0, releasableNodes_1 = releasableNodes; _d < releasableNodes_1.length; _d++) {\r\n        var node = releasableNodes_1[_d];\r\n        releaseNode(store, treeState, node);\r\n    }\r\n}\r\nfunction findReleasableNodes(store, searchFromNodes) {\r\n    var storeState = store.getState();\r\n    var treeState = storeState.currentTree;\r\n    var graph = store.getGraph(treeState.version);\r\n    var releasableNodes = new Set(); // mutated to collect answer\r\n    var nonReleasableNodes = new Set();\r\n    findReleasableNodesInner(searchFromNodes);\r\n    return releasableNodes;\r\n    function findReleasableNodesInner(searchFromNodes) {\r\n        var releasableNodesFoundThisIteration = new Set();\r\n        var downstreams = getDownstreamNodesInTopologicalOrder(store, treeState, searchFromNodes, releasableNodes, // don't descend into these\r\n        nonReleasableNodes // don't descend into these\r\n        ); // Find which of the downstream nodes are releasable and which are not:\r\n        for (var _a = 0, downstreams_2 = downstreams; _a < downstreams_2.length; _a++) {\r\n            var node = downstreams_2[_a];\r\n            var _storeState$retention;\r\n            // Not releasable if configured to be retained forever:\r\n            if (getNode$3(node).retainedBy === 'recoilRoot') {\r\n                nonReleasableNodes.add(node);\r\n                continue;\r\n            } // Not releasable if retained directly by a component:\r\n            if (((_storeState$retention = storeState.retention.referenceCounts.get(node)) !== null && _storeState$retention !== void 0 ? _storeState$retention : 0) > 0) {\r\n                nonReleasableNodes.add(node);\r\n                continue;\r\n            } // Not releasable if retained by a zone:\r\n            if (zonesThatCouldRetainNode(node).some(function (z) { return storeState.retention.referenceCounts.get(z); })) {\r\n                nonReleasableNodes.add(node);\r\n                continue;\r\n            } // Not releasable if it has a non-releasable child (which will already be in\r\n            // nonReleasableNodes because we are going in topological order):\r\n            var nodeChildren = graph.nodeToNodeSubscriptions.get(node);\r\n            if (nodeChildren && Recoil_someSet(nodeChildren, function (child) { return nonReleasableNodes.has(child); })) {\r\n                nonReleasableNodes.add(node);\r\n                continue;\r\n            }\r\n            releasableNodes.add(node);\r\n            releasableNodesFoundThisIteration.add(node);\r\n        } // If we found any releasable nodes, we need to walk UP from those nodes to\r\n        // find whether their parents can now be released as well:\r\n        var parents = new Set();\r\n        for (var _b = 0, releasableNodesFoundThisIteration_1 = releasableNodesFoundThisIteration; _b < releasableNodesFoundThisIteration_1.length; _b++) {\r\n            var node = releasableNodesFoundThisIteration_1[_b];\r\n            for (var _c = 0, _d = (_graph$nodeDeps$get = graph.nodeDeps.get(node)) !== null && _graph$nodeDeps$get !== void 0 ? _graph$nodeDeps$get : emptySet$1; _c < _d.length; _c++) {\r\n                var parent_1 = _d[_c];\r\n                var _graph$nodeDeps$get;\r\n                if (!releasableNodes.has(parent_1)) {\r\n                    parents.add(parent_1);\r\n                }\r\n            }\r\n        }\r\n        if (parents.size) {\r\n            findReleasableNodesInner(parents);\r\n        }\r\n    }\r\n} // Children before parents\r\nfunction getDownstreamNodesInTopologicalOrder(store, treeState, nodes, // Mutable set is destroyed in place\r\ndoNotDescendInto1, doNotDescendInto2) {\r\n    var graph = store.getGraph(treeState.version);\r\n    var answer = [];\r\n    var visited = new Set();\r\n    while (nodes.size > 0) {\r\n        visit(Recoil_nullthrows(nodes.values().next().value));\r\n    }\r\n    return answer;\r\n    function visit(node) {\r\n        if (doNotDescendInto1.has(node) || doNotDescendInto2.has(node)) {\r\n            nodes.delete(node);\r\n            return;\r\n        }\r\n        if (visited.has(node)) {\r\n            return;\r\n        }\r\n        var children = graph.nodeToNodeSubscriptions.get(node);\r\n        if (children) {\r\n            for (var _a = 0, children_1 = children; _a < children_1.length; _a++) {\r\n                var child = children_1[_a];\r\n                visit(child);\r\n            }\r\n        }\r\n        visited.add(node);\r\n        nodes.delete(node);\r\n        answer.push(node);\r\n    }\r\n}\r\nfunction releaseNode(store, treeState, node) {\r\n    if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n        return;\r\n    } // Atom effects, in-closure caches, etc.:\r\n    cleanUpNode$1(store, node); // Delete from store state:\r\n    var storeState = store.getState();\r\n    storeState.knownAtoms.delete(node);\r\n    storeState.knownSelectors.delete(node);\r\n    storeState.nodeTransactionSubscriptions.delete(node);\r\n    storeState.retention.referenceCounts.delete(node);\r\n    var zones = zonesThatCouldRetainNode(node);\r\n    for (var _a = 0, zones_1 = zones; _a < zones_1.length; _a++) {\r\n        var zone = zones_1[_a];\r\n        var _storeState$retention2;\r\n        (_storeState$retention2 = storeState.retention.nodesRetainedByZone.get(zone)) === null || _storeState$retention2 === void 0 ? void 0 : _storeState$retention2.delete(node);\r\n    } // Note that we DO NOT delete from nodeToComponentSubscriptions because this\r\n    // already happens when the last component that was retaining the node unmounts,\r\n    // and this could happen either before or after that.\r\n    // Delete from TreeState and dep graph:\r\n    treeState.atomValues.delete(node);\r\n    treeState.dirtyAtoms.delete(node);\r\n    treeState.nonvalidatedAtoms.delete(node);\r\n    var graph = storeState.graphsByVersion.get(treeState.version);\r\n    if (graph) {\r\n        var deps = graph.nodeDeps.get(node);\r\n        if (deps !== undefined) {\r\n            graph.nodeDeps.delete(node);\r\n            for (var _b = 0, deps_1 = deps; _b < deps_1.length; _b++) {\r\n                var dep = deps_1[_b];\r\n                var _graph$nodeToNodeSubs;\r\n                (_graph$nodeToNodeSubs = graph.nodeToNodeSubscriptions.get(dep)) === null || _graph$nodeToNodeSubs === void 0 ? void 0 : _graph$nodeToNodeSubs.delete(node);\r\n            }\r\n        } // No need to delete sub's deps as there should be no subs at this point.\r\n        // But an invariant would require deleting nodes in topological order.\r\n        graph.nodeToNodeSubscriptions.delete(node);\r\n    } // Node config (for family members only as their configs can be recreated, and\r\n    // only if they are not retained within any other Stores):\r\n    deleteNodeConfigIfPossible$1(node);\r\n}\r\nfunction nodesRetainedByZone(storeState, zone) {\r\n    var _storeState$retention3;\r\n    return (_storeState$retention3 = storeState.retention.nodesRetainedByZone.get(zone)) !== null && _storeState$retention3 !== void 0 ? _storeState$retention3 : emptySet$1;\r\n}\r\nfunction zonesThatCouldRetainNode(node) {\r\n    var retainedBy = getNode$3(node).retainedBy;\r\n    if (retainedBy === undefined || retainedBy === 'components' || retainedBy === 'recoilRoot') {\r\n        return [];\r\n    }\r\n    else if (retainedBy instanceof RetentionZone$2) {\r\n        return [retainedBy];\r\n    }\r\n    else {\r\n        return retainedBy; // it's an array of zones\r\n    }\r\n}\r\nfunction scheduleOrPerformPossibleReleaseOfRetainable(store, retainable) {\r\n    var state = store.getState();\r\n    if (state.nextTree) {\r\n        state.retention.retainablesToCheckForRelease.add(retainable);\r\n    }\r\n    else {\r\n        releaseRetainablesNowOnCurrentTree(store, new Set([retainable]));\r\n    }\r\n}\r\nfunction updateRetainCount(store, retainable, delta) {\r\n    var _map$get;\r\n    if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n        return;\r\n    }\r\n    var map = store.getState().retention.referenceCounts;\r\n    var newCount = ((_map$get = map.get(retainable)) !== null && _map$get !== void 0 ? _map$get : 0) + delta;\r\n    if (newCount === 0) {\r\n        updateRetainCountToZero(store, retainable);\r\n    }\r\n    else {\r\n        map.set(retainable, newCount);\r\n    }\r\n}\r\nfunction updateRetainCountToZero(store, retainable) {\r\n    if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n        return;\r\n    }\r\n    var map = store.getState().retention.referenceCounts;\r\n    map.delete(retainable);\r\n    scheduleOrPerformPossibleReleaseOfRetainable(store, retainable);\r\n}\r\nfunction releaseScheduledRetainablesNow(store) {\r\n    if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n        return;\r\n    }\r\n    var state = store.getState();\r\n    releaseRetainablesNowOnCurrentTree(store, state.retention.retainablesToCheckForRelease);\r\n    state.retention.retainablesToCheckForRelease.clear();\r\n}\r\nfunction retainedByOptionWithDefault(r) {\r\n    // The default will change from 'recoilRoot' to 'components' in the future.\r\n    return r === undefined ? 'recoilRoot' : r;\r\n}\r\nvar Recoil_Retention = {\r\n    SUSPENSE_TIMEOUT_MS: SUSPENSE_TIMEOUT_MS,\r\n    updateRetainCount: updateRetainCount,\r\n    updateRetainCountToZero: updateRetainCountToZero,\r\n    releaseScheduledRetainablesNow: releaseScheduledRetainablesNow,\r\n    retainedByOptionWithDefault: retainedByOptionWithDefault\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n *\r\n * This is to export esstiential functions from react-dom\r\n * for our web build\r\n */\r\nvar unstable_batchedUpdates = react_dom_1.default.unstable_batchedUpdates;\r\nvar ReactBatchedUpdates = {\r\n    unstable_batchedUpdates: unstable_batchedUpdates\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n *\r\n * This is to export esstiential functions from react-dom\r\n * for our web build\r\n */\r\n// @fb-only: const {unstable_batchedUpdates} = require('ReactDOMComet');\r\n// prettier-ignore\r\nvar unstable_batchedUpdates$1 = ReactBatchedUpdates.unstable_batchedUpdates; // @oss-only\r\nvar Recoil_ReactBatchedUpdates = {\r\n    unstable_batchedUpdates: unstable_batchedUpdates$1\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nvar batchStart$1 = Recoil_RecoilValueInterface.batchStart;\r\nvar unstable_batchedUpdates$2 = Recoil_ReactBatchedUpdates.unstable_batchedUpdates;\r\nvar batcher = unstable_batchedUpdates$2; // flowlint-next-line unclear-type:off\r\n/**\r\n * Sets the provided batcher function as the batcher function used by Recoil.\r\n *\r\n * Set the batcher to a custom batcher for your renderer,\r\n * if you use a renderer other than React DOM or React Native.\r\n */\r\nvar setBatcher = function (newBatcher) {\r\n    batcher = newBatcher;\r\n};\r\n/**\r\n * Returns the current batcher function.\r\n */\r\nvar getBatcher = function () { return batcher; };\r\n/**\r\n * Calls the current batcher function and passes the\r\n * provided callback function.\r\n */\r\nvar batchUpdates = function (callback) {\r\n    batcher(function () {\r\n        var batchEnd = function () { return undefined; };\r\n        try {\r\n            batchEnd = batchStart$1();\r\n            callback();\r\n        }\r\n        finally {\r\n            batchEnd();\r\n        }\r\n    });\r\n};\r\nvar Recoil_Batching = {\r\n    getBatcher: getBatcher,\r\n    setBatcher: setBatcher,\r\n    batchUpdates: batchUpdates\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Combines multiple Iterables into a single Iterable.\r\n * Traverses the input Iterables in the order provided and maintains the order\r\n * of their elements.\r\n *\r\n * Example:\r\n * ```\r\n * const r = Array.from(concatIterables(['a', 'b'], ['c'], ['d', 'e', 'f']));\r\n * r == ['a', 'b', 'c', 'd', 'e', 'f'];\r\n * ```\r\n */\r\nfunction concatIterables(iters) {\r\n    var _a, iters_1, iter, _b, iter_1, val;\r\n    return __generator(this, function (_c) {\r\n        switch (_c.label) {\r\n            case 0:\r\n                _a = 0, iters_1 = iters;\r\n                _c.label = 1;\r\n            case 1:\r\n                if (!(_a < iters_1.length)) return [3 /*break*/, 6];\r\n                iter = iters_1[_a];\r\n                _b = 0, iter_1 = iter;\r\n                _c.label = 2;\r\n            case 2:\r\n                if (!(_b < iter_1.length)) return [3 /*break*/, 5];\r\n                val = iter_1[_b];\r\n                return [4 /*yield*/, val];\r\n            case 3:\r\n                _c.sent();\r\n                _c.label = 4;\r\n            case 4:\r\n                _b++;\r\n                return [3 /*break*/, 2];\r\n            case 5:\r\n                _a++;\r\n                return [3 /*break*/, 1];\r\n            case 6: return [2 /*return*/];\r\n        }\r\n    });\r\n}\r\nvar Recoil_concatIterables = concatIterables;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/* eslint-disable fb-www/typeof-undefined */\r\nvar isSSR = // $FlowFixMe(site=recoil) Window does not have a FlowType definition https://github.com/facebook/flow/issues/6709\r\n typeof Window === 'undefined' || typeof window === 'undefined';\r\n/* eslint-enable fb-www/typeof-undefined */\r\nvar isWindow = function (value) { return !isSSR && ( // $FlowFixMe(site=recoil) Window does not have a FlowType definition https://github.com/facebook/flow/issues/6709\r\nvalue === window || value instanceof Window); };\r\nvar isReactNative = typeof navigator !== 'undefined' && navigator.product === 'ReactNative'; // eslint-disable-line fb-www/typeof-undefined\r\nvar Recoil_Environment = {\r\n    isSSR: isSSR,\r\n    isReactNative: isReactNative,\r\n    isWindow: isWindow\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Caches a function's results based on the key returned by the passed\r\n * hashFunction.\r\n */\r\nfunction memoizeWithArgsHash(fn, hashFunction) {\r\n    var cache;\r\n    var memoizedFn = function () {\r\n        var args = [];\r\n        for (var _a = 0; _a < arguments.length; _a++) {\r\n            args[_a] = arguments[_a];\r\n        }\r\n        if (!cache) {\r\n            cache = {};\r\n        }\r\n        var key = hashFunction.apply(void 0, args);\r\n        if (!Object.hasOwnProperty.call(cache, key)) {\r\n            cache[key] = fn.apply(void 0, args);\r\n        }\r\n        return cache[key];\r\n    };\r\n    return memoizedFn;\r\n}\r\n/**\r\n * Caches a function's results based on a comparison of the arguments.\r\n * Only caches the last return of the function.\r\n * Defaults to reference equality\r\n */\r\nfunction memoizeOneWithArgsHash(fn, hashFunction) {\r\n    var lastKey;\r\n    var lastResult; // breaking cache when arguments change\r\n    var memoizedFn = function () {\r\n        var args = [];\r\n        for (var _a = 0; _a < arguments.length; _a++) {\r\n            args[_a] = arguments[_a];\r\n        }\r\n        var key = hashFunction.apply(void 0, args);\r\n        if (lastKey === key) {\r\n            return lastResult;\r\n        }\r\n        lastKey = key;\r\n        lastResult = fn.apply(void 0, args);\r\n        return lastResult;\r\n    };\r\n    return memoizedFn;\r\n}\r\n/**\r\n * Caches a function's results based on a comparison of the arguments.\r\n * Only caches the last return of the function.\r\n * Defaults to reference equality\r\n */\r\nfunction memoizeOneWithArgsHashAndInvalidation(fn, hashFunction) {\r\n    var lastKey;\r\n    var lastResult; // breaking cache when arguments change\r\n    var memoizedFn = function () {\r\n        var args = [];\r\n        for (var _a = 0; _a < arguments.length; _a++) {\r\n            args[_a] = arguments[_a];\r\n        }\r\n        var key = hashFunction.apply(void 0, args);\r\n        if (lastKey === key) {\r\n            return lastResult;\r\n        }\r\n        lastKey = key;\r\n        lastResult = fn.apply(void 0, args);\r\n        return lastResult;\r\n    };\r\n    var invalidate = function () {\r\n        lastKey = null;\r\n    };\r\n    return [memoizedFn, invalidate];\r\n}\r\nvar Recoil_Memoize = {\r\n    memoizeWithArgsHash: memoizeWithArgsHash,\r\n    memoizeOneWithArgsHash: memoizeOneWithArgsHash,\r\n    memoizeOneWithArgsHashAndInvalidation: memoizeOneWithArgsHashAndInvalidation\r\n};\r\nvar batchUpdates$1 = Recoil_Batching.batchUpdates;\r\nvar initializeNode$1 = Recoil_FunctionalCore.initializeNode, peekNodeInfo$1 = Recoil_FunctionalCore.peekNodeInfo;\r\nvar graph$1 = Recoil_Graph.graph;\r\nvar getNextStoreID$1 = Recoil_Keys.getNextStoreID;\r\nvar DEFAULT_VALUE$1 = Recoil_Node.DEFAULT_VALUE, recoilValues$1 = Recoil_Node.recoilValues, recoilValuesForKeys$2 = Recoil_Node.recoilValuesForKeys;\r\nvar AbstractRecoilValue$2 = Recoil_RecoilValueInterface.AbstractRecoilValue, getRecoilValueAsLoadable$1 = Recoil_RecoilValueInterface.getRecoilValueAsLoadable, setRecoilValue$1 = Recoil_RecoilValueInterface.setRecoilValue, setUnvalidatedRecoilValue$1 = Recoil_RecoilValueInterface.setUnvalidatedRecoilValue;\r\nvar updateRetainCount$1 = Recoil_Retention.updateRetainCount;\r\nvar setInvalidateMemoizedSnapshot$1 = Recoil_SnapshotCache.setInvalidateMemoizedSnapshot;\r\nvar getNextTreeStateVersion$2 = Recoil_State.getNextTreeStateVersion, makeEmptyStoreState$1 = Recoil_State.makeEmptyStoreState;\r\nvar isSSR$1 = Recoil_Environment.isSSR;\r\nvar memoizeOneWithArgsHashAndInvalidation$1 = Recoil_Memoize.memoizeOneWithArgsHashAndInvalidation;\r\n// Opaque at this surface because it's part of the public API from here.\r\nvar retainWarning = \"\\nRecoil Snapshots only last for the duration of the callback they are provided to. To keep a Snapshot longer, do this:\\n\\n  const release = snapshot.retain();\\n  try {\\n    await doSomethingWithSnapshot(snapshot);\\n  } finally {\\n    release();\\n  }\\n\\nThis is currently a DEV-only warning but will become a thrown exception in the next release of Recoil.\\n\"; // A \"Snapshot\" is \"read-only\" and captures a specific set of values of atoms.\r\n// However, the data-flow-graph and selector values may evolve as selector\r\n// evaluation functions are executed and async selectors resolve.\r\nvar Snapshot = /** @class */ (function () {\r\n    // eslint-disable-next-line fb-www/no-uninitialized-properties\r\n    function Snapshot(storeState, parentStoreID) {\r\n        var _this = this;\r\n        _defineProperty(this, \"_store\", void 0);\r\n        _defineProperty(this, \"_refCount\", 1);\r\n        _defineProperty(this, \"getLoadable\", function (recoilValue) {\r\n            _this.checkRefCount_INTERNAL();\r\n            return getRecoilValueAsLoadable$1(_this._store, recoilValue);\r\n        });\r\n        _defineProperty(this, \"getPromise\", function (recoilValue) {\r\n            _this.checkRefCount_INTERNAL();\r\n            return _this.getLoadable(recoilValue).toPromise();\r\n        });\r\n        _defineProperty(this, \"getNodes_UNSTABLE\", function (opt) {\r\n            _this.checkRefCount_INTERNAL(); // TODO Deal with modified selectors\r\n            if ((opt === null || opt === void 0 ? void 0 : opt.isModified) === true) {\r\n                if ((opt === null || opt === void 0 ? void 0 : opt.isInitialized) === false) {\r\n                    return [];\r\n                }\r\n                var state = _this._store.getState().currentTree;\r\n                return recoilValuesForKeys$2(state.dirtyAtoms);\r\n            }\r\n            var knownAtoms = _this._store.getState().knownAtoms;\r\n            var knownSelectors = _this._store.getState().knownSelectors;\r\n            return (opt === null || opt === void 0 ? void 0 : opt.isInitialized) == null ? recoilValues$1.values() : opt.isInitialized === true ? recoilValuesForKeys$2(Recoil_concatIterables([knownAtoms, knownSelectors])) : Recoil_filterIterable(recoilValues$1.values(), function (_a) {\r\n                var key = _a.key;\r\n                return !knownAtoms.has(key) && !knownSelectors.has(key);\r\n            });\r\n        });\r\n        _defineProperty(this, \"getInfo_UNSTABLE\", function (_a) {\r\n            var key = _a.key;\r\n            _this.checkRefCount_INTERNAL();\r\n            return peekNodeInfo$1(_this._store, _this._store.getState().currentTree, key);\r\n        });\r\n        _defineProperty(this, \"map\", function (mapper) {\r\n            _this.checkRefCount_INTERNAL();\r\n            var mutableSnapshot = new MutableSnapshot(_this, batchUpdates$1);\r\n            mapper(mutableSnapshot); // if removing batchUpdates from `set` add it here\r\n            return mutableSnapshot;\r\n        });\r\n        _defineProperty(this, \"asyncMap\", function (mapper) { return __awaiter(_this, void 0, void 0, function () {\r\n            var mutableSnapshot;\r\n            return __generator(this, function (_a) {\r\n                switch (_a.label) {\r\n                    case 0:\r\n                        this.checkRefCount_INTERNAL();\r\n                        mutableSnapshot = new MutableSnapshot(this, batchUpdates$1);\r\n                        mutableSnapshot.retain(); // Retain new snapshot during async mapper\r\n                        return [4 /*yield*/, mapper(mutableSnapshot)];\r\n                    case 1:\r\n                        _a.sent(); // Continue to retain the new snapshot for the user, but auto-release it\r\n                        // after the next tick, the same as a new synchronous snapshot.\r\n                        mutableSnapshot.autoRelease_INTERNAL();\r\n                        return [2 /*return*/, mutableSnapshot];\r\n                }\r\n            });\r\n        }); });\r\n        this._store = {\r\n            storeID: getNextStoreID$1(),\r\n            parentStoreID: parentStoreID,\r\n            getState: function () { return storeState; },\r\n            replaceState: function (replacer) {\r\n                // no batching, so nextTree is never active\r\n                storeState.currentTree = replacer(storeState.currentTree);\r\n            },\r\n            getGraph: function (version) {\r\n                var graphs = storeState.graphsByVersion;\r\n                if (graphs.has(version)) {\r\n                    return Recoil_nullthrows(graphs.get(version));\r\n                }\r\n                var newGraph = graph$1();\r\n                graphs.set(version, newGraph);\r\n                return newGraph;\r\n            },\r\n            subscribeToTransactions: function () { return ({\r\n                release: function () { }\r\n            }); },\r\n            addTransactionMetadata: function () {\r\n                throw Recoil_err('Cannot subscribe to Snapshots');\r\n            }\r\n        }; // Initialize any nodes that are live in the parent store (primarily so that\r\n        // this snapshot gets counted towards the node's live stores count).\r\n        // TODO Optimize this when cloning snapshots for callbacks\r\n        for (var _a = 0, _b = this._store.getState().knownAtoms; _a < _b.length; _a++) {\r\n            var nodeKey = _b[_a];\r\n            initializeNode$1(this._store, nodeKey, 'get');\r\n            updateRetainCount$1(this._store, nodeKey, 1);\r\n        }\r\n        this.autoRelease_INTERNAL();\r\n    }\r\n    Snapshot.prototype.retain = function () {\r\n        var _this = this;\r\n        if (this._refCount <= 0) {\r\n            if (true) {\r\n                throw Recoil_err('Snapshot has already been released.');\r\n            }\r\n            else {}\r\n        }\r\n        this._refCount++;\r\n        var released = false;\r\n        return function () {\r\n            if (!released) {\r\n                released = true;\r\n                _this._release();\r\n            }\r\n        };\r\n    };\r\n    /**\r\n     * Release the snapshot on the next tick.  This means the snapshot is retained\r\n     * during the execution of the current function using it.\r\n     */\r\n    Snapshot.prototype.autoRelease_INTERNAL = function () {\r\n        var _this = this;\r\n        if (!isSSR$1) {\r\n            window.setTimeout(function () { return _this._release(); }, 0);\r\n        }\r\n    };\r\n    Snapshot.prototype._release = function () {\r\n        this._refCount--;\r\n        if (this._refCount === 0) {\r\n            this._store.getState().nodeCleanupFunctions.forEach(function (cleanup) { return cleanup(); });\r\n            this._store.getState().nodeCleanupFunctions.clear();\r\n            if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n                return;\r\n            } // Temporarily nerfing this to allow us to find broken call sites without\r\n            // actually breaking anybody yet.\r\n            // for (const k of this._store.getState().knownAtoms) {\r\n            //   updateRetainCountToZero(this._store, k);\r\n            // }\r\n        }\r\n        else if (this._refCount < 0) {\r\n            if (true) {\r\n                Recoil_recoverableViolation('Snapshot released an extra time.');\r\n            }\r\n        }\r\n    };\r\n    Snapshot.prototype.isRetained = function () {\r\n        return this._refCount > 0;\r\n    };\r\n    Snapshot.prototype.checkRefCount_INTERNAL = function () {\r\n        if (Recoil_gkx('recoil_memory_managament_2020') && this._refCount <= 0) {\r\n            if (true) {\r\n                Recoil_recoverableViolation(retainWarning);\r\n            } // What we will ship later:\r\n            // throw err(retainWarning);\r\n        }\r\n    };\r\n    Snapshot.prototype.getStore_INTERNAL = function () {\r\n        this.checkRefCount_INTERNAL();\r\n        return this._store;\r\n    };\r\n    Snapshot.prototype.getID = function () {\r\n        this.checkRefCount_INTERNAL();\r\n        return this._store.getState().currentTree.stateID;\r\n    };\r\n    Snapshot.prototype.getStoreID = function () {\r\n        this.checkRefCount_INTERNAL();\r\n        return this._store.storeID;\r\n    }; // We want to allow the methods to be destructured and used as accessors\r\n    return Snapshot;\r\n}());\r\nfunction cloneStoreState(store, treeState, bumpVersion) {\r\n    if (bumpVersion === void 0) { bumpVersion = false; }\r\n    var storeState = store.getState();\r\n    var version = bumpVersion ? getNextTreeStateVersion$2() : treeState.version;\r\n    return {\r\n        // Always clone the TreeState to isolate stores from accidental mutations.\r\n        // For example, reading a selector from a cloned snapshot shouldn't cache\r\n        // in the original treestate which may cause the original to skip\r\n        // initialization of upstream atoms.\r\n        currentTree: {\r\n            // TODO snapshots shouldn't really have versions because a new version number\r\n            // is always assigned when the snapshot is gone to.\r\n            version: bumpVersion ? version : treeState.version,\r\n            stateID: bumpVersion ? version : treeState.stateID,\r\n            transactionMetadata: __assign({}, treeState.transactionMetadata),\r\n            dirtyAtoms: new Set(treeState.dirtyAtoms),\r\n            atomValues: treeState.atomValues.clone(),\r\n            nonvalidatedAtoms: treeState.nonvalidatedAtoms.clone()\r\n        },\r\n        commitDepth: 0,\r\n        nextTree: null,\r\n        previousTree: null,\r\n        knownAtoms: new Set(storeState.knownAtoms),\r\n        // FIXME here's a copy\r\n        knownSelectors: new Set(storeState.knownSelectors),\r\n        // FIXME here's a copy\r\n        transactionSubscriptions: new Map(),\r\n        nodeTransactionSubscriptions: new Map(),\r\n        nodeToComponentSubscriptions: new Map(),\r\n        queuedComponentCallbacks_DEPRECATED: [],\r\n        suspendedComponentResolvers: new Set(),\r\n        graphsByVersion: new Map().set(version, store.getGraph(treeState.version)),\r\n        retention: {\r\n            referenceCounts: new Map(),\r\n            nodesRetainedByZone: new Map(),\r\n            retainablesToCheckForRelease: new Set()\r\n        },\r\n        // FIXME here's a copy\r\n        // Create blank cleanup handlers for atoms so snapshots don't re-run\r\n        // atom effects.\r\n        nodeCleanupFunctions: new Map(Recoil_mapIterable(storeState.nodeCleanupFunctions.entries(), function (_a) {\r\n            var key = _a[0];\r\n            return [key, function () { }];\r\n        }))\r\n    };\r\n} // Factory to build a fresh snapshot\r\nfunction freshSnapshot(initializeState) {\r\n    var snapshot = new Snapshot(makeEmptyStoreState$1());\r\n    return initializeState != null ? snapshot.map(initializeState) : snapshot;\r\n} // Factory to clone a snapshot state\r\nvar _a = memoizeOneWithArgsHashAndInvalidation$1(function (store, version) {\r\n    var _storeState$nextTree;\r\n    var storeState = store.getState();\r\n    var treeState = version === 'latest' ? (_storeState$nextTree = storeState.nextTree) !== null && _storeState$nextTree !== void 0 ? _storeState$nextTree : storeState.currentTree : Recoil_nullthrows(storeState.previousTree);\r\n    return new Snapshot(cloneStoreState(store, treeState), store.storeID);\r\n}, function (store, version) {\r\n    var _store$getState$nextT, _store$getState$previ;\r\n    return String(version) + String(store.storeID) + String((_store$getState$nextT = store.getState().nextTree) === null || _store$getState$nextT === void 0 ? void 0 : _store$getState$nextT.version) + String(store.getState().currentTree.version) + String((_store$getState$previ = store.getState().previousTree) === null || _store$getState$previ === void 0 ? void 0 : _store$getState$previ.version);\r\n}), memoizedCloneSnapshot = _a[0], invalidateMemoizedSnapshot$2 = _a[1]; // Avoid circular dependencies\r\nsetInvalidateMemoizedSnapshot$1(invalidateMemoizedSnapshot$2);\r\nfunction cloneSnapshot(store, version) {\r\n    if (version === void 0) { version = 'latest'; }\r\n    var snapshot = memoizedCloneSnapshot(store, version);\r\n    if (!snapshot.isRetained()) {\r\n        invalidateMemoizedSnapshot$2();\r\n        return memoizedCloneSnapshot(store, version);\r\n    }\r\n    return snapshot;\r\n}\r\nvar MutableSnapshot = /** @class */ (function (_super) {\r\n    __extends(MutableSnapshot, _super);\r\n    function MutableSnapshot(snapshot, batch) {\r\n        var _this = _super.call(this, cloneStoreState(snapshot.getStore_INTERNAL(), snapshot.getStore_INTERNAL().getState().currentTree, true), snapshot.getStoreID()) || this;\r\n        _defineProperty(_this, \"_batch\", void 0);\r\n        _defineProperty(_this, \"set\", function (recoilState, newValueOrUpdater) {\r\n            _this.checkRefCount_INTERNAL();\r\n            var store = _this.getStore_INTERNAL(); // This batchUpdates ensures this `set` is applied immediately and you can\r\n            // read the written value after calling `set`. I would like to remove this\r\n            // behavior and only batch in `Snapshot.map`, but this would be a breaking\r\n            // change potentially.\r\n            _this._batch(function () {\r\n                updateRetainCount$1(store, recoilState.key, 1);\r\n                setRecoilValue$1(_this.getStore_INTERNAL(), recoilState, newValueOrUpdater);\r\n            });\r\n        });\r\n        _defineProperty(_this, \"reset\", function (recoilState) {\r\n            _this.checkRefCount_INTERNAL();\r\n            var store = _this.getStore_INTERNAL(); // See note at `set` about batched updates.\r\n            _this._batch(function () {\r\n                updateRetainCount$1(store, recoilState.key, 1);\r\n                setRecoilValue$1(_this.getStore_INTERNAL(), recoilState, DEFAULT_VALUE$1);\r\n            });\r\n        });\r\n        _defineProperty(_this, \"setUnvalidatedAtomValues_DEPRECATED\", function (values) {\r\n            _this.checkRefCount_INTERNAL();\r\n            var store = _this.getStore_INTERNAL(); // See note at `set` about batched updates.\r\n            batchUpdates$1(function () {\r\n                for (var _a = 0, _b = values.entries(); _a < _b.length; _a++) {\r\n                    var _c = _b[_a], k = _c[0], v = _c[1];\r\n                    updateRetainCount$1(store, k, 1);\r\n                    setUnvalidatedRecoilValue$1(store, new AbstractRecoilValue$2(k), v);\r\n                }\r\n            });\r\n        });\r\n        _this._batch = batch;\r\n        return _this;\r\n    } // We want to allow the methods to be destructured and used as accessors\r\n    return MutableSnapshot;\r\n}(Snapshot));\r\nvar Recoil_Snapshot = {\r\n    Snapshot: Snapshot,\r\n    MutableSnapshot: MutableSnapshot,\r\n    freshSnapshot: freshSnapshot,\r\n    cloneSnapshot: cloneSnapshot\r\n};\r\nvar Recoil_Snapshot_1 = Recoil_Snapshot.Snapshot;\r\nvar Recoil_Snapshot_2 = Recoil_Snapshot.MutableSnapshot;\r\nvar Recoil_Snapshot_3 = Recoil_Snapshot.freshSnapshot;\r\nvar Recoil_Snapshot_4 = Recoil_Snapshot.cloneSnapshot;\r\nvar Recoil_Snapshot$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    Snapshot: Recoil_Snapshot_1,\r\n    MutableSnapshot: Recoil_Snapshot_2,\r\n    freshSnapshot: Recoil_Snapshot_3,\r\n    cloneSnapshot: Recoil_Snapshot_4\r\n});\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction unionSets() {\r\n    var sets = [];\r\n    for (var _a = 0; _a < arguments.length; _a++) {\r\n        sets[_a] = arguments[_a];\r\n    }\r\n    var result = new Set();\r\n    for (var _b = 0, sets_1 = sets; _b < sets_1.length; _b++) {\r\n        var set = sets_1[_b];\r\n        for (var _c = 0, set_2 = set; _c < set_2.length; _c++) {\r\n            var value = set_2[_c];\r\n            result.add(value);\r\n        }\r\n    }\r\n    return result;\r\n}\r\nvar Recoil_unionSets = unionSets;\r\nvar useRef = react_1.default.useRef;\r\n/**\r\n * The same as `useRef()` except that if a function is specified then it will\r\n * call that function to get the value to initialize the reference with.\r\n * This is similar to how `useState()` behaves when given a function.  It allows\r\n * the user to avoid generating the initial value for subsequent renders.\r\n * The tradeoff is that to set the reference to a function itself you need to\r\n * nest it: useRefInitOnce(() => () => {...});\r\n */\r\nfunction useRefInitOnce(initialValue) {\r\n    // $FlowExpectedError[incompatible-call]\r\n    var ref = useRef(initialValue);\r\n    if (ref.current === initialValue && typeof initialValue === 'function') {\r\n        // $FlowExpectedError[incompatible-use]\r\n        ref.current = initialValue();\r\n    }\r\n    return ref;\r\n}\r\nvar Recoil_useRefInitOnce = useRefInitOnce;\r\n// @fb-only: const RecoilusagelogEvent = require('RecoilusagelogEvent');\r\n// @fb-only: const RecoilUsageLogFalcoEvent = require('RecoilUsageLogFalcoEvent');\r\n// @fb-only: const URI = require('URI');\r\nvar getNextTreeStateVersion$3 = Recoil_State.getNextTreeStateVersion, makeEmptyStoreState$2 = Recoil_State.makeEmptyStoreState;\r\nvar cleanUpNode$2 = Recoil_FunctionalCore.cleanUpNode, getDownstreamNodes$2 = Recoil_FunctionalCore.getDownstreamNodes, initializeNode$2 = Recoil_FunctionalCore.initializeNode, setNodeValue$2 = Recoil_FunctionalCore.setNodeValue, setUnvalidatedAtomValue_DEPRECATED$1 = Recoil_FunctionalCore.setUnvalidatedAtomValue_DEPRECATED;\r\nvar graph$2 = Recoil_Graph.graph;\r\nvar cloneGraph$1 = Recoil_Graph.cloneGraph;\r\nvar getNextStoreID$2 = Recoil_Keys.getNextStoreID;\r\nvar createMutableSource$1 = Recoil_ReactMode.createMutableSource, reactMode$2 = Recoil_ReactMode.reactMode;\r\nvar applyAtomValueWrites$1 = Recoil_RecoilValueInterface.applyAtomValueWrites;\r\nvar releaseScheduledRetainablesNow$1 = Recoil_Retention.releaseScheduledRetainablesNow;\r\nvar freshSnapshot$1 = Recoil_Snapshot$1.freshSnapshot;\r\nvar useCallback = react_1.default.useCallback, useContext = react_1.default.useContext, useEffect = react_1.default.useEffect, useMemo = react_1.default.useMemo, useRef$1 = react_1.default.useRef, useState = react_1.default.useState;\r\nfunction notInAContext() {\r\n    throw Recoil_err('This component must be used inside a <RecoilRoot> component.');\r\n}\r\nvar defaultStore = Object.freeze({\r\n    storeID: getNextStoreID$2(),\r\n    getState: notInAContext,\r\n    replaceState: notInAContext,\r\n    getGraph: notInAContext,\r\n    subscribeToTransactions: notInAContext,\r\n    addTransactionMetadata: notInAContext\r\n});\r\nvar stateReplacerIsBeingExecuted = false;\r\nfunction startNextTreeIfNeeded(store) {\r\n    if (stateReplacerIsBeingExecuted) {\r\n        throw Recoil_err('An atom update was triggered within the execution of a state updater function. State updater functions provided to Recoil must be pure functions.');\r\n    }\r\n    var storeState = store.getState();\r\n    if (storeState.nextTree === null) {\r\n        if (Recoil_gkx('recoil_memory_managament_2020') && Recoil_gkx('recoil_release_on_cascading_update_killswitch_2021')) {\r\n            // If this is a cascading update (that is, rendering due to one state change\r\n            // invokes a second state change), we won't have cleaned up retainables yet\r\n            // because this normally happens after notifying components. Do it before\r\n            // proceeding with the cascading update so that it remains predictable:\r\n            if (storeState.commitDepth > 0) {\r\n                releaseScheduledRetainablesNow$1(store);\r\n            }\r\n        }\r\n        var version = storeState.currentTree.version;\r\n        var nextVersion = getNextTreeStateVersion$3();\r\n        storeState.nextTree = __assign(__assign({}, storeState.currentTree), { version: nextVersion, stateID: nextVersion, dirtyAtoms: new Set(), transactionMetadata: {} });\r\n        storeState.graphsByVersion.set(nextVersion, cloneGraph$1(Recoil_nullthrows(storeState.graphsByVersion.get(version))));\r\n    }\r\n}\r\nvar AppContext = react_1.default.createContext({\r\n    current: defaultStore\r\n});\r\nvar useStoreRef = function () { return useContext(AppContext); }; // $FlowExpectedError[incompatible-call]\r\nvar MutableSourceContext = react_1.default.createContext(null);\r\nfunction useRecoilMutableSource() {\r\n    var mutableSource = useContext(MutableSourceContext);\r\n    if (mutableSource == null) {\r\n        Recoil_expectationViolation('Attempted to use a Recoil hook outside of a <RecoilRoot>. ' + '<RecoilRoot> must be an ancestor of any component that uses ' + 'Recoil hooks.');\r\n    }\r\n    return mutableSource;\r\n}\r\nfunction notifyComponents(store, storeState, treeState) {\r\n    var dependentNodes = getDownstreamNodes$2(store, treeState, treeState.dirtyAtoms);\r\n    for (var _a = 0, dependentNodes_1 = dependentNodes; _a < dependentNodes_1.length; _a++) {\r\n        var key = dependentNodes_1[_a];\r\n        var comps = storeState.nodeToComponentSubscriptions.get(key);\r\n        if (comps) {\r\n            for (var _b = 0, comps_1 = comps; _b < comps_1.length; _b++) {\r\n                var _c = comps_1[_b], _subID = _c[0], _d = _c[1], _debugName = _d[0], callback = _d[1];\r\n                callback(treeState);\r\n            }\r\n        }\r\n    }\r\n}\r\nfunction sendEndOfBatchNotifications(store) {\r\n    var storeState = store.getState();\r\n    var treeState = storeState.currentTree; // Inform transaction subscribers of the transaction:\r\n    var dirtyAtoms = treeState.dirtyAtoms;\r\n    if (dirtyAtoms.size) {\r\n        // Execute Node-specific subscribers before global subscribers\r\n        for (var _a = 0, _b = storeState.nodeTransactionSubscriptions; _a < _b.length; _a++) {\r\n            var _c = _b[_a], key = _c[0], subscriptions = _c[1];\r\n            if (dirtyAtoms.has(key)) {\r\n                for (var _d = 0, subscriptions_1 = subscriptions; _d < subscriptions_1.length; _d++) {\r\n                    var _e = subscriptions_1[_d], _ = _e[0], subscription = _e[1];\r\n                    subscription(store);\r\n                }\r\n            }\r\n        }\r\n        for (var _f = 0, _g = storeState.transactionSubscriptions; _f < _g.length; _f++) {\r\n            var _h = _g[_f], _ = _h[0], subscription = _h[1];\r\n            subscription(store);\r\n        }\r\n        if (!reactMode$2().early || storeState.suspendedComponentResolvers.size > 0) {\r\n            // Notifying components is needed to wake from suspense, even when using\r\n            // early rendering.\r\n            notifyComponents(store, storeState, treeState); // Wake all suspended components so the right one(s) can try to re-render.\r\n            // We need to wake up components not just when some asynchronous selector\r\n            // resolved, but also when changing synchronous values because this may cause\r\n            // a selector to change from asynchronous to synchronous, in which case there\r\n            // would be no follow-up asynchronous resolution to wake us up.\r\n            // TODO OPTIMIZATION Only wake up related downstream components\r\n            storeState.suspendedComponentResolvers.forEach(function (cb) { return cb(); });\r\n            storeState.suspendedComponentResolvers.clear();\r\n        }\r\n    } // Special behavior ONLY invoked by useInterface.\r\n    // FIXME delete queuedComponentCallbacks_DEPRECATED when deleting useInterface.\r\n    storeState.queuedComponentCallbacks_DEPRECATED.forEach(function (cb) { return cb(treeState); });\r\n    storeState.queuedComponentCallbacks_DEPRECATED.splice(0, storeState.queuedComponentCallbacks_DEPRECATED.length);\r\n}\r\nfunction endBatch(store) {\r\n    var storeState = store.getState();\r\n    storeState.commitDepth++;\r\n    try {\r\n        var nextTree = storeState.nextTree; // Ignore commits that are not because of Recoil transactions -- namely,\r\n        // because something above RecoilRoot re-rendered:\r\n        if (nextTree == null) {\r\n            return;\r\n        } // nextTree is now committed -- note that copying and reset occurs when\r\n        // a transaction begins, in startNextTreeIfNeeded:\r\n        storeState.previousTree = storeState.currentTree;\r\n        storeState.currentTree = nextTree;\r\n        storeState.nextTree = null;\r\n        sendEndOfBatchNotifications(store);\r\n        if (storeState.previousTree != null) {\r\n            storeState.graphsByVersion.delete(storeState.previousTree.version);\r\n        }\r\n        else {\r\n            Recoil_recoverableViolation('Ended batch with no previous state, which is unexpected', 'recoil');\r\n        }\r\n        storeState.previousTree = null;\r\n        if (Recoil_gkx('recoil_memory_managament_2020')) {\r\n            // Only release retainables if there were no writes during the end of the\r\n            // batch.  This avoids releasing something we might be about to use.\r\n            if (nextTree == null) {\r\n                releaseScheduledRetainablesNow$1(store);\r\n            }\r\n        }\r\n    }\r\n    finally {\r\n        storeState.commitDepth--;\r\n    }\r\n}\r\n/*\r\n * The purpose of the Batcher is to observe when React batches end so that\r\n * Recoil state changes can be batched. Whenever Recoil state changes, we call\r\n * setState on the batcher. Then we wait for that change to be committed, which\r\n * signifies the end of the batch. That's when we respond to the Recoil change.\r\n */\r\nfunction Batcher(_a) {\r\n    var setNotifyBatcherOfChange = _a.setNotifyBatcherOfChange;\r\n    var storeRef = useStoreRef();\r\n    var _b = useState([]), setState = _b[1];\r\n    setNotifyBatcherOfChange(function () { return setState({}); });\r\n    useEffect(function () {\r\n        setNotifyBatcherOfChange(function () { return setState({}); }); // If an asynchronous selector resolves after the Batcher is unmounted,\r\n        // notifyBatcherOfChange will still be called. An error gets thrown whenever\r\n        // setState is called after a component is already unmounted, so this sets\r\n        // notifyBatcherOfChange to be a no-op.\r\n        return function () {\r\n            setNotifyBatcherOfChange(function () { });\r\n        };\r\n    }, [setNotifyBatcherOfChange]);\r\n    useEffect(function () {\r\n        // enqueueExecution runs this function immediately; it is only used to\r\n        // manipulate the order of useEffects during tests, since React seems to\r\n        // call useEffect in an unpredictable order sometimes.\r\n        Recoil_Queue.enqueueExecution('Batcher', function () {\r\n            endBatch(storeRef.current);\r\n        });\r\n    });\r\n    return null;\r\n}\r\nif (true) {\r\n    if (typeof window !== 'undefined' && !window.$recoilDebugStates) {\r\n        window.$recoilDebugStates = [];\r\n    }\r\n} // When removing this deprecated function, remove stateBySettingRecoilValue\r\n// which will no longer be needed.\r\nfunction initialStoreState_DEPRECATED(store, initializeState) {\r\n    var initial = makeEmptyStoreState$2();\r\n    initializeState({\r\n        set: function (atom, value) {\r\n            var state = initial.currentTree;\r\n            var writes = setNodeValue$2(store, state, atom.key, value);\r\n            var writtenNodes = new Set(writes.keys());\r\n            var nonvalidatedAtoms = state.nonvalidatedAtoms.clone();\r\n            for (var _a = 0, writtenNodes_1 = writtenNodes; _a < writtenNodes_1.length; _a++) {\r\n                var n = writtenNodes_1[_a];\r\n                nonvalidatedAtoms.delete(n);\r\n            }\r\n            initial.currentTree = __assign(__assign({}, state), { dirtyAtoms: Recoil_unionSets(state.dirtyAtoms, writtenNodes), atomValues: applyAtomValueWrites$1(state.atomValues, writes), \r\n                // NB: PLEASE un-export applyAtomValueWrites when deleting this code\r\n                nonvalidatedAtoms: nonvalidatedAtoms });\r\n        },\r\n        setUnvalidatedAtomValues: function (atomValues) {\r\n            // FIXME replace this with a mutative loop\r\n            atomValues.forEach(function (v, k) {\r\n                initial.currentTree = setUnvalidatedAtomValue_DEPRECATED$1(initial.currentTree, k, v);\r\n            });\r\n        }\r\n    });\r\n    return initial;\r\n} // Initialize state snapshot for <RecoilRoot> for the initializeState prop.\r\n// Atom effect initialization takes precedence over this prop.\r\n// Any atom effects will be run before initialization, but then cleaned up,\r\n// they are then re-run when used as part of rendering.  These semantics are\r\n// compatible with React StrictMode where effects may be re-run multiple times\r\n// but state initialization only happens once the first time.\r\nfunction initialStoreState(initializeState) {\r\n    // Initialize a snapshot and get its store\r\n    var snapshot = freshSnapshot$1(initializeState);\r\n    var storeState = snapshot.getStore_INTERNAL().getState(); // Counteract the snapshot auto-release\r\n    snapshot.retain(); // Cleanup any effects run during initialization and clear the handlers so\r\n    // they will re-initialize if used during rendering.  This allows atom effect\r\n    // initialization to take precedence over initializeState and be compatible\r\n    // with StrictMode semantics.\r\n    storeState.nodeCleanupFunctions.forEach(function (cleanup) { return cleanup(); });\r\n    storeState.nodeCleanupFunctions.clear();\r\n    return storeState;\r\n}\r\nvar nextID = 0;\r\nfunction RecoilRoot_INTERNAL(_a) {\r\n    var initializeState_DEPRECATED = _a.initializeState_DEPRECATED, initializeState = _a.initializeState, storeProp = _a.store_INTERNAL, \r\n    // For use with React \"context bridging\"\r\n    children = _a.children;\r\n    // prettier-ignore\r\n    // @fb-only: useEffect(() => {\r\n    // @fb-only: if (gkx('recoil_usage_logging')) {\r\n    // @fb-only: try {\r\n    // @fb-only: RecoilUsageLogFalcoEvent.log(() => ({\r\n    // @fb-only: type: RecoilusagelogEvent.RECOIL_ROOT_MOUNTED,\r\n    // @fb-only: path: URI.getRequestURI().getPath(),\r\n    // @fb-only: }));\r\n    // @fb-only: } catch {\r\n    // @fb-only: recoverableViolation(\r\n    // @fb-only: 'Error when logging Recoil Usage event',\r\n    // @fb-only: 'recoil',\r\n    // @fb-only: );\r\n    // @fb-only: }\r\n    // @fb-only: }\r\n    // @fb-only: }, []);\r\n    var storeStateRef; // eslint-disable-line prefer-const\r\n    var getGraph = function (version) {\r\n        var graphs = storeStateRef.current.graphsByVersion;\r\n        if (graphs.has(version)) {\r\n            return Recoil_nullthrows(graphs.get(version));\r\n        }\r\n        var newGraph = graph$2();\r\n        graphs.set(version, newGraph);\r\n        return newGraph;\r\n    };\r\n    var subscribeToTransactions = function (callback, key) {\r\n        if (key == null) {\r\n            // Global transaction subscriptions\r\n            var transactionSubscriptions_1 = storeRef.current.getState().transactionSubscriptions;\r\n            var id_1 = nextID++;\r\n            transactionSubscriptions_1.set(id_1, callback);\r\n            return {\r\n                release: function () {\r\n                    transactionSubscriptions_1.delete(id_1);\r\n                }\r\n            };\r\n        }\r\n        else {\r\n            // Node-specific transaction subscriptions:\r\n            var nodeTransactionSubscriptions_1 = storeRef.current.getState().nodeTransactionSubscriptions;\r\n            if (!nodeTransactionSubscriptions_1.has(key)) {\r\n                nodeTransactionSubscriptions_1.set(key, new Map());\r\n            }\r\n            var id_2 = nextID++;\r\n            Recoil_nullthrows(nodeTransactionSubscriptions_1.get(key)).set(id_2, callback);\r\n            return {\r\n                release: function () {\r\n                    var subs = nodeTransactionSubscriptions_1.get(key);\r\n                    if (subs) {\r\n                        subs.delete(id_2);\r\n                        if (subs.size === 0) {\r\n                            nodeTransactionSubscriptions_1.delete(key);\r\n                        }\r\n                    }\r\n                }\r\n            };\r\n        }\r\n    };\r\n    var addTransactionMetadata = function (metadata) {\r\n        startNextTreeIfNeeded(storeRef.current);\r\n        for (var _a = 0, _b = Object.keys(metadata); _a < _b.length; _a++) {\r\n            var k = _b[_a];\r\n            Recoil_nullthrows(storeRef.current.getState().nextTree).transactionMetadata[k] = metadata[k];\r\n        }\r\n    };\r\n    var replaceState = function (replacer) {\r\n        startNextTreeIfNeeded(storeRef.current); // Use replacer to get the next state:\r\n        var nextTree = Recoil_nullthrows(storeStateRef.current.nextTree);\r\n        var replaced;\r\n        try {\r\n            stateReplacerIsBeingExecuted = true;\r\n            replaced = replacer(nextTree);\r\n        }\r\n        finally {\r\n            stateReplacerIsBeingExecuted = false;\r\n        }\r\n        if (replaced === nextTree) {\r\n            return;\r\n        }\r\n        if (true) {\r\n            if (typeof window !== 'undefined') {\r\n                window.$recoilDebugStates.push(replaced); // TODO this shouldn't happen here because it's not batched\r\n            }\r\n        } // Save changes to nextTree and schedule a React update:\r\n        storeStateRef.current.nextTree = replaced;\r\n        if (reactMode$2().early) {\r\n            notifyComponents(storeRef.current, storeStateRef.current, replaced);\r\n        }\r\n        Recoil_nullthrows(notifyBatcherOfChange.current)();\r\n    };\r\n    var notifyBatcherOfChange = useRef$1(null);\r\n    var setNotifyBatcherOfChange = useCallback(function (x) {\r\n        notifyBatcherOfChange.current = x;\r\n    }, [notifyBatcherOfChange]);\r\n    var storeRef = Recoil_useRefInitOnce(function () { return storeProp !== null && storeProp !== void 0 ? storeProp : {\r\n        storeID: getNextStoreID$2(),\r\n        getState: function () { return storeStateRef.current; },\r\n        replaceState: replaceState,\r\n        getGraph: getGraph,\r\n        subscribeToTransactions: subscribeToTransactions,\r\n        addTransactionMetadata: addTransactionMetadata\r\n    }; });\r\n    if (storeProp != null) {\r\n        storeRef.current = storeProp;\r\n    }\r\n    storeStateRef = Recoil_useRefInitOnce(function () { return initializeState_DEPRECATED != null ? initialStoreState_DEPRECATED(storeRef.current, initializeState_DEPRECATED) : initializeState != null ? initialStoreState(initializeState) : makeEmptyStoreState$2(); });\r\n    var mutableSource = useMemo(function () { return createMutableSource$1 === null || createMutableSource$1 === void 0 ? void 0 : createMutableSource$1(storeStateRef, function () { return storeStateRef.current.currentTree.version; }); }, [storeStateRef]); // Cleanup when the <RecoilRoot> is unmounted\r\n    useEffect(function () {\r\n        // React is free to call effect cleanup handlers and effects at will, the\r\n        // deps array is only an optimization.  For example, React strict mode\r\n        // will execute each effect twice for testing.  Therefore, we need symmetry\r\n        // to re-initialize all known atoms after they were cleaned up.\r\n        var store = storeRef.current;\r\n        for (var _a = 0, _b = new Set(store.getState().knownAtoms); _a < _b.length; _a++) {\r\n            var atomKey = _b[_a];\r\n            initializeNode$2(store, atomKey, 'get');\r\n        }\r\n        return function () {\r\n            for (var _a = 0, _b = store.getState().knownAtoms; _a < _b.length; _a++) {\r\n                var atomKey = _b[_a];\r\n                cleanUpNode$2(store, atomKey);\r\n            }\r\n        };\r\n    }, [storeRef]);\r\n    return /*#__PURE__*/ react_1.default.createElement(AppContext.Provider, {\r\n        value: storeRef\r\n    }, /*#__PURE__*/ react_1.default.createElement(MutableSourceContext.Provider, {\r\n        value: mutableSource\r\n    }, /*#__PURE__*/ react_1.default.createElement(Batcher, {\r\n        setNotifyBatcherOfChange: setNotifyBatcherOfChange\r\n    }), children));\r\n}\r\nfunction RecoilRoot(props) {\r\n    var override = props.override, propsExceptOverride = __rest(props, [\"override\"]);\r\n    var ancestorStoreRef = useStoreRef();\r\n    if (override === false && ancestorStoreRef.current !== defaultStore) {\r\n        // If ancestorStoreRef.current !== defaultStore, it means that this\r\n        // RecoilRoot is not nested within another.\r\n        return props.children;\r\n    }\r\n    return /*#__PURE__*/ react_1.default.createElement(RecoilRoot_INTERNAL, propsExceptOverride);\r\n}\r\nfunction useRecoilStoreID() {\r\n    return useStoreRef().current.storeID;\r\n}\r\nvar Recoil_RecoilRoot = {\r\n    RecoilRoot: RecoilRoot,\r\n    useStoreRef: useStoreRef,\r\n    useRecoilMutableSource: useRecoilMutableSource,\r\n    useRecoilStoreID: useRecoilStoreID,\r\n    notifyComponents_FOR_TESTING: notifyComponents,\r\n    sendEndOfBatchNotifications_FOR_TESTING: sendEndOfBatchNotifications\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction shallowArrayEqual(a, b) {\r\n    if (a === b) {\r\n        return true;\r\n    }\r\n    if (a.length !== b.length) {\r\n        return false;\r\n    }\r\n    for (var i = 0, l = a.length; i < l; i++) {\r\n        if (a[i] !== b[i]) {\r\n            return false;\r\n        }\r\n    }\r\n    return true;\r\n}\r\nvar Recoil_shallowArrayEqual = shallowArrayEqual;\r\nvar useEffect$1 = react_1.default.useEffect, useRef$2 = react_1.default.useRef;\r\nfunction usePrevious(value) {\r\n    var ref = useRef$2();\r\n    useEffect$1(function () {\r\n        ref.current = value;\r\n    });\r\n    return ref.current;\r\n}\r\nvar Recoil_usePrevious = usePrevious;\r\nvar useStoreRef$1 = Recoil_RecoilRoot.useStoreRef;\r\nvar SUSPENSE_TIMEOUT_MS$1 = Recoil_Retention.SUSPENSE_TIMEOUT_MS;\r\nvar updateRetainCount$2 = Recoil_Retention.updateRetainCount;\r\nvar RetentionZone$3 = Recoil_RetentionZone.RetentionZone;\r\nvar useEffect$2 = react_1.default.useEffect, useRef$3 = react_1.default.useRef;\r\nvar isSSR$2 = Recoil_Environment.isSSR;\r\n// I don't see a way to avoid the any type here because we want to accept readable\r\n// and writable values with any type parameter, but normally with writable ones\r\n// RecoilState<SomeT> is not a subtype of RecoilState<mixed>.\r\n// flowlint-line unclear-type:off\r\nfunction useRetain(toRetain) {\r\n    if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n        return;\r\n    } // eslint-disable-next-line fb-www/react-hooks\r\n    return useRetain_ACTUAL(toRetain);\r\n}\r\nfunction useRetain_ACTUAL(toRetain) {\r\n    var array = Array.isArray(toRetain) ? toRetain : [toRetain];\r\n    var retainables = array.map(function (a) { return a instanceof RetentionZone$3 ? a : a.key; });\r\n    var storeRef = useStoreRef$1();\r\n    useEffect$2(function () {\r\n        if (!Recoil_gkx('recoil_memory_managament_2020')) {\r\n            return;\r\n        }\r\n        var store = storeRef.current;\r\n        if (timeoutID.current && !isSSR$2) {\r\n            // Already performed a temporary retain on render, simply cancel the release\r\n            // of that temporary retain.\r\n            window.clearTimeout(timeoutID.current);\r\n            timeoutID.current = null;\r\n        }\r\n        else {\r\n            for (var _a = 0, retainables_3 = retainables; _a < retainables_3.length; _a++) {\r\n                var r = retainables_3[_a];\r\n                updateRetainCount$2(store, r, 1);\r\n            }\r\n        }\r\n        return function () {\r\n            for (var _a = 0, retainables_4 = retainables; _a < retainables_4.length; _a++) {\r\n                var r = retainables_4[_a];\r\n                updateRetainCount$2(store, r, -1);\r\n            }\r\n        }; // eslint-disable-next-line fb-www/react-hooks-deps\r\n    }, __spreadArray([storeRef], retainables)); // We want to retain if the component suspends. This is terrible but the Suspense\r\n    // API affords us no better option. If we suspend and never commit after some\r\n    // seconds, then release. The 'actual' retain/release in the effect above\r\n    // cancels this.\r\n    var timeoutID = useRef$3();\r\n    var previousRetainables = Recoil_usePrevious(retainables);\r\n    if (!isSSR$2 && (previousRetainables === undefined || !Recoil_shallowArrayEqual(previousRetainables, retainables))) {\r\n        var store_1 = storeRef.current;\r\n        for (var _a = 0, retainables_2 = retainables; _a < retainables_2.length; _a++) {\r\n            var r = retainables_2[_a];\r\n            updateRetainCount$2(store_1, r, 1);\r\n        }\r\n        if (previousRetainables) {\r\n            for (var _b = 0, previousRetainables_1 = previousRetainables; _b < previousRetainables_1.length; _b++) {\r\n                var r = previousRetainables_1[_b];\r\n                updateRetainCount$2(store_1, r, -1);\r\n            }\r\n        }\r\n        if (timeoutID.current) {\r\n            window.clearTimeout(timeoutID.current);\r\n        }\r\n        timeoutID.current = window.setTimeout(function () {\r\n            timeoutID.current = null;\r\n            for (var _a = 0, retainables_5 = retainables; _a < retainables_5.length; _a++) {\r\n                var r = retainables_5[_a];\r\n                updateRetainCount$2(store_1, r, -1);\r\n            }\r\n        }, SUSPENSE_TIMEOUT_MS$1);\r\n    }\r\n}\r\nvar Recoil_useRetain = useRetain;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * THIS CODE HAS BEEN COMMENTED OUT INTENTIONALLY\r\n *\r\n * This technique of getting the component name is imperfect, since it both only\r\n * works in a non-minified code base, and more importantly introduces performance\r\n * problems since it relies in throwing errors which is an expensive operation.\r\n *\r\n * At some point we may want to reevaluate this technique hence why we have commented\r\n * this code out, rather than delete it all together.\r\n */\r\n// const {useRef} = require('react');\r\n// const gkx = require('recoil-shared/util/Recoil_gkx');\r\n// const stackTraceParser = require('recoil-shared/util/Recoil_stackTraceParser');\r\nfunction useComponentName() {\r\n    // const nameRef = useRef();\r\n    // if (__DEV__) {\r\n    //   if (gkx('recoil_infer_component_names')) {\r\n    //     if (nameRef.current === undefined) {\r\n    //       // There is no blessed way to determine the calling React component from\r\n    //       // within a hook. This hack uses the fact that hooks must start with 'use'\r\n    //       // and that hooks are either called by React Components or other hooks. It\r\n    //       // follows therefore, that to find the calling component, you simply need\r\n    //       // to look down the stack and find the first function which doesn't start\r\n    //       // with 'use'. We are only enabling this in dev for now, since once the\r\n    //       // codebase is minified, the naming assumptions no longer hold true.\r\n    //       // eslint-disable-next-line fb-www/no-new-error\r\n    //       const frames = stackTraceParser(new Error().stack);\r\n    //       for (const {methodName} of frames) {\r\n    //         // I observed cases where the frame was of the form 'Object.useXXX'\r\n    //         // hence why I'm searching for hooks following a word boundary\r\n    //         if (!methodName.match(/\\buse[^\\b]+$/)) {\r\n    //           return (nameRef.current = methodName);\r\n    //         }\r\n    //       }\r\n    //       nameRef.current = null;\r\n    //     }\r\n    //     return nameRef.current ?? '<unable to determine component name>';\r\n    //   }\r\n    // }\r\n    // @fb-only: return \"<component name only available when both in dev mode and when passing GK 'recoil_infer_component_names'>\";\r\n    return '<component name not available>'; // @oss-only\r\n}\r\nvar Recoil_useComponentName = useComponentName;\r\nvar batchUpdates$2 = Recoil_Batching.batchUpdates;\r\nvar DEFAULT_VALUE$2 = Recoil_Node.DEFAULT_VALUE;\r\nvar reactMode$3 = Recoil_ReactMode.reactMode, useMutableSource$1 = Recoil_ReactMode.useMutableSource, useSyncExternalStore$1 = Recoil_ReactMode.useSyncExternalStore;\r\nvar useRecoilMutableSource$1 = Recoil_RecoilRoot.useRecoilMutableSource, useStoreRef$2 = Recoil_RecoilRoot.useStoreRef;\r\nvar isRecoilValue$2 = Recoil_RecoilValue$1.isRecoilValue;\r\nvar AbstractRecoilValue$3 = Recoil_RecoilValueInterface.AbstractRecoilValue, getRecoilValueAsLoadable$2 = Recoil_RecoilValueInterface.getRecoilValueAsLoadable, setRecoilValue$2 = Recoil_RecoilValueInterface.setRecoilValue, setUnvalidatedRecoilValue$2 = Recoil_RecoilValueInterface.setUnvalidatedRecoilValue, subscribeToRecoilValue$1 = Recoil_RecoilValueInterface.subscribeToRecoilValue;\r\nvar useCallback$1 = react_1.default.useCallback, useEffect$3 = react_1.default.useEffect, useMemo$1 = react_1.default.useMemo, useRef$4 = react_1.default.useRef, useState$1 = react_1.default.useState;\r\nvar setByAddingToSet$2 = Recoil_CopyOnWrite.setByAddingToSet;\r\nfunction handleLoadable(loadable, recoilValue, storeRef) {\r\n    // We can't just throw the promise we are waiting on to Suspense.  If the\r\n    // upstream dependencies change it may produce a state in which the component\r\n    // can render, but it would still be suspended on a Promise that may never resolve.\r\n    if (loadable.state === 'hasValue') {\r\n        return loadable.contents;\r\n    }\r\n    else if (loadable.state === 'loading') {\r\n        var promise = new Promise(function (resolve) {\r\n            storeRef.current.getState().suspendedComponentResolvers.add(resolve);\r\n        }); // $FlowExpectedError Flow(prop-missing) for integrating with tools that inspect thrown promises @fb-only\r\n        // @fb-only: promise.displayName = `Recoil State: ${recoilValue.key}`;\r\n        throw promise;\r\n    }\r\n    else if (loadable.state === 'hasError') {\r\n        throw loadable.contents;\r\n    }\r\n    else {\r\n        throw Recoil_err(\"Invalid value of loadable atom \\\"\" + recoilValue.key + \"\\\"\");\r\n    }\r\n}\r\nfunction validateRecoilValue(recoilValue, hookName) {\r\n    if (!isRecoilValue$2(recoilValue)) {\r\n        throw Recoil_err(\"Invalid argument to \" + hookName + \": expected an atom or selector but got \" + String(recoilValue));\r\n    }\r\n}\r\n/**\r\n * Various things are broken with useRecoilInterface, particularly concurrent\r\n * mode, React strict mode, and memory management. They will not be fixed.\r\n * */\r\nfunction useRecoilInterface_DEPRECATED() {\r\n    var componentName = Recoil_useComponentName();\r\n    var storeRef = useStoreRef$2();\r\n    var _a = useState$1([]), forceUpdate = _a[1];\r\n    var recoilValuesUsed = useRef$4(new Set());\r\n    recoilValuesUsed.current = new Set(); // Track the RecoilValues used just during this render\r\n    var previousSubscriptions = useRef$4(new Set());\r\n    var subscriptions = useRef$4(new Map());\r\n    var unsubscribeFrom = useCallback$1(function (key) {\r\n        var sub = subscriptions.current.get(key);\r\n        if (sub) {\r\n            sub.release();\r\n            subscriptions.current.delete(key);\r\n        }\r\n    }, [subscriptions]);\r\n    var updateState = useCallback$1(function (_state, key) {\r\n        if (subscriptions.current.has(key)) {\r\n            forceUpdate([]);\r\n        }\r\n    }, []); // Effect to add/remove subscriptions as nodes are used\r\n    useEffect$3(function () {\r\n        var store = storeRef.current;\r\n        Recoil_differenceSets(recoilValuesUsed.current, previousSubscriptions.current).forEach(function (key) {\r\n            if (subscriptions.current.has(key)) {\r\n                Recoil_expectationViolation(\"Double subscription to RecoilValue \\\"\" + key + \"\\\"\");\r\n                return;\r\n            }\r\n            var sub = subscribeToRecoilValue$1(store, new AbstractRecoilValue$3(key), function (state) { return updateState(state, key); }, componentName);\r\n            subscriptions.current.set(key, sub);\r\n            /**\r\n             * Since we're subscribing in an effect we need to update to the latest\r\n             * value of the atom since it may have changed since we rendered. We can\r\n             * go ahead and do that now, unless we're in the middle of a batch --\r\n             * in which case we should do it at the end of the batch, due to the\r\n             * following edge case: Suppose an atom is updated in another useEffect\r\n             * of this same component. Then the following sequence of events occur:\r\n             * 1. Atom is updated and subs fired (but we may not be subscribed\r\n             *    yet depending on order of effects, so we miss this) Updated value\r\n             *    is now in nextTree, but not currentTree.\r\n             * 2. This effect happens. We subscribe and update.\r\n             * 3. From the update we re-render and read currentTree, with old value.\r\n             * 4. Batcher's effect sets currentTree to nextTree.\r\n             * In this sequence we miss the update. To avoid that, add the update\r\n             * to queuedComponentCallback if a batch is in progress.\r\n             */\r\n            // FIXME delete queuedComponentCallbacks_DEPRECATED when deleting useInterface.\r\n            var state = store.getState();\r\n            if (state.nextTree) {\r\n                store.getState().queuedComponentCallbacks_DEPRECATED.push(function () {\r\n                    updateState(store.getState(), key);\r\n                });\r\n            }\r\n            else {\r\n                updateState(store.getState(), key);\r\n            }\r\n        });\r\n        Recoil_differenceSets(previousSubscriptions.current, recoilValuesUsed.current).forEach(function (key) {\r\n            unsubscribeFrom(key);\r\n        });\r\n        previousSubscriptions.current = recoilValuesUsed.current;\r\n    }); // Effect to unsubscribe from all when unmounting\r\n    useEffect$3(function () {\r\n        var currentSubscriptions = subscriptions.current; // Restore subscriptions that were cleared due to StrictMode running this effect twice\r\n        Recoil_differenceSets(recoilValuesUsed.current, new Set(currentSubscriptions.keys())).forEach(function (key) {\r\n            var sub = subscribeToRecoilValue$1(storeRef.current, new AbstractRecoilValue$3(key), function (state) { return updateState(state, key); }, componentName);\r\n            currentSubscriptions.set(key, sub);\r\n        });\r\n        return function () { return currentSubscriptions.forEach(function (_, key) { return unsubscribeFrom(key); }); };\r\n    }, [componentName, storeRef, unsubscribeFrom, updateState]);\r\n    return useMemo$1(function () {\r\n        // eslint-disable-next-line no-shadow\r\n        function useSetRecoilState(recoilState) {\r\n            if (true) {\r\n                validateRecoilValue(recoilState, 'useSetRecoilState');\r\n            }\r\n            return function (newValueOrUpdater) {\r\n                setRecoilValue$2(storeRef.current, recoilState, newValueOrUpdater);\r\n            };\r\n        } // eslint-disable-next-line no-shadow\r\n        function useResetRecoilState(recoilState) {\r\n            if (true) {\r\n                validateRecoilValue(recoilState, 'useResetRecoilState');\r\n            }\r\n            return function () { return setRecoilValue$2(storeRef.current, recoilState, DEFAULT_VALUE$2); };\r\n        } // eslint-disable-next-line no-shadow\r\n        function useRecoilValueLoadable(recoilValue) {\r\n            var _storeState$nextTree;\r\n            if (true) {\r\n                validateRecoilValue(recoilValue, 'useRecoilValueLoadable');\r\n            }\r\n            if (!recoilValuesUsed.current.has(recoilValue.key)) {\r\n                recoilValuesUsed.current = setByAddingToSet$2(recoilValuesUsed.current, recoilValue.key);\r\n            } // TODO Restore optimization to memoize lookup\r\n            var storeState = storeRef.current.getState();\r\n            return getRecoilValueAsLoadable$2(storeRef.current, recoilValue, reactMode$3().early ? (_storeState$nextTree = storeState.nextTree) !== null && _storeState$nextTree !== void 0 ? _storeState$nextTree : storeState.currentTree : storeState.currentTree);\r\n        } // eslint-disable-next-line no-shadow\r\n        function useRecoilValue(recoilValue) {\r\n            if (true) {\r\n                validateRecoilValue(recoilValue, 'useRecoilValue');\r\n            }\r\n            var loadable = useRecoilValueLoadable(recoilValue);\r\n            return handleLoadable(loadable, recoilValue, storeRef);\r\n        } // eslint-disable-next-line no-shadow\r\n        function useRecoilState(recoilState) {\r\n            if (true) {\r\n                validateRecoilValue(recoilState, 'useRecoilState');\r\n            }\r\n            return [useRecoilValue(recoilState), useSetRecoilState(recoilState)];\r\n        } // eslint-disable-next-line no-shadow\r\n        function useRecoilStateLoadable(recoilState) {\r\n            if (true) {\r\n                validateRecoilValue(recoilState, 'useRecoilStateLoadable');\r\n            }\r\n            return [useRecoilValueLoadable(recoilState), useSetRecoilState(recoilState)];\r\n        }\r\n        return {\r\n            getRecoilValue: useRecoilValue,\r\n            getRecoilValueLoadable: useRecoilValueLoadable,\r\n            getRecoilState: useRecoilState,\r\n            getRecoilStateLoadable: useRecoilStateLoadable,\r\n            getSetRecoilState: useSetRecoilState,\r\n            getResetRecoilState: useResetRecoilState\r\n        };\r\n    }, [recoilValuesUsed, storeRef]);\r\n}\r\nvar recoilComponentGetRecoilValueCount_FOR_TESTING = {\r\n    current: 0\r\n};\r\nfunction useRecoilValueLoadable_SYNC_EXTERNAL_STORE(recoilValue) {\r\n    var storeRef = useStoreRef$2();\r\n    var componentName = Recoil_useComponentName();\r\n    var getSnapshot = useCallback$1(function () {\r\n        var _storeState$nextTree2;\r\n        if (true) {\r\n            recoilComponentGetRecoilValueCount_FOR_TESTING.current++;\r\n        }\r\n        var store = storeRef.current;\r\n        var storeState = store.getState();\r\n        var treeState = reactMode$3().early ? (_storeState$nextTree2 = storeState.nextTree) !== null && _storeState$nextTree2 !== void 0 ? _storeState$nextTree2 : storeState.currentTree : storeState.currentTree;\r\n        var loadable = getRecoilValueAsLoadable$2(store, recoilValue, treeState);\r\n        return {\r\n            loadable: loadable,\r\n            key: recoilValue.key\r\n        };\r\n    }, [storeRef, recoilValue]); // Memoize the state to avoid unnecessary rerenders\r\n    var memoizePreviousSnapshot = useCallback$1(function (getState) {\r\n        var prevState;\r\n        return function () {\r\n            var _prevState, _prevState2;\r\n            var nextState = getState();\r\n            if ((_prevState = prevState) !== null && _prevState !== void 0 && _prevState.loadable.is(nextState.loadable) && ((_prevState2 = prevState) === null || _prevState2 === void 0 ? void 0 : _prevState2.key) === nextState.key) {\r\n                return prevState;\r\n            }\r\n            prevState = nextState;\r\n            return nextState;\r\n        };\r\n    }, []);\r\n    var getMemoizedSnapshot = useMemo$1(function () { return memoizePreviousSnapshot(getSnapshot); }, [getSnapshot, memoizePreviousSnapshot]);\r\n    var subscribe = useCallback$1(function (notify) {\r\n        var store = storeRef.current;\r\n        var subscription = subscribeToRecoilValue$1(store, recoilValue, notify, componentName);\r\n        return subscription.release;\r\n    }, [storeRef, recoilValue, componentName]);\r\n    return useSyncExternalStore$1(subscribe, getMemoizedSnapshot, // getSnapshot()\r\n    getMemoizedSnapshot // getServerSnapshot() for SSR support\r\n    ).loadable;\r\n}\r\nfunction useRecoilValueLoadable_MUTABLE_SOURCE(recoilValue) {\r\n    var storeRef = useStoreRef$2();\r\n    var getLoadable = useCallback$1(function () {\r\n        var _storeState$nextTree3;\r\n        var store = storeRef.current;\r\n        var storeState = store.getState();\r\n        var treeState = reactMode$3().early ? (_storeState$nextTree3 = storeState.nextTree) !== null && _storeState$nextTree3 !== void 0 ? _storeState$nextTree3 : storeState.currentTree : storeState.currentTree;\r\n        return getRecoilValueAsLoadable$2(store, recoilValue, treeState);\r\n    }, [storeRef, recoilValue]);\r\n    var getLoadableWithTesting = useCallback$1(function () {\r\n        if (true) {\r\n            recoilComponentGetRecoilValueCount_FOR_TESTING.current++;\r\n        }\r\n        return getLoadable();\r\n    }, [getLoadable]);\r\n    var componentName = Recoil_useComponentName();\r\n    var subscribe = useCallback$1(function (_storeState, notify) {\r\n        var store = storeRef.current;\r\n        var subscription = subscribeToRecoilValue$1(store, recoilValue, function () {\r\n            if (!Recoil_gkx('recoil_suppress_rerender_in_callback')) {\r\n                return notify();\r\n            } // Only re-render if the value has changed.\r\n            // This will evaluate the atom/selector now as well as when the\r\n            // component renders, but that may help with prefetching.\r\n            var newLoadable = getLoadable();\r\n            if (!prevLoadableRef.current.is(newLoadable)) {\r\n                notify();\r\n            } // If the component is suspended then the effect setting prevLoadableRef\r\n            // will not run.  So, set the previous value here when its subscription\r\n            // is fired to wake it up.  We can't just rely on this, though, because\r\n            // this only executes when an atom/selector is dirty and the atom/selector\r\n            // passed to the hook can dynamically change.\r\n            prevLoadableRef.current = newLoadable;\r\n        }, componentName);\r\n        return subscription.release;\r\n    }, [storeRef, recoilValue, componentName, getLoadable]);\r\n    var source = useRecoilMutableSource$1();\r\n    if (source == null) {\r\n        throw Recoil_err('Recoil hooks must be used in components contained within a <RecoilRoot> component.');\r\n    }\r\n    var loadable = useMutableSource$1(source, getLoadableWithTesting, subscribe);\r\n    var prevLoadableRef = useRef$4(loadable);\r\n    useEffect$3(function () {\r\n        prevLoadableRef.current = loadable;\r\n    });\r\n    return loadable;\r\n}\r\nfunction useRecoilValueLoadable_TRANSITION_SUPPORT(recoilValue) {\r\n    var storeRef = useStoreRef$2();\r\n    var componentName = Recoil_useComponentName(); // Accessors to get the current state\r\n    var getLoadable = useCallback$1(function () {\r\n        var _storeState$nextTree4;\r\n        if (true) {\r\n            recoilComponentGetRecoilValueCount_FOR_TESTING.current++;\r\n        }\r\n        var store = storeRef.current;\r\n        var storeState = store.getState();\r\n        var treeState = reactMode$3().early ? (_storeState$nextTree4 = storeState.nextTree) !== null && _storeState$nextTree4 !== void 0 ? _storeState$nextTree4 : storeState.currentTree : storeState.currentTree;\r\n        return getRecoilValueAsLoadable$2(store, recoilValue, treeState);\r\n    }, [storeRef, recoilValue]);\r\n    var getState = useCallback$1(function () { return ({\r\n        loadable: getLoadable(),\r\n        key: recoilValue.key\r\n    }); }, [getLoadable, recoilValue.key]); // Memoize state snapshots\r\n    var updateState = useCallback$1(function (prevState) {\r\n        var nextState = getState();\r\n        return prevState.loadable.is(nextState.loadable) && prevState.key === nextState.key ? prevState : nextState;\r\n    }, [getState]); // Subscribe to Recoil state changes\r\n    useEffect$3(function () {\r\n        var subscription = subscribeToRecoilValue$1(storeRef.current, recoilValue, function (_state) {\r\n            setState(updateState);\r\n        }, componentName); // Update state in case we are using a different key\r\n        setState(updateState);\r\n        return subscription.release;\r\n    }, [componentName, recoilValue, storeRef, updateState]); // Get the current state\r\n    var _a = useState$1(getState), state = _a[0], setState = _a[1]; // If we changed keys, then return the state for the new key.\r\n    // This is important in case the old key would cause the component to suspend.\r\n    // We don't have to set the new state here since the subscribing effect above\r\n    // will do that.\r\n    return state.key !== recoilValue.key ? getState().loadable : state.loadable;\r\n}\r\nfunction useRecoilValueLoadable_LEGACY(recoilValue) {\r\n    var storeRef = useStoreRef$2();\r\n    var _a = useState$1([]), forceUpdate = _a[1];\r\n    var componentName = Recoil_useComponentName();\r\n    var getLoadable = useCallback$1(function () {\r\n        var _storeState$nextTree5;\r\n        if (true) {\r\n            recoilComponentGetRecoilValueCount_FOR_TESTING.current++;\r\n        }\r\n        var store = storeRef.current;\r\n        var storeState = store.getState();\r\n        var treeState = reactMode$3().early ? (_storeState$nextTree5 = storeState.nextTree) !== null && _storeState$nextTree5 !== void 0 ? _storeState$nextTree5 : storeState.currentTree : storeState.currentTree;\r\n        return getRecoilValueAsLoadable$2(store, recoilValue, treeState);\r\n    }, [storeRef, recoilValue]);\r\n    var loadable = getLoadable();\r\n    var prevLoadableRef = useRef$4(loadable);\r\n    useEffect$3(function () {\r\n        prevLoadableRef.current = loadable;\r\n    });\r\n    useEffect$3(function () {\r\n        var store = storeRef.current;\r\n        var storeState = store.getState();\r\n        var subscription = subscribeToRecoilValue$1(store, recoilValue, function (_state) {\r\n            var _prevLoadableRef$curr;\r\n            if (!Recoil_gkx('recoil_suppress_rerender_in_callback')) {\r\n                return forceUpdate([]);\r\n            }\r\n            var newLoadable = getLoadable();\r\n            if (!((_prevLoadableRef$curr = prevLoadableRef.current) !== null && _prevLoadableRef$curr !== void 0 && _prevLoadableRef$curr.is(newLoadable))) {\r\n                forceUpdate(newLoadable);\r\n            }\r\n            prevLoadableRef.current = newLoadable;\r\n        }, componentName);\r\n        /**\r\n         * Since we're subscribing in an effect we need to update to the latest\r\n         * value of the atom since it may have changed since we rendered. We can\r\n         * go ahead and do that now, unless we're in the middle of a batch --\r\n         * in which case we should do it at the end of the batch, due to the\r\n         * following edge case: Suppose an atom is updated in another useEffect\r\n         * of this same component. Then the following sequence of events occur:\r\n         * 1. Atom is updated and subs fired (but we may not be subscribed\r\n         *    yet depending on order of effects, so we miss this) Updated value\r\n         *    is now in nextTree, but not currentTree.\r\n         * 2. This effect happens. We subscribe and update.\r\n         * 3. From the update we re-render and read currentTree, with old value.\r\n         * 4. Batcher's effect sets currentTree to nextTree.\r\n         * In this sequence we miss the update. To avoid that, add the update\r\n         * to queuedComponentCallback if a batch is in progress.\r\n         */\r\n        if (storeState.nextTree) {\r\n            store.getState().queuedComponentCallbacks_DEPRECATED.push(function () {\r\n                prevLoadableRef.current = null;\r\n                forceUpdate([]);\r\n            });\r\n        }\r\n        else {\r\n            var _prevLoadableRef$curr2;\r\n            if (!Recoil_gkx('recoil_suppress_rerender_in_callback')) {\r\n                return forceUpdate([]);\r\n            }\r\n            var newLoadable = getLoadable();\r\n            if (!((_prevLoadableRef$curr2 = prevLoadableRef.current) !== null && _prevLoadableRef$curr2 !== void 0 && _prevLoadableRef$curr2.is(newLoadable))) {\r\n                forceUpdate(newLoadable);\r\n            }\r\n            prevLoadableRef.current = newLoadable;\r\n        }\r\n        return subscription.release;\r\n    }, [componentName, getLoadable, recoilValue, storeRef]);\r\n    return loadable;\r\n}\r\n/**\r\n  Like useRecoilValue(), but either returns the value if available or\r\n  just undefined if not available for any reason, such as pending or error.\r\n*/\r\nfunction useRecoilValueLoadable(recoilValue) {\r\n    if (true) {\r\n        validateRecoilValue(recoilValue, 'useRecoilValueLoadable');\r\n    }\r\n    if (Recoil_gkx('recoil_memory_managament_2020')) {\r\n        // eslint-disable-next-line fb-www/react-hooks\r\n        Recoil_useRetain(recoilValue);\r\n    }\r\n    return {\r\n        TRANSITION_SUPPORT: useRecoilValueLoadable_TRANSITION_SUPPORT,\r\n        SYNC_EXTERNAL_STORE: useRecoilValueLoadable_SYNC_EXTERNAL_STORE,\r\n        MUTABLE_SOURCE: useRecoilValueLoadable_MUTABLE_SOURCE,\r\n        LEGACY: useRecoilValueLoadable_LEGACY\r\n    }[reactMode$3().mode](recoilValue);\r\n}\r\n/**\r\n  Returns the value represented by the RecoilValue.\r\n  If the value is pending, it will throw a Promise to suspend the component,\r\n  if the value is an error it will throw it for the nearest React error boundary.\r\n  This will also subscribe the component for any updates in the value.\r\n  */\r\nfunction useRecoilValue(recoilValue) {\r\n    if (true) {\r\n        validateRecoilValue(recoilValue, 'useRecoilValue');\r\n    }\r\n    var storeRef = useStoreRef$2();\r\n    var loadable = useRecoilValueLoadable(recoilValue);\r\n    return handleLoadable(loadable, recoilValue, storeRef);\r\n}\r\n/**\r\n  Returns a function that allows the value of a RecoilState to be updated, but does\r\n  not subscribe the component to changes to that RecoilState.\r\n*/\r\nfunction useSetRecoilState(recoilState) {\r\n    if (true) {\r\n        validateRecoilValue(recoilState, 'useSetRecoilState');\r\n    }\r\n    var storeRef = useStoreRef$2();\r\n    return useCallback$1(function (newValueOrUpdater) {\r\n        setRecoilValue$2(storeRef.current, recoilState, newValueOrUpdater);\r\n    }, [storeRef, recoilState]);\r\n}\r\n/**\r\n  Returns a function that will reset the value of a RecoilState to its default\r\n*/\r\nfunction useResetRecoilState(recoilState) {\r\n    if (true) {\r\n        validateRecoilValue(recoilState, 'useResetRecoilState');\r\n    }\r\n    var storeRef = useStoreRef$2();\r\n    return useCallback$1(function () {\r\n        setRecoilValue$2(storeRef.current, recoilState, DEFAULT_VALUE$2);\r\n    }, [storeRef, recoilState]);\r\n}\r\n/**\r\n  Equivalent to useState(). Allows the value of the RecoilState to be read and written.\r\n  Subsequent updates to the RecoilState will cause the component to re-render. If the\r\n  RecoilState is pending, this will suspend the component and initiate the\r\n  retrieval of the value. If evaluating the RecoilState resulted in an error, this will\r\n  throw the error so that the nearest React error boundary can catch it.\r\n*/\r\nfunction useRecoilState(recoilState) {\r\n    if (true) {\r\n        validateRecoilValue(recoilState, 'useRecoilState');\r\n    }\r\n    return [useRecoilValue(recoilState), useSetRecoilState(recoilState)];\r\n}\r\n/**\r\n  Like useRecoilState(), but does not cause Suspense or React error handling. Returns\r\n  an object that indicates whether the RecoilState is available, pending, or\r\n  unavailable due to an error.\r\n*/\r\nfunction useRecoilStateLoadable(recoilState) {\r\n    if (true) {\r\n        validateRecoilValue(recoilState, 'useRecoilStateLoadable');\r\n    }\r\n    return [useRecoilValueLoadable(recoilState), useSetRecoilState(recoilState)];\r\n}\r\nfunction useSetUnvalidatedAtomValues() {\r\n    var storeRef = useStoreRef$2();\r\n    return function (values, transactionMetadata) {\r\n        if (transactionMetadata === void 0) { transactionMetadata = {}; }\r\n        batchUpdates$2(function () {\r\n            storeRef.current.addTransactionMetadata(transactionMetadata);\r\n            values.forEach(function (value, key) { return setUnvalidatedRecoilValue$2(storeRef.current, new AbstractRecoilValue$3(key), value); });\r\n        });\r\n    };\r\n}\r\n/**\r\n * Experimental variants of hooks with support for useTransition()\r\n */\r\nfunction useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE(recoilValue) {\r\n    if (true) {\r\n        validateRecoilValue(recoilValue, 'useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE');\r\n        if (!reactMode$3().early) {\r\n            Recoil_recoverableViolation('Attepmt to use a hook with UNSTABLE_TRANSITION_SUPPORT in a rendering mode incompatible with concurrent rendering.  Try enabling the recoil_sync_external_store or recoil_transition_support GKs.');\r\n        }\r\n    }\r\n    if (Recoil_gkx('recoil_memory_managament_2020')) {\r\n        // eslint-disable-next-line fb-www/react-hooks\r\n        Recoil_useRetain(recoilValue);\r\n    }\r\n    return useRecoilValueLoadable_TRANSITION_SUPPORT(recoilValue);\r\n}\r\nfunction useRecoilValue_TRANSITION_SUPPORT_UNSTABLE(recoilValue) {\r\n    if (true) {\r\n        validateRecoilValue(recoilValue, 'useRecoilValue_TRANSITION_SUPPORT_UNSTABLE');\r\n    }\r\n    var storeRef = useStoreRef$2();\r\n    var loadable = useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE(recoilValue);\r\n    return handleLoadable(loadable, recoilValue, storeRef);\r\n}\r\nfunction useRecoilState_TRANSITION_SUPPORT_UNSTABLE(recoilState) {\r\n    if (true) {\r\n        validateRecoilValue(recoilState, 'useRecoilState_TRANSITION_SUPPORT_UNSTABLE');\r\n    }\r\n    return [useRecoilValue_TRANSITION_SUPPORT_UNSTABLE(recoilState), useSetRecoilState(recoilState)];\r\n}\r\nvar Recoil_Hooks = {\r\n    recoilComponentGetRecoilValueCount_FOR_TESTING: recoilComponentGetRecoilValueCount_FOR_TESTING,\r\n    useRecoilInterface: useRecoilInterface_DEPRECATED,\r\n    useRecoilState: useRecoilState,\r\n    useRecoilStateLoadable: useRecoilStateLoadable,\r\n    useRecoilValue: useRecoilValue,\r\n    useRecoilValueLoadable: useRecoilValueLoadable,\r\n    useResetRecoilState: useResetRecoilState,\r\n    useSetRecoilState: useSetRecoilState,\r\n    useSetUnvalidatedAtomValues: useSetUnvalidatedAtomValues,\r\n    useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE: useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE,\r\n    useRecoilValue_TRANSITION_SUPPORT_UNSTABLE: useRecoilValue_TRANSITION_SUPPORT_UNSTABLE,\r\n    useRecoilState_TRANSITION_SUPPORT_UNSTABLE: useRecoilState_TRANSITION_SUPPORT_UNSTABLE\r\n};\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Returns a map containing all of the keys + values from the original map where\r\n * the given callback returned true.\r\n */\r\nfunction filterMap(map, callback) {\r\n    var result = new Map();\r\n    for (var _a = 0, map_1 = map; _a < map_1.length; _a++) {\r\n        var _b = map_1[_a], key = _b[0], value = _b[1];\r\n        if (callback(value, key)) {\r\n            result.set(key, value);\r\n        }\r\n    }\r\n    return result;\r\n}\r\nvar Recoil_filterMap = filterMap;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\n/**\r\n * Returns a set containing all of the values from the original set where\r\n * the given callback returned true.\r\n */\r\nfunction filterSet(set, callback) {\r\n    var result = new Set();\r\n    for (var _a = 0, set_3 = set; _a < set_3.length; _a++) {\r\n        var value = set_3[_a];\r\n        if (callback(value)) {\r\n            result.add(value);\r\n        }\r\n    }\r\n    return result;\r\n}\r\nvar Recoil_filterSet = filterSet;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction mergeMaps() {\r\n    var maps = [];\r\n    for (var _a = 0; _a < arguments.length; _a++) {\r\n        maps[_a] = arguments[_a];\r\n    }\r\n    var result = new Map();\r\n    for (var i = 0; i < maps.length; i++) {\r\n        var iterator = maps[i].keys();\r\n        var nextKey = void 0;\r\n        while (!(nextKey = iterator.next()).done) {\r\n            // $FlowIssue[incompatible-call] - map/iterator knows nothing about flow types\r\n            result.set(nextKey.value, maps[i].get(nextKey.value));\r\n        }\r\n    }\r\n    return result;\r\n}\r\nvar Recoil_mergeMaps = mergeMaps;\r\nvar batchUpdates$3 = Recoil_Batching.batchUpdates;\r\nvar DEFAULT_VALUE$3 = Recoil_Node.DEFAULT_VALUE, getNode$4 = Recoil_Node.getNode, nodes$1 = Recoil_Node.nodes;\r\nvar useStoreRef$3 = Recoil_RecoilRoot.useStoreRef;\r\nvar AbstractRecoilValue$4 = Recoil_RecoilValueInterface.AbstractRecoilValue, setRecoilValueLoadable$1 = Recoil_RecoilValueInterface.setRecoilValueLoadable;\r\nvar SUSPENSE_TIMEOUT_MS$2 = Recoil_Retention.SUSPENSE_TIMEOUT_MS;\r\nvar cloneSnapshot$1 = Recoil_Snapshot$1.cloneSnapshot;\r\nvar useCallback$2 = react_1.default.useCallback, useEffect$4 = react_1.default.useEffect, useRef$5 = react_1.default.useRef, useState$2 = react_1.default.useState;\r\nvar isSSR$3 = Recoil_Environment.isSSR;\r\nfunction useTransactionSubscription(callback) {\r\n    var storeRef = useStoreRef$3();\r\n    useEffect$4(function () {\r\n        var sub = storeRef.current.subscribeToTransactions(callback);\r\n        return sub.release;\r\n    }, [callback, storeRef]);\r\n}\r\nfunction externallyVisibleAtomValuesInState(state) {\r\n    var atomValues = state.atomValues.toMap();\r\n    var persistedAtomContentsValues = Recoil_mapMap(Recoil_filterMap(atomValues, function (v, k) {\r\n        var node = getNode$4(k);\r\n        var persistence = node.persistence_UNSTABLE;\r\n        return persistence != null && persistence.type !== 'none' && v.state === 'hasValue';\r\n    }), function (v) { return v.contents; }); // Merge in nonvalidated atoms; we may not have defs for them but they will\r\n    // all have persistence on or they wouldn't be there in the first place.\r\n    return Recoil_mergeMaps(state.nonvalidatedAtoms.toMap(), persistedAtomContentsValues);\r\n}\r\n/**\r\n  Calls the given callback after any atoms have been modified and the consequent\r\n  component re-renders have been committed. This is intended for persisting\r\n  the values of the atoms to storage. The stored values can then be restored\r\n  using the useSetUnvalidatedAtomValues hook.\r\n\r\n  The callback receives the following info:\r\n\r\n  atomValues: The current value of every atom that is both persistable (persistence\r\n              type not set to 'none') and whose value is available (not in an\r\n              error or loading state).\r\n\r\n  previousAtomValues: The value of every persistable and available atom before\r\n               the transaction began.\r\n\r\n  atomInfo: A map containing the persistence settings for each atom. Every key\r\n            that exists in atomValues will also exist in atomInfo.\r\n\r\n  modifiedAtoms: The set of atoms that were written to during the transaction.\r\n\r\n  transactionMetadata: Arbitrary information that was added via the\r\n          useSetUnvalidatedAtomValues hook. Useful for ignoring the useSetUnvalidatedAtomValues\r\n          transaction, to avoid loops.\r\n*/\r\nfunction useTransactionObservation_DEPRECATED(callback) {\r\n    useTransactionSubscription(useCallback$2(function (store) {\r\n        var previousTree = store.getState().previousTree;\r\n        var currentTree = store.getState().currentTree;\r\n        if (!previousTree) {\r\n            Recoil_recoverableViolation('Transaction subscribers notified without a previous tree being present -- this is a bug in Recoil');\r\n            previousTree = store.getState().currentTree; // attempt to trundle on\r\n        }\r\n        var atomValues = externallyVisibleAtomValuesInState(currentTree);\r\n        var previousAtomValues = externallyVisibleAtomValuesInState(previousTree);\r\n        var atomInfo = Recoil_mapMap(nodes$1, function (node) {\r\n            var _node$persistence_UNS, _node$persistence_UNS2, _node$persistence_UNS3, _node$persistence_UNS4;\r\n            return {\r\n                persistence_UNSTABLE: {\r\n                    type: (_node$persistence_UNS = (_node$persistence_UNS2 = node.persistence_UNSTABLE) === null || _node$persistence_UNS2 === void 0 ? void 0 : _node$persistence_UNS2.type) !== null && _node$persistence_UNS !== void 0 ? _node$persistence_UNS : 'none',\r\n                    backButton: (_node$persistence_UNS3 = (_node$persistence_UNS4 = node.persistence_UNSTABLE) === null || _node$persistence_UNS4 === void 0 ? void 0 : _node$persistence_UNS4.backButton) !== null && _node$persistence_UNS3 !== void 0 ? _node$persistence_UNS3 : false\r\n                }\r\n            };\r\n        }); // Filter on existance in atomValues so that externally-visible rules\r\n        // are also applied to modified atoms (specifically exclude selectors):\r\n        var modifiedAtoms = Recoil_filterSet(currentTree.dirtyAtoms, function (k) { return atomValues.has(k) || previousAtomValues.has(k); });\r\n        callback({\r\n            atomValues: atomValues,\r\n            previousAtomValues: previousAtomValues,\r\n            atomInfo: atomInfo,\r\n            modifiedAtoms: modifiedAtoms,\r\n            transactionMetadata: __assign({}, currentTree.transactionMetadata)\r\n        });\r\n    }, [callback]));\r\n}\r\nfunction useRecoilTransactionObserver(callback) {\r\n    useTransactionSubscription(useCallback$2(function (store) {\r\n        var snapshot = cloneSnapshot$1(store, 'latest');\r\n        var previousSnapshot = cloneSnapshot$1(store, 'previous');\r\n        callback({\r\n            snapshot: snapshot,\r\n            previousSnapshot: previousSnapshot\r\n        });\r\n    }, [callback]));\r\n} // Return a snapshot of the current state and subscribe to all state changes\r\nfunction useRecoilSnapshot() {\r\n    var storeRef = useStoreRef$3();\r\n    var _a = useState$2(function () { return cloneSnapshot$1(storeRef.current); }), snapshot = _a[0], setSnapshot = _a[1];\r\n    var previousSnapshot = Recoil_usePrevious(snapshot);\r\n    var timeoutID = useRef$5();\r\n    var releaseRef = useRef$5();\r\n    useTransactionSubscription(useCallback$2(function (store) { return setSnapshot(cloneSnapshot$1(store)); }, [])); // Retain snapshot for duration component is mounted\r\n    useEffect$4(function () {\r\n        var release = snapshot.retain(); // Release the retain from the rendering call\r\n        if (timeoutID.current && !isSSR$3) {\r\n            var _releaseRef$current;\r\n            window.clearTimeout(timeoutID.current);\r\n            timeoutID.current = null;\r\n            (_releaseRef$current = releaseRef.current) === null || _releaseRef$current === void 0 ? void 0 : _releaseRef$current.call(releaseRef);\r\n            releaseRef.current = null;\r\n        }\r\n        return release;\r\n    }, [snapshot]); // Retain snapshot until above effect is run.\r\n    // Release after a threshold in case component is suspended.\r\n    if (previousSnapshot !== snapshot && !isSSR$3) {\r\n        // Release the previous snapshot\r\n        if (timeoutID.current) {\r\n            var _releaseRef$current2;\r\n            window.clearTimeout(timeoutID.current);\r\n            timeoutID.current = null;\r\n            (_releaseRef$current2 = releaseRef.current) === null || _releaseRef$current2 === void 0 ? void 0 : _releaseRef$current2.call(releaseRef);\r\n            releaseRef.current = null;\r\n        }\r\n        releaseRef.current = snapshot.retain();\r\n        timeoutID.current = window.setTimeout(function () {\r\n            var _releaseRef$current3;\r\n            timeoutID.current = null;\r\n            (_releaseRef$current3 = releaseRef.current) === null || _releaseRef$current3 === void 0 ? void 0 : _releaseRef$current3.call(releaseRef);\r\n            releaseRef.current = null;\r\n        }, SUSPENSE_TIMEOUT_MS$2);\r\n    }\r\n    return snapshot;\r\n}\r\nfunction gotoSnapshot(store, snapshot) {\r\n    var _storeState$nextTree;\r\n    var storeState = store.getState();\r\n    var prev = (_storeState$nextTree = storeState.nextTree) !== null && _storeState$nextTree !== void 0 ? _storeState$nextTree : storeState.currentTree;\r\n    var next = snapshot.getStore_INTERNAL().getState().currentTree;\r\n    batchUpdates$3(function () {\r\n        var keysToUpdate = new Set();\r\n        for (var _a = 0, _b = [prev.atomValues.keys(), next.atomValues.keys()]; _a < _b.length; _a++) {\r\n            var keys = _b[_a];\r\n            for (var _c = 0, keys_1 = keys; _c < keys_1.length; _c++) {\r\n                var key = keys_1[_c];\r\n                var _prev$atomValues$get, _next$atomValues$get;\r\n                if (((_prev$atomValues$get = prev.atomValues.get(key)) === null || _prev$atomValues$get === void 0 ? void 0 : _prev$atomValues$get.contents) !== ((_next$atomValues$get = next.atomValues.get(key)) === null || _next$atomValues$get === void 0 ? void 0 : _next$atomValues$get.contents) && getNode$4(key).shouldRestoreFromSnapshots) {\r\n                    keysToUpdate.add(key);\r\n                }\r\n            }\r\n        }\r\n        keysToUpdate.forEach(function (key) {\r\n            setRecoilValueLoadable$1(store, new AbstractRecoilValue$4(key), next.atomValues.has(key) ? Recoil_nullthrows(next.atomValues.get(key)) : DEFAULT_VALUE$3);\r\n        });\r\n        store.replaceState(function (state) { return (__assign(__assign({}, state), { stateID: snapshot.getID() })); });\r\n    });\r\n}\r\nfunction useGotoRecoilSnapshot() {\r\n    var storeRef = useStoreRef$3();\r\n    return useCallback$2(function (snapshot) { return gotoSnapshot(storeRef.current, snapshot); }, [storeRef]);\r\n}\r\nvar Recoil_SnapshotHooks = {\r\n    useRecoilSnapshot: useRecoilSnapshot,\r\n    gotoSnapshot: gotoSnapshot,\r\n    useGotoRecoilSnapshot: useGotoRecoilSnapshot,\r\n    useRecoilTransactionObserver: useRecoilTransactionObserver,\r\n    useTransactionObservation_DEPRECATED: useTransactionObservation_DEPRECATED,\r\n    useTransactionSubscription_DEPRECATED: useTransactionSubscription\r\n};\r\nvar peekNodeInfo$2 = Recoil_FunctionalCore.peekNodeInfo;\r\nvar useStoreRef$4 = Recoil_RecoilRoot.useStoreRef;\r\nfunction useGetRecoilValueInfo() {\r\n    var storeRef = useStoreRef$4();\r\n    return function (_a) {\r\n        var key = _a.key;\r\n        return peekNodeInfo$2(storeRef.current, storeRef.current.getState().currentTree, key);\r\n    };\r\n}\r\nvar Recoil_useGetRecoilValueInfo = useGetRecoilValueInfo;\r\nvar reactMode$4 = Recoil_ReactMode.reactMode;\r\nvar RecoilRoot$1 = Recoil_RecoilRoot.RecoilRoot, useStoreRef$5 = Recoil_RecoilRoot.useStoreRef;\r\nvar useMemo$2 = react_1.default.useMemo;\r\nfunction useRecoilBridgeAcrossReactRoots() {\r\n    // The test fails when using useMutableSource(), but only if act() is used\r\n    // for the nested root.  So, this may only be a testing environment issue.\r\n    if (reactMode$4().mode === 'MUTABLE_SOURCE') {\r\n        // eslint-disable-next-line fb-www/no-console\r\n        console.warn('Warning: There are known issues using useRecoilBridgeAcrossReactRoots() in recoil_mutable_source rendering mode.  Please consider upgrading to recoil_sync_external_store mode.');\r\n    }\r\n    var store = useStoreRef$5().current;\r\n    return useMemo$2(function () {\r\n        // eslint-disable-next-line no-shadow\r\n        function RecoilBridge(_a) {\r\n            var children = _a.children;\r\n            return /*#__PURE__*/ react_1.default.createElement(RecoilRoot$1, {\r\n                store_INTERNAL: store\r\n            }, children);\r\n        }\r\n        return RecoilBridge;\r\n    }, [store]);\r\n}\r\nvar Recoil_useRecoilBridgeAcrossReactRoots = useRecoilBridgeAcrossReactRoots;\r\nvar loadableWithValue$1 = Recoil_Loadable$1.loadableWithValue;\r\nvar initializeNode$3 = Recoil_FunctionalCore.initializeNode;\r\nvar DEFAULT_VALUE$4 = Recoil_Node.DEFAULT_VALUE, getNode$5 = Recoil_Node.getNode;\r\nvar copyTreeState$1 = Recoil_RecoilValueInterface.copyTreeState, getRecoilValueAsLoadable$3 = Recoil_RecoilValueInterface.getRecoilValueAsLoadable, invalidateDownstreams$1 = Recoil_RecoilValueInterface.invalidateDownstreams, writeLoadableToTreeState$1 = Recoil_RecoilValueInterface.writeLoadableToTreeState;\r\nfunction isAtom(recoilValue) {\r\n    return getNode$5(recoilValue.key).nodeType === 'atom';\r\n}\r\nvar TransactionInterfaceImpl = /** @class */ (function () {\r\n    function TransactionInterfaceImpl(store, treeState) {\r\n        var _this = this;\r\n        _defineProperty(this, \"_store\", void 0);\r\n        _defineProperty(this, \"_treeState\", void 0);\r\n        _defineProperty(this, \"_changes\", void 0);\r\n        _defineProperty(this, \"get\", function (recoilValue) {\r\n            if (_this._changes.has(recoilValue.key)) {\r\n                // $FlowIssue[incompatible-return]\r\n                return _this._changes.get(recoilValue.key);\r\n            }\r\n            if (!isAtom(recoilValue)) {\r\n                throw Recoil_err('Reading selectors within atomicUpdate is not supported');\r\n            }\r\n            var loadable = getRecoilValueAsLoadable$3(_this._store, recoilValue, _this._treeState);\r\n            if (loadable.state === 'hasValue') {\r\n                return loadable.contents;\r\n            }\r\n            else if (loadable.state === 'hasError') {\r\n                throw loadable.contents;\r\n            }\r\n            else {\r\n                throw Recoil_err(\"Expected Recoil atom \" + recoilValue.key + \" to have a value, but it is in a loading state.\");\r\n            }\r\n        });\r\n        _defineProperty(this, \"set\", function (recoilState, valueOrUpdater) {\r\n            if (!isAtom(recoilState)) {\r\n                throw Recoil_err('Setting selectors within atomicUpdate is not supported');\r\n            }\r\n            if (typeof valueOrUpdater === 'function') {\r\n                var current = _this.get(recoilState);\r\n                _this._changes.set(recoilState.key, valueOrUpdater(current)); // flowlint-line unclear-type:off\r\n            }\r\n            else {\r\n                // Initialize atom and run effects if not initialized yet\r\n                initializeNode$3(_this._store, recoilState.key, 'set');\r\n                _this._changes.set(recoilState.key, valueOrUpdater);\r\n            }\r\n        });\r\n        _defineProperty(this, \"reset\", function (recoilState) {\r\n            _this.set(recoilState, DEFAULT_VALUE$4);\r\n        });\r\n        this._store = store;\r\n        this._treeState = treeState;\r\n        this._changes = new Map();\r\n    } // Allow destructing\r\n    // eslint-disable-next-line fb-www/extra-arrow-initializer\r\n    TransactionInterfaceImpl.prototype.newTreeState_INTERNAL = function () {\r\n        if (this._changes.size === 0) {\r\n            return this._treeState;\r\n        }\r\n        var newState = copyTreeState$1(this._treeState);\r\n        for (var _a = 0, _b = this._changes; _a < _b.length; _a++) {\r\n            var _c = _b[_a], k = _c[0], v = _c[1];\r\n            writeLoadableToTreeState$1(newState, k, loadableWithValue$1(v));\r\n        }\r\n        invalidateDownstreams$1(this._store, newState);\r\n        return newState;\r\n    };\r\n    return TransactionInterfaceImpl;\r\n}());\r\nfunction atomicUpdater(store) {\r\n    return function (fn) {\r\n        store.replaceState(function (treeState) {\r\n            var changeset = new TransactionInterfaceImpl(store, treeState);\r\n            fn(changeset);\r\n            return changeset.newTreeState_INTERNAL();\r\n        });\r\n    };\r\n}\r\nvar Recoil_AtomicUpdates = {\r\n    atomicUpdater: atomicUpdater\r\n};\r\nvar Recoil_AtomicUpdates_1 = Recoil_AtomicUpdates.atomicUpdater;\r\nvar Recoil_AtomicUpdates$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    atomicUpdater: Recoil_AtomicUpdates_1\r\n});\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction invariant(condition, message) {\r\n    if (!condition) {\r\n        throw new Error(message);\r\n    }\r\n}\r\nvar invariant_1 = invariant;\r\n// @oss-only\r\nvar Recoil_invariant = invariant_1;\r\nvar atomicUpdater$1 = Recoil_AtomicUpdates$1.atomicUpdater;\r\nvar batchUpdates$4 = Recoil_Batching.batchUpdates;\r\nvar DEFAULT_VALUE$5 = Recoil_Node.DEFAULT_VALUE;\r\nvar useStoreRef$6 = Recoil_RecoilRoot.useStoreRef;\r\nvar refreshRecoilValue$1 = Recoil_RecoilValueInterface.refreshRecoilValue, setRecoilValue$3 = Recoil_RecoilValueInterface.setRecoilValue;\r\nvar cloneSnapshot$2 = Recoil_Snapshot$1.cloneSnapshot;\r\nvar gotoSnapshot$1 = Recoil_SnapshotHooks.gotoSnapshot;\r\nvar useCallback$3 = react_1.default.useCallback;\r\nvar Sentinel = /** @class */ (function () {\r\n    function Sentinel() {\r\n    }\r\n    return Sentinel;\r\n}());\r\nvar SENTINEL = new Sentinel();\r\nfunction recoilCallback(store, fn, args, extraInterface) {\r\n    var ret = SENTINEL;\r\n    var releaseSnapshot;\r\n    batchUpdates$4(function () {\r\n        var errMsg = 'useRecoilCallback() expects a function that returns a function: ' + 'it accepts a function of the type (RecoilInterface) => (Args) => ReturnType ' + 'and returns a callback function (Args) => ReturnType, where RecoilInterface is ' + 'an object {snapshot, set, ...} and Args and ReturnType are the argument and return ' + 'types of the callback you want to create.  Please see the docs ' + 'at recoiljs.org for details.';\r\n        if (typeof fn !== 'function') {\r\n            throw Recoil_err(errMsg);\r\n        } // Clone the snapshot lazily to avoid overhead if the callback does not use it.\r\n        // Note that this means the snapshot may represent later state from when\r\n        // the callback was called if it first accesses the snapshot asynchronously.\r\n        var callbackInterface = Recoil_lazyProxy(__assign(__assign({}, (extraInterface !== null && extraInterface !== void 0 ? extraInterface : {})), { \r\n            // flowlint-line unclear-type:off\r\n            set: function (node, newValue) { return setRecoilValue$3(store, node, newValue); }, reset: function (node) { return setRecoilValue$3(store, node, DEFAULT_VALUE$5); }, refresh: function (node) { return refreshRecoilValue$1(store, node); }, gotoSnapshot: function (snapshot) { return gotoSnapshot$1(store, snapshot); }, transact_UNSTABLE: function (transaction) { return atomicUpdater$1(store)(transaction); } }), {\r\n            snapshot: function () {\r\n                var snapshot = cloneSnapshot$2(store);\r\n                releaseSnapshot = snapshot.retain();\r\n                return snapshot;\r\n            }\r\n        });\r\n        var callback = fn(callbackInterface);\r\n        if (typeof callback !== 'function') {\r\n            throw Recoil_err(errMsg);\r\n        }\r\n        ret = callback.apply(void 0, args);\r\n    });\r\n    !!(ret instanceof Sentinel) ?  true ? Recoil_invariant(false, 'batchUpdates should return immediately') : undefined : void 0;\r\n    if (Recoil_isPromise(ret)) {\r\n        ret.finally(function () {\r\n            var _releaseSnapshot;\r\n            (_releaseSnapshot = releaseSnapshot) === null || _releaseSnapshot === void 0 ? void 0 : _releaseSnapshot();\r\n        });\r\n    }\r\n    else {\r\n        var _releaseSnapshot2;\r\n        (_releaseSnapshot2 = releaseSnapshot) === null || _releaseSnapshot2 === void 0 ? void 0 : _releaseSnapshot2();\r\n    } // $FlowFixMe[incompatible-cast]\r\n    return ret;\r\n}\r\nfunction useRecoilCallback(fn, deps) {\r\n    var storeRef = useStoreRef$6();\r\n    return useCallback$3(// $FlowIssue[incompatible-call]\r\n    function () {\r\n        var args = [];\r\n        for (var _a = 0; _a < arguments.length; _a++) {\r\n            args[_a] = arguments[_a];\r\n        }\r\n        return recoilCallback(storeRef.current, fn, args);\r\n    }, deps != null ? __spreadArray(__spreadArray([], deps), [storeRef]) : undefined // eslint-disable-line fb-www/react-hooks-deps\r\n    );\r\n}\r\nvar Recoil_useRecoilCallback = {\r\n    recoilCallback: recoilCallback,\r\n    useRecoilCallback: useRecoilCallback\r\n};\r\nvar useStoreRef$7 = Recoil_RecoilRoot.useStoreRef;\r\nvar refreshRecoilValue$2 = Recoil_RecoilValueInterface.refreshRecoilValue;\r\nvar useCallback$4 = react_1.default.useCallback;\r\nfunction useRecoilRefresher(recoilValue) {\r\n    var storeRef = useStoreRef$7();\r\n    return useCallback$4(function () {\r\n        var store = storeRef.current;\r\n        refreshRecoilValue$2(store, recoilValue);\r\n    }, [recoilValue, storeRef]);\r\n}\r\nvar Recoil_useRecoilRefresher = useRecoilRefresher;\r\nvar atomicUpdater$2 = Recoil_AtomicUpdates$1.atomicUpdater;\r\nvar useStoreRef$8 = Recoil_RecoilRoot.useStoreRef;\r\nvar useMemo$3 = react_1.default.useMemo;\r\nfunction useRecoilTransaction(fn, deps) {\r\n    var storeRef = useStoreRef$8();\r\n    return useMemo$3(function () { return function () {\r\n        var args = [];\r\n        for (var _a = 0; _a < arguments.length; _a++) {\r\n            args[_a] = arguments[_a];\r\n        }\r\n        var atomicUpdate = atomicUpdater$2(storeRef.current);\r\n        atomicUpdate(function (transactionInterface) {\r\n            fn(transactionInterface).apply(void 0, args);\r\n        });\r\n    }; }, deps != null ? __spreadArray(__spreadArray([], deps), [storeRef]) : undefined // eslint-disable-line fb-www/react-hooks-deps\r\n    );\r\n}\r\nvar Recoil_useRecoilTransaction = useRecoilTransaction;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nvar WrappedValue = /** @class */ (function () {\r\n    function WrappedValue(value) {\r\n        _defineProperty(this, \"value\", void 0);\r\n        this.value = value;\r\n    }\r\n    return WrappedValue;\r\n}());\r\nvar Recoil_Wrapper = {\r\n    WrappedValue: WrappedValue\r\n};\r\nvar Recoil_Wrapper_1 = Recoil_Wrapper.WrappedValue;\r\nvar Recoil_Wrapper$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    WrappedValue: Recoil_Wrapper_1\r\n});\r\nvar isFastRefreshEnabled$2 = Recoil_ReactMode.isFastRefreshEnabled;\r\nvar ChangedPathError = /** @class */ (function (_super) {\r\n    __extends(ChangedPathError, _super);\r\n    function ChangedPathError() {\r\n        return _super !== null && _super.apply(this, arguments) || this;\r\n    }\r\n    return ChangedPathError;\r\n}(Error));\r\nvar TreeCache = /** @class */ (function () {\r\n    // $FlowIssue[unclear-type]\r\n    function TreeCache(options) {\r\n        var _options$onHit, _options$onSet, _options$mapNodeValue;\r\n        _defineProperty(this, \"_name\", void 0);\r\n        _defineProperty(this, \"_numLeafs\", void 0);\r\n        _defineProperty(this, \"_root\", void 0);\r\n        _defineProperty(this, \"_onHit\", void 0);\r\n        _defineProperty(this, \"_onSet\", void 0);\r\n        _defineProperty(this, \"_mapNodeValue\", void 0);\r\n        this._name = options === null || options === void 0 ? void 0 : options.name;\r\n        this._numLeafs = 0;\r\n        this._root = null;\r\n        this._onHit = (_options$onHit = options === null || options === void 0 ? void 0 : options.onHit) !== null && _options$onHit !== void 0 ? _options$onHit : function () { };\r\n        this._onSet = (_options$onSet = options === null || options === void 0 ? void 0 : options.onSet) !== null && _options$onSet !== void 0 ? _options$onSet : function () { };\r\n        this._mapNodeValue = (_options$mapNodeValue = options === null || options === void 0 ? void 0 : options.mapNodeValue) !== null && _options$mapNodeValue !== void 0 ? _options$mapNodeValue : function (val) { return val; };\r\n    }\r\n    TreeCache.prototype.size = function () {\r\n        return this._numLeafs;\r\n    }; // $FlowIssue[unclear-type]\r\n    TreeCache.prototype.root = function () {\r\n        return this._root;\r\n    };\r\n    TreeCache.prototype.get = function (getNodeValue, handlers) {\r\n        var _this$getLeafNode;\r\n        return (_this$getLeafNode = this.getLeafNode(getNodeValue, handlers)) === null || _this$getLeafNode === void 0 ? void 0 : _this$getLeafNode.value;\r\n    };\r\n    TreeCache.prototype.getLeafNode = function (getNodeValue, handlers) {\r\n        if (this._root == null) {\r\n            return undefined;\r\n        } // Iterate down the tree based on the current node values until we hit a leaf\r\n        // $FlowIssue[unclear-type]\r\n        var node = this._root;\r\n        while (node) {\r\n            handlers === null || handlers === void 0 ? void 0 : handlers.onNodeVisit(node);\r\n            if (node.type === 'leaf') {\r\n                this._onHit(node);\r\n                return node;\r\n            }\r\n            var nodeValue = this._mapNodeValue(getNodeValue(node.nodeKey));\r\n            node = node.branches.get(nodeValue);\r\n        }\r\n        return undefined;\r\n    };\r\n    TreeCache.prototype.set = function (route, value, handlers) {\r\n        var _this = this;\r\n        var addLeaf = function () {\r\n            var _node2, _node3, _this$_root2, _handlers$onNodeVisit2;\r\n            // First, setup the branch nodes for the route:\r\n            // Iterate down the tree to find or add branch nodes following the route\r\n            var node;\r\n            var branchKey;\r\n            for (var _a = 0, route_1 = route; _a < route_1.length; _a++) {\r\n                var _b = route_1[_a], nodeKey = _b[0], nodeValue = _b[1];\r\n                var _node, _handlers$onNodeVisit, _this$_root;\r\n                // If the previous root was a leaf, while we not have a get(), it means\r\n                // the selector has inconsistent values or implementation changed.\r\n                var root = _this._root;\r\n                if ((root === null || root === void 0 ? void 0 : root.type) === 'leaf') {\r\n                    throw _this.invalidCacheError();\r\n                } // node now refers to the next node down in the tree\r\n                var parent_2 = node; // $FlowFixMe[prop-missing]\r\n                // $FlowFixMe[incompatible-type]\r\n                node = parent_2 ? parent_2.branches.get(branchKey) : root; // $FlowFixMe[prop-missing]\r\n                // $FlowFixMe[incompatible-type]\r\n                node = (_node = node) !== null && _node !== void 0 ? _node : {\r\n                    type: 'branch',\r\n                    nodeKey: nodeKey,\r\n                    parent: parent_2,\r\n                    branches: new Map(),\r\n                    branchKey: branchKey\r\n                }; // If we found an existing node, confirm it has a consistent value\r\n                if (node.type !== 'branch' || node.nodeKey !== nodeKey) {\r\n                    throw _this.invalidCacheError();\r\n                } // Add the branch node to the tree\r\n                parent_2 === null || parent_2 === void 0 ? void 0 : parent_2.branches.set(branchKey, node);\r\n                handlers === null || handlers === void 0 ? void 0 : (_handlers$onNodeVisit = handlers.onNodeVisit) === null || _handlers$onNodeVisit === void 0 ? void 0 : _handlers$onNodeVisit.call(handlers, node); // Prepare for next iteration and install root if it is new.\r\n                branchKey = _this._mapNodeValue(nodeValue);\r\n                _this._root = (_this$_root = _this._root) !== null && _this$_root !== void 0 ? _this$_root : node;\r\n            } // Second, setup the leaf node:\r\n            // If there is an existing leaf for this route confirm it is consistent\r\n            var oldLeaf = node ? (_node2 = node) === null || _node2 === void 0 ? void 0 : _node2.branches.get(branchKey) : _this._root;\r\n            if (oldLeaf != null && (oldLeaf.type !== 'leaf' || oldLeaf.branchKey !== branchKey)) {\r\n                throw _this.invalidCacheError();\r\n            } // Create a new or replacement leaf.\r\n            var leafNode = {\r\n                type: 'leaf',\r\n                value: value,\r\n                parent: node,\r\n                branchKey: branchKey\r\n            }; // Install the leaf and call handlers\r\n            (_node3 = node) === null || _node3 === void 0 ? void 0 : _node3.branches.set(branchKey, leafNode);\r\n            _this._root = (_this$_root2 = _this._root) !== null && _this$_root2 !== void 0 ? _this$_root2 : leafNode;\r\n            _this._numLeafs++;\r\n            _this._onSet(leafNode);\r\n            handlers === null || handlers === void 0 ? void 0 : (_handlers$onNodeVisit2 = handlers.onNodeVisit) === null || _handlers$onNodeVisit2 === void 0 ? void 0 : _handlers$onNodeVisit2.call(handlers, leafNode);\r\n        };\r\n        try {\r\n            addLeaf();\r\n        }\r\n        catch (error) {\r\n            // If the cache was stale or observed inconsistent values, such as with\r\n            // Fast Refresh, then clear it and rebuild with the new values.\r\n            if (error instanceof ChangedPathError) {\r\n                this.clear();\r\n                addLeaf();\r\n            }\r\n            else {\r\n                throw error;\r\n            }\r\n        }\r\n    }; // Returns true if leaf was actually deleted from the tree\r\n    TreeCache.prototype.delete = function (leaf) {\r\n        var root = this.root();\r\n        if (!root) {\r\n            return false;\r\n        }\r\n        if (leaf === root) {\r\n            this._root = null;\r\n            this._numLeafs = 0;\r\n            return true;\r\n        } // Iterate up from the leaf deleteing it from it's parent's branches.\r\n        var node = leaf.parent;\r\n        var branchKey = leaf.branchKey;\r\n        while (node) {\r\n            var _node4;\r\n            node.branches.delete(branchKey); // Stop iterating if we hit the root.\r\n            if (node === root) {\r\n                if (node.branches.size === 0) {\r\n                    this._root = null;\r\n                    this._numLeafs = 0;\r\n                }\r\n                else {\r\n                    this._numLeafs--;\r\n                }\r\n                return true;\r\n            } // Stop iterating if there are other branches since we don't need to\r\n            // remove any more nodes.\r\n            if (node.branches.size > 0) {\r\n                break;\r\n            } // Iterate up to our parent\r\n            branchKey = (_node4 = node) === null || _node4 === void 0 ? void 0 : _node4.branchKey;\r\n            node = node.parent;\r\n        } // Confirm that the leaf we are deleting is actually attached to our tree\r\n        for (; node !== root; node = node.parent) {\r\n            if (node == null) {\r\n                return false;\r\n            }\r\n        }\r\n        this._numLeafs--;\r\n        return true;\r\n    };\r\n    TreeCache.prototype.clear = function () {\r\n        this._numLeafs = 0;\r\n        this._root = null;\r\n    };\r\n    TreeCache.prototype.invalidCacheError = function () {\r\n        var CHANGED_PATH_ERROR_MESSAGE = isFastRefreshEnabled$2() ? 'Possible Fast Refresh module reload detected.  ' + 'This may also be caused by an selector returning inconsistent values. ' + 'Resetting cache.' : 'Invalid cache values.  This happens when selectors do not return ' + 'consistent values for the same input dependency values.  That may also ' + 'be caused when using Fast Refresh to change a selector implementation.  ' + 'Resetting cache.';\r\n        Recoil_recoverableViolation(CHANGED_PATH_ERROR_MESSAGE + (this._name != null ? \" - \" + this._name : ''));\r\n        throw new ChangedPathError();\r\n    };\r\n    return TreeCache;\r\n}());\r\nvar Recoil_TreeCache = {\r\n    TreeCache: TreeCache\r\n};\r\nvar Recoil_TreeCache_1 = Recoil_TreeCache.TreeCache;\r\nvar Recoil_TreeCache$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    TreeCache: Recoil_TreeCache_1\r\n});\r\nvar LRUCache = /** @class */ (function () {\r\n    function LRUCache(options) {\r\n        var _options$mapKey;\r\n        _defineProperty(this, \"_maxSize\", void 0);\r\n        _defineProperty(this, \"_size\", void 0);\r\n        _defineProperty(this, \"_head\", void 0);\r\n        _defineProperty(this, \"_tail\", void 0);\r\n        _defineProperty(this, \"_map\", void 0);\r\n        _defineProperty(this, \"_keyMapper\", void 0);\r\n        this._maxSize = options.maxSize;\r\n        this._size = 0;\r\n        this._head = null;\r\n        this._tail = null;\r\n        this._map = new Map();\r\n        this._keyMapper = (_options$mapKey = options.mapKey) !== null && _options$mapKey !== void 0 ? _options$mapKey : function (v) { return v; };\r\n    }\r\n    LRUCache.prototype.head = function () {\r\n        return this._head;\r\n    };\r\n    LRUCache.prototype.tail = function () {\r\n        return this._tail;\r\n    };\r\n    LRUCache.prototype.size = function () {\r\n        return this._size;\r\n    };\r\n    LRUCache.prototype.maxSize = function () {\r\n        return this._maxSize;\r\n    };\r\n    LRUCache.prototype.has = function (key) {\r\n        return this._map.has(this._keyMapper(key));\r\n    };\r\n    LRUCache.prototype.get = function (key) {\r\n        var mappedKey = this._keyMapper(key);\r\n        var node = this._map.get(mappedKey);\r\n        if (!node) {\r\n            return undefined;\r\n        }\r\n        this.set(key, node.value);\r\n        return node.value;\r\n    };\r\n    LRUCache.prototype.set = function (key, val) {\r\n        var mappedKey = this._keyMapper(key);\r\n        var existingNode = this._map.get(mappedKey);\r\n        if (existingNode) {\r\n            this.delete(key);\r\n        }\r\n        var head = this.head();\r\n        var node = {\r\n            key: key,\r\n            right: head,\r\n            left: null,\r\n            value: val\r\n        };\r\n        if (head) {\r\n            head.left = node;\r\n        }\r\n        else {\r\n            this._tail = node;\r\n        }\r\n        this._map.set(mappedKey, node);\r\n        this._head = node;\r\n        this._size++;\r\n        this._maybeDeleteLRU();\r\n    };\r\n    LRUCache.prototype._maybeDeleteLRU = function () {\r\n        if (this.size() > this.maxSize()) {\r\n            this.deleteLru();\r\n        }\r\n    };\r\n    LRUCache.prototype.deleteLru = function () {\r\n        var tail = this.tail();\r\n        if (tail) {\r\n            this.delete(tail.key);\r\n        }\r\n    };\r\n    LRUCache.prototype.delete = function (key) {\r\n        var mappedKey = this._keyMapper(key);\r\n        if (!this._size || !this._map.has(mappedKey)) {\r\n            return;\r\n        }\r\n        var node = Recoil_nullthrows(this._map.get(mappedKey));\r\n        var right = node.right;\r\n        var left = node.left;\r\n        if (right) {\r\n            right.left = node.left;\r\n        }\r\n        if (left) {\r\n            left.right = node.right;\r\n        }\r\n        if (node === this.head()) {\r\n            this._head = right;\r\n        }\r\n        if (node === this.tail()) {\r\n            this._tail = left;\r\n        }\r\n        this._map.delete(mappedKey);\r\n        this._size--;\r\n    };\r\n    LRUCache.prototype.clear = function () {\r\n        this._size = 0;\r\n        this._head = null;\r\n        this._tail = null;\r\n        this._map = new Map();\r\n    };\r\n    return LRUCache;\r\n}());\r\nvar Recoil_LRUCache = {\r\n    LRUCache: LRUCache\r\n};\r\nvar Recoil_LRUCache_1 = Recoil_LRUCache.LRUCache;\r\nvar Recoil_LRUCache$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    LRUCache: Recoil_LRUCache_1\r\n});\r\nvar LRUCache$1 = Recoil_LRUCache$1.LRUCache;\r\nvar TreeCache$1 = Recoil_TreeCache$1.TreeCache;\r\nfunction treeCacheLRU(_a) {\r\n    var name = _a.name, maxSize = _a.maxSize, _b = _a.mapNodeValue, mapNodeValue = _b === void 0 ? function (v) { return v; } : _b;\r\n    var lruCache = new LRUCache$1({\r\n        maxSize: maxSize\r\n    });\r\n    var cache = new TreeCache$1({\r\n        name: name,\r\n        mapNodeValue: mapNodeValue,\r\n        onHit: function (node) {\r\n            lruCache.set(node, true);\r\n        },\r\n        onSet: function (node) {\r\n            var lruNode = lruCache.tail();\r\n            lruCache.set(node, true);\r\n            if (lruNode && cache.size() > maxSize) {\r\n                cache.delete(lruNode.key);\r\n            }\r\n        }\r\n    });\r\n    return cache;\r\n}\r\nvar Recoil_treeCacheLRU = treeCacheLRU;\r\nvar TIME_WARNING_THRESHOLD_MS = 15;\r\nfunction stringify(x, opt, key) {\r\n    // A optimization to avoid the more expensive JSON.stringify() for simple strings\r\n    // This may lose protection for u2028 and u2029, though.\r\n    if (typeof x === 'string' && !x.includes('\"') && !x.includes('\\\\')) {\r\n        return \"\\\"\" + x + \"\\\"\";\r\n    } // Handle primitive types\r\n    switch (typeof x) {\r\n        case 'undefined':\r\n            return '';\r\n        // JSON.stringify(undefined) returns undefined, but we always want to return a string\r\n        case 'boolean':\r\n            return x ? 'true' : 'false';\r\n        case 'number':\r\n        case 'symbol':\r\n            // case 'bigint': // BigInt is not supported in www\r\n            return String(x);\r\n        case 'string':\r\n            // Add surrounding quotes and escape internal quotes\r\n            return JSON.stringify(x);\r\n        case 'function':\r\n            if ((opt === null || opt === void 0 ? void 0 : opt.allowFunctions) !== true) {\r\n                throw Recoil_err('Attempt to serialize function in a Recoil cache key');\r\n            }\r\n            return \"__FUNCTION(\" + x.name + \")__\";\r\n    }\r\n    if (x === null) {\r\n        return 'null';\r\n    } // Fallback case for unknown types\r\n    if (typeof x !== 'object') {\r\n        var _JSON$stringify;\r\n        return (_JSON$stringify = JSON.stringify(x)) !== null && _JSON$stringify !== void 0 ? _JSON$stringify : '';\r\n    } // Deal with all promises as equivalent for now.\r\n    if (Recoil_isPromise(x)) {\r\n        return '__PROMISE__';\r\n    } // Arrays handle recursive stringification\r\n    if (Array.isArray(x)) {\r\n        return \"[\" + x.map(function (v, i) { return stringify(v, opt, i.toString()); }) + \"]\";\r\n    } // If an object defines a toJSON() method, then use that to override the\r\n    // serialization.  This matches the behavior of JSON.stringify().\r\n    // Pass the key for compatibility.\r\n    // Immutable.js collections define this method to allow us to serialize them.\r\n    if (typeof x.toJSON === 'function') {\r\n        // flowlint-next-line unclear-type: off\r\n        return stringify(x.toJSON(key), opt, key);\r\n    } // For built-in Maps, sort the keys in a stable order instead of the\r\n    // default insertion order.  Support non-string keys.\r\n    if (x instanceof Map) {\r\n        var obj = {};\r\n        for (var _a = 0, x_1 = x; _a < x_1.length; _a++) {\r\n            var _b = x_1[_a], k = _b[0], v = _b[1];\r\n            // Stringify will escape any nested quotes\r\n            obj[typeof k === 'string' ? k : stringify(k, opt)] = v;\r\n        }\r\n        return stringify(obj, opt, key);\r\n    } // For built-in Sets, sort the keys in a stable order instead of the\r\n    // default insertion order.\r\n    if (x instanceof Set) {\r\n        return stringify(Array.from(x).sort(function (a, b) { return stringify(a, opt).localeCompare(stringify(b, opt)); }), opt, key);\r\n    } // Anything else that is iterable serialize as an Array.\r\n    if (Symbol !== undefined && x[Symbol.iterator] != null && typeof x[Symbol.iterator] === 'function') {\r\n        // flowlint-next-line unclear-type: off\r\n        return stringify(Array.from(x), opt, key);\r\n    } // For all other Objects, sort the keys in a stable order.\r\n    return \"{\" + Object.keys(x).filter(function (k) { return x[k] !== undefined; }).sort() // stringify the key to add quotes and escape any nested slashes or quotes.\r\n        .map(function (k) { return stringify(k, opt) + \":\" + stringify(x[k], opt, k); }).join(',') + \"}\";\r\n} // Utility similar to JSON.stringify() except:\r\n// * Serialize built-in Sets as an Array\r\n// * Serialize built-in Maps as an Object.  Supports non-string keys.\r\n// * Serialize other iterables as arrays\r\n// * Sort the keys of Objects and Maps to have a stable order based on string conversion.\r\n//    This overrides their default insertion order.\r\n// * Still uses toJSON() of any object to override serialization\r\n// * Support Symbols (though don't guarantee uniqueness)\r\n// * We could support BigInt, but Flow doesn't seem to like it.\r\n// See Recoil_stableStringify-test.js for examples\r\nfunction stableStringify(x, opt) {\r\n    if (opt === void 0) { opt = {\r\n        allowFunctions: false\r\n    }; }\r\n    if (true) {\r\n        if (typeof window !== 'undefined') {\r\n            var startTime = window.performance ? window.performance.now() : 0;\r\n            var str = stringify(x, opt);\r\n            var endTime = window.performance ? window.performance.now() : 0;\r\n            if (endTime - startTime > TIME_WARNING_THRESHOLD_MS) {\r\n                /* eslint-disable fb-www/no-console */\r\n                console.groupCollapsed(\"Recoil: Spent \" + (endTime - startTime) + \"ms computing a cache key\");\r\n                console.warn(x, str);\r\n                console.groupEnd();\r\n                /* eslint-enable fb-www/no-console */\r\n            }\r\n            return str;\r\n        }\r\n    }\r\n    return stringify(x, opt);\r\n}\r\nvar Recoil_stableStringify = stableStringify;\r\nvar TreeCache$2 = Recoil_TreeCache$1.TreeCache;\r\nvar defaultPolicy = {\r\n    equality: 'reference',\r\n    eviction: 'keep-all',\r\n    maxSize: Infinity\r\n};\r\nfunction treeCacheFromPolicy(_a, name) {\r\n    var _b = _a === void 0 ? defaultPolicy : _a, _c = _b.equality, equality = _c === void 0 ? defaultPolicy.equality : _c, _d = _b.eviction, eviction = _d === void 0 ? defaultPolicy.eviction : _d, _e = _b.maxSize, maxSize = _e === void 0 ? defaultPolicy.maxSize : _e;\r\n    var valueMapper = getValueMapper(equality);\r\n    return getTreeCache(eviction, maxSize, valueMapper, name);\r\n}\r\nfunction getValueMapper(equality) {\r\n    switch (equality) {\r\n        case 'reference':\r\n            return function (val) { return val; };\r\n        case 'value':\r\n            return function (val) { return Recoil_stableStringify(val); };\r\n    }\r\n    throw Recoil_err(\"Unrecognized equality policy \" + equality);\r\n}\r\nfunction getTreeCache(eviction, maxSize, mapNodeValue, name) {\r\n    switch (eviction) {\r\n        case 'keep-all':\r\n            return new TreeCache$2({\r\n                name: name,\r\n                mapNodeValue: mapNodeValue\r\n            });\r\n        case 'lru':\r\n            return Recoil_treeCacheLRU({\r\n                name: name,\r\n                maxSize: Recoil_nullthrows(maxSize),\r\n                mapNodeValue: mapNodeValue\r\n            });\r\n        case 'most-recent':\r\n            return Recoil_treeCacheLRU({\r\n                name: name,\r\n                maxSize: 1,\r\n                mapNodeValue: mapNodeValue\r\n            });\r\n    }\r\n    throw Recoil_err(\"Unrecognized eviction policy \" + eviction);\r\n}\r\nvar Recoil_treeCacheFromPolicy = treeCacheFromPolicy;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction isNode(object) {\r\n    var _ownerDocument, _doc$defaultView;\r\n    if (typeof window === 'undefined') {\r\n        return false;\r\n    }\r\n    var doc = object != null ? (_ownerDocument = object.ownerDocument) !== null && _ownerDocument !== void 0 ? _ownerDocument : object : document;\r\n    var defaultView = (_doc$defaultView = doc.defaultView) !== null && _doc$defaultView !== void 0 ? _doc$defaultView : window;\r\n    return !!(object != null && (typeof defaultView.Node === 'function' ? object instanceof defaultView.Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));\r\n}\r\nvar Recoil_isNode = isNode;\r\nvar isReactNative$1 = Recoil_Environment.isReactNative, isWindow$1 = Recoil_Environment.isWindow;\r\nfunction shouldNotBeFrozen(value) {\r\n    // Primitives and functions:\r\n    if (value === null || typeof value !== 'object') {\r\n        return true;\r\n    } // React elements:\r\n    switch (typeof value.$$typeof) {\r\n        case 'symbol':\r\n            return true;\r\n        case 'number':\r\n            return true;\r\n    } // Immutable structures:\r\n    if (value['@@__IMMUTABLE_ITERABLE__@@'] != null || value['@@__IMMUTABLE_KEYED__@@'] != null || value['@@__IMMUTABLE_INDEXED__@@'] != null || value['@@__IMMUTABLE_ORDERED__@@'] != null || value['@@__IMMUTABLE_RECORD__@@'] != null) {\r\n        return true;\r\n    } // DOM nodes:\r\n    if (Recoil_isNode(value)) {\r\n        return true;\r\n    }\r\n    if (Recoil_isPromise(value)) {\r\n        return true;\r\n    }\r\n    if (value instanceof Error) {\r\n        return true;\r\n    }\r\n    if (ArrayBuffer.isView(value)) {\r\n        return true;\r\n    } // Some environments, just as Jest, don't work with the instanceof check\r\n    if (!isReactNative$1 && isWindow$1(value)) {\r\n        return true;\r\n    }\r\n    return false;\r\n} // Recursively freeze a value to enforce it is read-only.\r\n// This may also have minimal performance improvements for enumerating\r\n// objects (based on browser implementations, of course)\r\nfunction deepFreezeValue(value) {\r\n    if (typeof value !== 'object' || shouldNotBeFrozen(value)) {\r\n        return;\r\n    }\r\n    Object.freeze(value); // Make all properties read-only\r\n    for (var key in value) {\r\n        // $FlowIssue[method-unbinding] added when improving typing for this parameters\r\n        if (Object.prototype.hasOwnProperty.call(value, key)) {\r\n            var prop = value[key]; // Prevent infinite recurssion for circular references.\r\n            if (typeof prop === 'object' && prop != null && !Object.isFrozen(prop)) {\r\n                deepFreezeValue(prop);\r\n            }\r\n        }\r\n    }\r\n    Object.seal(value); // This also makes existing properties non-configurable.\r\n}\r\nvar Recoil_deepFreezeValue = deepFreezeValue;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n *\r\n * This is a stub for some integration into FB internal stuff\r\n */\r\nfunction startPerfBlock(_id) {\r\n    return function () { return null; };\r\n}\r\nvar Recoil_PerformanceTimings = {\r\n    startPerfBlock: startPerfBlock\r\n};\r\nvar isLoadable$1 = Recoil_Loadable$1.isLoadable, loadableWithError$1 = Recoil_Loadable$1.loadableWithError, loadableWithPromise$1 = Recoil_Loadable$1.loadableWithPromise, loadableWithValue$2 = Recoil_Loadable$1.loadableWithValue;\r\nvar WrappedValue$1 = Recoil_Wrapper$1.WrappedValue;\r\nvar getNodeLoadable$2 = Recoil_FunctionalCore.getNodeLoadable, peekNodeLoadable$1 = Recoil_FunctionalCore.peekNodeLoadable, setNodeValue$3 = Recoil_FunctionalCore.setNodeValue;\r\nvar saveDepsToStore$1 = Recoil_Graph.saveDepsToStore;\r\nvar DEFAULT_VALUE$6 = Recoil_Node.DEFAULT_VALUE, getConfigDeletionHandler$1 = Recoil_Node.getConfigDeletionHandler, getNode$6 = Recoil_Node.getNode, registerNode$1 = Recoil_Node.registerNode;\r\nvar isRecoilValue$3 = Recoil_RecoilValue$1.isRecoilValue;\r\nvar markRecoilValueModified$1 = Recoil_RecoilValueInterface.markRecoilValueModified;\r\nvar retainedByOptionWithDefault$1 = Recoil_Retention.retainedByOptionWithDefault;\r\nvar recoilCallback$1 = Recoil_useRecoilCallback.recoilCallback;\r\nvar startPerfBlock$1 = Recoil_PerformanceTimings.startPerfBlock;\r\nvar Canceled = /** @class */ (function () {\r\n    function Canceled() {\r\n    }\r\n    return Canceled;\r\n}());\r\nvar CANCELED = new Canceled();\r\n/**\r\n * An ExecutionID is an arbitrary ID that lets us distinguish executions from\r\n * each other. This is necessary as we need a way of solving this problem:\r\n * \"given 3 async executions, only update state for the 'latest' execution when\r\n * it finishes running regardless of when the other 2 finish\". ExecutionIDs\r\n * provide a convenient way of identifying executions so that we can track and\r\n * manage them over time.\r\n */\r\nvar dependencyStack = []; // for detecting circular dependencies.\r\nvar waitingStores = new Map();\r\nvar getNewExecutionID = (function () {\r\n    var executionID = 0;\r\n    return function () { return executionID++; };\r\n})();\r\n/* eslint-disable no-redeclare */\r\nfunction selector(options) {\r\n    var recoilValue = null;\r\n    var key = options.key, get = options.get, cachePolicy = options.cachePolicy_UNSTABLE;\r\n    var set = options.set != null ? options.set : undefined; // flow\r\n    if (true) {\r\n        if (typeof key !== 'string') {\r\n            throw Recoil_err('A key option with a unique string value must be provided when creating a selector.');\r\n        }\r\n        if (typeof get !== 'function') {\r\n            throw Recoil_err('Selectors must specify a get callback option to get the selector value.');\r\n        }\r\n    } // This is every discovered dependency across all executions\r\n    var discoveredDependencyNodeKeys = new Set();\r\n    var cache = Recoil_treeCacheFromPolicy(cachePolicy !== null && cachePolicy !== void 0 ? cachePolicy : {\r\n        equality: 'reference',\r\n        eviction: 'keep-all'\r\n    }, key);\r\n    var retainedBy = retainedByOptionWithDefault$1(options.retainedBy_UNSTABLE);\r\n    var executionInfoMap = new Map();\r\n    var liveStoresCount = 0;\r\n    function selectorIsLive() {\r\n        return !Recoil_gkx('recoil_memory_managament_2020') || liveStoresCount > 0;\r\n    }\r\n    function selectorInit(store) {\r\n        store.getState().knownSelectors.add(key);\r\n        liveStoresCount++;\r\n        return function () {\r\n            liveStoresCount--;\r\n        };\r\n    }\r\n    function selectorShouldDeleteConfigOnRelease() {\r\n        return getConfigDeletionHandler$1(key) !== undefined && !selectorIsLive();\r\n    }\r\n    function resolveAsync(store, state, executionID, loadable, depValues) {\r\n        setCache(state, loadable, depValues);\r\n        notifyStoresOfResolvedAsync(store, executionID);\r\n    }\r\n    function notifyStoresOfResolvedAsync(store, executionID) {\r\n        if (isLatestExecution(store, executionID)) {\r\n            clearExecutionInfo(store);\r\n        }\r\n        notifyWaitingStores(executionID, true);\r\n    }\r\n    /**\r\n     * Notify stores to pull the selector again if a new async dep was discovered.\r\n     * 1) Async selector adds a new dep but doesn't resolve yet.\r\n     *    Note that deps for an async selector are based on the state when the\r\n     *    evaluation started, in order to provide a consistent picture of state.\r\n     * 2) But, new value of dep based on the current state might cause the selector\r\n     *    to resolve or resolve differently.\r\n     * 3) Therefore, this notification will pull the selector based on the current\r\n     *    state for the components\r\n     */\r\n    function notifyStoresOfNewAsyncDep(store, executionID) {\r\n        if (isLatestExecution(store, executionID)) {\r\n            var executionInfo = Recoil_nullthrows(getExecutionInfo(store));\r\n            executionInfo.stateVersions.clear();\r\n            notifyWaitingStores(executionID, false);\r\n        }\r\n    }\r\n    function notifyWaitingStores(executionID, clearWaitlist) {\r\n        var stores = waitingStores.get(executionID);\r\n        if (stores != null) {\r\n            for (var _a = 0, stores_1 = stores; _a < stores_1.length; _a++) {\r\n                var waitingStore = stores_1[_a];\r\n                markRecoilValueModified$1(waitingStore, Recoil_nullthrows(recoilValue));\r\n            }\r\n            if (clearWaitlist) {\r\n                waitingStores.delete(executionID);\r\n            }\r\n        }\r\n    }\r\n    function markStoreWaitingForResolvedAsync(store, executionID) {\r\n        var stores = waitingStores.get(executionID);\r\n        if (stores == null) {\r\n            waitingStores.set(executionID, stores = new Set());\r\n        }\r\n        stores.add(store);\r\n    }\r\n    /**\r\n     * This function attaches a then() and a catch() to a promise that was\r\n     * returned from a selector's get() (either explicitly or implicitly by\r\n     * running a function that uses the \"async\" keyword). If a selector's get()\r\n     * returns a promise, we have two possibilities:\r\n     *\r\n     * 1. The promise will resolve, in which case it will have completely finished\r\n     *    executing without any remaining pending dependencies. No more retries\r\n     *    are needed and we can proceed with updating the cache and notifying\r\n     *    subscribers (if it is the latest execution, otherwise only the cache\r\n     *    will be updated and subscriptions will not be fired). This is the case\r\n     *    handled by the attached then() handler.\r\n     *\r\n     * 2. The promise will throw because it either has an error or it came across\r\n     *    an async dependency that has not yet resolved, in which case we will\r\n     *    call wrapDepdencyPromise(), whose responsibility is to handle dependency\r\n     *    promises. This case is handled by the attached catch() handler.\r\n     *\r\n     * Both branches will eventually resolve to the final result of the selector\r\n     * (or an error if a real error occurred).\r\n     *\r\n     * The execution will run to completion even if it is stale, and its value\r\n     * will be cached. But stale executions will not update global state or update\r\n     * executionInfo as that is the responsibility of the 'latest' execution.\r\n     *\r\n     * Note this function should not be passed a promise that was thrown--AKA a\r\n     * dependency promise. Dependency promises should be passed to\r\n     * wrapPendingDependencyPromise()).\r\n     */\r\n    function wrapResultPromise(store, promise, state, depValues, executionID, loadingDepsState) {\r\n        return promise.then(function (value) {\r\n            if (!selectorIsLive()) {\r\n                // The selector was released since the request began; ignore the response.\r\n                clearExecutionInfo(store);\r\n                throw CANCELED;\r\n            }\r\n            var loadable = loadableWithValue$2(value);\r\n            resolveAsync(store, state, executionID, loadable, depValues);\r\n            return value;\r\n        }).catch(function (errorOrPromise) {\r\n            if (!selectorIsLive()) {\r\n                // The selector was released since the request began; ignore the response.\r\n                clearExecutionInfo(store);\r\n                throw CANCELED;\r\n            }\r\n            if (Recoil_isPromise(errorOrPromise)) {\r\n                return wrapPendingDependencyPromise(store, errorOrPromise, state, depValues, executionID, loadingDepsState);\r\n            }\r\n            var loadable = loadableWithError$1(errorOrPromise);\r\n            resolveAsync(store, state, executionID, loadable, depValues);\r\n            throw errorOrPromise;\r\n        });\r\n    }\r\n    /**\r\n     * This function attaches a then() and a catch() to a promise that was\r\n     * thrown from a selector's get(). If a selector's get() throws a promise,\r\n     * we have two possibilities:\r\n     *\r\n     * 1. The promise will resolve, meaning one of our selector's dependencies is\r\n     *    now available and we should \"retry\" our get() by running it again. This\r\n     *    is the case handled by the attached then() handler.\r\n     *\r\n     * 2. The promise will throw because something went wrong with the dependency\r\n     *    promise (in other words a real error occurred). This case is handled by\r\n     *    the attached catch() handler. If the dependency promise throws, it is\r\n     *    _always_ a real error and not another dependency promise (any dependency\r\n     *    promises would have been handled upstream).\r\n     *\r\n     * The then() branch will eventually resolve to the final result of the\r\n     * selector (or an error if a real error occurs), and the catch() will always\r\n     * resolve to an error because the dependency promise is a promise that was\r\n     * wrapped upstream, meaning it will only resolve to its real value or to a\r\n     * real error.\r\n     *\r\n     * The execution will run to completion even if it is stale, and its value\r\n     * will be cached. But stale executions will not update global state or update\r\n     * executionInfo as that is the responsibility of the 'latest' execution.\r\n     *\r\n     * Note this function should not be passed a promise that was returned from\r\n     * get(). The intention is that this function is only passed promises that\r\n     * were thrown due to a pending dependency. Promises returned by get() should\r\n     * be passed to wrapResultPromise() instead.\r\n     */\r\n    function wrapPendingDependencyPromise(store, promise, state, existingDeps, executionID, loadingDepsState) {\r\n        return promise.then(function (resolvedDep) {\r\n            if (!selectorIsLive()) {\r\n                // The selector was released since the request began; ignore the response.\r\n                clearExecutionInfo(store);\r\n                throw CANCELED;\r\n            } // Check if we are handling a pending Recoil dependency or if the user\r\n            // threw their own Promise to \"suspend\" a selector evaluation.  We need\r\n            // to check that the loadingDepPromise actually matches the promise that\r\n            // we caught in case the selector happened to catch the promise we threw\r\n            // for a pending Recoil dependency from `getRecoilValue()` and threw\r\n            // their own promise instead.\r\n            if (loadingDepsState.loadingDepKey != null && loadingDepsState.loadingDepPromise === promise) {\r\n                /**\r\n                 * Note for async atoms, this means we are changing the atom's value\r\n                 * in the store for the given version. This should be alright because\r\n                 * the version of state is now stale and a new version will have\r\n                 * already been triggered by the atom being resolved (see this logic\r\n                 * in Recoil_atom.js)\r\n                 */\r\n                state.atomValues.set(loadingDepsState.loadingDepKey, loadableWithValue$2(resolvedDep));\r\n            }\r\n            else {\r\n                /**\r\n                 * If resolvedDepKey is not defined, the promise was a user-thrown\r\n                 * promise. User-thrown promises are an advanced feature and they\r\n                 * should be avoided in almost all cases. Using `loadable.map()` inside\r\n                 * of selectors for loading loadables and then throwing that mapped\r\n                 * loadable's promise is an example of a user-thrown promise.\r\n                 *\r\n                 * When we hit a user-thrown promise, we have to bail out of an optimization\r\n                 * where we bypass calculating selector cache keys for selectors that\r\n                 * have been previously seen for a given state (these selectors are saved in\r\n                 * state.atomValues) to avoid stale state as we have no way of knowing\r\n                 * what state changes happened (if any) in result to the promise resolving.\r\n                 *\r\n                 * Ideally we would only bail out selectors that are in the chain of\r\n                 * dependencies for this selector, but there's currently no way to get\r\n                 * a full list of a selector's downstream nodes because the state that\r\n                 * is executing may be a discarded tree (so store.getGraph(state.version)\r\n                 * will be empty), and the full dep tree may not be in the selector\r\n                 * caches in the case where the selector's cache was cleared. To solve\r\n                 * for this we would have to keep track of all running selector\r\n                 * executions and their downstream deps. Because this only covers edge\r\n                 * cases, that complexity might not be justifyable.\r\n                 */\r\n                store.getState().knownSelectors.forEach(function (nodeKey) {\r\n                    state.atomValues.delete(nodeKey);\r\n                });\r\n            }\r\n            /**\r\n             * Optimization: Now that the dependency has resolved, let's try hitting\r\n             * the cache in case the dep resolved to a value we have previously seen.\r\n             *\r\n             * TODO:\r\n             * Note this optimization is not perfect because it only prevents re-executions\r\n             * _after_ the point where an async dependency is found. Any code leading\r\n             * up to the async dependency may have run unnecessarily. The ideal case\r\n             * would be to wait for the async dependency to resolve first, check the\r\n             * cache, and prevent _any_ execution of the selector if the resulting\r\n             * value of the dependency leads to a path that is found in the cache.\r\n             * The ideal case is more difficult to implement as it would require that\r\n             * we capture and wait for the the async dependency right after checking\r\n             * the cache. The current approach takes advantage of the fact that running\r\n             * the selector already has a code path that lets us exit early when\r\n             * an async dep resolves.\r\n             */\r\n            var cachedLoadable = getLoadableFromCacheAndUpdateDeps(store, state);\r\n            if (cachedLoadable && cachedLoadable.state !== 'loading') {\r\n                /**\r\n                 * This has to notify stores of a resolved async, even if there is no\r\n                 * current pending execution for the following case:\r\n                 * 1) A component renders with this pending loadable.\r\n                 * 2) The upstream dependency resolves.\r\n                 * 3) While processing some other selector it reads this one, such as\r\n                 *    while traversing its dependencies.  At this point it gets the\r\n                 *    new resolved value synchronously and clears the current\r\n                 *    execution ID.  The component wasn't getting the value itself,\r\n                 *    though, so it still has the pending loadable.\r\n                 * 4) When this code executes the current execution id was cleared\r\n                 *    and it wouldn't notify the component of the new value.\r\n                 *\r\n                 * I think this is only an issue with \"early\" rendering since the\r\n                 * components got their value using the in-progress execution.\r\n                 * We don't have a unit test for this case yet.  I'm not sure it is\r\n                 * necessary with recoil_transition_support mode.\r\n                 */\r\n                if (isLatestExecution(store, executionID) || getExecutionInfo(store) == null) {\r\n                    notifyStoresOfResolvedAsync(store, executionID);\r\n                }\r\n                if (cachedLoadable.state === 'hasValue') {\r\n                    return cachedLoadable.contents;\r\n                }\r\n                else {\r\n                    throw cachedLoadable.contents;\r\n                }\r\n            }\r\n            /**\r\n             * If this execution is stale, let's check to see if there is some in\r\n             * progress execution with a matching state. If we find a match, then\r\n             * we can take the value from that in-progress execution. Note this may\r\n             * sound like an edge case, but may be very common in cases where a\r\n             * loading dependency resolves from loading to having a value (thus\r\n             * possibly triggering a re-render), and React re-renders before the\r\n             * chained .then() functions run, thus starting a new execution as the\r\n             * dep has changed value. Without this check we will run the selector\r\n             * twice (once in the new execution and once again in this .then(), so\r\n             * this check is necessary to keep unnecessary re-executions to a\r\n             * minimum).\r\n             *\r\n             * Also note this code does not check across all executions that may be\r\n             * running. It only optimizes for the _latest_ execution per store as\r\n             * we currently do not maintain a list of all currently running executions.\r\n             * This means in some cases we may run selectors more than strictly\r\n             * necessary when there are multiple executions running for the same\r\n             * selector. This may be a valid tradeoff as checking for dep changes\r\n             * across all in-progress executions may take longer than just\r\n             * re-running the selector. This will be app-dependent, and maybe in the\r\n             * future we can make the behavior configurable. An ideal fix may be\r\n             * to extend the tree cache to support caching loading states.\r\n             */\r\n            if (!isLatestExecution(store, executionID)) {\r\n                var executionInfo = getInProgressExecutionInfo(store, state);\r\n                if (executionInfo != null) {\r\n                    /**\r\n                     * Returning promise here without wrapping as the wrapper logic was\r\n                     * already done upstream when this promise was generated.\r\n                     */\r\n                    return executionInfo.loadingLoadable.contents;\r\n                }\r\n            } // Retry the selector evaluation now that the dependency has resolved\r\n            var _a = evaluateSelectorGetter(store, state, executionID), loadable = _a[0], depValues = _a[1];\r\n            if (loadable.state !== 'loading') {\r\n                resolveAsync(store, state, executionID, loadable, depValues);\r\n            }\r\n            if (loadable.state === 'hasError') {\r\n                throw loadable.contents;\r\n            }\r\n            return loadable.contents;\r\n        }).catch(function (error) {\r\n            // The selector was released since the request began; ignore the response.\r\n            if (error instanceof Canceled) {\r\n                throw CANCELED;\r\n            }\r\n            if (!selectorIsLive()) {\r\n                clearExecutionInfo(store);\r\n                throw CANCELED;\r\n            }\r\n            var loadable = loadableWithError$1(error);\r\n            resolveAsync(store, state, executionID, loadable, existingDeps);\r\n            throw error;\r\n        });\r\n    }\r\n    function updateDeps(store, state, deps, executionID) {\r\n        var _store$getState, _store$getState$curre, _store$getState2, _store$getState2$next;\r\n        if (isLatestExecution(store, executionID) || state.version === ((_store$getState = store.getState()) === null || _store$getState === void 0 ? void 0 : (_store$getState$curre = _store$getState.currentTree) === null || _store$getState$curre === void 0 ? void 0 : _store$getState$curre.version) || state.version === ((_store$getState2 = store.getState()) === null || _store$getState2 === void 0 ? void 0 : (_store$getState2$next = _store$getState2.nextTree) === null || _store$getState2$next === void 0 ? void 0 : _store$getState2$next.version)) {\r\n            var _store$getState$nextT, _store$getState3, _store$getState3$next;\r\n            saveDepsToStore$1(key, deps, store, (_store$getState$nextT = (_store$getState3 = store.getState()) === null || _store$getState3 === void 0 ? void 0 : (_store$getState3$next = _store$getState3.nextTree) === null || _store$getState3$next === void 0 ? void 0 : _store$getState3$next.version) !== null && _store$getState$nextT !== void 0 ? _store$getState$nextT : store.getState().currentTree.version);\r\n        }\r\n        for (var _a = 0, deps_2 = deps; _a < deps_2.length; _a++) {\r\n            var nodeKey = deps_2[_a];\r\n            discoveredDependencyNodeKeys.add(nodeKey);\r\n        }\r\n    }\r\n    function evaluateSelectorGetter(store, state, executionID) {\r\n        var endPerfBlock = startPerfBlock$1(key); // TODO T63965866: use execution ID here\r\n        var duringSynchronousExecution = true;\r\n        var duringAsynchronousExecution = true;\r\n        var finishEvaluation = function () {\r\n            endPerfBlock();\r\n            duringAsynchronousExecution = false;\r\n        };\r\n        var result;\r\n        var resultIsError = false;\r\n        var loadable;\r\n        var loadingDepsState = {\r\n            loadingDepKey: null,\r\n            loadingDepPromise: null\r\n        };\r\n        /**\r\n         * Starting a fresh set of deps that we'll be using to update state. We're\r\n         * starting a new set versus adding it in existing state deps because\r\n         * the version of state that we update deps for may be a more recent version\r\n         * than the version the selector was called with. This is because the latest\r\n         * execution will update the deps of the current/latest version of state\r\n         * (This is safe to do because the fact that the selector is the latest\r\n         * execution means the deps we discover below are our best guess at the\r\n         * deps for the current/latest state in the store)\r\n         */\r\n        var depValues = new Map();\r\n        function getRecoilValue(_a) {\r\n            var depKey = _a.key;\r\n            var depLoadable = getNodeLoadable$2(store, state, depKey);\r\n            depValues.set(depKey, depLoadable); // We need to update asynchronous dependencies as we go so the selector\r\n            // knows if it has to restart evaluation if one of them is updated before\r\n            // the asynchronous selector completely resolves.\r\n            if (!duringSynchronousExecution) {\r\n                updateDeps(store, state, new Set(depValues.keys()), executionID);\r\n                notifyStoresOfNewAsyncDep(store, executionID);\r\n            }\r\n            switch (depLoadable.state) {\r\n                case 'hasValue':\r\n                    return depLoadable.contents;\r\n                case 'hasError':\r\n                    throw depLoadable.contents;\r\n                case 'loading':\r\n                    loadingDepsState.loadingDepKey = depKey;\r\n                    loadingDepsState.loadingDepPromise = depLoadable.contents;\r\n                    throw depLoadable.contents;\r\n            }\r\n            throw Recoil_err('Invalid Loadable state');\r\n        }\r\n        var getCallback = function (fn) {\r\n            return function () {\r\n                var args = [];\r\n                for (var _a = 0; _a < arguments.length; _a++) {\r\n                    args[_a] = arguments[_a];\r\n                }\r\n                if (duringAsynchronousExecution) {\r\n                    throw Recoil_err('Callbacks from getCallback() should only be called asynchronously after the selector is evalutated.  It can be used for selectors to return objects with callbacks that can work with Recoil state without a subscription.');\r\n                }\r\n                !(recoilValue != null) ?  true ? Recoil_invariant(false, 'Recoil Value can never be null') : undefined : void 0;\r\n                return recoilCallback$1(store, fn, args, {\r\n                    node: recoilValue\r\n                } // flowlint-line unclear-type:off\r\n                );\r\n            };\r\n        };\r\n        try {\r\n            result = get({\r\n                get: getRecoilValue,\r\n                getCallback: getCallback\r\n            });\r\n            result = isRecoilValue$3(result) ? getRecoilValue(result) : result;\r\n            if (isLoadable$1(result)) {\r\n                if (result.state === 'hasError') {\r\n                    resultIsError = true;\r\n                }\r\n                result = result.contents;\r\n            }\r\n            if (Recoil_isPromise(result)) {\r\n                result = wrapResultPromise(store, result, state, depValues, executionID, loadingDepsState).finally(finishEvaluation);\r\n            }\r\n            else {\r\n                finishEvaluation();\r\n            }\r\n            result = result instanceof WrappedValue$1 ? result.value : result;\r\n        }\r\n        catch (errorOrDepPromise) {\r\n            result = errorOrDepPromise;\r\n            if (Recoil_isPromise(result)) {\r\n                result = wrapPendingDependencyPromise(store, result, state, depValues, executionID, loadingDepsState).finally(finishEvaluation);\r\n            }\r\n            else {\r\n                resultIsError = true;\r\n                finishEvaluation();\r\n            }\r\n        }\r\n        if (resultIsError) {\r\n            loadable = loadableWithError$1(result);\r\n        }\r\n        else if (Recoil_isPromise(result)) {\r\n            loadable = loadableWithPromise$1(result);\r\n        }\r\n        else {\r\n            loadable = loadableWithValue$2(result);\r\n        }\r\n        duringSynchronousExecution = false;\r\n        updateExecutionInfoDepValues(store, executionID, depValues);\r\n        updateDeps(store, state, new Set(depValues.keys()), executionID);\r\n        return [loadable, depValues];\r\n    }\r\n    function getLoadableFromCacheAndUpdateDeps(store, state) {\r\n        // First, look up in the state cache\r\n        // If it's here, then the deps in the store should already be valid.\r\n        var cachedLoadable = state.atomValues.get(key);\r\n        if (cachedLoadable != null) {\r\n            return cachedLoadable;\r\n        } // Second, look up in the selector cache and update the deps in the store\r\n        var depsAfterCacheLookup = new Set();\r\n        try {\r\n            cachedLoadable = cache.get(function (nodeKey) {\r\n                !(typeof nodeKey === 'string') ?  true ? Recoil_invariant(false, 'Cache nodeKey is type string') : undefined : void 0;\r\n                return getNodeLoadable$2(store, state, nodeKey).contents;\r\n            }, {\r\n                onNodeVisit: function (node) {\r\n                    if (node.type === 'branch' && node.nodeKey !== key) {\r\n                        depsAfterCacheLookup.add(node.nodeKey);\r\n                    }\r\n                }\r\n            });\r\n        }\r\n        catch (error) {\r\n            throw Recoil_err(\"Problem with cache lookup for selector \\\"\" + key + \"\\\": \" + error.message);\r\n        }\r\n        if (cachedLoadable) {\r\n            var _getExecutionInfo;\r\n            // Cache the results in the state to allow for cheaper lookup than\r\n            // iterating the tree cache of dependencies.\r\n            state.atomValues.set(key, cachedLoadable);\r\n            /**\r\n             * Ensure store contains correct dependencies if we hit the cache so that\r\n             * the store deps and cache are in sync for a given state. This is important\r\n             * because store deps are normally updated when new executions are created,\r\n             * but cache hits don't trigger new executions but they still _may_ signify\r\n             * a change in deps in the store if the store deps for this state are empty\r\n             * or stale.\r\n             */\r\n            updateDeps(store, state, depsAfterCacheLookup, (_getExecutionInfo = getExecutionInfo(store)) === null || _getExecutionInfo === void 0 ? void 0 : _getExecutionInfo.executionID);\r\n        }\r\n        return cachedLoadable;\r\n    }\r\n    /**\r\n     * Given a tree state, this function returns a Loadable of the current state.\r\n     *\r\n     * The selector's get() function will only be re-evaluated if _both_ of the\r\n     * following statements are true:\r\n     *\r\n     * 1. The current dep values from the given state produced a cache key that\r\n     *    was not found in the cache.\r\n     * 2. There is no currently running async execution OR there is an\r\n     *    async execution that is running, but after comparing the dep values in\r\n     *    the given state with the dep values that the execution has discovered so\r\n     *    far we find that at least one dep value has changed, in which case we\r\n     *    start a new execution (the previously running execution will continue to\r\n     *    run to completion, but only the new execution will be deemed the\r\n     *    'latest' execution, meaning it will be the only execution that will\r\n     *    update global state when it is finished. Any non-latest executions will\r\n     *    run to completion and update the selector cache but not global state).\r\n     */\r\n    function getSelectorLoadableAndUpdateDeps(store, state) {\r\n        // First, see if our current state is cached\r\n        var cachedVal = getLoadableFromCacheAndUpdateDeps(store, state);\r\n        if (cachedVal != null) {\r\n            clearExecutionInfo(store);\r\n            return cachedVal;\r\n        } // Second, check if there is already an ongoing execution based on the current state\r\n        var inProgressExecutionInfo = getInProgressExecutionInfo(store, state);\r\n        if (inProgressExecutionInfo != null) {\r\n            var _inProgressExecutionI;\r\n            if (((_inProgressExecutionI = inProgressExecutionInfo.loadingLoadable) === null || _inProgressExecutionI === void 0 ? void 0 : _inProgressExecutionI.state) === 'loading') {\r\n                markStoreWaitingForResolvedAsync(store, inProgressExecutionInfo.executionID);\r\n            } // FIXME: check after the fact to see if we made the right choice by waiting\r\n            return inProgressExecutionInfo.loadingLoadable;\r\n        } // Third, start a new evaluation of the selector\r\n        var newExecutionID = getNewExecutionID();\r\n        var _a = evaluateSelectorGetter(store, state, newExecutionID), loadable = _a[0], newDepValues = _a[1];\r\n        /**\r\n         * Conditionally updates the cache with a given loadable.\r\n         *\r\n         * We only cache loadables that are not loading because our cache keys are\r\n         * based on dep values, which are in an unfinished state for loadables that\r\n         * have a 'loading' state (new deps may be discovered while the selector\r\n         * runs its async code). We never want to cache partial dependencies b/c it\r\n         * could lead to errors, such as prematurely returning the result based on a\r\n         * partial list of deps-- we need the full list of deps to ensure that we\r\n         * are returning the correct result from cache.\r\n         */\r\n        if (loadable.state === 'loading') {\r\n            setExecutionInfo(store, newExecutionID, loadable, newDepValues, state);\r\n            markStoreWaitingForResolvedAsync(store, newExecutionID);\r\n        }\r\n        else {\r\n            clearExecutionInfo(store);\r\n            setCache(state, loadable, newDepValues);\r\n        }\r\n        return loadable;\r\n    }\r\n    /**\r\n     * Searches execution info across all stores to see if there is an in-progress\r\n     * execution whose dependency values match the values of the requesting store.\r\n     */\r\n    function getInProgressExecutionInfo(store, state) {\r\n        // Sort the pending executions so that our current store is checked first.\r\n        var pendingExecutions = Recoil_concatIterables([executionInfoMap.has(store) ? [Recoil_nullthrows(executionInfoMap.get(store))] : [], Recoil_mapIterable(Recoil_filterIterable(executionInfoMap, function (_a) {\r\n                var s = _a[0];\r\n                return s !== store;\r\n            }), function (_a) {\r\n                var execInfo = _a[1];\r\n                return execInfo;\r\n            })]);\r\n        function anyDepChanged(execDepValues) {\r\n            for (var _a = 0, execDepValues_1 = execDepValues; _a < execDepValues_1.length; _a++) {\r\n                var _b = execDepValues_1[_a], depKey = _b[0], execLoadable = _b[1];\r\n                if (!getNodeLoadable$2(store, state, depKey).is(execLoadable)) {\r\n                    return true;\r\n                }\r\n            }\r\n            return false;\r\n        }\r\n        for (var _a = 0, pendingExecutions_1 = pendingExecutions; _a < pendingExecutions_1.length; _a++) {\r\n            var execInfo = pendingExecutions_1[_a];\r\n            if ( // If this execution was already checked to be valid with this version\r\n            // of state, then let's use it!\r\n            execInfo.stateVersions.get(state.version) || // If the deps for the execution match our current state, then it's valid\r\n                !anyDepChanged(execInfo.depValuesDiscoveredSoFarDuringAsyncWork)) {\r\n                execInfo.stateVersions.set(state.version, true);\r\n                return execInfo;\r\n            }\r\n            else {\r\n                execInfo.stateVersions.set(state.version, false);\r\n            }\r\n        }\r\n        return undefined;\r\n    }\r\n    function getExecutionInfo(store) {\r\n        return executionInfoMap.get(store);\r\n    }\r\n    /**\r\n     * This function will update the selector's execution info when the selector\r\n     * has either finished running an execution or has started a new execution. If\r\n     * the given loadable is in a 'loading' state, the intention is that a new\r\n     * execution has started. Otherwise, the intention is that an execution has\r\n     * just finished.\r\n     */\r\n    function setExecutionInfo(store, newExecutionID, loadable, depValues, state) {\r\n        executionInfoMap.set(store, {\r\n            depValuesDiscoveredSoFarDuringAsyncWork: depValues,\r\n            executionID: newExecutionID,\r\n            loadingLoadable: loadable,\r\n            stateVersions: new Map([[state.version, true]])\r\n        });\r\n    }\r\n    function updateExecutionInfoDepValues(store, executionID, depValues) {\r\n        // We only need to bother updating the deps for the latest execution because\r\n        // that's all getInProgressExecutionInfo() will be looking for.\r\n        if (isLatestExecution(store, executionID)) {\r\n            var executionInfo = getExecutionInfo(store);\r\n            if (executionInfo != null) {\r\n                executionInfo.depValuesDiscoveredSoFarDuringAsyncWork = depValues;\r\n            }\r\n        }\r\n    }\r\n    function clearExecutionInfo(store) {\r\n        executionInfoMap.delete(store);\r\n    }\r\n    function isLatestExecution(store, executionID) {\r\n        var _getExecutionInfo2;\r\n        return executionID === ((_getExecutionInfo2 = getExecutionInfo(store)) === null || _getExecutionInfo2 === void 0 ? void 0 : _getExecutionInfo2.executionID);\r\n    }\r\n    /**\r\n     * FIXME: dep keys should take into account the state of the loadable to\r\n     * prevent the edge case where a loadable with an error and a loadable with\r\n     * an error as a value are treated as the same thing incorrectly. For example\r\n     * these two should be treated differently:\r\n     *\r\n     * selector({key: '', get: () => new Error('hi')});\r\n     * selector({key: '', get () => {throw new Error('hi')}});\r\n     *\r\n     * With current implementation they are treated the same\r\n     */\r\n    function depValuesToDepRoute(depValues) {\r\n        return Array.from(depValues.entries()).map(function (_a) {\r\n            var depKey = _a[0], valLoadable = _a[1];\r\n            return [depKey, valLoadable.contents];\r\n        });\r\n    }\r\n    function setCache(state, loadable, depValues) {\r\n        if (true) {\r\n            if (loadable.state !== 'loading' && Boolean(options.dangerouslyAllowMutability) === false) {\r\n                Recoil_deepFreezeValue(loadable.contents);\r\n            }\r\n        }\r\n        state.atomValues.set(key, loadable);\r\n        try {\r\n            cache.set(depValuesToDepRoute(depValues), loadable);\r\n        }\r\n        catch (error) {\r\n            throw Recoil_err(\"Problem with setting cache for selector \\\"\" + key + \"\\\": \" + error.message);\r\n        }\r\n    }\r\n    function detectCircularDependencies(fn) {\r\n        if (dependencyStack.includes(key)) {\r\n            var message = \"Recoil selector has circular dependencies: \" + dependencyStack.slice(dependencyStack.indexOf(key)).join(' \\u2192 ');\r\n            return loadableWithError$1(Recoil_err(message));\r\n        }\r\n        dependencyStack.push(key);\r\n        try {\r\n            return fn();\r\n        }\r\n        finally {\r\n            dependencyStack.pop();\r\n        }\r\n    }\r\n    function selectorPeek(store, state) {\r\n        var cachedLoadable = state.atomValues.get(key);\r\n        if (cachedLoadable != null) {\r\n            return cachedLoadable;\r\n        }\r\n        return cache.get(function (nodeKey) {\r\n            var _peekNodeLoadable;\r\n            !(typeof nodeKey === 'string') ?  true ? Recoil_invariant(false, 'Cache nodeKey is type string') : undefined : void 0;\r\n            return (_peekNodeLoadable = peekNodeLoadable$1(store, state, nodeKey)) === null || _peekNodeLoadable === void 0 ? void 0 : _peekNodeLoadable.contents;\r\n        });\r\n    }\r\n    function selectorGet(store, state) {\r\n        return detectCircularDependencies(function () { return getSelectorLoadableAndUpdateDeps(store, state); });\r\n    }\r\n    function invalidateSelector(state) {\r\n        state.atomValues.delete(key);\r\n    }\r\n    function clearSelectorCache(store, treeState) {\r\n        !(recoilValue != null) ?  true ? Recoil_invariant(false, 'Recoil Value can never be null') : undefined : void 0;\r\n        for (var _a = 0, discoveredDependencyNodeKeys_1 = discoveredDependencyNodeKeys; _a < discoveredDependencyNodeKeys_1.length; _a++) {\r\n            var nodeKey = discoveredDependencyNodeKeys_1[_a];\r\n            var _node$clearCache;\r\n            var node = getNode$6(nodeKey);\r\n            (_node$clearCache = node.clearCache) === null || _node$clearCache === void 0 ? void 0 : _node$clearCache.call(node, store, treeState);\r\n        }\r\n        discoveredDependencyNodeKeys.clear();\r\n        invalidateSelector(treeState);\r\n        cache.clear();\r\n        markRecoilValueModified$1(store, recoilValue);\r\n    }\r\n    if (set != null) {\r\n        /**\r\n         * ES5 strict mode prohibits defining non-top-level function declarations,\r\n         * so don't use function declaration syntax here\r\n         */\r\n        var selectorSet = function (store, state, newValue) {\r\n            var syncSelectorSetFinished = false;\r\n            var writes = new Map();\r\n            function getRecoilValue(_a) {\r\n                var depKey = _a.key;\r\n                if (syncSelectorSetFinished) {\r\n                    throw Recoil_err('Recoil: Async selector sets are not currently supported.');\r\n                }\r\n                var loadable = getNodeLoadable$2(store, state, depKey);\r\n                if (loadable.state === 'hasValue') {\r\n                    return loadable.contents;\r\n                }\r\n                else if (loadable.state === 'loading') {\r\n                    var msg = \"Getting value of asynchronous atom or selector \\\"\" + depKey + \"\\\" in a pending state while setting selector \\\"\" + key + \"\\\" is not yet supported.\";\r\n                    Recoil_recoverableViolation(msg);\r\n                    throw Recoil_err(msg);\r\n                }\r\n                else {\r\n                    throw loadable.contents;\r\n                }\r\n            }\r\n            function setRecoilState(recoilState, valueOrUpdater) {\r\n                if (syncSelectorSetFinished) {\r\n                    var msg = 'Recoil: Async selector sets are not currently supported.';\r\n                    Recoil_recoverableViolation(msg);\r\n                    throw Recoil_err(msg);\r\n                }\r\n                var setValue = typeof valueOrUpdater === 'function' ? // cast to any because we can't restrict type S from being a function itself without losing support for opaque types\r\n                    // flowlint-next-line unclear-type:off\r\n                    valueOrUpdater(getRecoilValue(recoilState)) : valueOrUpdater;\r\n                var upstreamWrites = setNodeValue$3(store, state, recoilState.key, setValue);\r\n                upstreamWrites.forEach(function (v, k) { return writes.set(k, v); });\r\n            }\r\n            function resetRecoilState(recoilState) {\r\n                setRecoilState(recoilState, DEFAULT_VALUE$6);\r\n            }\r\n            var ret = set({\r\n                set: setRecoilState,\r\n                get: getRecoilValue,\r\n                reset: resetRecoilState\r\n            }, newValue); // set should be a void method, but if the user makes it `async`, then it\r\n            // will return a Promise, which we don't currently support.\r\n            if (ret !== undefined) {\r\n                throw Recoil_isPromise(ret) ? Recoil_err('Recoil: Async selector sets are not currently supported.') : Recoil_err('Recoil: selector set should be a void function.');\r\n            }\r\n            syncSelectorSetFinished = true;\r\n            return writes;\r\n        };\r\n        return recoilValue = registerNode$1({\r\n            key: key,\r\n            nodeType: 'selector',\r\n            peek: selectorPeek,\r\n            get: selectorGet,\r\n            set: selectorSet,\r\n            init: selectorInit,\r\n            invalidate: invalidateSelector,\r\n            clearCache: clearSelectorCache,\r\n            shouldDeleteConfigOnRelease: selectorShouldDeleteConfigOnRelease,\r\n            dangerouslyAllowMutability: options.dangerouslyAllowMutability,\r\n            shouldRestoreFromSnapshots: false,\r\n            retainedBy: retainedBy\r\n        });\r\n    }\r\n    else {\r\n        return recoilValue = registerNode$1({\r\n            key: key,\r\n            nodeType: 'selector',\r\n            peek: selectorPeek,\r\n            get: selectorGet,\r\n            init: selectorInit,\r\n            invalidate: invalidateSelector,\r\n            clearCache: clearSelectorCache,\r\n            shouldDeleteConfigOnRelease: selectorShouldDeleteConfigOnRelease,\r\n            dangerouslyAllowMutability: options.dangerouslyAllowMutability,\r\n            shouldRestoreFromSnapshots: false,\r\n            retainedBy: retainedBy\r\n        });\r\n    }\r\n}\r\n/* eslint-enable no-redeclare */\r\n// $FlowIssue[incompatible-use]\r\nselector.value = function (value) { return new WrappedValue$1(value); };\r\nvar Recoil_selector = selector;\r\n// @fb-only: import type {ScopeRules} from 'Recoil_ScopedAtom';\r\n// @fb-only: const {scopedAtom} = require('Recoil_ScopedAtom');\r\nvar isLoadable$2 = Recoil_Loadable$1.isLoadable, loadableWithError$2 = Recoil_Loadable$1.loadableWithError, loadableWithPromise$2 = Recoil_Loadable$1.loadableWithPromise, loadableWithValue$3 = Recoil_Loadable$1.loadableWithValue;\r\nvar WrappedValue$2 = Recoil_Wrapper$1.WrappedValue;\r\nvar peekNodeInfo$3 = Recoil_FunctionalCore.peekNodeInfo;\r\nvar DEFAULT_VALUE$7 = Recoil_Node.DEFAULT_VALUE, DefaultValue$2 = Recoil_Node.DefaultValue, getConfigDeletionHandler$2 = Recoil_Node.getConfigDeletionHandler, registerNode$2 = Recoil_Node.registerNode, setConfigDeletionHandler$1 = Recoil_Node.setConfigDeletionHandler;\r\nvar isRecoilValue$4 = Recoil_RecoilValue$1.isRecoilValue;\r\nvar getRecoilValueAsLoadable$4 = Recoil_RecoilValueInterface.getRecoilValueAsLoadable, markRecoilValueModified$2 = Recoil_RecoilValueInterface.markRecoilValueModified, setRecoilValue$4 = Recoil_RecoilValueInterface.setRecoilValue, setRecoilValueLoadable$2 = Recoil_RecoilValueInterface.setRecoilValueLoadable;\r\nvar retainedByOptionWithDefault$2 = Recoil_Retention.retainedByOptionWithDefault;\r\nvar unwrap = function (x) { return x instanceof WrappedValue$2 ? x.value : x; };\r\nfunction baseAtom(options) {\r\n    var key = options.key, persistence = options.persistence_UNSTABLE;\r\n    var retainedBy = retainedByOptionWithDefault$2(options.retainedBy_UNSTABLE);\r\n    var liveStoresCount = 0;\r\n    function unwrapPromise(promise) {\r\n        return loadableWithPromise$2(promise.then(function (value) {\r\n            defaultLoadable = loadableWithValue$3(value);\r\n            return value;\r\n        }).catch(function (error) {\r\n            defaultLoadable = loadableWithError$2(error);\r\n            throw error;\r\n        }));\r\n    }\r\n    var defaultLoadable = Recoil_isPromise(options.default) ? unwrapPromise(options.default) : isLoadable$2(options.default) ? options.default.state === 'loading' ? unwrapPromise(options.default.contents) : options.default : loadableWithValue$3(unwrap(options.default));\r\n    maybeFreezeValueOrPromise(defaultLoadable.contents);\r\n    var cachedAnswerForUnvalidatedValue = undefined; // Cleanup handlers for this atom\r\n    // Rely on stable reference equality of the store to use it as a key per <RecoilRoot>\r\n    var cleanupEffectsByStore = new Map();\r\n    function maybeFreezeValueOrPromise(valueOrPromise) {\r\n        if (true) {\r\n            if (options.dangerouslyAllowMutability !== true) {\r\n                if (Recoil_isPromise(valueOrPromise)) {\r\n                    return valueOrPromise.then(function (value) {\r\n                        Recoil_deepFreezeValue(value);\r\n                        return value;\r\n                    });\r\n                }\r\n                else {\r\n                    Recoil_deepFreezeValue(valueOrPromise);\r\n                    return valueOrPromise;\r\n                }\r\n            }\r\n        }\r\n        return valueOrPromise;\r\n    }\r\n    function wrapPendingPromise(store, promise) {\r\n        var wrappedPromise = promise.then(function (value) {\r\n            var _store$getState$nextT, _state$atomValues$get;\r\n            var state = (_store$getState$nextT = store.getState().nextTree) !== null && _store$getState$nextT !== void 0 ? _store$getState$nextT : store.getState().currentTree;\r\n            if (((_state$atomValues$get = state.atomValues.get(key)) === null || _state$atomValues$get === void 0 ? void 0 : _state$atomValues$get.contents) === wrappedPromise) {\r\n                setRecoilValue$4(store, node, value);\r\n            }\r\n            return value;\r\n        }).catch(function (error) {\r\n            var _store$getState$nextT2, _state$atomValues$get2;\r\n            var state = (_store$getState$nextT2 = store.getState().nextTree) !== null && _store$getState$nextT2 !== void 0 ? _store$getState$nextT2 : store.getState().currentTree;\r\n            if (((_state$atomValues$get2 = state.atomValues.get(key)) === null || _state$atomValues$get2 === void 0 ? void 0 : _state$atomValues$get2.contents) === wrappedPromise) {\r\n                setRecoilValueLoadable$2(store, node, loadableWithError$2(error));\r\n            }\r\n            throw error;\r\n        });\r\n        return wrappedPromise;\r\n    }\r\n    function initAtom(store, initState, trigger) {\r\n        var _options$effects;\r\n        liveStoresCount++;\r\n        var cleanupAtom = function () {\r\n            var _cleanupEffectsByStor;\r\n            liveStoresCount--;\r\n            (_cleanupEffectsByStor = cleanupEffectsByStore.get(store)) === null || _cleanupEffectsByStor === void 0 ? void 0 : _cleanupEffectsByStor.forEach(function (cleanup) { return cleanup(); });\r\n            cleanupEffectsByStore.delete(store);\r\n        };\r\n        store.getState().knownAtoms.add(key); // Setup async defaults to notify subscribers when they resolve\r\n        if (defaultLoadable.state === 'loading') {\r\n            var notifyDefaultSubscribers = function () {\r\n                var _store$getState$nextT3;\r\n                var state = (_store$getState$nextT3 = store.getState().nextTree) !== null && _store$getState$nextT3 !== void 0 ? _store$getState$nextT3 : store.getState().currentTree;\r\n                if (!state.atomValues.has(key)) {\r\n                    markRecoilValueModified$2(store, node);\r\n                }\r\n            };\r\n            defaultLoadable.contents.finally(notifyDefaultSubscribers);\r\n        } ///////////////////\r\n        // Run Atom Effects\r\n        ///////////////////\r\n        var effects = (_options$effects = options.effects) !== null && _options$effects !== void 0 ? _options$effects : options.effects_UNSTABLE;\r\n        if (effects != null) {\r\n            // This state is scoped by Store, since this is in the initAtom() closure\r\n            var initValue_1 = DEFAULT_VALUE$7;\r\n            var isDuringInit_1 = true;\r\n            var isInitError = false;\r\n            var pendingSetSelf_1 = null;\r\n            function getLoadable(recoilValue) {\r\n                // Normally we can just get the current value of another atom.\r\n                // But for our own value we need to check if there is a pending\r\n                // initialized value or get the fallback default value.\r\n                if (isDuringInit_1 && recoilValue.key === key) {\r\n                    // Cast T to S\r\n                    var retValue = initValue_1; // flowlint-line unclear-type:off\r\n                    return retValue instanceof DefaultValue$2 ? peekAtom(store, initState) // flowlint-line unclear-type:off\r\n                        : Recoil_isPromise(retValue) ? loadableWithPromise$2(retValue.then(function (v) { return v instanceof DefaultValue$2 ? // Cast T to S\r\n                            defaultLoadable.toPromise() // flowlint-line unclear-type:off\r\n                            : v; })) : loadableWithValue$3(retValue);\r\n                }\r\n                return getRecoilValueAsLoadable$4(store, recoilValue);\r\n            }\r\n            function getPromise(recoilValue) {\r\n                return getLoadable(recoilValue).toPromise();\r\n            }\r\n            function getInfo_UNSTABLE(recoilValue) {\r\n                var _store$getState$nextT4;\r\n                var info = peekNodeInfo$3(store, (_store$getState$nextT4 = store.getState().nextTree) !== null && _store$getState$nextT4 !== void 0 ? _store$getState$nextT4 : store.getState().currentTree, recoilValue.key);\r\n                return isDuringInit_1 && recoilValue.key === key && !(initValue_1 instanceof DefaultValue$2) ? __assign(__assign({}, info), { isSet: true, loadable: getLoadable(recoilValue) }) : info;\r\n            }\r\n            var setSelf_1 = function (effect) { return function (valueOrUpdater) {\r\n                if (isDuringInit_1) {\r\n                    var currentLoadable = getLoadable(node);\r\n                    var currentValue = currentLoadable.state === 'hasValue' ? currentLoadable.contents : DEFAULT_VALUE$7;\r\n                    initValue_1 = typeof valueOrUpdater === 'function' ? // cast to any because we can't restrict T from being a function without losing support for opaque types\r\n                        valueOrUpdater(currentValue) // flowlint-line unclear-type:off\r\n                        : valueOrUpdater;\r\n                    if (Recoil_isPromise(initValue_1)) {\r\n                        initValue_1 = initValue_1.then(function (value) {\r\n                            // Avoid calling onSet() when setSelf() initializes with a Promise\r\n                            pendingSetSelf_1 = {\r\n                                effect: effect,\r\n                                value: value\r\n                            };\r\n                            return value;\r\n                        });\r\n                    }\r\n                }\r\n                else {\r\n                    if (Recoil_isPromise(valueOrUpdater)) {\r\n                        throw Recoil_err('Setting atoms to async values is not implemented.');\r\n                    }\r\n                    if (typeof valueOrUpdater !== 'function') {\r\n                        pendingSetSelf_1 = {\r\n                            effect: effect,\r\n                            value: unwrap(valueOrUpdater)\r\n                        };\r\n                    }\r\n                    setRecoilValue$4(store, node, typeof valueOrUpdater === 'function' ? function (currentValue) {\r\n                        var newValue = unwrap(// cast to any because we can't restrict T from being a function without losing support for opaque types\r\n                        valueOrUpdater(currentValue) // flowlint-line unclear-type:off\r\n                        );\r\n                        pendingSetSelf_1 = {\r\n                            effect: effect,\r\n                            value: newValue\r\n                        };\r\n                        return newValue;\r\n                    } : unwrap(valueOrUpdater));\r\n                }\r\n            }; };\r\n            var resetSelf = function (effect) { return function () { return setSelf_1(effect)(DEFAULT_VALUE$7); }; };\r\n            var onSet = function (effect) { return function (handler) {\r\n                var _cleanupEffectsByStor2;\r\n                var release = store.subscribeToTransactions(function (currentStore) {\r\n                    var _currentTree$atomValu;\r\n                    // eslint-disable-next-line prefer-const\r\n                    var _a = currentStore.getState(), currentTree = _a.currentTree, previousTree = _a.previousTree;\r\n                    if (!previousTree) {\r\n                        Recoil_recoverableViolation('Transaction subscribers notified without a next tree being present -- this is a bug in Recoil');\r\n                        previousTree = currentTree; // attempt to trundle on\r\n                    }\r\n                    var newLoadable = (_currentTree$atomValu = currentTree.atomValues.get(key)) !== null && _currentTree$atomValu !== void 0 ? _currentTree$atomValu : defaultLoadable;\r\n                    if (newLoadable.state === 'hasValue') {\r\n                        var _previousTree$atomVal, _pendingSetSelf, _pendingSetSelf2, _pendingSetSelf3;\r\n                        var newValue = newLoadable.contents;\r\n                        var oldLoadable = (_previousTree$atomVal = previousTree.atomValues.get(key)) !== null && _previousTree$atomVal !== void 0 ? _previousTree$atomVal : defaultLoadable;\r\n                        var oldValue = oldLoadable.state === 'hasValue' ? oldLoadable.contents : DEFAULT_VALUE$7; // TODO This isn't actually valid, use as a placeholder for now.\r\n                        // Ignore atom value changes that were set via setSelf() in the same effect.\r\n                        // We will still properly call the handler if there was a subsequent\r\n                        // set from something other than an atom effect which was batched\r\n                        // with the `setSelf()` call.  However, we may incorrectly ignore\r\n                        // the handler if the subsequent batched call happens to set the\r\n                        // atom to the exact same value as the `setSelf()`.   But, in that\r\n                        // case, it was kind of a noop, so the semantics are debatable..\r\n                        if (((_pendingSetSelf = pendingSetSelf_1) === null || _pendingSetSelf === void 0 ? void 0 : _pendingSetSelf.effect) !== effect || ((_pendingSetSelf2 = pendingSetSelf_1) === null || _pendingSetSelf2 === void 0 ? void 0 : _pendingSetSelf2.value) !== newValue) {\r\n                            handler(newValue, oldValue, !currentTree.atomValues.has(key));\r\n                        }\r\n                        else if (((_pendingSetSelf3 = pendingSetSelf_1) === null || _pendingSetSelf3 === void 0 ? void 0 : _pendingSetSelf3.effect) === effect) {\r\n                            pendingSetSelf_1 = null;\r\n                        }\r\n                    }\r\n                }, key).release;\r\n                cleanupEffectsByStore.set(store, __spreadArray(__spreadArray([], ((_cleanupEffectsByStor2 = cleanupEffectsByStore.get(store)) !== null && _cleanupEffectsByStor2 !== void 0 ? _cleanupEffectsByStor2 : [])), [release]));\r\n            }; };\r\n            for (var _a = 0, effects_1 = effects; _a < effects_1.length; _a++) {\r\n                var effect = effects_1[_a];\r\n                try {\r\n                    var cleanup = effect({\r\n                        node: node,\r\n                        storeID: store.storeID,\r\n                        parentStoreID_UNSTABLE: store.parentStoreID,\r\n                        trigger: trigger,\r\n                        setSelf: setSelf_1(effect),\r\n                        resetSelf: resetSelf(effect),\r\n                        onSet: onSet(effect),\r\n                        getPromise: getPromise,\r\n                        getLoadable: getLoadable,\r\n                        getInfo_UNSTABLE: getInfo_UNSTABLE\r\n                    });\r\n                    if (cleanup != null) {\r\n                        var _cleanupEffectsByStor3;\r\n                        cleanupEffectsByStore.set(store, __spreadArray(__spreadArray([], ((_cleanupEffectsByStor3 = cleanupEffectsByStore.get(store)) !== null && _cleanupEffectsByStor3 !== void 0 ? _cleanupEffectsByStor3 : [])), [cleanup]));\r\n                    }\r\n                }\r\n                catch (error) {\r\n                    initValue_1 = error;\r\n                    isInitError = true;\r\n                }\r\n            }\r\n            isDuringInit_1 = false; // Mutate initial state in place since we know there are no other subscribers\r\n            // since we are the ones initializing on first use.\r\n            if (!(initValue_1 instanceof DefaultValue$2)) {\r\n                var _store$getState$nextT5;\r\n                var initLoadable = isInitError ? loadableWithError$2(initValue_1) : Recoil_isPromise(initValue_1) ? loadableWithPromise$2(wrapPendingPromise(store, initValue_1)) : loadableWithValue$3(unwrap(initValue_1));\r\n                maybeFreezeValueOrPromise(initLoadable.contents);\r\n                initState.atomValues.set(key, initLoadable); // If there is a pending transaction, then also mutate the next state tree.\r\n                // This could happen if the atom was first initialized in an action that\r\n                // also updated some other atom's state.\r\n                (_store$getState$nextT5 = store.getState().nextTree) === null || _store$getState$nextT5 === void 0 ? void 0 : _store$getState$nextT5.atomValues.set(key, initLoadable);\r\n            }\r\n        }\r\n        return cleanupAtom;\r\n    }\r\n    function peekAtom(_store, state) {\r\n        var _ref, _state$atomValues$get3;\r\n        return (_ref = (_state$atomValues$get3 = state.atomValues.get(key)) !== null && _state$atomValues$get3 !== void 0 ? _state$atomValues$get3 : cachedAnswerForUnvalidatedValue) !== null && _ref !== void 0 ? _ref : defaultLoadable;\r\n    }\r\n    function getAtom(_store, state) {\r\n        if (state.atomValues.has(key)) {\r\n            // Atom value is stored in state:\r\n            return Recoil_nullthrows(state.atomValues.get(key));\r\n        }\r\n        else if (state.nonvalidatedAtoms.has(key)) {\r\n            // Atom value is stored but needs validation before use.\r\n            // We might have already validated it and have a cached validated value:\r\n            if (cachedAnswerForUnvalidatedValue != null) {\r\n                return cachedAnswerForUnvalidatedValue;\r\n            }\r\n            if (persistence == null) {\r\n                Recoil_expectationViolation(\"Tried to restore a persisted value for atom \" + key + \" but it has no persistence settings.\");\r\n                return defaultLoadable;\r\n            }\r\n            var nonvalidatedValue = state.nonvalidatedAtoms.get(key);\r\n            var validatorResult = persistence.validator(nonvalidatedValue, DEFAULT_VALUE$7);\r\n            var validatedValueLoadable = validatorResult instanceof DefaultValue$2 ? defaultLoadable : loadableWithValue$3(validatorResult);\r\n            cachedAnswerForUnvalidatedValue = validatedValueLoadable;\r\n            return cachedAnswerForUnvalidatedValue;\r\n        }\r\n        else {\r\n            return defaultLoadable;\r\n        }\r\n    }\r\n    function invalidateAtom() {\r\n        cachedAnswerForUnvalidatedValue = undefined;\r\n    }\r\n    function setAtom(_store, state, newValue) {\r\n        // Bail out if we're being set to the existing value, or if we're being\r\n        // reset but have no stored value (validated or unvalidated) to reset from:\r\n        if (state.atomValues.has(key)) {\r\n            var existing = Recoil_nullthrows(state.atomValues.get(key));\r\n            if (existing.state === 'hasValue' && newValue === existing.contents) {\r\n                return new Map();\r\n            }\r\n        }\r\n        else if (!state.nonvalidatedAtoms.has(key) && newValue instanceof DefaultValue$2) {\r\n            return new Map();\r\n        }\r\n        maybeFreezeValueOrPromise(newValue);\r\n        cachedAnswerForUnvalidatedValue = undefined; // can be released now if it was previously in use\r\n        return new Map().set(key, loadableWithValue$3(newValue));\r\n    }\r\n    function shouldDeleteConfigOnReleaseAtom() {\r\n        return getConfigDeletionHandler$2(key) !== undefined && liveStoresCount <= 0;\r\n    }\r\n    var node = registerNode$2({\r\n        key: key,\r\n        nodeType: 'atom',\r\n        peek: peekAtom,\r\n        get: getAtom,\r\n        set: setAtom,\r\n        init: initAtom,\r\n        invalidate: invalidateAtom,\r\n        shouldDeleteConfigOnRelease: shouldDeleteConfigOnReleaseAtom,\r\n        dangerouslyAllowMutability: options.dangerouslyAllowMutability,\r\n        persistence_UNSTABLE: options.persistence_UNSTABLE ? {\r\n            type: options.persistence_UNSTABLE.type,\r\n            backButton: options.persistence_UNSTABLE.backButton\r\n        } : undefined,\r\n        shouldRestoreFromSnapshots: true,\r\n        retainedBy: retainedBy\r\n    });\r\n    return node;\r\n} // prettier-ignore\r\nfunction atom(options) {\r\n    if (true) {\r\n        if (typeof options.key !== 'string') {\r\n            throw Recoil_err('A key option with a unique string value must be provided when creating an atom.');\r\n        }\r\n    }\r\n    var // @fb-only: scopeRules_APPEND_ONLY_READ_THE_DOCS,\r\n    restOptions = __rest(options, []);\r\n    var optionsDefault = 'default' in options ? // $FlowIssue[prop-missing] No way to refine in Flow that property is not defined\r\n        // $FlowIssue[incompatible-type] No way to refine in Flow that property is not defined\r\n        options.default : new Promise(function () { });\r\n    if (isRecoilValue$4(optionsDefault) // Continue to use atomWithFallback for promise defaults for scoped atoms\r\n    // for now, since scoped atoms don't support async defaults\r\n    // @fb-only: || (isPromise(optionsDefault) && scopeRules_APPEND_ONLY_READ_THE_DOCS)\r\n    // @fb-only: || (isLoadable(optionsDefault) && scopeRules_APPEND_ONLY_READ_THE_DOCS)\r\n    ) {\r\n        return atomWithFallback(__assign(__assign({}, restOptions), { default: optionsDefault // @fb-only: scopeRules_APPEND_ONLY_READ_THE_DOCS,\r\n         })); // @fb-only: } else if (scopeRules_APPEND_ONLY_READ_THE_DOCS\r\n        // @fb-only: && !isPromise(optionsDefault)\r\n        // @fb-only: && !isLoadable(optionsDefault)\r\n        // @fb-only: ) {\r\n        // @fb-only: return scopedAtom<T>({\r\n        // @fb-only: ...restOptions,\r\n        // @fb-only: default: unwrap<T>(optionsDefault),\r\n        // @fb-only: scopeRules_APPEND_ONLY_READ_THE_DOCS,\r\n        // @fb-only: });\r\n    }\r\n    else {\r\n        return baseAtom(__assign(__assign({}, restOptions), { default: optionsDefault }));\r\n    }\r\n}\r\nfunction atomWithFallback(options) {\r\n    var base = atom(__assign(__assign({}, options), { default: DEFAULT_VALUE$7, persistence_UNSTABLE: options.persistence_UNSTABLE === undefined ? undefined : __assign(__assign({}, options.persistence_UNSTABLE), { validator: function (storedValue) { return storedValue instanceof DefaultValue$2 ? storedValue : Recoil_nullthrows(options.persistence_UNSTABLE).validator(storedValue, DEFAULT_VALUE$7); } }), \r\n        // TODO Hack for now.\r\n        effects: options.effects, \r\n        // flowlint-line unclear-type: off\r\n        effects_UNSTABLE: options.effects_UNSTABLE // flowlint-line unclear-type: off\r\n     }));\r\n    var sel = Recoil_selector({\r\n        key: options.key + \"__withFallback\",\r\n        get: function (_a) {\r\n            var get = _a.get;\r\n            var baseValue = get(base);\r\n            return baseValue instanceof DefaultValue$2 ? options.default : baseValue;\r\n        },\r\n        set: function (_a, newValue) {\r\n            var set = _a.set;\r\n            return set(base, newValue);\r\n        },\r\n        // This selector does not need to cache as it is a wrapper selector\r\n        // and the selector within the wrapper selector will have a cache\r\n        // option by default\r\n        cachePolicy_UNSTABLE: {\r\n            eviction: 'most-recent'\r\n        },\r\n        dangerouslyAllowMutability: options.dangerouslyAllowMutability\r\n    });\r\n    setConfigDeletionHandler$1(sel.key, getConfigDeletionHandler$2(options.key));\r\n    return sel;\r\n}\r\natom.value = function (value) { return new WrappedValue$2(value); };\r\nvar Recoil_atom = atom;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nvar MapCache = /** @class */ (function () {\r\n    function MapCache(options) {\r\n        var _options$mapKey;\r\n        _defineProperty(this, \"_map\", void 0);\r\n        _defineProperty(this, \"_keyMapper\", void 0);\r\n        this._map = new Map();\r\n        this._keyMapper = (_options$mapKey = options === null || options === void 0 ? void 0 : options.mapKey) !== null && _options$mapKey !== void 0 ? _options$mapKey : function (v) { return v; };\r\n    }\r\n    MapCache.prototype.size = function () {\r\n        return this._map.size;\r\n    };\r\n    MapCache.prototype.has = function (key) {\r\n        return this._map.has(this._keyMapper(key));\r\n    };\r\n    MapCache.prototype.get = function (key) {\r\n        return this._map.get(this._keyMapper(key));\r\n    };\r\n    MapCache.prototype.set = function (key, val) {\r\n        this._map.set(this._keyMapper(key), val);\r\n    };\r\n    MapCache.prototype.delete = function (key) {\r\n        this._map.delete(this._keyMapper(key));\r\n    };\r\n    MapCache.prototype.clear = function () {\r\n        this._map.clear();\r\n    };\r\n    return MapCache;\r\n}());\r\nvar Recoil_MapCache = {\r\n    MapCache: MapCache\r\n};\r\nvar Recoil_MapCache_1 = Recoil_MapCache.MapCache;\r\nvar Recoil_MapCache$1 = /*#__PURE__*/ Object.freeze({\r\n    __proto__: null,\r\n    MapCache: Recoil_MapCache_1\r\n});\r\nvar LRUCache$2 = Recoil_LRUCache$1.LRUCache;\r\nvar MapCache$1 = Recoil_MapCache$1.MapCache;\r\nvar defaultPolicy$1 = {\r\n    equality: 'reference',\r\n    eviction: 'none',\r\n    maxSize: Infinity\r\n};\r\nfunction cacheFromPolicy(_a) {\r\n    var _b = _a === void 0 ? defaultPolicy$1 : _a, _c = _b.equality, equality = _c === void 0 ? defaultPolicy$1.equality : _c, _d = _b.eviction, eviction = _d === void 0 ? defaultPolicy$1.eviction : _d, _e = _b.maxSize, maxSize = _e === void 0 ? defaultPolicy$1.maxSize : _e;\r\n    var valueMapper = getValueMapper$1(equality);\r\n    var cache = getCache(eviction, maxSize, valueMapper);\r\n    return cache;\r\n}\r\nfunction getValueMapper$1(equality) {\r\n    switch (equality) {\r\n        case 'reference':\r\n            return function (val) { return val; };\r\n        case 'value':\r\n            return function (val) { return Recoil_stableStringify(val); };\r\n    }\r\n    throw Recoil_err(\"Unrecognized equality policy \" + equality);\r\n}\r\nfunction getCache(eviction, maxSize, mapKey) {\r\n    switch (eviction) {\r\n        case 'keep-all':\r\n            return new MapCache$1({\r\n                mapKey: mapKey\r\n            });\r\n        case 'lru':\r\n            return new LRUCache$2({\r\n                mapKey: mapKey,\r\n                maxSize: Recoil_nullthrows(maxSize)\r\n            });\r\n        case 'most-recent':\r\n            return new LRUCache$2({\r\n                mapKey: mapKey,\r\n                maxSize: 1\r\n            });\r\n    }\r\n    throw Recoil_err(\"Unrecognized eviction policy \" + eviction);\r\n}\r\nvar Recoil_cacheFromPolicy = cacheFromPolicy;\r\n// @fb-only: import type {ScopeRules} from 'Recoil_ScopedAtom';\r\nvar setConfigDeletionHandler$2 = Recoil_Node.setConfigDeletionHandler;\r\n// Process scopeRules to handle any entries which are functions taking parameters\r\n// prettier-ignore\r\n// @fb-only: function mapScopeRules<P>(\r\n// @fb-only: scopeRules?: ParameterizedScopeRules<P>,\r\n// @fb-only: param: P,\r\n// @fb-only: ): ScopeRules | void {\r\n// @fb-only: return scopeRules?.map(rule =>\r\n// @fb-only: Array.isArray(rule)\r\n// @fb-only: ? rule.map(entry => (typeof entry === 'function' ? entry(param) : entry))\r\n// @fb-only: : rule,\r\n// @fb-only: );\r\n// @fb-only: }\r\n/*\r\nA function which returns an atom based on the input parameter.\r\n\r\nEach unique parameter returns a unique atom. E.g.,\r\n\r\n  const f = atomFamily(...);\r\n  f({a: 1}) => an atom\r\n  f({a: 2}) => a different atom\r\n\r\nThis allows components to persist local, private state using atoms.  Each\r\ninstance of the component may have a different key, which it uses as the\r\nparameter for a family of atoms; in this way, each component will have\r\nits own atom not shared by other instances.  These state keys may be composed\r\ninto children's state keys as well.\r\n*/\r\nfunction atomFamily(options) {\r\n    var _options$cachePolicyF, _options$cachePolicyF2;\r\n    var atomCache = Recoil_cacheFromPolicy({\r\n        equality: (_options$cachePolicyF = (_options$cachePolicyF2 = options.cachePolicyForParams_UNSTABLE) === null || _options$cachePolicyF2 === void 0 ? void 0 : _options$cachePolicyF2.equality) !== null && _options$cachePolicyF !== void 0 ? _options$cachePolicyF : 'value',\r\n        eviction: 'keep-all'\r\n    }); // Simple atomFamily implementation to cache individual atoms based\r\n    // on the parameter value equality.\r\n    return function (params) {\r\n        var _stableStringify, _options$effects;\r\n        var cachedAtom = atomCache.get(params);\r\n        if (cachedAtom != null) {\r\n            return cachedAtom;\r\n        }\r\n        var cachePolicyForParams_UNSTABLE = options.cachePolicyForParams_UNSTABLE, atomOptions = __rest(options, [\"cachePolicyForParams_UNSTABLE\"]);\r\n        var optionsDefault = 'default' in options ? // $FlowIssue[prop-missing] No way to refine in Flow that property is not defined\r\n            // $FlowIssue[incompatible-type] No way to refine in Flow that property is not defined\r\n            options.default : new Promise(function () { });\r\n        var newAtom = Recoil_atom(__assign(__assign({}, atomOptions), { key: options.key + \"__\" + ((_stableStringify = Recoil_stableStringify(params)) !== null && _stableStringify !== void 0 ? _stableStringify : 'void'), default: typeof optionsDefault === 'function' ? // The default was parameterized\r\n                // Flow doesn't know that T isn't a function, so we need to case to any\r\n                // $FlowIssue[incompatible-use]\r\n                optionsDefault(params) : // Default may be a static value, promise, or RecoilValue\r\n                optionsDefault, retainedBy_UNSTABLE: typeof options.retainedBy_UNSTABLE === 'function' ? options.retainedBy_UNSTABLE(params) : options.retainedBy_UNSTABLE, effects: typeof options.effects === 'function' ? options.effects(params) : typeof options.effects_UNSTABLE === 'function' ? options.effects_UNSTABLE(params) : (_options$effects = options.effects) !== null && _options$effects !== void 0 ? _options$effects : options.effects_UNSTABLE // prettier-ignore\r\n         }));\r\n        atomCache.set(params, newAtom);\r\n        setConfigDeletionHandler$2(newAtom.key, function () {\r\n            atomCache.delete(params);\r\n        });\r\n        return newAtom;\r\n    };\r\n}\r\nvar Recoil_atomFamily = atomFamily;\r\nvar setConfigDeletionHandler$3 = Recoil_Node.setConfigDeletionHandler;\r\n// Keep in mind the parameter needs to be serializable as a cahche key\r\n// using Recoil_stableStringify\r\n// Add a unique index to each selector in case the cache implementation allows\r\n// duplicate keys based on equivalent stringified parameters\r\nvar nextIndex = 0;\r\n/* eslint-disable no-redeclare */\r\n// Return a function that returns members of a family of selectors of the same type\r\n// E.g.,\r\n//\r\n// const s = selectorFamily(...);\r\n// s({a: 1}) => a selector\r\n// s({a: 2}) => a different selector\r\n//\r\n// By default, the selectors are distinguished by distinct values of the\r\n// parameter based on value equality, not reference equality.  This allows using\r\n// object literals or other equivalent objects at callsites to not create\r\n// duplicate cache entries.  This behavior may be overridden with the\r\n// cacheImplementationForParams option.\r\nfunction selectorFamily(options) {\r\n    var _options$cachePolicyF, _options$cachePolicyF2;\r\n    var selectorCache = Recoil_cacheFromPolicy({\r\n        equality: (_options$cachePolicyF = (_options$cachePolicyF2 = options.cachePolicyForParams_UNSTABLE) === null || _options$cachePolicyF2 === void 0 ? void 0 : _options$cachePolicyF2.equality) !== null && _options$cachePolicyF !== void 0 ? _options$cachePolicyF : 'value',\r\n        eviction: 'keep-all'\r\n    });\r\n    return function (params) {\r\n        var _stableStringify;\r\n        // Throw an error with selector key so that it is clear which\r\n        // selector is causing an error\r\n        var cachedSelector;\r\n        try {\r\n            cachedSelector = selectorCache.get(params);\r\n        }\r\n        catch (error) {\r\n            throw Recoil_err(\"Problem with cache lookup for selector \" + options.key + \": \" + error.message);\r\n        }\r\n        if (cachedSelector != null) {\r\n            return cachedSelector;\r\n        }\r\n        var myKey = options.key + \"__selectorFamily/\" + ((_stableStringify = Recoil_stableStringify(params, {\r\n            // It is possible to use functions in parameters if the user uses\r\n            // a cache with reference equality thanks to the incrementing index.\r\n            allowFunctions: true\r\n        })) !== null && _stableStringify !== void 0 ? _stableStringify : 'void') + \"/\" + nextIndex++; // Append index in case values serialize to the same key string\r\n        var myGet = function (callbacks) { return options.get(params)(callbacks); };\r\n        var myCachePolicy = options.cachePolicy_UNSTABLE;\r\n        var retainedBy = typeof options.retainedBy_UNSTABLE === 'function' ? options.retainedBy_UNSTABLE(params) : options.retainedBy_UNSTABLE;\r\n        var newSelector;\r\n        if (options.set != null) {\r\n            var set_4 = options.set;\r\n            var mySet = function (callbacks, newValue) { return set_4(params)(callbacks, newValue); };\r\n            newSelector = Recoil_selector({\r\n                key: myKey,\r\n                get: myGet,\r\n                set: mySet,\r\n                cachePolicy_UNSTABLE: myCachePolicy,\r\n                dangerouslyAllowMutability: options.dangerouslyAllowMutability,\r\n                retainedBy_UNSTABLE: retainedBy\r\n            });\r\n        }\r\n        else {\r\n            newSelector = Recoil_selector({\r\n                key: myKey,\r\n                get: myGet,\r\n                cachePolicy_UNSTABLE: myCachePolicy,\r\n                dangerouslyAllowMutability: options.dangerouslyAllowMutability,\r\n                retainedBy_UNSTABLE: retainedBy\r\n            });\r\n        }\r\n        selectorCache.set(params, newSelector);\r\n        setConfigDeletionHandler$3(newSelector.key, function () {\r\n            selectorCache.delete(params);\r\n        });\r\n        return newSelector;\r\n    };\r\n}\r\n/* eslint-enable no-redeclare */\r\nvar Recoil_selectorFamily = selectorFamily;\r\n// flowlint-next-line unclear-type:off\r\nvar constantSelector = Recoil_selectorFamily({\r\n    key: '__constant',\r\n    get: function (constant) { return function () { return constant; }; },\r\n    cachePolicyForParams_UNSTABLE: {\r\n        equality: 'reference'\r\n    }\r\n}); // Function that returns a selector which always produces the\r\n// same constant value.  It may be called multiple times with the\r\n// same value, based on reference equality, and will provide the\r\n// same selector.\r\nfunction constSelector(constant) {\r\n    return constantSelector(constant);\r\n}\r\nvar Recoil_constSelector = constSelector;\r\n// flowlint-next-line unclear-type:off\r\nvar throwingSelector = Recoil_selectorFamily({\r\n    key: '__error',\r\n    get: function (message) { return function () {\r\n        throw Recoil_err(message);\r\n    }; },\r\n    // TODO Why?\r\n    cachePolicyForParams_UNSTABLE: {\r\n        equality: 'reference'\r\n    }\r\n}); // Function that returns a selector which always throws an error\r\n// with the provided message.\r\nfunction errorSelector(message) {\r\n    return throwingSelector(message);\r\n}\r\nvar Recoil_errorSelector = errorSelector;\r\n/**\r\n * Copyright (c) Facebook, Inc. and its affiliates.\r\n *\r\n * This source code is licensed under the MIT license found in the\r\n * LICENSE file in the root directory of this source tree.\r\n *\r\n * Wraps another recoil value and prevents writing to it.\r\n *\r\n * @emails oncall+recoil\r\n *\r\n * @format\r\n */\r\nfunction readOnlySelector(atom) {\r\n    // flowlint-next-line unclear-type: off\r\n    return atom;\r\n}\r\nvar Recoil_readOnlySelector = readOnlySelector;\r\nvar loadableWithError$3 = Recoil_Loadable$1.loadableWithError, loadableWithPromise$3 = Recoil_Loadable$1.loadableWithPromise, loadableWithValue$4 = Recoil_Loadable$1.loadableWithValue;\r\n/////////////////\r\n//  TRUTH TABLE\r\n/////////////////\r\n// Dependencies        waitForNone         waitForAny        waitForAll       waitForAllSettled\r\n//  [loading, loading]  [Promise, Promise]  Promise           Promise         Promise\r\n//  [value, loading]    [value, Promise]    [value, Promise]  Promise         Promise\r\n//  [value, value]      [value, value]      [value, value]    [value, value]  [value, value]\r\n//\r\n//  [error, loading]    [Error, Promise]    [Error, Promise]  Error           Promise\r\n//  [error, error]      [Error, Error]      [Error, Error]    Error           [error, error]\r\n//  [value, error]      [value, Error]      [value, Error]    Error           [value, error]\r\n// Issue parallel requests for all dependencies and return the current\r\n// status if they have results, have some error, or are still pending.\r\nfunction concurrentRequests(getRecoilValue, deps) {\r\n    var results = Array(deps.length).fill(undefined);\r\n    var exceptions = Array(deps.length).fill(undefined);\r\n    for (var _a = 0, _b = deps.entries(); _a < _b.length; _a++) {\r\n        var _c = _b[_a], i = _c[0], dep = _c[1];\r\n        try {\r\n            results[i] = getRecoilValue(dep);\r\n        }\r\n        catch (e) {\r\n            // exceptions can either be Promises of pending results or real errors\r\n            exceptions[i] = e;\r\n        }\r\n    }\r\n    return [results, exceptions];\r\n}\r\nfunction isError(exp) {\r\n    return exp != null && !Recoil_isPromise(exp);\r\n}\r\nfunction unwrapDependencies(dependencies) {\r\n    return Array.isArray(dependencies) ? dependencies : Object.getOwnPropertyNames(dependencies).map(function (key) { return dependencies[key]; });\r\n}\r\nfunction wrapResults(dependencies, \r\n/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's\r\n * LTI update could not be added via codemod */\r\nresults) {\r\n    return Array.isArray(dependencies) ? results : // Object.getOwnPropertyNames() has consistent key ordering with ES6\r\n        Object.getOwnPropertyNames(dependencies).reduce(function (out, key, idx) {\r\n            var _a;\r\n            return (__assign(__assign({}, out), (_a = {}, _a[key] = results[idx], _a)));\r\n        }, {});\r\n}\r\nfunction wrapLoadables(dependencies, results, exceptions) {\r\n    var output = exceptions.map(function (exception, idx) { return exception == null ? loadableWithValue$4(results[idx]) : Recoil_isPromise(exception) ? loadableWithPromise$3(exception) : loadableWithError$3(exception); });\r\n    return wrapResults(dependencies, output);\r\n}\r\nfunction combineAsyncResultsWithSyncResults(syncResults, asyncResults) {\r\n    return asyncResults.map(function (result, idx) {\r\n        /**\r\n         * it's important we use === undefined as opposed to == null, because the\r\n         * resolved value of the async promise could be `null`, in which case we\r\n         * don't want to use syncResults[idx], which would be undefined. If async\r\n         * promise resolves to `undefined`, that's ok because `syncResults[idx]`\r\n         * will also be `undefined`. That's a little hacky, but it works.\r\n         */\r\n        return result === undefined ? syncResults[idx] : result;\r\n    });\r\n} // Selector that requests all dependencies in parallel and immediately returns\r\n// current results without waiting.\r\nvar waitForNone = Recoil_selectorFamily({\r\n    key: '__waitForNone',\r\n    get: function (dependencies) { return function (_a) {\r\n        var get = _a.get;\r\n        // Issue requests for all dependencies in parallel.\r\n        var deps = unwrapDependencies(dependencies);\r\n        var _b = concurrentRequests(get, deps), results = _b[0], exceptions = _b[1]; // Always return the current status of the results; never block.\r\n        return wrapLoadables(dependencies, results, exceptions);\r\n    }; },\r\n    dangerouslyAllowMutability: true\r\n}); // Selector that requests all dependencies in parallel and waits for at least\r\n// one to be available before returning results.  It will only error if all\r\n// dependencies have errors.\r\nvar waitForAny = Recoil_selectorFamily({\r\n    key: '__waitForAny',\r\n    get: function (dependencies) { return function (_a) {\r\n        var get = _a.get;\r\n        // Issue requests for all dependencies in parallel.\r\n        // Exceptions can either be Promises of pending results or real errors\r\n        var deps = unwrapDependencies(dependencies);\r\n        var _b = concurrentRequests(get, deps), results = _b[0], exceptions = _b[1]; // If any results are available, value or error, return the current status\r\n        if (exceptions.some(function (exp) { return !Recoil_isPromise(exp); })) {\r\n            return wrapLoadables(dependencies, results, exceptions);\r\n        } // Otherwise, return a promise that will resolve when the next result is\r\n        // available, whichever one happens to be next.  But, if all pending\r\n        // dependencies end up with errors, then reject the promise.\r\n        return new Promise(function (resolve) {\r\n            var _loop_1 = function (i, exp) {\r\n                if (Recoil_isPromise(exp)) {\r\n                    exp.then(function (result) {\r\n                        results[i] = result;\r\n                        exceptions[i] = undefined;\r\n                        resolve(wrapLoadables(dependencies, results, exceptions));\r\n                    }).catch(function (error) {\r\n                        exceptions[i] = error;\r\n                        resolve(wrapLoadables(dependencies, results, exceptions));\r\n                    });\r\n                }\r\n            };\r\n            for (var _a = 0, _b = exceptions.entries(); _a < _b.length; _a++) {\r\n                var _c = _b[_a], i = _c[0], exp = _c[1];\r\n                _loop_1(i, exp);\r\n            }\r\n        });\r\n    }; },\r\n    dangerouslyAllowMutability: true\r\n}); // Selector that requests all dependencies in parallel and waits for all to be\r\n// available before returning a value.  It will error if any dependencies error.\r\nvar waitForAll = Recoil_selectorFamily({\r\n    key: '__waitForAll',\r\n    get: function (dependencies) { return function (_a) {\r\n        var get = _a.get;\r\n        // Issue requests for all dependencies in parallel.\r\n        // Exceptions can either be Promises of pending results or real errors\r\n        var deps = unwrapDependencies(dependencies);\r\n        var _b = concurrentRequests(get, deps), results = _b[0], exceptions = _b[1]; // If all results are available, return the results\r\n        if (exceptions.every(function (exp) { return exp == null; })) {\r\n            return wrapResults(dependencies, results);\r\n        } // If we have any errors, throw the first error\r\n        var error = exceptions.find(isError);\r\n        if (error != null) {\r\n            throw error;\r\n        } // Otherwise, return a promise that will resolve when all results are available\r\n        return Promise.all(exceptions).then(function (exceptionResults) { return wrapResults(dependencies, combineAsyncResultsWithSyncResults(results, exceptionResults)); });\r\n    }; },\r\n    dangerouslyAllowMutability: true\r\n});\r\nvar waitForAllSettled = Recoil_selectorFamily({\r\n    key: '__waitForAllSettled',\r\n    get: function (dependencies) { return function (_a) {\r\n        var get = _a.get;\r\n        // Issue requests for all dependencies in parallel.\r\n        // Exceptions can either be Promises of pending results or real errors\r\n        var deps = unwrapDependencies(dependencies);\r\n        var _b = concurrentRequests(get, deps), results = _b[0], exceptions = _b[1]; // If all results are available, return the results\r\n        if (exceptions.every(function (exp) { return !Recoil_isPromise(exp); })) {\r\n            return wrapLoadables(dependencies, results, exceptions);\r\n        } // Wait for all results to settle\r\n        return Promise.all(exceptions.map(function (exp, i) { return Recoil_isPromise(exp) ? exp.then(function (result) {\r\n            results[i] = result;\r\n            exceptions[i] = undefined;\r\n        }).catch(function (error) {\r\n            results[i] = undefined;\r\n            exceptions[i] = error;\r\n        }) : null; })) // Then wrap them as loadables\r\n            .then(function () { return wrapLoadables(dependencies, results, exceptions); });\r\n    }; },\r\n    dangerouslyAllowMutability: true\r\n});\r\nvar noWait = Recoil_selectorFamily({\r\n    key: '__noWait',\r\n    get: function (dependency) { return function (_a) {\r\n        var get = _a.get;\r\n        try {\r\n            return Recoil_selector.value(loadableWithValue$4(get(dependency)));\r\n        }\r\n        catch (exception) {\r\n            return Recoil_selector.value(Recoil_isPromise(exception) ? loadableWithPromise$3(exception) : loadableWithError$3(exception));\r\n        }\r\n    }; },\r\n    dangerouslyAllowMutability: true\r\n});\r\nvar Recoil_WaitFor = {\r\n    waitForNone: waitForNone,\r\n    waitForAny: waitForAny,\r\n    waitForAll: waitForAll,\r\n    waitForAllSettled: waitForAllSettled,\r\n    noWait: noWait\r\n};\r\nvar RecoilLoadable = Recoil_Loadable$1.RecoilLoadable;\r\nvar DefaultValue$3 = Recoil_Node.DefaultValue;\r\nvar RecoilRoot$2 = Recoil_RecoilRoot.RecoilRoot, useRecoilStoreID$1 = Recoil_RecoilRoot.useRecoilStoreID;\r\nvar isRecoilValue$5 = Recoil_RecoilValue$1.isRecoilValue;\r\nvar retentionZone$1 = Recoil_RetentionZone.retentionZone;\r\nvar freshSnapshot$2 = Recoil_Snapshot$1.freshSnapshot;\r\nvar useRecoilState$1 = Recoil_Hooks.useRecoilState, useRecoilState_TRANSITION_SUPPORT_UNSTABLE$1 = Recoil_Hooks.useRecoilState_TRANSITION_SUPPORT_UNSTABLE, useRecoilStateLoadable$1 = Recoil_Hooks.useRecoilStateLoadable, useRecoilValue$1 = Recoil_Hooks.useRecoilValue, useRecoilValue_TRANSITION_SUPPORT_UNSTABLE$1 = Recoil_Hooks.useRecoilValue_TRANSITION_SUPPORT_UNSTABLE, useRecoilValueLoadable$1 = Recoil_Hooks.useRecoilValueLoadable, useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE$1 = Recoil_Hooks.useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE, useResetRecoilState$1 = Recoil_Hooks.useResetRecoilState, useSetRecoilState$1 = Recoil_Hooks.useSetRecoilState;\r\nvar useGotoRecoilSnapshot$1 = Recoil_SnapshotHooks.useGotoRecoilSnapshot, useRecoilSnapshot$1 = Recoil_SnapshotHooks.useRecoilSnapshot, useRecoilTransactionObserver$1 = Recoil_SnapshotHooks.useRecoilTransactionObserver;\r\nvar useRecoilCallback$1 = Recoil_useRecoilCallback.useRecoilCallback;\r\nvar noWait$1 = Recoil_WaitFor.noWait, waitForAll$1 = Recoil_WaitFor.waitForAll, waitForAllSettled$1 = Recoil_WaitFor.waitForAllSettled, waitForAny$1 = Recoil_WaitFor.waitForAny, waitForNone$1 = Recoil_WaitFor.waitForNone;\r\nvar Recoil_index = {\r\n    // Types\r\n    DefaultValue: DefaultValue$3,\r\n    isRecoilValue: isRecoilValue$5,\r\n    RecoilLoadable: RecoilLoadable,\r\n    // Recoil Root\r\n    RecoilRoot: RecoilRoot$2,\r\n    useRecoilStoreID: useRecoilStoreID$1,\r\n    useRecoilBridgeAcrossReactRoots_UNSTABLE: Recoil_useRecoilBridgeAcrossReactRoots,\r\n    // Atoms/Selectors\r\n    atom: Recoil_atom,\r\n    selector: Recoil_selector,\r\n    // Convenience Atoms/Selectors\r\n    atomFamily: Recoil_atomFamily,\r\n    selectorFamily: Recoil_selectorFamily,\r\n    constSelector: Recoil_constSelector,\r\n    errorSelector: Recoil_errorSelector,\r\n    readOnlySelector: Recoil_readOnlySelector,\r\n    // Concurrency Helpers for Atoms/Selectors\r\n    noWait: noWait$1,\r\n    waitForNone: waitForNone$1,\r\n    waitForAny: waitForAny$1,\r\n    waitForAll: waitForAll$1,\r\n    waitForAllSettled: waitForAllSettled$1,\r\n    // Hooks for Atoms/Selectors\r\n    useRecoilValue: useRecoilValue$1,\r\n    useRecoilValueLoadable: useRecoilValueLoadable$1,\r\n    useRecoilState: useRecoilState$1,\r\n    useRecoilStateLoadable: useRecoilStateLoadable$1,\r\n    useSetRecoilState: useSetRecoilState$1,\r\n    useResetRecoilState: useResetRecoilState$1,\r\n    useGetRecoilValueInfo_UNSTABLE: Recoil_useGetRecoilValueInfo,\r\n    useRecoilRefresher_UNSTABLE: Recoil_useRecoilRefresher,\r\n    useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE: useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE$1,\r\n    useRecoilValue_TRANSITION_SUPPORT_UNSTABLE: useRecoilValue_TRANSITION_SUPPORT_UNSTABLE$1,\r\n    useRecoilState_TRANSITION_SUPPORT_UNSTABLE: useRecoilState_TRANSITION_SUPPORT_UNSTABLE$1,\r\n    // Hooks for complex operations\r\n    useRecoilCallback: useRecoilCallback$1,\r\n    useRecoilTransaction_UNSTABLE: Recoil_useRecoilTransaction,\r\n    // Snapshots\r\n    useGotoRecoilSnapshot: useGotoRecoilSnapshot$1,\r\n    useRecoilSnapshot: useRecoilSnapshot$1,\r\n    useRecoilTransactionObserver_UNSTABLE: useRecoilTransactionObserver$1,\r\n    snapshot_UNSTABLE: freshSnapshot$2,\r\n    // Memory Management\r\n    useRetain: Recoil_useRetain,\r\n    retentionZone: retentionZone$1\r\n};\r\nvar Recoil_index_1 = Recoil_index.DefaultValue;\r\nexports.DefaultValue = Recoil_index_1;\r\nvar Recoil_index_2 = Recoil_index.isRecoilValue;\r\nexports.isRecoilValue = Recoil_index_2;\r\nvar Recoil_index_3 = Recoil_index.RecoilLoadable;\r\nexports.RecoilLoadable = Recoil_index_3;\r\nvar Recoil_index_4 = Recoil_index.RecoilRoot;\r\nexports.RecoilRoot = Recoil_index_4;\r\nvar Recoil_index_5 = Recoil_index.useRecoilStoreID;\r\nexports.useRecoilStoreID = Recoil_index_5;\r\nvar Recoil_index_6 = Recoil_index.useRecoilBridgeAcrossReactRoots_UNSTABLE;\r\nexports.useRecoilBridgeAcrossReactRoots_UNSTABLE = Recoil_index_6;\r\nvar Recoil_index_7 = Recoil_index.atom;\r\nexports.atom = Recoil_index_7;\r\nvar Recoil_index_8 = Recoil_index.selector;\r\nexports.selector = Recoil_index_8;\r\nvar Recoil_index_9 = Recoil_index.atomFamily;\r\nexports.atomFamily = Recoil_index_9;\r\nvar Recoil_index_10 = Recoil_index.selectorFamily;\r\nexports.selectorFamily = Recoil_index_10;\r\nvar Recoil_index_11 = Recoil_index.constSelector;\r\nexports.constSelector = Recoil_index_11;\r\nvar Recoil_index_12 = Recoil_index.errorSelector;\r\nexports.errorSelector = Recoil_index_12;\r\nvar Recoil_index_13 = Recoil_index.readOnlySelector;\r\nexports.readOnlySelector = Recoil_index_13;\r\nvar Recoil_index_14 = Recoil_index.noWait;\r\nexports.noWait = Recoil_index_14;\r\nvar Recoil_index_15 = Recoil_index.waitForNone;\r\nexports.waitForNone = Recoil_index_15;\r\nvar Recoil_index_16 = Recoil_index.waitForAny;\r\nexports.waitForAny = Recoil_index_16;\r\nvar Recoil_index_17 = Recoil_index.waitForAll;\r\nexports.waitForAll = Recoil_index_17;\r\nvar Recoil_index_18 = Recoil_index.waitForAllSettled;\r\nexports.waitForAllSettled = Recoil_index_18;\r\nvar Recoil_index_19 = Recoil_index.useRecoilValue;\r\nexports.useRecoilValue = Recoil_index_19;\r\nvar Recoil_index_20 = Recoil_index.useRecoilValueLoadable;\r\nexports.useRecoilValueLoadable = Recoil_index_20;\r\nvar Recoil_index_21 = Recoil_index.useRecoilState;\r\nexports.useRecoilState = Recoil_index_21;\r\nvar Recoil_index_22 = Recoil_index.useRecoilStateLoadable;\r\nexports.useRecoilStateLoadable = Recoil_index_22;\r\nvar Recoil_index_23 = Recoil_index.useSetRecoilState;\r\nexports.useSetRecoilState = Recoil_index_23;\r\nvar Recoil_index_24 = Recoil_index.useResetRecoilState;\r\nexports.useResetRecoilState = Recoil_index_24;\r\nvar Recoil_index_25 = Recoil_index.useGetRecoilValueInfo_UNSTABLE;\r\nexports.useGetRecoilValueInfo_UNSTABLE = Recoil_index_25;\r\nvar Recoil_index_26 = Recoil_index.useRecoilRefresher_UNSTABLE;\r\nexports.useRecoilRefresher_UNSTABLE = Recoil_index_26;\r\nvar Recoil_index_27 = Recoil_index.useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE;\r\nexports.useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE = Recoil_index_27;\r\nvar Recoil_index_28 = Recoil_index.useRecoilValue_TRANSITION_SUPPORT_UNSTABLE;\r\nexports.useRecoilValue_TRANSITION_SUPPORT_UNSTABLE = Recoil_index_28;\r\nvar Recoil_index_29 = Recoil_index.useRecoilState_TRANSITION_SUPPORT_UNSTABLE;\r\nexports.useRecoilState_TRANSITION_SUPPORT_UNSTABLE = Recoil_index_29;\r\nvar Recoil_index_30 = Recoil_index.useRecoilCallback;\r\nexports.useRecoilCallback = Recoil_index_30;\r\nvar Recoil_index_31 = Recoil_index.useRecoilTransaction_UNSTABLE;\r\nexports.useRecoilTransaction_UNSTABLE = Recoil_index_31;\r\nvar Recoil_index_32 = Recoil_index.useGotoRecoilSnapshot;\r\nexports.useGotoRecoilSnapshot = Recoil_index_32;\r\nvar Recoil_index_33 = Recoil_index.useRecoilSnapshot;\r\nexports.useRecoilSnapshot = Recoil_index_33;\r\nvar Recoil_index_34 = Recoil_index.useRecoilTransactionObserver_UNSTABLE;\r\nexports.useRecoilTransactionObserver_UNSTABLE = Recoil_index_34;\r\nvar Recoil_index_35 = Recoil_index.snapshot_UNSTABLE;\r\nexports.snapshot_UNSTABLE = Recoil_index_35;\r\nvar Recoil_index_36 = Recoil_index.useRetain;\r\nexports.useRetain = Recoil_index_36;\r\nvar Recoil_index_37 = Recoil_index.retentionZone;\r\nexports.retentionZone = Recoil_index_37;\r\nexports.default = Recoil_index;\r\n\n\n//# sourceURL=webpack:///./node_modules/recoil/es/index.js?");
+
+/***/ }),
+
+/***/ "./src/App.tsx":
+/*!*********************!*\
+  !*** ./src/App.tsx ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.App = exports.textState = exports.store = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\n__webpack_require__(/*! ./main.global.css */ \"./src/main.global.css\");\r\nvar root_1 = __webpack_require__(/*! react-hot-loader/root */ \"react-hot-loader/root\");\r\nvar Layout_1 = __webpack_require__(/*! ./shared/Layout */ \"./src/shared/Layout/index.ts\");\r\nvar Header_1 = __webpack_require__(/*! ./shared/Header/Header */ \"./src/shared/Header/Header.tsx\");\r\nvar Content_1 = __webpack_require__(/*! ./shared/Content */ \"./src/shared/Content/index.ts\");\r\nvar useToken_1 = __webpack_require__(/*! ./hooks/useToken */ \"./src/hooks/useToken.ts\");\r\nvar PostsList_1 = __webpack_require__(/*! ./shared/Content/PostsList */ \"./src/shared/Content/PostsList/index.ts\");\r\nvar redux_1 = __webpack_require__(/*! redux */ \"redux\");\r\nvar react_redux_1 = __webpack_require__(/*! react-redux */ \"react-redux\");\r\nvar redux_devtools_extension_1 = __webpack_require__(/*! redux-devtools-extension */ \"redux-devtools-extension\");\r\nvar store_1 = __webpack_require__(/*! ./shared/store/store */ \"./src/shared/store/store.ts\");\r\nvar redux_thunk_1 = __importDefault(__webpack_require__(/*! redux-thunk */ \"redux-thunk\"));\r\nvar hooks_1 = __webpack_require__(/*! ./hooks/hooks */ \"./src/hooks/hooks.ts\");\r\nvar react_router_dom_1 = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\r\nvar Post_1 = __webpack_require__(/*! ./shared/Post */ \"./src/shared/Post/index.ts\");\r\n//вместо redux\r\nvar recoil_1 = __webpack_require__(/*! recoil */ \"./node_modules/recoil/es/index.js\");\r\nexports.store = redux_1.createStore(store_1.rootReducer, redux_devtools_extension_1.composeWithDevTools(redux_1.applyMiddleware(redux_thunk_1.default)));\r\n//Инициализируем состояние Recoil, вместо Redux\r\nexports.textState = recoil_1.atom({\r\n    key: 'textState',\r\n    default: 'Привет от Recoil', // default value (aka initial value)\r\n});\r\nfunction AppComponent() {\r\n    var _a = react_1.useState(false), mounted = _a[0], setMounted = _a[1];\r\n    react_1.useEffect(function () {\r\n        setMounted(true);\r\n    }, []);\r\n    var dispatch = hooks_1.useAppDispatch();\r\n    var saveToken = function () { return function (dispatch) {\r\n        var token = useToken_1.useToken()[0];\r\n        dispatch(store_1.setToken(token));\r\n    }; };\r\n    dispatch(saveToken());\r\n    return (react_1.default.createElement(react_1.default.Fragment, null, mounted && (react_1.default.createElement(recoil_1.RecoilRoot, null,\r\n        react_1.default.createElement(react_router_dom_1.BrowserRouter, null,\r\n            react_1.default.createElement(Layout_1.Layout, null,\r\n                react_1.default.createElement(Header_1.Header, null),\r\n                react_1.default.createElement(Content_1.Content, null,\r\n                    react_1.default.createElement(react_router_dom_1.Switch, null,\r\n                        react_1.default.createElement(react_router_dom_1.Route, { exact: true, strict: true, path: \"/\" },\r\n                            react_1.default.createElement(react_router_dom_1.Redirect, { to: \"/posts\" })),\r\n                        react_1.default.createElement(react_router_dom_1.Route, { exact: true, strict: true, path: \"/auth\" },\r\n                            react_1.default.createElement(react_router_dom_1.Redirect, { to: \"/posts\" })),\r\n                        react_1.default.createElement(react_router_dom_1.Route, { path: \"/posts\" },\r\n                            react_1.default.createElement(PostsList_1.PostsList, null)),\r\n                        react_1.default.createElement(react_router_dom_1.Route, null,\r\n                            react_1.default.createElement(\"div\", { style: { textAlign: 'center' } }, \"404 \\u2014 \\u0441\\u0442\\u0440\\u0430\\u043D\\u0438\\u0446\\u0430 \\u043D\\u0435 \\u043D\\u0430\\u0439\\u0434\\u0435\\u043D\\u0430\"))),\r\n                    react_1.default.createElement(react_router_dom_1.Route, { path: \"/posts/:id\" },\r\n                        react_1.default.createElement(Post_1.Post, null)))))))));\r\n}\r\nexports.App = root_1.hot(function () {\r\n    return react_1.default.createElement(react_redux_1.Provider, { store: exports.store },\r\n        react_1.default.createElement(AppComponent, null));\r\n});\r\n\n\n//# sourceURL=webpack:///./src/App.tsx?");
+
+/***/ }),
+
+/***/ "./src/hooks/hooks.ts":
+/*!****************************!*\
+  !*** ./src/hooks/hooks.ts ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.useAppSelector = exports.useAppDispatch = void 0;\r\nvar react_redux_1 = __webpack_require__(/*! react-redux */ \"react-redux\");\r\nexports.useAppDispatch = react_redux_1.useDispatch;\r\nexports.useAppSelector = react_redux_1.useSelector;\r\n\n\n//# sourceURL=webpack:///./src/hooks/hooks.ts?");
+
+/***/ }),
+
+/***/ "./src/hooks/useToken.ts":
+/*!*******************************!*\
+  !*** ./src/hooks/useToken.ts ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.useToken = void 0;\r\nvar react_1 = __webpack_require__(/*! react */ \"react\");\r\nfunction useToken() {\r\n    var token = '';\r\n    if (typeof window !== 'undefined') {\r\n        // localStorage.clear();\r\n        if (localStorage.getItem('token') !== 'undefined') {\r\n            token = localStorage.getItem('token') || window.__token__;\r\n        }\r\n        else {\r\n            token = window.__token__;\r\n        }\r\n        react_1.useEffect(function () {\r\n            if (token && token.length > 0 && token !== 'undefined') {\r\n                localStorage.setItem('token', token);\r\n            }\r\n        }, [token]);\r\n    }\r\n    // const [token, setToken] = useState('');\r\n    // useEffect(() => {\r\n    //   if (window.__token__) {\r\n    //       setToken(window.__token__);\r\n    //   }\r\n    // }, []);\r\n    return [token];\r\n}\r\nexports.useToken = useToken;\r\n\n\n//# sourceURL=webpack:///./src/hooks/useToken.ts?");
+
+/***/ }),
+
+/***/ "./src/hooks/useUserData.ts":
+/*!**********************************!*\
+  !*** ./src/hooks/useUserData.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.useUserData = void 0;\r\nvar react_1 = __webpack_require__(/*! react */ \"react\");\r\nvar actions_1 = __webpack_require__(/*! ../shared/store/me/actions */ \"./src/shared/store/me/actions.ts\");\r\nvar hooks_1 = __webpack_require__(/*! ./hooks */ \"./src/hooks/hooks.ts\");\r\nfunction useUserData() {\r\n    // const data = useSelector<RootState, IUserData>(state => state.me.data);\r\n    var data = hooks_1.useAppSelector(function (state) { return state.me.data; });\r\n    // const loading = useSelector<RootState, boolean>(state => state.me.loading);\r\n    var loading = hooks_1.useAppSelector(function (state) { return state.me.loading; });\r\n    // const token = useSelector<RootState, string | undefined>(state => state.token);\r\n    var token = hooks_1.useAppSelector(function (state) { return state.token; });\r\n    var dispatch = hooks_1.useAppDispatch();\r\n    // const dispatch: any = useDispatch();\r\n    react_1.useEffect(function () {\r\n        if (!token)\r\n            return;\r\n        dispatch(actions_1.meRequestAsync());\r\n    }, [token]);\r\n    return {\r\n        data: data,\r\n        loading: loading\r\n    };\r\n}\r\nexports.useUserData = useUserData;\r\n\n\n//# sourceURL=webpack:///./src/hooks/useUserData.ts?");
+
+/***/ }),
+
+/***/ "./src/main.global.css":
+/*!*****************************!*\
+  !*** ./src/main.global.css ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\nexports.push([module.i, \"@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);\"]);\n// Module\nexports.push([module.i, \":root {\\r\\n  --black:          #333333;\\r\\n  --orange:         #CC6633;\\r\\n  --green:          #A4CC33;\\r\\n  --whiteLightness: 100%;\\r\\n  --white:          hsl(0, 0%, var(--whiteLightness));\\r\\n  --grayF4:         hsl(0, 0%, calc(var(--whiteLightness) - 4%));\\r\\n  --greyF3:         hsl(0, 0%, calc(var(--whiteLightness) - 5%));\\r\\n  --greyEC:         hsl(0, 0%, calc(var(--whiteLightness) - 7%));\\r\\n  --greyD9:         hsl(0, 0%, calc(var(--whiteLightness) - 15%));\\r\\n  --greyC4:         hsl(0, 0%, calc(var(--whiteLightness) - 23%));\\r\\n  --grey99:         hsl(0, 0%, calc(var(--whiteLightness) - 40%));\\r\\n  --grey66:         hsl(0, 0%, calc(var(--whiteLightness) - 60%));\\r\\n}\\r\\n\\r\\nbody {\\r\\n  padding: 0;\\r\\n  margin: 0;\\r\\n  background-color: var(--grayF4);\\r\\n  font-size: 14px;\\r\\n  line-height: 16px;\\r\\n  font-family: 'Roboto', serif;\\r\\n}\\r\\n\\r\\n* {\\r\\n  color: var(--black);\\r\\n  box-sizing: border-box;\\r\\n  -webkit-font-smoothing: antialiased;\\r\\n  -moz-osx-font-smoothing: grayscale;\\r\\n}\\r\\n\\r\\nul {\\r\\n  margin: 0;\\r\\n  padding: 0;\\r\\n  list-style: none;\\r\\n}\\r\\n\\r\\na {\\r\\n  text-decoration: none;\\r\\n}\\r\\n\\r\\nbutton {\\r\\n  padding: 0;\\r\\n  border: 0;\\r\\n  background: transparent;\\r\\n  cursor: pointer;\\r\\n}\\r\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/main.global.css?");
+
+/***/ }),
+
+/***/ "./src/server/indexTemplate.js":
+/*!*************************************!*\
+  !*** ./src/server/indexTemplate.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.indexTemplate = void 0;\r\nvar indexTemplate = function (content, token) { return \"\\n<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n    <meta charset=\\\"UTF-8\\\">\\n    <meta http-equiv=\\\"X-UA-Compatible\\\" content=\\\"IE=edge\\\">\\n    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\n    <script src=\\\"/static/client.js\\\" type=\\\"application/javascript\\\"></script>\\n    <script >\\n      const token = '\" + token + \"';\\n      window.__token__ = token;\\n      if (token && token.length > 0 && token !== 'undefined') {\\n        localStorage.setItem('token', token);\\n      }\\n    </script>\\n    <title>Reddit</title>\\n</head>\\n<body>\\n    <div id=\\\"react_root\\\">\" + content + \"</div>\\n    <div id=\\\"modal_root\\\"></div>\\n    <div id=\\\"dropdown_root\\\"></div>\\n</body>\\n</html>\\n\"; };\r\nexports.indexTemplate = indexTemplate;\r\n\n\n//# sourceURL=webpack:///./src/server/indexTemplate.js?");
+
+/***/ }),
+
+/***/ "./src/server/server.js":
+/*!******************************!*\
+  !*** ./src/server/server.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar express_1 = __importDefault(__webpack_require__(/*! express */ \"express\"));\r\nvar server_1 = __importDefault(__webpack_require__(/*! react-dom/server */ \"react-dom/server\"));\r\nvar App_1 = __webpack_require__(/*! ../App */ \"./src/App.tsx\");\r\nvar indexTemplate_1 = __webpack_require__(/*! ./indexTemplate */ \"./src/server/indexTemplate.js\");\r\nvar axios_1 = __importDefault(__webpack_require__(/*! axios */ \"axios\"));\r\n//импорты сжатия для деплоя\r\nvar compression_1 = __importDefault(__webpack_require__(/*! compression */ \"compression\"));\r\nvar helmet_1 = __importDefault(__webpack_require__(/*! helmet */ \"helmet\"));\r\nvar PORT = process.env.PORT || 3000;\r\nvar IS_DEV = \"development\" !== 'production';\r\nvar app = express_1.default();\r\nif (!IS_DEV) {\r\n    app.use(compression_1.default());\r\n    app.use(helmet_1.default({\r\n        contentSecurityPolicy: false\r\n    }), helmet_1.default.crossOriginEmbedderPolicy({ policy: \"credentialless\" }));\r\n}\r\napp.use('/static', express_1.default.static('./dist/client'));\r\napp.get('/auth', function (req, res) {\r\n    console.log(\"ID: \" + '2alpekdjsqhwgCDAvSa4uQ' + (\" Secret: \" + 'xDWtvCgLgDlZ1EuSuJ27lmHqf5WkEQ') + (\" code: \" + req.query.code));\r\n    axios_1.default.post('https://www.reddit.com/api/v1/access_token', \"grant_type=authorization_code&code=\" + req.query.code + \"&redirect_uri=\" + 'http://localhost:3000' + \"/auth\", {\r\n        auth: { username: '2alpekdjsqhwgCDAvSa4uQ', password: 'xDWtvCgLgDlZ1EuSuJ27lmHqf5WkEQ' },\r\n        headers: { 'Content-type': 'application/x-www-form-urlencoded' }\r\n    })\r\n        .then(function (_a) {\r\n        var data = _a.data;\r\n        res.send(indexTemplate_1.indexTemplate(server_1.default.renderToString(App_1.App()), data['access_token']));\r\n    })\r\n        .catch(function (error) {\r\n        res.redirect('/posts');\r\n        console.log('Message: ' + error.message);\r\n    });\r\n});\r\napp.get('*', function (req, res) {\r\n    res.send(indexTemplate_1.indexTemplate(server_1.default.renderToString(App_1.App())));\r\n});\r\napp.listen(PORT, function () {\r\n    console.log(\"Server started in http://localhost:\" + PORT);\r\n});\r\n\n\n//# sourceURL=webpack:///./src/server/server.js?");
+
+/***/ }),
+
+/***/ "./src/shared/CommentForm/CommentForm.tsx":
+/*!************************************************!*\
+  !*** ./src/shared/CommentForm/CommentForm.tsx ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __assign = (this && this.__assign) || function () {\r\n    __assign = Object.assign || function(t) {\r\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\r\n            s = arguments[i];\r\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\r\n                t[p] = s[p];\r\n        }\r\n        return t;\r\n    };\r\n    return __assign.apply(this, arguments);\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CommentForm = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar commentform_css_1 = __importDefault(__webpack_require__(/*! ./commentform.css */ \"./src/shared/CommentForm/commentform.css\"));\r\nvar react_hook_form_1 = __webpack_require__(/*! react-hook-form */ \"react-hook-form\");\r\nvar recoil_1 = __webpack_require__(/*! recoil */ \"./node_modules/recoil/es/index.js\");\r\nvar App_1 = __webpack_require__(/*! ../../App */ \"./src/App.tsx\");\r\n//передача от redux из родительского компонента\r\n// type Props = {\r\n//   value: string | undefined;\r\n//   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;\r\n//   onSubmit: (event: FormEvent) => void;\r\n// }\r\n// export function CommentForm({ value, onChange, onSubmit }: Props) {\r\n//   return (\r\n//     <form className={styles.form} onSubmit={onSubmit}>\r\n//       <textarea className={styles.input} value={value} onChange={onChange} />\r\n//       <button type='submit' className={styles.button}>Комментировать</button>\r\n//     </form>\r\n//   );\r\n// }\r\n//передача от Recoil в валидацию библиотеки react-hook-form\r\nfunction CommentForm() {\r\n    //Recoil\r\n    var _a = recoil_1.useRecoilState(App_1.textState), text = _a[0], setText = _a[1];\r\n    var onChangeRecoil = function (event) {\r\n        setText(event.target.value);\r\n    };\r\n    //react-hook-form\r\n    var _b = react_hook_form_1.useForm(), register = _b.register, handleSubmit = _b.handleSubmit, errors = _b.formState.errors;\r\n    var onSubmit = function (data) {\r\n        console.log(data);\r\n    };\r\n    return (react_1.default.createElement(\"form\", { className: commentform_css_1.default.form, onSubmit: handleSubmit(onSubmit) },\r\n        react_1.default.createElement(\"textarea\", __assign({ value: text, className: commentform_css_1.default.input, \"aria-invalid\": errors.newComment ? 'true' : undefined }, register('newComment', {\r\n            onChange: onChangeRecoil,\r\n            onBlur: function (e) { },\r\n            required: true,\r\n            minLength: 4\r\n        }))),\r\n        errors.newComment && react_1.default.createElement(\"p\", null, \"\\u0412\\u0432\\u0435\\u0434\\u0438\\u0442\\u0435 \\u0431\\u043E\\u043B\\u044C\\u0448\\u0435 3-\\u0445 \\u0441\\u0438\\u043C\\u0432\\u043E\\u043B\\u043E\\u0432\"),\r\n        react_1.default.createElement(\"button\", { type: 'submit', className: commentform_css_1.default.button }, \"\\u041A\\u043E\\u043C\\u043C\\u0435\\u043D\\u0442\\u0438\\u0440\\u043E\\u0432\\u0430\\u0442\\u044C\")));\r\n}\r\nexports.CommentForm = CommentForm;\r\n\n\n//# sourceURL=webpack:///./src/shared/CommentForm/CommentForm.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/CommentForm/commentform.css":
+/*!************************************************!*\
+  !*** ./src/shared/CommentForm/commentform.css ***!
+  \************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react");
+eval("// Exports\nmodule.exports = {\n\t\"form\": \"commentform__form--Cs1Oi\",\n\t\"input\": \"commentform__input--2fC-z\",\n\t\"button\": \"commentform__button--35eLT\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/CommentForm/commentform.css?");
 
 /***/ }),
-/* 1 */
+
+/***/ "./src/shared/CommentFormContainer/CommentFormContainer.tsx":
+/*!******************************************************************!*\
+  !*** ./src/shared/CommentFormContainer/CommentFormContainer.tsx ***!
+  \******************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(31), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CommentFormContainer = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar CommentForm_1 = __webpack_require__(/*! ../CommentForm/CommentForm */ \"./src/shared/CommentForm/CommentForm.tsx\");\r\nfunction CommentFormContainer() {\r\n    // const value = useSelector<RootState, string | undefined>(state => state.commentText);\r\n    // const dispatch = useDispatch();\r\n    // function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {\r\n    //   dispatch(updateComment(event.target.value));\r\n    // }\r\n    // function handleSubmit(event: FormEvent) {\r\n    //   event.preventDefault();\r\n    //   console.log(value);\r\n    // }\r\n    return (react_1.default.createElement(CommentForm_1.CommentForm\r\n    // value={value}\r\n    // onChange={handleChange}\r\n    // onSubmit={handleSubmit}\r\n    , null));\r\n}\r\nexports.CommentFormContainer = CommentFormContainer;\r\n\n\n//# sourceURL=webpack:///./src/shared/CommentFormContainer/CommentFormContainer.tsx?");
 
 /***/ }),
-/* 2 */
+
+/***/ "./src/shared/CommentFormContainer/index.ts":
+/*!**************************************************!*\
+  !*** ./src/shared/CommentFormContainer/index.ts ***!
+  \**************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.meRequestAsync = exports.meRequestError = exports.ME_REQUEST_ERROR = exports.meRequestSuccess = exports.ME_REQUEST_SUCCESS = exports.meRequest = exports.ME_REQUEST = void 0;
-var axios_1 = __importDefault(__webpack_require__(3));
-exports.ME_REQUEST = 'ME_REQUEST';
-var meRequest = function () { return ({
-    type: exports.ME_REQUEST,
-}); };
-exports.meRequest = meRequest;
-exports.ME_REQUEST_SUCCESS = 'ME_REQUEST_SUCCESS';
-var meRequestSuccess = function (data) { return ({
-    type: exports.ME_REQUEST_SUCCESS,
-    data: data
-}); };
-exports.meRequestSuccess = meRequestSuccess;
-exports.ME_REQUEST_ERROR = 'ME_REQUEST_ERROR';
-var meRequestError = function (error) { return ({
-    type: exports.ME_REQUEST_ERROR,
-    error: error
-}); };
-exports.meRequestError = meRequestError;
-var meRequestAsync = function () { return function (dispatch, getState) {
-    dispatch(exports.meRequest());
-    axios_1.default.get('https://oauth.reddit.com/api/v1/me', {
-        headers: { Authorization: "bearer " + getState().token },
-        params: { raw_json: 1 },
-    })
-        .then(function (resp) {
-        var userData = resp.data;
-        dispatch(exports.meRequestSuccess({ name: userData.name, iconImg: userData.icon_img }));
-    })
-        .catch(function (error) {
-        //очищаю хранилище от токена, если пригла ошибка, для того чтобы снова перелогиниться
-        localStorage.clear();
-        console.log(error);
-        dispatch(exports.meRequestError(String(error)));
-    });
-}; };
-exports.meRequestAsync = meRequestAsync;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./CommentFormContainer */ \"./src/shared/CommentFormContainer/CommentFormContainer.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/CommentFormContainer/index.ts?");
 
 /***/ }),
-/* 3 */
+
+/***/ "./src/shared/Content/Content.tsx":
+/*!****************************************!*\
+  !*** ./src/shared/Content/Content.tsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Content = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar content_css_1 = __importDefault(__webpack_require__(/*! ./content.css */ \"./src/shared/Content/content.css\"));\r\nfunction Content(_a) {\r\n    var children = _a.children;\r\n    return (react_1.default.createElement(\"main\", { className: content_css_1.default.content }, children));\r\n}\r\nexports.Content = Content;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/Content.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Controls/Actions/Actions.tsx":
+/*!*******************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/Actions.tsx ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Actions = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar actions_css_1 = __importDefault(__webpack_require__(/*! ./actions.css */ \"./src/shared/Content/PostsList/Controls/Actions/actions.css\"));\r\nvar ShareButton_1 = __webpack_require__(/*! ./ShareButton */ \"./src/shared/Content/PostsList/Controls/Actions/ShareButton/index.ts\");\r\nvar SaveButton_1 = __webpack_require__(/*! ./SaveButton */ \"./src/shared/Content/PostsList/Controls/Actions/SaveButton/index.ts\");\r\nfunction Actions() {\r\n    return (react_1.default.createElement(\"div\", { className: actions_css_1.default.actions },\r\n        react_1.default.createElement(ShareButton_1.ShareButton, null),\r\n        react_1.default.createElement(SaveButton_1.SaveButton, null)));\r\n}\r\nexports.Actions = Actions;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/Actions.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Controls/Actions/SaveButton/SaveButton.tsx":
+/*!*********************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/SaveButton/SaveButton.tsx ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.SaveButton = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar savebutton_css_1 = __importDefault(__webpack_require__(/*! ./savebutton.css */ \"./src/shared/Content/PostsList/Controls/Actions/SaveButton/savebutton.css\"));\r\nfunction SaveButton() {\r\n    return (react_1.default.createElement(\"button\", { className: savebutton_css_1.default.saveButton },\r\n        react_1.default.createElement(\"svg\", { width: \"20\", height: \"20\", viewBox: \"0 0 20 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n            react_1.default.createElement(\"circle\", { cx: \"10\", cy: \"10\", r: \"10\", fill: \"#C4C4C4\" }),\r\n            react_1.default.createElement(\"path\", { d: \"M6 7H5V14C5 14.55 5.45 15 6 15H13V14H6V7ZM14 5H8C7.45 5 7 5.45 7 6V12C7 12.55 7.45 13 8 13H14C14.55 13 15 12.55 15 12V6C15 5.45 14.55 5 14 5ZM13.5 9.5H11.5V11.5H10.5V9.5H8.5V8.5H10.5V6.5H11.5V8.5H13.5V9.5Z\", fill: \"white\" }))));\r\n}\r\nexports.SaveButton = SaveButton;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/SaveButton/SaveButton.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Controls/Actions/SaveButton/index.ts":
+/*!***************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/SaveButton/index.ts ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./SaveButton */ \"./src/shared/Content/PostsList/Controls/Actions/SaveButton/SaveButton.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/SaveButton/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Controls/Actions/SaveButton/savebutton.css":
+/*!*********************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/SaveButton/savebutton.css ***!
+  \*********************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("axios");
+eval("// Exports\nmodule.exports = {\n\t\"saveButton\": \"savebutton__saveButton--2ywK8\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/SaveButton/savebutton.css?");
 
 /***/ }),
-/* 4 */
+
+/***/ "./src/shared/Content/PostsList/Controls/Actions/ShareButton/ShareButton.tsx":
+/*!***********************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/ShareButton/ShareButton.tsx ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.ShareButton = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar sharebutton_css_1 = __importDefault(__webpack_require__(/*! ./sharebutton.css */ \"./src/shared/Content/PostsList/Controls/Actions/ShareButton/sharebutton.css\"));\r\nfunction ShareButton() {\r\n    return (react_1.default.createElement(\"button\", { className: sharebutton_css_1.default.shareButton },\r\n        react_1.default.createElement(\"svg\", { width: \"20\", height: \"20\", viewBox: \"0 0 20 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n            react_1.default.createElement(\"circle\", { cx: \"10\", cy: \"10\", r: \"10\", fill: \"#C4C4C4\" }),\r\n            react_1.default.createElement(\"path\", { d: \"M11.6667 12.0683C11.3289 12.0683 11.0267 12.2189 10.7956 12.4548L7.62667 10.3715C7.64889 10.256 7.66667 10.1406 7.66667 10.0201C7.66667 9.8996 7.64889 9.78414 7.62667 9.66867L10.76 7.60542C11 7.85643 11.3156 8.01205 11.6667 8.01205C12.4044 8.01205 13 7.33936 13 6.50602C13 5.67269 12.4044 5 11.6667 5C10.9289 5 10.3333 5.67269 10.3333 6.50602C10.3333 6.62651 10.3511 6.74197 10.3733 6.85743L7.24 8.92068C7 8.66968 6.68444 8.51406 6.33333 8.51406C5.59556 8.51406 5 9.18675 5 10.0201C5 10.8534 5.59556 11.5261 6.33333 11.5261C6.68444 11.5261 7 11.3705 7.24 11.1195L10.4044 13.2078C10.3822 13.3133 10.3689 13.4237 10.3689 13.5341C10.3689 14.3424 10.9511 15 11.6667 15C12.3822 15 12.9644 14.3424 12.9644 13.5341C12.9644 12.7259 12.3822 12.0683 11.6667 12.0683Z\", fill: \"white\" }))));\r\n}\r\nexports.ShareButton = ShareButton;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/ShareButton/ShareButton.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Controls/Actions/ShareButton/index.ts":
+/*!****************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/ShareButton/index.ts ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./ShareButton */ \"./src/shared/Content/PostsList/Controls/Actions/ShareButton/ShareButton.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/ShareButton/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Controls/Actions/ShareButton/sharebutton.css":
+/*!***********************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/ShareButton/sharebutton.css ***!
+  \***********************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
+eval("// Exports\nmodule.exports = {\n\t\"shareButton\": \"sharebutton__shareButton--3XatJ\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/ShareButton/sharebutton.css?");
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Icon = exports.EIcons = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var EIcons;
-(function (EIcons) {
-    EIcons["block"] = "M6 0C2.688 0 0 2.688 0 6C0 9.312 2.688 12 6 12C9.312 12 12 9.312 12 6C12 2.688 9.312 0 6 0ZM6 10.8C3.348 10.8 1.2 8.652 1.2 6C1.2 4.89 1.578 3.87 2.214 3.06L8.94 9.786C8.13 10.422 7.11 10.8 6 10.8ZM9.786 8.94L3.06 2.214C3.87 1.578 4.89 1.2 6 1.2C8.652 1.2 10.8 3.348 10.8 6C10.8 7.11 10.422 8.13 9.786 8.94Z";
-    EIcons["comments"] = "M12.75 0.416626H1.41667C0.6375 0.416626 0 1.05413 0 1.83329V10.3333C0 11.1125 0.6375 11.75 1.41667 11.75H11.3333L14.1667 14.5833V1.83329C14.1667 1.05413 13.5292 0.416626 12.75 0.416626ZM11.3333 8.91663H2.83333V7.49996H11.3333V8.91663ZM11.3333 6.79163H2.83333V5.37496H11.3333V6.79163ZM11.3333 4.66663H2.83333V3.24996H11.3333V4.66663Z";
-    EIcons["save"] = "M1.4 2.8H0V12.6C0 13.37 0.63 14 1.4 14H11.2V12.6H1.4V2.8ZM12.6 0H4.2C3.43 0 2.8 0.63 2.8 1.4V9.8C2.8 10.57 3.43 11.2 4.2 11.2H12.6C13.37 11.2 14 10.57 14 9.8V1.4C14 0.63 13.37 0 12.6 0ZM11.9 6.3H9.1V9.1H7.7V6.3H4.9V4.9H7.7V2.1H9.1V4.9H11.9V6.3Z";
-    EIcons["share"] = "M10 9.89558C9.49333 9.89558 9.04 10.1064 8.69333 10.4367L3.94 7.52008C3.97333 7.35843 4 7.19679 4 7.02811C4 6.85944 3.97333 6.69779 3.94 6.53614L8.64 3.64759C9 3.999 9.47333 4.21687 10 4.21687C11.1067 4.21687 12 3.2751 12 2.10843C12 0.941767 11.1067 0 10 0C8.89333 0 8 0.941767 8 2.10843C8 2.27711 8.02667 2.43875 8.06 2.6004L3.36 5.48896C3 5.13755 2.52667 4.91968 2 4.91968C0.893333 4.91968 0 5.86145 0 7.02811C0 8.19478 0.893333 9.13655 2 9.13655C2.52667 9.13655 3 8.91867 3.36 8.56727L8.10667 11.491C8.07333 11.6386 8.05333 11.7932 8.05333 11.9478C8.05333 13.0793 8.92667 14 10 14C11.0733 14 11.9467 13.0793 11.9467 11.9478C11.9467 10.8163 11.0733 9.89558 10 9.89558Z";
-    EIcons["warning"] = "M0 12H14L7 0L0 12ZM7.63636 10.1053H6.36364V8.8421H7.63636V10.1053ZM7.63636 7.57895H6.36364V5.05263H7.63636V7.57895Z";
-    EIcons["anon"] = "M25 0C11.2 0 0 11.2 0 25C0 38.8 11.2 50 25 50C38.8 50 50 38.8 50 25C50 11.2 38.8 0 25 0ZM25 7.5C29.15 7.5 32.5 10.85 32.5 15C32.5 19.15 29.15 22.5 25 22.5C20.85 22.5 17.5 19.15 17.5 15C17.5 10.85 20.85 7.5 25 7.5ZM25 43C18.75 43 13.225 39.8 10 34.95C10.075 29.975 20 27.25 25 27.25C29.975 27.25 39.925 29.975 40 34.95C36.775 39.8 31.25 43 25 43Z";
-    EIcons["answer"] = "M12.75 0.416504H1.41667C0.6375 0.416504 0 1.054 0 1.83317V10.3332C0 11.1123 0.6375 11.7498 1.41667 11.7498H11.3333L14.1667 14.5832V1.83317C14.1667 1.054 13.5292 0.416504 12.75 0.416504ZM11.3333 8.9165H2.83333V7.49984H11.3333V8.9165ZM11.3333 6.7915H2.83333V5.37484H11.3333V6.7915ZM11.3333 4.6665H2.83333V3.24984H11.3333V4.6665Z";
-})(EIcons = exports.EIcons || (exports.EIcons = {}));
-function Icon(_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? 12 : _b, _c = _a.color, color = _c === void 0 ? '#999999' : _c;
-    var viewBoxString = "0 0 " + size + " " + size;
-    return (react_1.default.createElement("svg", { width: size, height: size, viewBox: viewBoxString, fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-        react_1.default.createElement("path", { d: name, fill: color })));
-}
-exports.Icon = Icon;
-
-
-/***/ }),
-/* 6 */
+/***/ "./src/shared/Content/PostsList/Controls/Actions/actions.css":
+/*!*******************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/actions.css ***!
+  \*******************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom");
+eval("// Exports\nmodule.exports = {\n\t\"actions\": \"actions__actions--1ZfuA\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/actions.css?");
 
 /***/ }),
-/* 7 */
+
+/***/ "./src/shared/Content/PostsList/Controls/Actions/index.ts":
+/*!****************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Actions/index.ts ***!
+  \****************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useAppSelector = exports.useAppDispatch = void 0;
-var react_redux_1 = __webpack_require__(4);
-exports.useAppDispatch = react_redux_1.useDispatch;
-exports.useAppSelector = react_redux_1.useSelector;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Actions */ \"./src/shared/Content/PostsList/Controls/Actions/Actions.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Actions/index.ts?");
 
 /***/ }),
-/* 8 */
+
+/***/ "./src/shared/Content/PostsList/Controls/CommentsButton/CommentsButton.tsx":
+/*!*********************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/CommentsButton/CommentsButton.tsx ***!
+  \*********************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(53), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.CommentsButton = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar commentsbutton_css_1 = __importDefault(__webpack_require__(/*! ./commentsbutton.css */ \"./src/shared/Content/PostsList/Controls/CommentsButton/commentsbutton.css\"));\r\nfunction CommentsButton() {\r\n    return (react_1.default.createElement(\"button\", { className: commentsbutton_css_1.default.commentsButton },\r\n        react_1.default.createElement(\"svg\", { width: \"15\", height: \"15\", viewBox: \"0 0 15 15\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n            react_1.default.createElement(\"path\", { d: \"M12.75 0H1.41667C0.6375 0 0 0.6375 0 1.41667V9.91667C0 10.6958 0.6375 11.3333 1.41667 11.3333H11.3333L14.1667 14.1667V1.41667C14.1667 0.6375 13.5292 0 12.75 0ZM11.3333 8.5H2.83333V7.08333H11.3333V8.5ZM11.3333 6.375H2.83333V4.95833H11.3333V6.375ZM11.3333 4.25H2.83333V2.83333H11.3333V4.25Z\", fill: \"#C4C4C4\" })),\r\n        react_1.default.createElement(\"span\", { className: commentsbutton_css_1.default.commentsNumber }, \"13\")));\r\n}\r\nexports.CommentsButton = CommentsButton;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/CommentsButton/CommentsButton.tsx?");
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(55), exports);
-
-
-/***/ }),
-/* 10 */
+/***/ "./src/shared/Content/PostsList/Controls/CommentsButton/commentsbutton.css":
+/*!*********************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/CommentsButton/commentsbutton.css ***!
+  \*********************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-dom");
+eval("// Exports\nmodule.exports = {\n\t\"commentsButton\": \"commentsbutton__commentsButton--2fxmY\",\n\t\"commentsNumber\": \"commentsbutton__commentsNumber--2Yr3T\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/CommentsButton/commentsbutton.css?");
 
 /***/ }),
-/* 11 */
+
+/***/ "./src/shared/Content/PostsList/Controls/CommentsButton/index.ts":
+/*!***********************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/CommentsButton/index.ts ***!
+  \***********************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.rootReducer = exports.setToken = exports.updateComment = void 0;
-var actions_1 = __webpack_require__(2);
-var reducer_1 = __webpack_require__(92);
-var initialState = {
-    commentText: 'Привет, SkillBox!',
-    token: '',
-    me: {
-        loading: false,
-        error: '',
-        data: {},
-        fetchingState: 'none',
-    },
-};
-var UPDATE_COMMENT = 'UPDATE_COMMENT';
-var TOKEN = 'SET_TOKEN';
-var updateComment = function (text) { return ({
-    type: UPDATE_COMMENT,
-    text: text,
-}); };
-exports.updateComment = updateComment;
-var setToken = function (token) { return ({
-    type: TOKEN,
-    token: token,
-}); };
-exports.setToken = setToken;
-var rootReducer = function (state, action) {
-    if (state === void 0) { state = initialState; }
-    switch (action.type) {
-        case UPDATE_COMMENT:
-            return __assign(__assign({}, state), { commentText: action.text });
-        case TOKEN:
-            return __assign(__assign({}, state), { token: action.token });
-        case actions_1.ME_REQUEST:
-        case actions_1.ME_REQUEST_SUCCESS:
-        case actions_1.ME_REQUEST_ERROR:
-            return __assign(__assign({}, state), { me: reducer_1.meReducer(state.me, action) });
-        default:
-            return state;
-    }
-};
-exports.rootReducer = rootReducer;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./CommentsButton */ \"./src/shared/Content/PostsList/Controls/CommentsButton/CommentsButton.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/CommentsButton/index.ts?");
 
 /***/ }),
-/* 12 */
+
+/***/ "./src/shared/Content/PostsList/Controls/Controls.tsx":
+/*!************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/Controls.tsx ***!
+  \************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(__webpack_require__(13));
-var server_1 = __importDefault(__webpack_require__(14));
-var App_1 = __webpack_require__(15);
-var indexTemplate_1 = __webpack_require__(113);
-var axios_1 = __importDefault(__webpack_require__(3));
-//импорты сжатия для деплоя
-var compression_1 = __importDefault(__webpack_require__(114));
-var helmet_1 = __importDefault(__webpack_require__(115));
-var PORT = process.env.PORT || 3000;
-var IS_DEV = "production" !== 'production';
-var app = express_1.default();
-// if (!IS_DEV) {
-app.use(compression_1.default());
-// app.use(helmet.dnsPrefetchControl({ allow: false }));
-app.use(helmet_1.default({
-    contentSecurityPolicy: false
-}), helmet_1.default.crossOriginEmbedderPolicy({ policy: "credentialless" }));
-// }
-app.use('/static', express_1.default.static('./dist/client'));
-app.get('/auth', function (req, res) {
-    console.log("ID: " + '9PRgtMtHs-M5_AK4od9OKw' + (" Secret: " + process.env.SECRET) + (" code: " + req.query.code));
-    axios_1.default.post('https://www.reddit.com/api/v1/access_token', "grant_type=authorization_code&code=" + req.query.code + "&redirect_uri=" + process.env.DOMAIN + "/auth", {
-        auth: { username: '9PRgtMtHs-M5_AK4od9OKw', password: process.env.SECRET },
-        headers: { 'Content-type': 'application/x-www-form-urlencoded' }
-    })
-        .then(function (_a) {
-        var data = _a.data;
-        res.send(indexTemplate_1.indexTemplate(server_1.default.renderToString(App_1.App()), data['access_token']));
-    })
-        .catch(function (error) {
-        res.redirect('/posts');
-        console.log('Message: ' + error.message);
-    });
-});
-app.get('*', function (req, res) {
-    res.send(indexTemplate_1.indexTemplate(server_1.default.renderToString(App_1.App())));
-});
-app.listen(PORT, function () {
-    console.log("Server started in http://localhost:" + PORT);
-});
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Controls = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar controls_css_1 = __importDefault(__webpack_require__(/*! ./controls.css */ \"./src/shared/Content/PostsList/Controls/controls.css\"));\r\nvar KarmaCounter_1 = __webpack_require__(/*! ./KarmaCounter/KarmaCounter */ \"./src/shared/Content/PostsList/Controls/KarmaCounter/KarmaCounter.tsx\");\r\nvar CommentsButton_1 = __webpack_require__(/*! ./CommentsButton */ \"./src/shared/Content/PostsList/Controls/CommentsButton/index.ts\");\r\nvar Actions_1 = __webpack_require__(/*! ./Actions */ \"./src/shared/Content/PostsList/Controls/Actions/index.ts\");\r\nfunction Controls() {\r\n    return (react_1.default.createElement(\"div\", { className: controls_css_1.default.controls },\r\n        react_1.default.createElement(KarmaCounter_1.KarmaCounter, null),\r\n        react_1.default.createElement(CommentsButton_1.CommentsButton, null),\r\n        react_1.default.createElement(Actions_1.Actions, null)));\r\n}\r\nexports.Controls = Controls;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/Controls.tsx?");
 
 /***/ }),
-/* 13 */
+
+/***/ "./src/shared/Content/PostsList/Controls/KarmaCounter/KarmaCounter.tsx":
+/*!*****************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/KarmaCounter/KarmaCounter.tsx ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.KarmaCounter = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar karmacounter_css_1 = __importDefault(__webpack_require__(/*! ./karmacounter.css */ \"./src/shared/Content/PostsList/Controls/KarmaCounter/karmacounter.css\"));\r\nfunction KarmaCounter() {\r\n    return (react_1.default.createElement(\"div\", { className: karmacounter_css_1.default.karmaCounter },\r\n        react_1.default.createElement(\"button\", { className: karmacounter_css_1.default.up },\r\n            react_1.default.createElement(\"svg\", { width: \"19\", height: \"10\", viewBox: \"0 0 19 10\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n                react_1.default.createElement(\"path\", { d: \"M9.5 0L0 10H19L9.5 0Z\", fill: \"#C4C4C4\" }))),\r\n        react_1.default.createElement(\"span\", { className: karmacounter_css_1.default.karmaValue }, \"234\"),\r\n        react_1.default.createElement(\"button\", { className: karmacounter_css_1.default.down },\r\n            react_1.default.createElement(\"svg\", { className: karmacounter_css_1.default.down, width: \"19\", height: \"10\", viewBox: \"0 0 19 10\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n                react_1.default.createElement(\"path\", { d: \"M9.5 0L0 10H19L9.5 0Z\", fill: \"#C4C4C4\" })))));\r\n}\r\nexports.KarmaCounter = KarmaCounter;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/KarmaCounter/KarmaCounter.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Controls/KarmaCounter/karmacounter.css":
+/*!*****************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/KarmaCounter/karmacounter.css ***!
+  \*****************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("express");
+eval("// Exports\nmodule.exports = {\n\t\"karmaCounter\": \"karmacounter__karmaCounter--34Pmn\",\n\t\"karmaValue\": \"karmacounter__karmaValue--16VP2\",\n\t\"down\": \"karmacounter__down--2Fl-f\",\n\t\"up\": \"karmacounter__up--1GTdr\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/KarmaCounter/karmacounter.css?");
 
 /***/ }),
-/* 14 */
+
+/***/ "./src/shared/Content/PostsList/Controls/controls.css":
+/*!************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/controls.css ***!
+  \************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-dom/server");
+eval("// Exports\nmodule.exports = {\n\t\"controls\": \"controls__controls--5QhAn\",\n\t\"actions\": \"controls__actions--3Wa_S\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/controls.css?");
 
 /***/ }),
-/* 15 */
+
+/***/ "./src/shared/Content/PostsList/Controls/index.ts":
+/*!********************************************************!*\
+  !*** ./src/shared/Content/PostsList/Controls/index.ts ***!
+  \********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.App = exports.store = void 0;
-var react_1 = __importStar(__webpack_require__(0));
-__webpack_require__(16);
-var root_1 = __webpack_require__(18);
-var Layout_1 = __webpack_require__(19);
-var Header_1 = __webpack_require__(22);
-var Content_1 = __webpack_require__(40);
-var useToken_1 = __webpack_require__(43);
-var PostsList_1 = __webpack_require__(44);
-var redux_1 = __webpack_require__(90);
-var react_redux_1 = __webpack_require__(4);
-var redux_devtools_extension_1 = __webpack_require__(91);
-var store_1 = __webpack_require__(11);
-var redux_thunk_1 = __importDefault(__webpack_require__(93));
-var hooks_1 = __webpack_require__(7);
-var react_router_dom_1 = __webpack_require__(6);
-var Post_1 = __webpack_require__(94);
-exports.store = redux_1.createStore(store_1.rootReducer, redux_devtools_extension_1.composeWithDevTools(redux_1.applyMiddleware(redux_thunk_1.default)));
-function AppComponent() {
-    var _a = react_1.useState(false), mounted = _a[0], setMounted = _a[1];
-    react_1.useEffect(function () {
-        setMounted(true);
-    }, []);
-    var dispatch = hooks_1.useAppDispatch();
-    var saveToken = function () { return function (dispatch) {
-        var token = useToken_1.useToken()[0];
-        dispatch(store_1.setToken(token));
-    }; };
-    dispatch(saveToken());
-    return (react_1.default.createElement(react_1.default.Fragment, null, mounted && (react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
-        react_1.default.createElement(Layout_1.Layout, null,
-            react_1.default.createElement(Header_1.Header, null),
-            react_1.default.createElement(Content_1.Content, null,
-                react_1.default.createElement(react_router_dom_1.Switch, null,
-                    react_1.default.createElement(react_router_dom_1.Route, { exact: true, strict: true, path: "/" },
-                        react_1.default.createElement(react_router_dom_1.Redirect, { to: "/posts" })),
-                    react_1.default.createElement(react_router_dom_1.Route, { exact: true, strict: true, path: "/auth" },
-                        react_1.default.createElement(react_router_dom_1.Redirect, { to: "/posts" })),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/posts" },
-                        react_1.default.createElement(PostsList_1.PostsList, null)),
-                    react_1.default.createElement(react_router_dom_1.Route, null,
-                        react_1.default.createElement("div", { style: { textAlign: 'center' } }, "404 \u2014 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u0430"))),
-                react_1.default.createElement(react_router_dom_1.Route, { path: "/posts/:id" },
-                    react_1.default.createElement(Post_1.Post, null))))))));
-}
-exports.App = root_1.hot(function () {
-    return react_1.default.createElement(react_redux_1.Provider, { store: exports.store },
-        react_1.default.createElement(AppComponent, null));
-});
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Controls */ \"./src/shared/Content/PostsList/Controls/Controls.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Controls/index.ts?");
 
 /***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
 
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(17);
-exports = ___CSS_LOADER_API_IMPORT___(false);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);"]);
-// Module
-exports.push([module.i, ":root {\r\n  --black:          #333333;\r\n  --orange:         #CC6633;\r\n  --green:          #A4CC33;\r\n  --whiteLightness: 100%;\r\n  --white:          hsl(0, 0%, var(--whiteLightness));\r\n  --grayF4:         hsl(0, 0%, calc(var(--whiteLightness) - 4%));\r\n  --greyF3:         hsl(0, 0%, calc(var(--whiteLightness) - 5%));\r\n  --greyEC:         hsl(0, 0%, calc(var(--whiteLightness) - 7%));\r\n  --greyD9:         hsl(0, 0%, calc(var(--whiteLightness) - 15%));\r\n  --greyC4:         hsl(0, 0%, calc(var(--whiteLightness) - 23%));\r\n  --grey99:         hsl(0, 0%, calc(var(--whiteLightness) - 40%));\r\n  --grey66:         hsl(0, 0%, calc(var(--whiteLightness) - 60%));\r\n}\r\n\r\nbody {\r\n  padding: 0;\r\n  margin: 0;\r\n  background-color: var(--grayF4);\r\n  font-size: 14px;\r\n  line-height: 16px;\r\n  font-family: 'Roboto', serif;\r\n}\r\n\r\n* {\r\n  color: var(--black);\r\n  box-sizing: border-box;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n}\r\n\r\nul {\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style: none;\r\n}\r\n\r\na {\r\n  text-decoration: none;\r\n}\r\n\r\nbutton {\r\n  padding: 0;\r\n  border: 0;\r\n  background: transparent;\r\n  cursor: pointer;\r\n}\r\n", ""]);
-// Exports
-module.exports = exports;
-
-
-/***/ }),
-/* 17 */
+/***/ "./src/shared/Content/PostsList/Menu/Menu.tsx":
+/*!****************************************************!*\
+  !*** ./src/shared/Content/PostsList/Menu/Menu.tsx ***!
+  \****************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-// eslint-disable-next-line func-names
-module.exports = function (useSourceMap) {
-    var list = []; // return the list of modules as css string
-    list.toString = function toString() {
-        return this.map(function (item) {
-            var content = cssWithMappingToString(item, useSourceMap);
-            if (item[2]) {
-                return "@media ".concat(item[2], " {").concat(content, "}");
-            }
-            return content;
-        }).join('');
-    }; // import a list of modules into the list
-    // eslint-disable-next-line func-names
-    list.i = function (modules, mediaQuery, dedupe) {
-        if (typeof modules === 'string') {
-            // eslint-disable-next-line no-param-reassign
-            modules = [[null, modules, '']];
-        }
-        var alreadyImportedModules = {};
-        if (dedupe) {
-            for (var i = 0; i < this.length; i++) {
-                // eslint-disable-next-line prefer-destructuring
-                var id = this[i][0];
-                if (id != null) {
-                    alreadyImportedModules[id] = true;
-                }
-            }
-        }
-        for (var _i = 0; _i < modules.length; _i++) {
-            var item = [].concat(modules[_i]);
-            if (dedupe && alreadyImportedModules[item[0]]) {
-                // eslint-disable-next-line no-continue
-                continue;
-            }
-            if (mediaQuery) {
-                if (!item[2]) {
-                    item[2] = mediaQuery;
-                }
-                else {
-                    item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
-                }
-            }
-            list.push(item);
-        }
-    };
-    return list;
-};
-function cssWithMappingToString(item, useSourceMap) {
-    var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring
-    var cssMapping = item[3];
-    if (!cssMapping) {
-        return content;
-    }
-    if (useSourceMap && typeof btoa === 'function') {
-        var sourceMapping = toComment(cssMapping);
-        var sourceURLs = cssMapping.sources.map(function (source) {
-            return "/*# sourceURL=".concat(cssMapping.sourceRoot || '').concat(source, " */");
-        });
-        return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-    }
-    return [content].join('\n');
-} // Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-    // eslint-disable-next-line no-undef
-    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-    var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
-    return "/*# ".concat(data, " */");
-}
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Menu = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar MenuIcon_1 = __webpack_require__(/*! ../../../Icons/MenuIcon */ \"./src/shared/Icons/MenuIcon.tsx\");\r\nvar menu_css_1 = __importDefault(__webpack_require__(/*! ./menu.css */ \"./src/shared/Content/PostsList/Menu/menu.css\"));\r\nvar Dropdown_1 = __webpack_require__(/*! ../../../Dropdown */ \"./src/shared/Dropdown/index.ts\");\r\nfunction Menu() {\r\n    return (react_1.default.createElement(\"div\", { className: menu_css_1.default.menu },\r\n        react_1.default.createElement(Dropdown_1.Dropdown, { button: react_1.default.createElement(\"button\", { className: menu_css_1.default.menuButton },\r\n                react_1.default.createElement(MenuIcon_1.MenuIcon, null)) })));\r\n}\r\nexports.Menu = Menu;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Menu/Menu.tsx?");
 
 /***/ }),
-/* 18 */
+
+/***/ "./src/shared/Content/PostsList/Menu/MenuItemsList/MenuItemsList.tsx":
+/*!***************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Menu/MenuItemsList/MenuItemsList.tsx ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.MenuItemsList = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar menuitemslist_css_1 = __importDefault(__webpack_require__(/*! ./menuitemslist.css */ \"./src/shared/Content/PostsList/Menu/MenuItemsList/menuitemslist.css\"));\r\nvar Icon_1 = __webpack_require__(/*! ../../../../Icons/Icon */ \"./src/shared/Icons/Icon.tsx\");\r\nvar Text_1 = __webpack_require__(/*! ../../../../Text */ \"./src/shared/Text/index.ts\");\r\nfunction MenuItemsList(_a) {\r\n    var postId = _a.postId;\r\n    return (react_1.default.createElement(\"ul\", { className: menuitemslist_css_1.default.menuItemsList },\r\n        react_1.default.createElement(\"li\", { className: menuitemslist_css_1.default.menuItem },\r\n            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.comments, size: 12 }),\r\n            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, \"\\u041A\\u043E\\u043C\\u043C\\u0435\\u043D\\u0442\\u0430\\u0440\\u0438\\u0438\")),\r\n        react_1.default.createElement(\"div\", { className: menuitemslist_css_1.default.divider }),\r\n        react_1.default.createElement(\"li\", { className: menuitemslist_css_1.default.menuItem },\r\n            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.share }),\r\n            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, \"\\u041F\\u043E\\u0434\\u0435\\u043B\\u0438\\u0442\\u044C\\u0441\\u044F\")),\r\n        react_1.default.createElement(\"div\", { className: menuitemslist_css_1.default.divider }),\r\n        react_1.default.createElement(\"li\", { className: menuitemslist_css_1.default.menuItem, onClick: function () { return console.log(postId); } },\r\n            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.block }),\r\n            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, \"\\u0421\\u043A\\u0440\\u044B\\u0442\\u044C\")),\r\n        react_1.default.createElement(\"div\", { className: menuitemslist_css_1.default.divider }),\r\n        react_1.default.createElement(\"li\", { className: menuitemslist_css_1.default.menuItem },\r\n            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.save }),\r\n            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, \"\\u0421\\u043E\\u0445\\u0440\\u0430\\u043D\\u0438\\u0442\\u044C\")),\r\n        react_1.default.createElement(\"div\", { className: menuitemslist_css_1.default.divider }),\r\n        react_1.default.createElement(\"li\", { className: menuitemslist_css_1.default.menuItem },\r\n            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.warning }),\r\n            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, \"\\u041F\\u043E\\u0436\\u0430\\u043B\\u043E\\u0432\\u0430\\u0442\\u044C\\u0441\\u044F\"))));\r\n}\r\nexports.MenuItemsList = MenuItemsList;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Menu/MenuItemsList/MenuItemsList.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Menu/MenuItemsList/index.ts":
+/*!******************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Menu/MenuItemsList/index.ts ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./MenuItemsList */ \"./src/shared/Content/PostsList/Menu/MenuItemsList/MenuItemsList.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Menu/MenuItemsList/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Menu/MenuItemsList/menuitemslist.css":
+/*!***************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/Menu/MenuItemsList/menuitemslist.css ***!
+  \***************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-hot-loader/root");
+eval("// Exports\nmodule.exports = {\n\t\"menuItemsList\": \"menuitemslist__menuItemsList--15bZg\",\n\t\"menuItem\": \"menuitemslist__menuItem--1kMK2\",\n\t\"divider\": \"menuitemslist__divider--2gftz\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Menu/MenuItemsList/menuitemslist.css?");
 
 /***/ }),
-/* 19 */
+
+/***/ "./src/shared/Content/PostsList/Menu/index.ts":
+/*!****************************************************!*\
+  !*** ./src/shared/Content/PostsList/Menu/index.ts ***!
+  \****************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(20), exports);
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Menu */ \"./src/shared/Content/PostsList/Menu/Menu.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Menu/index.ts?");
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Layout = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var layout_css_1 = __importDefault(__webpack_require__(21));
-function Layout(_a) {
-    var children = _a.children;
-    return (react_1.default.createElement("div", { className: layout_css_1.default.layout }, children));
-}
-exports.Layout = Layout;
-
-
-/***/ }),
-/* 21 */
+/***/ "./src/shared/Content/PostsList/Menu/menu.css":
+/*!****************************************************!*\
+  !*** ./src/shared/Content/PostsList/Menu/menu.css ***!
+  \****************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"layout": "layout__layout--2fANc"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"menu\": \"menu__menu--1Zo-6\",\n\t\"menuButton\": \"menu__menuButton--1Z1zw\",\n\t\"dropdown\": \"menu__dropdown--qe-Qo\",\n\t\"closeButton\": \"menu__closeButton--18ZZT\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Menu/menu.css?");
 
 /***/ }),
-/* 22 */
+
+/***/ "./src/shared/Content/PostsList/PostsList.tsx":
+/*!****************************************************!*\
+  !*** ./src/shared/Content/PostsList/PostsList.tsx ***!
+  \****************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Header = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var header_css_1 = __importDefault(__webpack_require__(23));
-var SearchBlock_1 = __webpack_require__(24);
-var ThreadTitle_1 = __webpack_require__(34);
-var SortBlock_1 = __webpack_require__(37);
-function Header() {
-    return (react_1.default.createElement("header", { className: header_css_1.default.header },
-        react_1.default.createElement(SearchBlock_1.SearchBlock, null),
-        react_1.default.createElement(ThreadTitle_1.ThreadTitle, null),
-        react_1.default.createElement(SortBlock_1.SortBlock, null)));
-}
-exports.Header = Header;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\r\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\r\n    return new (P || (P = Promise))(function (resolve, reject) {\r\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\r\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\r\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\r\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\r\n    });\r\n};\r\nvar __generator = (this && this.__generator) || function (thisArg, body) {\r\n    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;\r\n    return g = { next: verb(0), \"throw\": verb(1), \"return\": verb(2) }, typeof Symbol === \"function\" && (g[Symbol.iterator] = function() { return this; }), g;\r\n    function verb(n) { return function (v) { return step([n, v]); }; }\r\n    function step(op) {\r\n        if (f) throw new TypeError(\"Generator is already executing.\");\r\n        while (_) try {\r\n            if (f = 1, y && (t = op[0] & 2 ? y[\"return\"] : op[0] ? y[\"throw\"] || ((t = y[\"return\"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;\r\n            if (y = 0, t) op = [op[0] & 2, t.value];\r\n            switch (op[0]) {\r\n                case 0: case 1: t = op; break;\r\n                case 4: _.label++; return { value: op[1], done: false };\r\n                case 5: _.label++; y = op[1]; op = [0]; continue;\r\n                case 7: op = _.ops.pop(); _.trys.pop(); continue;\r\n                default:\r\n                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }\r\n                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }\r\n                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }\r\n                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }\r\n                    if (t[2]) _.ops.pop();\r\n                    _.trys.pop(); continue;\r\n            }\r\n            op = body.call(thisArg, _);\r\n        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }\r\n        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };\r\n    }\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.PostsList = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nvar postslist_css_1 = __importDefault(__webpack_require__(/*! ./postslist.css */ \"./src/shared/Content/PostsList/postslist.css\"));\r\nvar TextContent_1 = __webpack_require__(/*! ./TextContent */ \"./src/shared/Content/PostsList/TextContent/index.ts\");\r\nvar Preview_1 = __webpack_require__(/*! ./Preview */ \"./src/shared/Content/PostsList/Preview/index.ts\");\r\nvar Menu_1 = __webpack_require__(/*! ./Menu */ \"./src/shared/Content/PostsList/Menu/index.ts\");\r\nvar Controls_1 = __webpack_require__(/*! ./Controls */ \"./src/shared/Content/PostsList/Controls/index.ts\");\r\nvar axios_1 = __importDefault(__webpack_require__(/*! axios */ \"axios\"));\r\nfunction PostsList() {\r\n    var _a = react_1.useState([]), posts = _a[0], setPosts = _a[1];\r\n    var _b = react_1.useState(false), loading = _b[0], setLoading = _b[1];\r\n    var _c = react_1.useState(''), errorLoading = _c[0], setErrorLoading = _c[1];\r\n    var _d = react_1.useState(''), nextAfter = _d[0], setNextAfter = _d[1];\r\n    var _e = react_1.useState(false), loadMore = _e[0], setLoadMore = _e[1];\r\n    var _f = react_1.useState(0), numberLoad = _f[0], setNumberLoad = _f[1];\r\n    var _g = react_1.useState(true), firstLoad = _g[0], setFirstLoad = _g[1];\r\n    var bottomOfList = react_1.useRef(null);\r\n    var LIMIT = 10;\r\n    var COUNT_PRELOADING = 3;\r\n    function handleClick() {\r\n        setLoadMore(true);\r\n    }\r\n    function load() {\r\n        return __awaiter(this, void 0, void 0, function () {\r\n            var _a, after, children, newArrObj_1, error_1;\r\n            return __generator(this, function (_b) {\r\n                switch (_b.label) {\r\n                    case 0:\r\n                        setLoading(true);\r\n                        setErrorLoading('');\r\n                        _b.label = 1;\r\n                    case 1:\r\n                        _b.trys.push([1, 3, , 4]);\r\n                        return [4 /*yield*/, axios_1.default.get('https://api.reddit.com/best?sr_detail=true', {\r\n                                params: {\r\n                                    limit: LIMIT,\r\n                                    after: nextAfter,\r\n                                }\r\n                            })];\r\n                    case 2:\r\n                        _a = (_b.sent()).data.data, after = _a.after, children = _a.children;\r\n                        newArrObj_1 = children.map(function (item) {\r\n                            var container = {};\r\n                            container.id = item.data.id;\r\n                            container.author = item.data.author;\r\n                            container.title = item.data.title;\r\n                            container.banner = item.data.sr_detail.banner_img;\r\n                            container.icon_img = item.data.sr_detail.icon_img;\r\n                            container.created = item.data.created_utc;\r\n                            return container;\r\n                        });\r\n                        setNextAfter(after);\r\n                        setPosts(function (prevNewArrObj) { return prevNewArrObj.concat(newArrObj_1); });\r\n                        setNumberLoad(numberLoad + 1);\r\n                        return [3 /*break*/, 4];\r\n                    case 3:\r\n                        error_1 = _b.sent();\r\n                        setErrorLoading(String(error_1));\r\n                        return [3 /*break*/, 4];\r\n                    case 4:\r\n                        setLoading(false);\r\n                        return [2 /*return*/];\r\n                }\r\n            });\r\n        });\r\n    }\r\n    react_1.useEffect(function () {\r\n        var observer = new IntersectionObserver(function (entries) {\r\n            if (entries[0].isIntersecting && loadMore) {\r\n                load();\r\n            }\r\n            if (firstLoad) {\r\n                load();\r\n                setFirstLoad(false);\r\n            }\r\n            else if (!firstLoad && posts.length < (COUNT_PRELOADING * LIMIT) && entries[0].isIntersecting) {\r\n                if (numberLoad == 1) {\r\n                    load();\r\n                }\r\n                else if (numberLoad == 2) {\r\n                    load();\r\n                }\r\n            }\r\n            if (numberLoad == 3) {\r\n                setLoadMore(false);\r\n                setNumberLoad(0);\r\n            }\r\n        }, {\r\n            rootMargin: '10px',\r\n        });\r\n        if (bottomOfList.current) {\r\n            observer.observe(bottomOfList.current);\r\n        }\r\n        return function () {\r\n            if (bottomOfList.current) {\r\n                observer.unobserve(bottomOfList.current);\r\n            }\r\n        };\r\n    }, [bottomOfList.current, nextAfter, loadMore, numberLoad, firstLoad]);\r\n    return (react_1.default.createElement(\"ul\", { className: postslist_css_1.default.postsList },\r\n        posts.length === 0 && !loading && !errorLoading && (react_1.default.createElement(\"div\", { style: { textAlign: 'center' } }, \"\\u041D\\u0435\\u0442 \\u043D\\u0438 \\u043E\\u0434\\u043D\\u043E\\u0433\\u043E \\u043F\\u043E\\u0441\\u0442\\u0430\")),\r\n        posts.map(function (item) {\r\n            return (react_1.default.createElement(\"li\", { className: postslist_css_1.default.post, key: item.id, id: item.id },\r\n                react_1.default.createElement(TextContent_1.TextContent, { title: item.title, author: item.author, icon: item.icon_img, date: item.created }),\r\n                react_1.default.createElement(Preview_1.Preview, { srcImg: item.banner }),\r\n                react_1.default.createElement(Menu_1.Menu, null),\r\n                react_1.default.createElement(Controls_1.Controls, null)));\r\n        }),\r\n        react_1.default.createElement(\"div\", { ref: bottomOfList }),\r\n        !loading && !errorLoading && posts.length > 0 && (react_1.default.createElement(\"div\", { style: { textAlign: 'center' } },\r\n            react_1.default.createElement(\"button\", { type: 'button', className: postslist_css_1.default.btnMore, onClick: handleClick }, \"\\u0417\\u0430\\u0433\\u0440\\u0443\\u0437\\u0438\\u0442\\u044C \\u0435\\u0449\\u0435\"))),\r\n        loading && (react_1.default.createElement(\"div\", { style: { textAlign: 'center' } }, \"\\u0417\\u0430\\u0433\\u0440\\u0443\\u0437\\u043A\\u0430...\")),\r\n        errorLoading && (react_1.default.createElement(\"div\", { role: \"alert\", style: { textAlign: 'center' } }, errorLoading))));\r\n}\r\nexports.PostsList = PostsList;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/PostsList.tsx?");
 
 /***/ }),
-/* 23 */
+
+/***/ "./src/shared/Content/PostsList/Preview/Preview.tsx":
+/*!**********************************************************!*\
+  !*** ./src/shared/Content/PostsList/Preview/Preview.tsx ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Preview = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar preview_css_1 = __importDefault(__webpack_require__(/*! ./preview.css */ \"./src/shared/Content/PostsList/Preview/preview.css\"));\r\nfunction Preview(_a) {\r\n    var srcImg = _a.srcImg;\r\n    return (react_1.default.createElement(\"div\", { className: preview_css_1.default.preview }, srcImg\r\n        ? react_1.default.createElement(\"img\", { className: preview_css_1.default.previewImg, src: srcImg, alt: \"preview\" })\r\n        : react_1.default.createElement(\"img\", { className: preview_css_1.default.previewImg, src: \"https://cdn.dribbble.com/users/1803663/screenshots/16534587/media/c335a915773ce3ba65d18d137101f017.png\", alt: \"preview\" })));\r\n}\r\nexports.Preview = Preview;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Preview/Preview.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Preview/index.ts":
+/*!*******************************************************!*\
+  !*** ./src/shared/Content/PostsList/Preview/index.ts ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Preview */ \"./src/shared/Content/PostsList/Preview/Preview.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Preview/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/Preview/preview.css":
+/*!**********************************************************!*\
+  !*** ./src/shared/Content/PostsList/Preview/preview.css ***!
+  \**********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"header": "header__header--bAgyG"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"preview\": \"preview__preview--2eSDi\",\n\t\"previewImg\": \"preview__previewImg--3fB8Z\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/Preview/preview.css?");
 
 /***/ }),
-/* 24 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/DateFromNow/DateFromNow.tsx":
+/*!******************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/DateFromNow/DateFromNow.tsx ***!
+  \******************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(25), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.DateFromNow = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar moment_1 = __importDefault(__webpack_require__(/*! moment */ \"moment\"));\r\nfunction DateFromNow(_a) {\r\n    var date = _a.date;\r\n    var dateCreated = null;\r\n    {\r\n        date\r\n            ? dateCreated = moment_1.default(new Date(date * 1000)).fromNow()\r\n            : dateCreated = new Date();\r\n    }\r\n    return (react_1.default.createElement(\"span\", null, \"\" + dateCreated));\r\n}\r\nexports.DateFromNow = DateFromNow;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/DateFromNow/DateFromNow.tsx?");
 
 /***/ }),
-/* 25 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/DateFromNow/index.ts":
+/*!***********************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/DateFromNow/index.ts ***!
+  \***********************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SearchBlock = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var useUserData_1 = __webpack_require__(26);
-var searchblock_css_1 = __importDefault(__webpack_require__(27));
-var UserBlock_1 = __webpack_require__(28);
-function SearchBlock() {
-    var _a = useUserData_1.useUserData(), data = _a.data, loading = _a.loading;
-    return (react_1.default.createElement("div", { className: searchblock_css_1.default.searchBlock },
-        react_1.default.createElement(UserBlock_1.UserBlock, { avatarSrc: data.iconImg, username: data.name, loading: loading })));
-}
-exports.SearchBlock = SearchBlock;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./DateFromNow */ \"./src/shared/Content/PostsList/TextContent/DateFromNow/DateFromNow.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/DateFromNow/index.ts?");
 
 /***/ }),
-/* 26 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/TextContent.tsx":
+/*!******************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/TextContent.tsx ***!
+  \******************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useUserData = void 0;
-var react_1 = __webpack_require__(0);
-var actions_1 = __webpack_require__(2);
-var hooks_1 = __webpack_require__(7);
-function useUserData() {
-    // const data = useSelector<RootState, IUserData>(state => state.me.data);
-    var data = hooks_1.useAppSelector(function (state) { return state.me.data; });
-    // const loading = useSelector<RootState, boolean>(state => state.me.loading);
-    var loading = hooks_1.useAppSelector(function (state) { return state.me.loading; });
-    // const token = useSelector<RootState, string | undefined>(state => state.token);
-    var token = hooks_1.useAppSelector(function (state) { return state.token; });
-    var dispatch = hooks_1.useAppDispatch();
-    // const dispatch: any = useDispatch();
-    react_1.useEffect(function () {
-        if (!token)
-            return;
-        dispatch(actions_1.meRequestAsync());
-    }, [token]);
-    return {
-        data: data,
-        loading: loading
-    };
-}
-exports.useUserData = useUserData;
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.TextContent = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar textcontent_css_1 = __importDefault(__webpack_require__(/*! ./textcontent.css */ \"./src/shared/Content/PostsList/TextContent/textcontent.css\"));\r\nvar Title_1 = __webpack_require__(/*! ./Title */ \"./src/shared/Content/PostsList/TextContent/Title/index.ts\");\r\nvar UserLink_1 = __webpack_require__(/*! ./UserLink */ \"./src/shared/Content/PostsList/TextContent/UserLink/index.ts\");\r\nvar DateFromNow_1 = __webpack_require__(/*! ./DateFromNow */ \"./src/shared/Content/PostsList/TextContent/DateFromNow/index.ts\");\r\nfunction TextContent(_a) {\r\n    var title = _a.title, author = _a.author, icon = _a.icon, date = _a.date;\r\n    return (react_1.default.createElement(\"div\", { className: textcontent_css_1.default.textContent },\r\n        react_1.default.createElement(\"div\", { className: textcontent_css_1.default.metaData },\r\n            react_1.default.createElement(UserLink_1.UserLink, { author: author, icon: icon }),\r\n            react_1.default.createElement(\"span\", { className: textcontent_css_1.default.createdAt },\r\n                react_1.default.createElement(\"span\", { className: textcontent_css_1.default.publishedLabel }, \"\\u043E\\u043F\\u0443\\u0431\\u043B\\u0438\\u043A\\u043E\\u0432\\u0430\\u043D\\u043E\"),\r\n                react_1.default.createElement(DateFromNow_1.DateFromNow, { date: date }))),\r\n        react_1.default.createElement(Title_1.Title, { title: title })));\r\n}\r\nexports.TextContent = TextContent;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/TextContent.tsx?");
 
 /***/ }),
-/* 27 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/Title/Title.tsx":
+/*!******************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/Title/Title.tsx ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Title = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar title_css_1 = __importDefault(__webpack_require__(/*! ./title.css */ \"./src/shared/Content/PostsList/TextContent/Title/title.css\"));\r\nvar react_router_dom_1 = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\r\nfunction Title(_a) {\r\n    var title = _a.title;\r\n    return (react_1.default.createElement(\"h2\", { className: title_css_1.default.title },\r\n        react_1.default.createElement(react_router_dom_1.Link, { to: \"/posts/1\", className: title_css_1.default.postLink }, title)));\r\n}\r\nexports.Title = Title;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/Title/Title.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/TextContent/Title/index.ts":
+/*!*****************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/Title/index.ts ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Title */ \"./src/shared/Content/PostsList/TextContent/Title/Title.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/Title/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/TextContent/Title/title.css":
+/*!******************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/Title/title.css ***!
+  \******************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"searchBlock": "searchblock__searchBlock--3aDPv"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"title\": \"title__title--2xPLg\",\n\t\"postLink\": \"title__postLink--_Osg7\",\n\t\"textContent\": \"title__textContent--jAzXP\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/Title/title.css?");
 
 /***/ }),
-/* 28 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/UserLink/UserLink.tsx":
+/*!************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/UserLink/UserLink.tsx ***!
+  \************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(29), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.UserLink = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar userlink_css_1 = __importDefault(__webpack_require__(/*! ./userlink.css */ \"./src/shared/Content/PostsList/TextContent/UserLink/userlink.css\"));\r\nfunction UserLink(_a) {\r\n    var author = _a.author, icon = _a.icon;\r\n    return (react_1.default.createElement(\"div\", { className: userlink_css_1.default.userLink },\r\n        icon\r\n            ? react_1.default.createElement(\"img\", { className: userlink_css_1.default.avatar, src: icon, alt: \"avatar\" })\r\n            : react_1.default.createElement(\"img\", { className: userlink_css_1.default.avatar, src: \"https://cdn.dribbble.com/users/594316/screenshots/16557702/media/d77aa195b67473edb6c386b355126078.jpg\", alt: \"avatar\" }),\r\n        react_1.default.createElement(\"a\", { href: \"#user-url\", className: userlink_css_1.default.username }, author)));\r\n}\r\nexports.UserLink = UserLink;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/UserLink/UserLink.tsx?");
 
 /***/ }),
-/* 29 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/UserLink/index.ts":
+/*!********************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/UserLink/index.ts ***!
+  \********************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserBlock = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var userblock_css_1 = __importDefault(__webpack_require__(30));
-var Icon_1 = __webpack_require__(5);
-var Text_1 = __webpack_require__(1);
-function UserBlock(_a) {
-    var avatarSrc = _a.avatarSrc, username = _a.username, loading = _a.loading;
-    return (react_1.default.createElement("a", { href: "https://www.reddit.com/api/v1/authorize?client_id=" + '9PRgtMtHs-M5_AK4od9OKw' + "&response_type=code&state=random_string&redirect_uri=" + process.env.DOMAIN + "/auth&duration=permanent&scope=read submit identity", className: userblock_css_1.default.userBox },
-        react_1.default.createElement("div", { className: userblock_css_1.default.avatarBox }, avatarSrc
-            ? react_1.default.createElement("img", { src: avatarSrc, alt: "user avatar", className: userblock_css_1.default.avatarImage })
-            : react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.anon, size: 50, color: '#D9D9D9' })),
-        react_1.default.createElement("div", { className: userblock_css_1.default.username }, loading ? (react_1.default.createElement(Text_1.Text, { size: 20, color: Text_1.EColor.grey99 }, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430...")) : (react_1.default.createElement(Text_1.Text, { size: 20, color: username ? Text_1.EColor.black : Text_1.EColor.grey99 }, username || 'Аноним')))));
-}
-exports.UserBlock = UserBlock;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./UserLink */ \"./src/shared/Content/PostsList/TextContent/UserLink/UserLink.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/UserLink/index.ts?");
 
 /***/ }),
-/* 30 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/UserLink/userlink.css":
+/*!************************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/UserLink/userlink.css ***!
+  \************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"userBox": "userblock__userBox--24rEF",
-	"avatarBox": "userblock__avatarBox--2OTfi",
-	"avatarImage": "userblock__avatarImage--2ryXC",
-	"username": "userblock__username--3bLc0"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"userLink\": \"userlink__userLink--3pt88\",\n\t\"avatar\": \"userlink__avatar--2CoOs\",\n\t\"username\": \"userlink__username--jbHci\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/UserLink/userlink.css?");
 
 /***/ }),
-/* 31 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/index.ts":
+/*!***********************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/index.ts ***!
+  \***********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Text = exports.EColor = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var text_css_1 = __importDefault(__webpack_require__(32));
-var classnames_1 = __importDefault(__webpack_require__(33));
-var EColor;
-(function (EColor) {
-    EColor["black"] = "black";
-    EColor["orange"] = "orange";
-    EColor["green"] = "green";
-    EColor["white"] = "white";
-    EColor["greyF4"] = "greyF4";
-    EColor["greyF3"] = "greyF3";
-    EColor["greyD9"] = "greyD9";
-    EColor["greyC4"] = "greyC4";
-    EColor["grey99"] = "grey99";
-    EColor["grey66"] = "grey66";
-})(EColor = exports.EColor || (exports.EColor = {}));
-function Text(props) {
-    var _a, _b, _c;
-    var _d = props.As, As = _d === void 0 ? 'span' : _d, _e = props.color, color = _e === void 0 ? EColor.black : _e, children = props.children, size = props.size, mobileSize = props.mobileSize, tabletSize = props.tabletSize, desktopSize = props.desktopSize;
-    var classes = classnames_1.default(text_css_1.default["s" + size], (_a = {}, _a[text_css_1.default["m" + mobileSize]] = mobileSize, _a), (_b = {}, _b[text_css_1.default["t" + tabletSize]] = tabletSize, _b), (_c = {}, _c[text_css_1.default["d" + desktopSize]] = desktopSize, _c), text_css_1.default[color]);
-    return (react_1.default.createElement(As, { className: classes }, children));
-}
-exports.Text = Text;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./TextContent */ \"./src/shared/Content/PostsList/TextContent/TextContent.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/index.ts?");
 
 /***/ }),
-/* 32 */
+
+/***/ "./src/shared/Content/PostsList/TextContent/textcontent.css":
+/*!******************************************************************!*\
+  !*** ./src/shared/Content/PostsList/TextContent/textcontent.css ***!
+  \******************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"s28": "text__s28--Puvgs",
-	"s20": "text__s20--3Xq66",
-	"s16": "text__s16--G_lUr",
-	"s14": "text__s14--jvCoO",
-	"s12": "text__s12--2S2T2",
-	"s10": "text__s10--DYLfy",
-	"black": "text__black--1zchg",
-	"orange": "text__orange--1RyAM",
-	"green": "text__green--3mYQn",
-	"white": "text__white--13JGE",
-	"grayF4": "text__grayF4--2X2jV",
-	"greyF3": "text__greyF3--2Lfsi",
-	"greyD9": "text__greyD9--7iRFr",
-	"greyC4": "text__greyC4--3oiNM",
-	"grey99": "text__grey99--35u3B",
-	"grey66": "text__grey66--373uw",
-	"upperCase": "text__upperCase--2EMyT",
-	"m28": "text__m28--2u2zs",
-	"m20": "text__m20--1gFlM",
-	"m16": "text__m16--cSY4u",
-	"m14": "text__m14--s6pnr",
-	"m12": "text__m12--1W0av",
-	"m10": "text__m10--UtIkW",
-	"bold": "text__bold--gb02H",
-	"t28": "text__t28--A4rHF",
-	"t20": "text__t20--78tCz",
-	"t16": "text__t16--nkVMz",
-	"t14": "text__t14--1Rj72",
-	"t12": "text__t12--7txjW",
-	"t10": "text__t10--n2R7f",
-	"d28": "text__d28--3oIok",
-	"d20": "text__d20--uwHxr",
-	"d16": "text__d16--1Pwd1",
-	"d14": "text__d14--3Futo",
-	"d12": "text__d12--5X_qc",
-	"d10": "text__d10--3pWnc"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"textContent\": \"textcontent__textContent--3QylL\",\n\t\"metaData\": \"textcontent__metaData--3QKFf\",\n\t\"publishedLabel\": \"textcontent__publishedLabel--3Yf7I\",\n\t\"createdAt\": \"textcontent__createdAt--xJavO\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/TextContent/textcontent.css?");
 
 /***/ }),
-/* 33 */
+
+/***/ "./src/shared/Content/PostsList/index.ts":
+/*!***********************************************!*\
+  !*** ./src/shared/Content/PostsList/index.ts ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./PostsList */ \"./src/shared/Content/PostsList/PostsList.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Content/PostsList/postslist.css":
+/*!****************************************************!*\
+  !*** ./src/shared/Content/PostsList/postslist.css ***!
+  \****************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("classnames");
+eval("// Exports\nmodule.exports = {\n\t\"divider\": \"postslist__divider--1Gzw9\",\n\t\"postsList\": \"postslist__postsList--2OyjV\",\n\t\"post\": \"postslist__post--1zBbU\",\n\t\"textContent\": \"postslist__textContent--6RcyT\",\n\t\"btnMore\": \"postslist__btnMore--2BLcs\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/PostsList/postslist.css?");
 
 /***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(35), exports);
-
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ThreadTitle = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var threadtitle_css_1 = __importDefault(__webpack_require__(36));
-function ThreadTitle() {
-    return (react_1.default.createElement("h1", { className: threadtitle_css_1.default.threadTitle }, "Header"));
-}
-exports.ThreadTitle = ThreadTitle;
-
-
-/***/ }),
-/* 36 */
+/***/ "./src/shared/Content/content.css":
+/*!****************************************!*\
+  !*** ./src/shared/Content/content.css ***!
+  \****************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"threadTitle": "threadtitle__threadTitle--oxugx"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"content\": \"content__content--2O9-S\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Content/content.css?");
 
 /***/ }),
-/* 37 */
+
+/***/ "./src/shared/Content/index.ts":
+/*!*************************************!*\
+  !*** ./src/shared/Content/index.ts ***!
+  \*************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(38), exports);
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Content */ \"./src/shared/Content/Content.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/index.ts?");
 
 /***/ }),
-/* 38 */
+
+/***/ "./src/shared/Dropdown/BodyDropdown/BodyDropdown.tsx":
+/*!***********************************************************!*\
+  !*** ./src/shared/Dropdown/BodyDropdown/BodyDropdown.tsx ***!
+  \***********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SortBlock = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var sortblock_css_1 = __importDefault(__webpack_require__(39));
-function SortBlock() {
-    return (react_1.default.createElement("div", { className: sortblock_css_1.default.sortBlock }, "sorting dropdown"));
-}
-exports.SortBlock = SortBlock;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.BodyDropdown = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nvar bodydropdown_css_1 = __importDefault(__webpack_require__(/*! ./bodydropdown.css */ \"./src/shared/Dropdown/BodyDropdown/bodydropdown.css\"));\r\nvar MenuItemsList_1 = __webpack_require__(/*! ../../Content/PostsList/Menu/MenuItemsList */ \"./src/shared/Content/PostsList/Menu/MenuItemsList/index.ts\");\r\nvar Text_1 = __webpack_require__(/*! ../../Text */ \"./src/shared/Text/index.ts\");\r\nvar Text_2 = __webpack_require__(/*! ../../Text */ \"./src/shared/Text/index.ts\");\r\nfunction BodyDropdown(_a) {\r\n    var onClose = _a.onClose;\r\n    var ref = react_1.useRef(null);\r\n    react_1.useEffect(function () {\r\n        function handleClick(event) {\r\n            var _a;\r\n            if (event.target instanceof Node && !((_a = ref.current) === null || _a === void 0 ? void 0 : _a.contains(event.target))) {\r\n                onClose === null || onClose === void 0 ? void 0 : onClose();\r\n            }\r\n        }\r\n        document.addEventListener('click', handleClick);\r\n        return function () {\r\n            document.removeEventListener('click', handleClick);\r\n        };\r\n    }, []);\r\n    return (react_1.default.createElement(\"div\", { className: bodydropdown_css_1.default.dropdown, ref: ref },\r\n        react_1.default.createElement(MenuItemsList_1.MenuItemsList, { postId: 'test' }),\r\n        react_1.default.createElement(\"button\", { className: bodydropdown_css_1.default.closeButton },\r\n            react_1.default.createElement(Text_1.Text, { mobileSize: 12, size: 14, color: Text_2.EColor.grey66 }, \"\\u0417\\u0430\\u043A\\u0440\\u044B\\u0442\\u044C\"))));\r\n}\r\nexports.BodyDropdown = BodyDropdown;\r\n\n\n//# sourceURL=webpack:///./src/shared/Dropdown/BodyDropdown/BodyDropdown.tsx?");
 
 /***/ }),
-/* 39 */
+
+/***/ "./src/shared/Dropdown/BodyDropdown/bodydropdown.css":
+/*!***********************************************************!*\
+  !*** ./src/shared/Dropdown/BodyDropdown/bodydropdown.css ***!
+  \***********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"sortBlock": "sortblock__sortBlock--141aZ"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"dropdown\": \"bodydropdown__dropdown--IRnid\",\n\t\"closeButton\": \"bodydropdown__closeButton--3uUmJ\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Dropdown/BodyDropdown/bodydropdown.css?");
 
 /***/ }),
-/* 40 */
+
+/***/ "./src/shared/Dropdown/BodyDropdown/index.ts":
+/*!***************************************************!*\
+  !*** ./src/shared/Dropdown/BodyDropdown/index.ts ***!
+  \***************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(41), exports);
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./BodyDropdown */ \"./src/shared/Dropdown/BodyDropdown/BodyDropdown.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Dropdown/BodyDropdown/index.ts?");
 
 /***/ }),
-/* 41 */
+
+/***/ "./src/shared/Dropdown/Dropdown.tsx":
+/*!******************************************!*\
+  !*** ./src/shared/Dropdown/Dropdown.tsx ***!
+  \******************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Content = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var content_css_1 = __importDefault(__webpack_require__(42));
-function Content(_a) {
-    var children = _a.children;
-    return (react_1.default.createElement("main", { className: content_css_1.default.content }, children));
-}
-exports.Content = Content;
-
+eval("\r\nvar __assign = (this && this.__assign) || function () {\r\n    __assign = Object.assign || function(t) {\r\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\r\n            s = arguments[i];\r\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\r\n                t[p] = s[p];\r\n        }\r\n        return t;\r\n    };\r\n    return __assign.apply(this, arguments);\r\n};\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Dropdown = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nvar BodyDropdown_1 = __webpack_require__(/*! ./BodyDropdown */ \"./src/shared/Dropdown/BodyDropdown/index.ts\");\r\nvar react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ \"react-dom\"));\r\nvar react_popper_1 = __webpack_require__(/*! react-popper */ \"react-popper\");\r\nfunction Dropdown(_a) {\r\n    var button = _a.button;\r\n    var _b = react_1.default.useState(false), isDropdownOpen = _b[0], setIsDropdownOpen = _b[1];\r\n    var _c = react_1.useState(null), idElement = _c[0], setIdElement = _c[1];\r\n    var node = document.getElementById('dropdown_root');\r\n    if (!node)\r\n        return null;\r\n    var _d = react_1.useState(null), referenceElement = _d[0], setReferenceElement = _d[1];\r\n    var _e = react_1.useState(null), popperElement = _e[0], setPopperElement = _e[1];\r\n    var _f = react_popper_1.usePopper(referenceElement, popperElement, {\r\n        placement: \"bottom\",\r\n        modifiers: [\r\n            {\r\n                name: \"offset\",\r\n                enabled: true,\r\n                options: {\r\n                    offset: [0, 10]\r\n                }\r\n            }\r\n        ]\r\n    }), styles = _f.styles, attributes = _f.attributes;\r\n    return (react_1.default.createElement(\"div\", null,\r\n        react_1.default.createElement(\"div\", { ref: setReferenceElement, onClick: function (event) {\r\n                setIsDropdownOpen(!isDropdownOpen);\r\n                // //получаем текущую кнопку меню по которой нажали\r\n                // const buttonMenu = (event.target as HTMLElement).closest('button');\r\n                // if (!buttonMenu) return;\r\n                // //получаем пост к которой принадлежит кнопка\r\n                // const currentPost = buttonMenu.parentElement?.parentElement?.parentElement?.parentElement;\r\n                // const idPost = currentPost?.id;\r\n                // setIdElement(idPost);\r\n            } }, button),\r\n        isDropdownOpen && (react_1.default.createElement(\"div\", null,\r\n            react_1.default.createElement(\"div\", { onClick: function () { return setIsDropdownOpen(false); } }, react_dom_1.default.createPortal(react_1.default.createElement(\"div\", __assign({ ref: setPopperElement, style: styles.popper }, attributes.popper),\r\n                react_1.default.createElement(BodyDropdown_1.BodyDropdown, { onClose: function () { setIsDropdownOpen(false); } })), node))))));\r\n}\r\nexports.Dropdown = Dropdown;\r\n\n\n//# sourceURL=webpack:///./src/shared/Dropdown/Dropdown.tsx?");
 
 /***/ }),
-/* 42 */
+
+/***/ "./src/shared/Dropdown/index.ts":
+/*!**************************************!*\
+  !*** ./src/shared/Dropdown/index.ts ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Dropdown */ \"./src/shared/Dropdown/Dropdown.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Dropdown/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Header/Header.tsx":
+/*!**************************************!*\
+  !*** ./src/shared/Header/Header.tsx ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Header = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar header_css_1 = __importDefault(__webpack_require__(/*! ./header.css */ \"./src/shared/Header/header.css\"));\r\nvar SearchBlock_1 = __webpack_require__(/*! ./SearchBlock */ \"./src/shared/Header/SearchBlock/index.ts\");\r\nvar ThreadTitle_1 = __webpack_require__(/*! ./ThreadTitle */ \"./src/shared/Header/ThreadTitle/index.ts\");\r\nvar SortBlock_1 = __webpack_require__(/*! ./SortBlock */ \"./src/shared/Header/SortBlock/index.ts\");\r\nfunction Header() {\r\n    return (react_1.default.createElement(\"header\", { className: header_css_1.default.header },\r\n        react_1.default.createElement(SearchBlock_1.SearchBlock, null),\r\n        react_1.default.createElement(ThreadTitle_1.ThreadTitle, null),\r\n        react_1.default.createElement(SortBlock_1.SortBlock, null)));\r\n}\r\nexports.Header = Header;\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/Header.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Header/SearchBlock/SearchBlock.tsx":
+/*!*******************************************************!*\
+  !*** ./src/shared/Header/SearchBlock/SearchBlock.tsx ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.SearchBlock = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar useUserData_1 = __webpack_require__(/*! ../../../hooks/useUserData */ \"./src/hooks/useUserData.ts\");\r\nvar searchblock_css_1 = __importDefault(__webpack_require__(/*! ./searchblock.css */ \"./src/shared/Header/SearchBlock/searchblock.css\"));\r\nvar UserBlock_1 = __webpack_require__(/*! ./UserBlock */ \"./src/shared/Header/SearchBlock/UserBlock/index.ts\");\r\nfunction SearchBlock() {\r\n    var _a = useUserData_1.useUserData(), data = _a.data, loading = _a.loading;\r\n    return (react_1.default.createElement(\"div\", { className: searchblock_css_1.default.searchBlock },\r\n        react_1.default.createElement(UserBlock_1.UserBlock, { avatarSrc: data.iconImg, username: data.name, loading: loading })));\r\n}\r\nexports.SearchBlock = SearchBlock;\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/SearchBlock/SearchBlock.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Header/SearchBlock/UserBlock/UserBlock.tsx":
+/*!***************************************************************!*\
+  !*** ./src/shared/Header/SearchBlock/UserBlock/UserBlock.tsx ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.UserBlock = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar userblock_css_1 = __importDefault(__webpack_require__(/*! ./userblock.css */ \"./src/shared/Header/SearchBlock/UserBlock/userblock.css\"));\r\nvar Icon_1 = __webpack_require__(/*! ./../../../Icons/Icon */ \"./src/shared/Icons/Icon.tsx\");\r\nvar Text_1 = __webpack_require__(/*! ./../../../Text */ \"./src/shared/Text/index.ts\");\r\nfunction UserBlock(_a) {\r\n    var avatarSrc = _a.avatarSrc, username = _a.username, loading = _a.loading;\r\n    return (react_1.default.createElement(\"a\", { href: \"https://www.reddit.com/api/v1/authorize?client_id=\" + '2alpekdjsqhwgCDAvSa4uQ' + \"&response_type=code&state=random_string&redirect_uri=\" + 'http://localhost:3000' + \"/auth&duration=permanent&scope=read submit identity\", className: userblock_css_1.default.userBox },\r\n        react_1.default.createElement(\"div\", { className: userblock_css_1.default.avatarBox }, avatarSrc\r\n            ? react_1.default.createElement(\"img\", { src: avatarSrc, alt: \"user avatar\", className: userblock_css_1.default.avatarImage })\r\n            : react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.anon, size: 50, color: '#D9D9D9' })),\r\n        react_1.default.createElement(\"div\", { className: userblock_css_1.default.username }, loading ? (react_1.default.createElement(Text_1.Text, { size: 20, color: Text_1.EColor.grey99 }, \"\\u0417\\u0430\\u0433\\u0440\\u0443\\u0437\\u043A\\u0430...\")) : (react_1.default.createElement(Text_1.Text, { size: 20, color: username ? Text_1.EColor.black : Text_1.EColor.grey99 }, username || 'Аноним')))));\r\n}\r\nexports.UserBlock = UserBlock;\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/SearchBlock/UserBlock/UserBlock.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Header/SearchBlock/UserBlock/index.ts":
+/*!**********************************************************!*\
+  !*** ./src/shared/Header/SearchBlock/UserBlock/index.ts ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./UserBlock */ \"./src/shared/Header/SearchBlock/UserBlock/UserBlock.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/SearchBlock/UserBlock/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Header/SearchBlock/UserBlock/userblock.css":
+/*!***************************************************************!*\
+  !*** ./src/shared/Header/SearchBlock/UserBlock/userblock.css ***!
+  \***************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"content": "content__content--2O9-S"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"userBox\": \"userblock__userBox--24rEF\",\n\t\"avatarBox\": \"userblock__avatarBox--2OTfi\",\n\t\"avatarImage\": \"userblock__avatarImage--2ryXC\",\n\t\"username\": \"userblock__username--3bLc0\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Header/SearchBlock/UserBlock/userblock.css?");
 
 /***/ }),
-/* 43 */
+
+/***/ "./src/shared/Header/SearchBlock/index.ts":
+/*!************************************************!*\
+  !*** ./src/shared/Header/SearchBlock/index.ts ***!
+  \************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useToken = void 0;
-var react_1 = __webpack_require__(0);
-function useToken() {
-    var token = '';
-    if (typeof window !== 'undefined') {
-        // localStorage.clear();
-        if (localStorage.getItem('token') !== 'undefined') {
-            token = localStorage.getItem('token') || window.__token__;
-        }
-        else {
-            token = window.__token__;
-        }
-        react_1.useEffect(function () {
-            if (token && token.length > 0 && token !== 'undefined') {
-                localStorage.setItem('token', token);
-            }
-        }, [token]);
-    }
-    // const [token, setToken] = useState('');
-    // useEffect(() => {
-    //   if (window.__token__) {
-    //       setToken(window.__token__);
-    //   }
-    // }, []);
-    return [token];
-}
-exports.useToken = useToken;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./SearchBlock */ \"./src/shared/Header/SearchBlock/SearchBlock.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/SearchBlock/index.ts?");
 
 /***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(45), exports);
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.PostsList = void 0;
-var react_1 = __importStar(__webpack_require__(0));
-var postslist_css_1 = __importDefault(__webpack_require__(46));
-var TextContent_1 = __webpack_require__(47);
-var Preview_1 = __webpack_require__(57);
-var Menu_1 = __webpack_require__(60);
-var Controls_1 = __webpack_require__(73);
-var axios_1 = __importDefault(__webpack_require__(3));
-function PostsList() {
-    var _a = react_1.useState([]), posts = _a[0], setPosts = _a[1];
-    var _b = react_1.useState(false), loading = _b[0], setLoading = _b[1];
-    var _c = react_1.useState(''), errorLoading = _c[0], setErrorLoading = _c[1];
-    var _d = react_1.useState(''), nextAfter = _d[0], setNextAfter = _d[1];
-    var _e = react_1.useState(false), loadMore = _e[0], setLoadMore = _e[1];
-    var _f = react_1.useState(0), numberLoad = _f[0], setNumberLoad = _f[1];
-    var _g = react_1.useState(true), firstLoad = _g[0], setFirstLoad = _g[1];
-    var bottomOfList = react_1.useRef(null);
-    var LIMIT = 10;
-    var COUNT_PRELOADING = 3;
-    function handleClick() {
-        setLoadMore(true);
-    }
-    function load() {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a, after, children, newArrObj_1, error_1;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        setLoading(true);
-                        setErrorLoading('');
-                        _b.label = 1;
-                    case 1:
-                        _b.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, axios_1.default.get('https://api.reddit.com/best?sr_detail=true', {
-                                params: {
-                                    limit: LIMIT,
-                                    after: nextAfter,
-                                }
-                            })];
-                    case 2:
-                        _a = (_b.sent()).data.data, after = _a.after, children = _a.children;
-                        newArrObj_1 = children.map(function (item) {
-                            var container = {};
-                            container.id = item.data.id;
-                            container.author = item.data.author;
-                            container.title = item.data.title;
-                            container.banner = item.data.sr_detail.banner_img;
-                            container.icon_img = item.data.sr_detail.icon_img;
-                            container.created = item.data.created_utc;
-                            return container;
-                        });
-                        setNextAfter(after);
-                        setPosts(function (prevNewArrObj) { return prevNewArrObj.concat(newArrObj_1); });
-                        setNumberLoad(numberLoad + 1);
-                        return [3 /*break*/, 4];
-                    case 3:
-                        error_1 = _b.sent();
-                        setErrorLoading(String(error_1));
-                        return [3 /*break*/, 4];
-                    case 4:
-                        setLoading(false);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    }
-    react_1.useEffect(function () {
-        var observer = new IntersectionObserver(function (entries) {
-            if (entries[0].isIntersecting && loadMore) {
-                load();
-            }
-            if (firstLoad) {
-                load();
-                setFirstLoad(false);
-            }
-            else if (!firstLoad && posts.length < (COUNT_PRELOADING * LIMIT) && entries[0].isIntersecting) {
-                if (numberLoad == 1) {
-                    load();
-                }
-                else if (numberLoad == 2) {
-                    load();
-                }
-            }
-            if (numberLoad == 3) {
-                setLoadMore(false);
-                setNumberLoad(0);
-            }
-        }, {
-            rootMargin: '10px',
-        });
-        if (bottomOfList.current) {
-            observer.observe(bottomOfList.current);
-        }
-        return function () {
-            if (bottomOfList.current) {
-                observer.unobserve(bottomOfList.current);
-            }
-        };
-    }, [bottomOfList.current, nextAfter, loadMore, numberLoad, firstLoad]);
-    return (react_1.default.createElement("ul", { className: postslist_css_1.default.postsList },
-        posts.length === 0 && !loading && !errorLoading && (react_1.default.createElement("div", { style: { textAlign: 'center' } }, "\u041D\u0435\u0442 \u043D\u0438 \u043E\u0434\u043D\u043E\u0433\u043E \u043F\u043E\u0441\u0442\u0430")),
-        posts.map(function (item) {
-            return (react_1.default.createElement("li", { className: postslist_css_1.default.post, key: item.id, id: item.id },
-                react_1.default.createElement(TextContent_1.TextContent, { title: item.title, author: item.author, icon: item.icon_img, date: item.created }),
-                react_1.default.createElement(Preview_1.Preview, { srcImg: item.banner }),
-                react_1.default.createElement(Menu_1.Menu, null),
-                react_1.default.createElement(Controls_1.Controls, null)));
-        }),
-        react_1.default.createElement("div", { ref: bottomOfList }),
-        !loading && !errorLoading && posts.length > 0 && (react_1.default.createElement("div", { style: { textAlign: 'center' } },
-            react_1.default.createElement("button", { type: 'button', className: postslist_css_1.default.btnMore, onClick: handleClick }, "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0435\u0449\u0435"))),
-        loading && (react_1.default.createElement("div", { style: { textAlign: 'center' } }, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430...")),
-        errorLoading && (react_1.default.createElement("div", { role: "alert", style: { textAlign: 'center' } }, errorLoading))));
-}
-exports.PostsList = PostsList;
-
-
-/***/ }),
-/* 46 */
+/***/ "./src/shared/Header/SearchBlock/searchblock.css":
+/*!*******************************************************!*\
+  !*** ./src/shared/Header/SearchBlock/searchblock.css ***!
+  \*******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"divider": "postslist__divider--1Gzw9",
-	"postsList": "postslist__postsList--2OyjV",
-	"post": "postslist__post--1zBbU",
-	"textContent": "postslist__textContent--6RcyT",
-	"btnMore": "postslist__btnMore--2BLcs"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"searchBlock\": \"searchblock__searchBlock--3aDPv\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Header/SearchBlock/searchblock.css?");
 
 /***/ }),
-/* 47 */
+
+/***/ "./src/shared/Header/SortBlock/SortBlock.tsx":
+/*!***************************************************!*\
+  !*** ./src/shared/Header/SortBlock/SortBlock.tsx ***!
+  \***************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(48), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.SortBlock = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar sortblock_css_1 = __importDefault(__webpack_require__(/*! ./sortblock.css */ \"./src/shared/Header/SortBlock/sortblock.css\"));\r\nfunction SortBlock() {\r\n    return (react_1.default.createElement(\"div\", { className: sortblock_css_1.default.sortBlock }, \"sorting dropdown\"));\r\n}\r\nexports.SortBlock = SortBlock;\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/SortBlock/SortBlock.tsx?");
 
 /***/ }),
-/* 48 */
+
+/***/ "./src/shared/Header/SortBlock/index.ts":
+/*!**********************************************!*\
+  !*** ./src/shared/Header/SortBlock/index.ts ***!
+  \**********************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TextContent = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var textcontent_css_1 = __importDefault(__webpack_require__(49));
-var Title_1 = __webpack_require__(50);
-var UserLink_1 = __webpack_require__(8);
-var DateFromNow_1 = __webpack_require__(9);
-function TextContent(_a) {
-    var title = _a.title, author = _a.author, icon = _a.icon, date = _a.date;
-    return (react_1.default.createElement("div", { className: textcontent_css_1.default.textContent },
-        react_1.default.createElement("div", { className: textcontent_css_1.default.metaData },
-            react_1.default.createElement(UserLink_1.UserLink, { author: author, icon: icon }),
-            react_1.default.createElement("span", { className: textcontent_css_1.default.createdAt },
-                react_1.default.createElement("span", { className: textcontent_css_1.default.publishedLabel }, "\u043E\u043F\u0443\u0431\u043B\u0438\u043A\u043E\u0432\u0430\u043D\u043E"),
-                react_1.default.createElement(DateFromNow_1.DateFromNow, { date: date }))),
-        react_1.default.createElement(Title_1.Title, { title: title })));
-}
-exports.TextContent = TextContent;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./SortBlock */ \"./src/shared/Header/SortBlock/SortBlock.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/SortBlock/index.ts?");
 
 /***/ }),
-/* 49 */
+
+/***/ "./src/shared/Header/SortBlock/sortblock.css":
+/*!***************************************************!*\
+  !*** ./src/shared/Header/SortBlock/sortblock.css ***!
+  \***************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"textContent": "textcontent__textContent--3QylL",
-	"metaData": "textcontent__metaData--3QKFf",
-	"publishedLabel": "textcontent__publishedLabel--3Yf7I",
-	"createdAt": "textcontent__createdAt--xJavO"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"sortBlock\": \"sortblock__sortBlock--141aZ\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Header/SortBlock/sortblock.css?");
 
 /***/ }),
-/* 50 */
+
+/***/ "./src/shared/Header/ThreadTitle/ThreadTitle.tsx":
+/*!*******************************************************!*\
+  !*** ./src/shared/Header/ThreadTitle/ThreadTitle.tsx ***!
+  \*******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(51), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.ThreadTitle = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar threadtitle_css_1 = __importDefault(__webpack_require__(/*! ./threadtitle.css */ \"./src/shared/Header/ThreadTitle/threadtitle.css\"));\r\nfunction ThreadTitle() {\r\n    return (react_1.default.createElement(\"h1\", { className: threadtitle_css_1.default.threadTitle }, \"Header\"));\r\n}\r\nexports.ThreadTitle = ThreadTitle;\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/ThreadTitle/ThreadTitle.tsx?");
 
 /***/ }),
-/* 51 */
+
+/***/ "./src/shared/Header/ThreadTitle/index.ts":
+/*!************************************************!*\
+  !*** ./src/shared/Header/ThreadTitle/index.ts ***!
+  \************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Title = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var title_css_1 = __importDefault(__webpack_require__(52));
-var react_router_dom_1 = __webpack_require__(6);
-function Title(_a) {
-    var title = _a.title;
-    return (react_1.default.createElement("h2", { className: title_css_1.default.title },
-        react_1.default.createElement(react_router_dom_1.Link, { to: "/posts/1", className: title_css_1.default.postLink }, title)));
-}
-exports.Title = Title;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./ThreadTitle */ \"./src/shared/Header/ThreadTitle/ThreadTitle.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/ThreadTitle/index.ts?");
 
 /***/ }),
-/* 52 */
+
+/***/ "./src/shared/Header/ThreadTitle/threadtitle.css":
+/*!*******************************************************!*\
+  !*** ./src/shared/Header/ThreadTitle/threadtitle.css ***!
+  \*******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"title": "title__title--2xPLg",
-	"postLink": "title__postLink--_Osg7",
-	"textContent": "title__textContent--jAzXP"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"threadTitle\": \"threadtitle__threadTitle--oxugx\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Header/ThreadTitle/threadtitle.css?");
 
 /***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserLink = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var userlink_css_1 = __importDefault(__webpack_require__(54));
-function UserLink(_a) {
-    var author = _a.author, icon = _a.icon;
-    return (react_1.default.createElement("div", { className: userlink_css_1.default.userLink },
-        icon
-            ? react_1.default.createElement("img", { className: userlink_css_1.default.avatar, src: icon, alt: "avatar" })
-            : react_1.default.createElement("img", { className: userlink_css_1.default.avatar, src: "https://cdn.dribbble.com/users/594316/screenshots/16557702/media/d77aa195b67473edb6c386b355126078.jpg", alt: "avatar" }),
-        react_1.default.createElement("a", { href: "#user-url", className: userlink_css_1.default.username }, author)));
-}
-exports.UserLink = UserLink;
-
-
-/***/ }),
-/* 54 */
+/***/ "./src/shared/Header/header.css":
+/*!**************************************!*\
+  !*** ./src/shared/Header/header.css ***!
+  \**************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"userLink": "userlink__userLink--3pt88",
-	"avatar": "userlink__avatar--2CoOs",
-	"username": "userlink__username--jbHci"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"header\": \"header__header--bAgyG\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Header/header.css?");
 
 /***/ }),
-/* 55 */
+
+/***/ "./src/shared/Icons/Icon.tsx":
+/*!***********************************!*\
+  !*** ./src/shared/Icons/Icon.tsx ***!
+  \***********************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DateFromNow = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var moment_1 = __importDefault(__webpack_require__(56));
-function DateFromNow(_a) {
-    var date = _a.date;
-    var dateCreated = null;
-    {
-        date
-            ? dateCreated = moment_1.default(new Date(date * 1000)).fromNow()
-            : dateCreated = new Date();
-    }
-    return (react_1.default.createElement("span", null, "" + dateCreated));
-}
-exports.DateFromNow = DateFromNow;
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Icon = exports.EIcons = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar EIcons;\r\n(function (EIcons) {\r\n    EIcons[\"block\"] = \"M6 0C2.688 0 0 2.688 0 6C0 9.312 2.688 12 6 12C9.312 12 12 9.312 12 6C12 2.688 9.312 0 6 0ZM6 10.8C3.348 10.8 1.2 8.652 1.2 6C1.2 4.89 1.578 3.87 2.214 3.06L8.94 9.786C8.13 10.422 7.11 10.8 6 10.8ZM9.786 8.94L3.06 2.214C3.87 1.578 4.89 1.2 6 1.2C8.652 1.2 10.8 3.348 10.8 6C10.8 7.11 10.422 8.13 9.786 8.94Z\";\r\n    EIcons[\"comments\"] = \"M12.75 0.416626H1.41667C0.6375 0.416626 0 1.05413 0 1.83329V10.3333C0 11.1125 0.6375 11.75 1.41667 11.75H11.3333L14.1667 14.5833V1.83329C14.1667 1.05413 13.5292 0.416626 12.75 0.416626ZM11.3333 8.91663H2.83333V7.49996H11.3333V8.91663ZM11.3333 6.79163H2.83333V5.37496H11.3333V6.79163ZM11.3333 4.66663H2.83333V3.24996H11.3333V4.66663Z\";\r\n    EIcons[\"save\"] = \"M1.4 2.8H0V12.6C0 13.37 0.63 14 1.4 14H11.2V12.6H1.4V2.8ZM12.6 0H4.2C3.43 0 2.8 0.63 2.8 1.4V9.8C2.8 10.57 3.43 11.2 4.2 11.2H12.6C13.37 11.2 14 10.57 14 9.8V1.4C14 0.63 13.37 0 12.6 0ZM11.9 6.3H9.1V9.1H7.7V6.3H4.9V4.9H7.7V2.1H9.1V4.9H11.9V6.3Z\";\r\n    EIcons[\"share\"] = \"M10 9.89558C9.49333 9.89558 9.04 10.1064 8.69333 10.4367L3.94 7.52008C3.97333 7.35843 4 7.19679 4 7.02811C4 6.85944 3.97333 6.69779 3.94 6.53614L8.64 3.64759C9 3.999 9.47333 4.21687 10 4.21687C11.1067 4.21687 12 3.2751 12 2.10843C12 0.941767 11.1067 0 10 0C8.89333 0 8 0.941767 8 2.10843C8 2.27711 8.02667 2.43875 8.06 2.6004L3.36 5.48896C3 5.13755 2.52667 4.91968 2 4.91968C0.893333 4.91968 0 5.86145 0 7.02811C0 8.19478 0.893333 9.13655 2 9.13655C2.52667 9.13655 3 8.91867 3.36 8.56727L8.10667 11.491C8.07333 11.6386 8.05333 11.7932 8.05333 11.9478C8.05333 13.0793 8.92667 14 10 14C11.0733 14 11.9467 13.0793 11.9467 11.9478C11.9467 10.8163 11.0733 9.89558 10 9.89558Z\";\r\n    EIcons[\"warning\"] = \"M0 12H14L7 0L0 12ZM7.63636 10.1053H6.36364V8.8421H7.63636V10.1053ZM7.63636 7.57895H6.36364V5.05263H7.63636V7.57895Z\";\r\n    EIcons[\"anon\"] = \"M25 0C11.2 0 0 11.2 0 25C0 38.8 11.2 50 25 50C38.8 50 50 38.8 50 25C50 11.2 38.8 0 25 0ZM25 7.5C29.15 7.5 32.5 10.85 32.5 15C32.5 19.15 29.15 22.5 25 22.5C20.85 22.5 17.5 19.15 17.5 15C17.5 10.85 20.85 7.5 25 7.5ZM25 43C18.75 43 13.225 39.8 10 34.95C10.075 29.975 20 27.25 25 27.25C29.975 27.25 39.925 29.975 40 34.95C36.775 39.8 31.25 43 25 43Z\";\r\n    EIcons[\"answer\"] = \"M12.75 0.416504H1.41667C0.6375 0.416504 0 1.054 0 1.83317V10.3332C0 11.1123 0.6375 11.7498 1.41667 11.7498H11.3333L14.1667 14.5832V1.83317C14.1667 1.054 13.5292 0.416504 12.75 0.416504ZM11.3333 8.9165H2.83333V7.49984H11.3333V8.9165ZM11.3333 6.7915H2.83333V5.37484H11.3333V6.7915ZM11.3333 4.6665H2.83333V3.24984H11.3333V4.6665Z\";\r\n})(EIcons = exports.EIcons || (exports.EIcons = {}));\r\nfunction Icon(_a) {\r\n    var name = _a.name, _b = _a.size, size = _b === void 0 ? 12 : _b, _c = _a.color, color = _c === void 0 ? '#999999' : _c;\r\n    var viewBoxString = \"0 0 \" + size + \" \" + size;\r\n    return (react_1.default.createElement(\"svg\", { width: size, height: size, viewBox: viewBoxString, fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n        react_1.default.createElement(\"path\", { d: name, fill: color })));\r\n}\r\nexports.Icon = Icon;\r\n\n\n//# sourceURL=webpack:///./src/shared/Icons/Icon.tsx?");
 
 /***/ }),
-/* 56 */
+
+/***/ "./src/shared/Icons/MenuIcon.tsx":
+/*!***************************************!*\
+  !*** ./src/shared/Icons/MenuIcon.tsx ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.MenuIcon = void 0;\r\nvar React = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nfunction MenuIcon() {\r\n    return (React.createElement(\"svg\", { width: \"5\", height: \"20\", viewBox: \"0 0 5 20\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n        React.createElement(\"circle\", { cx: \"2.5\", cy: \"2.5\", r: \"2.5\", fill: \"#D9D9D9\" }),\r\n        React.createElement(\"circle\", { cx: \"2.5\", cy: \"10\", r: \"2.5\", fill: \"#D9D9D9\" }),\r\n        React.createElement(\"circle\", { cx: \"2.5\", cy: \"17.5\", r: \"2.5\", fill: \"#D9D9D9\" })));\r\n}\r\nexports.MenuIcon = MenuIcon;\r\n\n\n//# sourceURL=webpack:///./src/shared/Icons/MenuIcon.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Layout/Layout.tsx":
+/*!**************************************!*\
+  !*** ./src/shared/Layout/Layout.tsx ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Layout = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar layout_css_1 = __importDefault(__webpack_require__(/*! ./layout.css */ \"./src/shared/Layout/layout.css\"));\r\nfunction Layout(_a) {\r\n    var children = _a.children;\r\n    return (react_1.default.createElement(\"div\", { className: layout_css_1.default.layout }, children));\r\n}\r\nexports.Layout = Layout;\r\n\n\n//# sourceURL=webpack:///./src/shared/Layout/Layout.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Layout/index.ts":
+/*!************************************!*\
+  !*** ./src/shared/Layout/index.ts ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Layout */ \"./src/shared/Layout/Layout.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Layout/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Layout/layout.css":
+/*!**************************************!*\
+  !*** ./src/shared/Layout/layout.css ***!
+  \**************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("moment");
+eval("// Exports\nmodule.exports = {\n\t\"layout\": \"layout__layout--2fANc\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Layout/layout.css?");
 
 /***/ }),
-/* 57 */
+
+/***/ "./src/shared/Post/Comments/Comment/Comment.tsx":
+/*!******************************************************!*\
+  !*** ./src/shared/Post/Comments/Comment/Comment.tsx ***!
+  \******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(58), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Comment = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar comment_css_1 = __importDefault(__webpack_require__(/*! ./comment.css */ \"./src/shared/Post/Comments/Comment/comment.css\"));\r\nvar UserLink_1 = __webpack_require__(/*! ../../../Content/PostsList/TextContent/UserLink */ \"./src/shared/Content/PostsList/TextContent/UserLink/index.ts\");\r\nvar DateFromNow_1 = __webpack_require__(/*! ../../../Content/PostsList/TextContent/DateFromNow */ \"./src/shared/Content/PostsList/TextContent/DateFromNow/index.ts\");\r\nvar ControlsComment_1 = __webpack_require__(/*! ./ControlsComment */ \"./src/shared/Post/Comments/Comment/ControlsComment/index.ts\");\r\nfunction Comment() {\r\n    var tempCurrentDate = new Date();\r\n    tempCurrentDate = (tempCurrentDate.getTime() - 10800000) / 1000;\r\n    var author = 'Михаил Рогов';\r\n    return (react_1.default.createElement(\"div\", { className: comment_css_1.default.comment },\r\n        react_1.default.createElement(\"div\", { className: comment_css_1.default.clipper },\r\n            react_1.default.createElement(\"svg\", { width: \"19\", height: \"30\", viewBox: \"0 0 19 30\", fill: \"none\", xmlns: \"http://www.w3.org/2000/svg\" },\r\n                react_1.default.createElement(\"path\", { d: \"M9.5 30L19 20L8.74228e-07 20L9.5 30Z\", fill: \"#D9D9D9\" }),\r\n                react_1.default.createElement(\"path\", { d: \"M9.5 0L0 10H19L9.5 0Z\", fill: \"#D9D9D9\" })),\r\n            react_1.default.createElement(\"div\", { className: comment_css_1.default.clipperDivider })),\r\n        react_1.default.createElement(\"div\", { className: comment_css_1.default.userComment },\r\n            react_1.default.createElement(\"div\", { className: comment_css_1.default.userCommentTitle },\r\n                react_1.default.createElement(UserLink_1.UserLink, { author: author }),\r\n                react_1.default.createElement(DateFromNow_1.DateFromNow, { date: tempCurrentDate }),\r\n                react_1.default.createElement(\"span\", { className: comment_css_1.default.group }, \"\\u041B\\u0438\\u0433\\u0430 \\u044E\\u0440\\u0438\\u0441\\u0442\\u043E\\u0432\")),\r\n            react_1.default.createElement(\"p\", null, \"\\u0421\\u0442\\u043E\\u0440\\u043E\\u043D\\u043D\\u0438\\u043A\\u0438 \\u0442\\u043E\\u0442\\u0430\\u043B\\u0438\\u0442\\u0430\\u0440\\u0438\\u0437\\u043C\\u0430 \\u0432 \\u043D\\u0430\\u0443\\u043A\\u0435 \\u0431\\u0443\\u0434\\u0443\\u0442 \\u043E\\u0431\\u044A\\u0435\\u043A\\u0442\\u0438\\u0432\\u043D\\u043E \\u0440\\u0430\\u0441\\u0441\\u043C\\u043E\\u0442\\u0440\\u0435\\u043D\\u044B \\u0441\\u043E\\u043E\\u0442\\u0432\\u0435\\u0442\\u0441\\u0442\\u0432\\u0443\\u044E\\u0449\\u0438\\u043C\\u0438 \\u0438\\u043D\\u0441\\u0442\\u0430\\u043D\\u0446\\u0438\\u044F\\u043C\\u0438. \\u041B\\u0438\\u0448\\u044C \\u0440\\u0435\\u043F\\u043B\\u0438\\u0446\\u0438\\u0440\\u043E\\u0432\\u0430\\u043D\\u043D\\u044B\\u0435 \\u0441 \\u0437\\u0430\\u0440\\u0443\\u0431\\u0435\\u0436\\u043D\\u044B\\u0445 \\u0438\\u0441\\u0442\\u043E\\u0447\\u043D\\u0438\\u043A\\u043E\\u0432, \\u0441\\u043E\\u0432\\u0440\\u0435\\u043C\\u0435\\u043D\\u043D\\u044B\\u0435 \\u0438\\u0441\\u0441\\u043B\\u0435\\u0434\\u043E\\u0432\\u0430\\u043D\\u0438\\u044F \\u0431\\u0443\\u0434\\u0443\\u0442 \\u043E\\u043F\\u0438\\u0441\\u0430\\u043D\\u044B \\u043C\\u0430\\u043A\\u0441\\u0438\\u043C\\u0430\\u043B\\u044C\\u043D\\u043E \\u043F\\u043E\\u0434\\u0440\\u043E\\u0431\\u043D\\u043E.\"),\r\n            react_1.default.createElement(ControlsComment_1.ControlsComment, { author: author }))));\r\n}\r\nexports.Comment = Comment;\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comment/Comment.tsx?");
 
 /***/ }),
-/* 58 */
+
+/***/ "./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/AnswerComment.tsx":
+/*!******************************************************************************************!*\
+  !*** ./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/AnswerComment.tsx ***!
+  \******************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Preview = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var preview_css_1 = __importDefault(__webpack_require__(59));
-function Preview(_a) {
-    var srcImg = _a.srcImg;
-    return (react_1.default.createElement("div", { className: preview_css_1.default.preview }, srcImg
-        ? react_1.default.createElement("img", { className: preview_css_1.default.previewImg, src: srcImg, alt: "preview" })
-        : react_1.default.createElement("img", { className: preview_css_1.default.previewImg, src: "https://cdn.dribbble.com/users/1803663/screenshots/16534587/media/c335a915773ce3ba65d18d137101f017.png", alt: "preview" })));
-}
-exports.Preview = Preview;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.AnswerComment = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nvar answercomment_css_1 = __importDefault(__webpack_require__(/*! ./answercomment.css */ \"./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/answercomment.css\"));\r\nfunction AnswerComment(_a) {\r\n    var to = _a.to;\r\n    var _b = react_1.useState(to + \", \"), textAreaVal = _b[0], setTextAreaVal = _b[1];\r\n    function handleSubmit(event) {\r\n        event.preventDefault();\r\n        console.log('click');\r\n    }\r\n    function handleTexArea(event) {\r\n        setTextAreaVal(event.target.value);\r\n    }\r\n    var refTextArea = react_1.useRef(null);\r\n    react_1.useEffect(function () {\r\n        var _a;\r\n        //устанавливаем фокус\r\n        refTextArea.current && refTextArea.current.focus();\r\n        //в конец значения по умолчанию\r\n        (_a = refTextArea.current) === null || _a === void 0 ? void 0 : _a.setSelectionRange(textAreaVal.length, textAreaVal.length);\r\n    });\r\n    return (\r\n    //неконтролируемая компонента\r\n    // <form className={styles.form} onSubmit={handleSubmit}>\r\n    //   <textarea className={styles.input} defaultValue={`${to}, `} autoFocus/>\r\n    //   <button type='submit' className={styles.button}>Ответить</button>\r\n    // </form>\r\n    //контролируемая компонента\r\n    react_1.default.createElement(\"form\", { className: answercomment_css_1.default.form, onSubmit: handleSubmit },\r\n        react_1.default.createElement(\"textarea\", { className: answercomment_css_1.default.input, value: textAreaVal, ref: refTextArea, onChange: handleTexArea }),\r\n        react_1.default.createElement(\"button\", { type: 'submit', className: answercomment_css_1.default.button }, \"\\u041E\\u0442\\u0432\\u0435\\u0442\\u0438\\u0442\\u044C\")));\r\n}\r\nexports.AnswerComment = AnswerComment;\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/AnswerComment.tsx?");
 
 /***/ }),
-/* 59 */
+
+/***/ "./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/answercomment.css":
+/*!******************************************************************************************!*\
+  !*** ./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/answercomment.css ***!
+  \******************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"preview": "preview__preview--2eSDi",
-	"previewImg": "preview__previewImg--3fB8Z"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"form\": \"answercomment__form--3RUI4\",\n\t\"input\": \"answercomment__input--3L3M8\",\n\t\"button\": \"answercomment__button--zRlhx\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/answercomment.css?");
 
 /***/ }),
-/* 60 */
+
+/***/ "./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/index.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/index.ts ***!
+  \*********************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(61), exports);
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./AnswerComment */ \"./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/AnswerComment.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/index.ts?");
 
 /***/ }),
-/* 61 */
+
+/***/ "./src/shared/Post/Comments/Comment/ControlsComment/ControlsComment.tsx":
+/*!******************************************************************************!*\
+  !*** ./src/shared/Post/Comments/Comment/ControlsComment/ControlsComment.tsx ***!
+  \******************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Menu = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var MenuIcon_1 = __webpack_require__(62);
-var menu_css_1 = __importDefault(__webpack_require__(63));
-var Dropdown_1 = __webpack_require__(64);
-function Menu() {
-    return (react_1.default.createElement("div", { className: menu_css_1.default.menu },
-        react_1.default.createElement(Dropdown_1.Dropdown, { button: react_1.default.createElement("button", { className: menu_css_1.default.menuButton },
-                react_1.default.createElement(MenuIcon_1.MenuIcon, null)) })));
-}
-exports.Menu = Menu;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.ControlsComment = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nvar controlscomment_css_1 = __importDefault(__webpack_require__(/*! ./controlscomment.css */ \"./src/shared/Post/Comments/Comment/ControlsComment/controlscomment.css\"));\r\nvar Icon_1 = __webpack_require__(/*! ../../../../Icons/Icon */ \"./src/shared/Icons/Icon.tsx\");\r\nvar Text_1 = __webpack_require__(/*! ../../../../Text */ \"./src/shared/Text/index.ts\");\r\nvar AnswerComment_1 = __webpack_require__(/*! ./AnswerComment */ \"./src/shared/Post/Comments/Comment/ControlsComment/AnswerComment/index.ts\");\r\nfunction ControlsComment(_a) {\r\n    var author = _a.author;\r\n    var _b = react_1.useState(false), isAnswerOpened = _b[0], setIsAnswerOpened = _b[1];\r\n    return (react_1.default.createElement(\"div\", { className: controlscomment_css_1.default.userCommentBottom },\r\n        react_1.default.createElement(\"div\", { className: controlscomment_css_1.default.userCommentControls },\r\n            react_1.default.createElement(\"button\", { onClick: function () { setIsAnswerOpened(true); } },\r\n                react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.answer, size: 15 }),\r\n                react_1.default.createElement(Text_1.Text, { size: 14, color: Text_1.EColor.grey99 }, \"\\u041E\\u0442\\u0432\\u0435\\u0442\\u0438\\u0442\\u044C\")),\r\n            react_1.default.createElement(\"button\", null,\r\n                react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.share, size: 15 }),\r\n                react_1.default.createElement(Text_1.Text, { size: 14, color: Text_1.EColor.grey99 }, \"\\u041F\\u043E\\u0434\\u0435\\u043B\\u0438\\u0442\\u044C\\u0441\\u044F\")),\r\n            react_1.default.createElement(\"button\", null,\r\n                react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.warning, size: 15 }),\r\n                react_1.default.createElement(Text_1.Text, { size: 14, color: Text_1.EColor.grey99 }, \"\\u041F\\u043E\\u0436\\u0430\\u043B\\u043E\\u0432\\u0430\\u0442\\u044C\\u0441\\u044F\"))),\r\n        react_1.default.createElement(\"div\", { className: controlscomment_css_1.default.formAnswer }, isAnswerOpened && (react_1.default.createElement(AnswerComment_1.AnswerComment, { to: author })))));\r\n}\r\nexports.ControlsComment = ControlsComment;\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comment/ControlsComment/ControlsComment.tsx?");
 
 /***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MenuIcon = void 0;
-var React = __importStar(__webpack_require__(0));
-function MenuIcon() {
-    return (React.createElement("svg", { width: "5", height: "20", viewBox: "0 0 5 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-        React.createElement("circle", { cx: "2.5", cy: "2.5", r: "2.5", fill: "#D9D9D9" }),
-        React.createElement("circle", { cx: "2.5", cy: "10", r: "2.5", fill: "#D9D9D9" }),
-        React.createElement("circle", { cx: "2.5", cy: "17.5", r: "2.5", fill: "#D9D9D9" })));
-}
-exports.MenuIcon = MenuIcon;
-
-
-/***/ }),
-/* 63 */
+/***/ "./src/shared/Post/Comments/Comment/ControlsComment/controlscomment.css":
+/*!******************************************************************************!*\
+  !*** ./src/shared/Post/Comments/Comment/ControlsComment/controlscomment.css ***!
+  \******************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"menu": "menu__menu--1Zo-6",
-	"menuButton": "menu__menuButton--1Z1zw",
-	"dropdown": "menu__dropdown--qe-Qo",
-	"closeButton": "menu__closeButton--18ZZT"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"userCommentBottom\": \"controlscomment__userCommentBottom--dW05T\",\n\t\"userCommentControls\": \"controlscomment__userCommentControls--z0d0_\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comment/ControlsComment/controlscomment.css?");
 
 /***/ }),
-/* 64 */
+
+/***/ "./src/shared/Post/Comments/Comment/ControlsComment/index.ts":
+/*!*******************************************************************!*\
+  !*** ./src/shared/Post/Comments/Comment/ControlsComment/index.ts ***!
+  \*******************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(65), exports);
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./ControlsComment */ \"./src/shared/Post/Comments/Comment/ControlsComment/ControlsComment.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comment/ControlsComment/index.ts?");
 
 /***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Dropdown = void 0;
-var react_1 = __importStar(__webpack_require__(0));
-var BodyDropdown_1 = __webpack_require__(66);
-var react_dom_1 = __importDefault(__webpack_require__(10));
-var react_popper_1 = __webpack_require__(72);
-function Dropdown(_a) {
-    var button = _a.button;
-    var _b = react_1.default.useState(false), isDropdownOpen = _b[0], setIsDropdownOpen = _b[1];
-    var _c = react_1.useState(null), idElement = _c[0], setIdElement = _c[1];
-    var node = document.getElementById('dropdown_root');
-    if (!node)
-        return null;
-    var _d = react_1.useState(null), referenceElement = _d[0], setReferenceElement = _d[1];
-    var _e = react_1.useState(null), popperElement = _e[0], setPopperElement = _e[1];
-    var _f = react_popper_1.usePopper(referenceElement, popperElement, {
-        placement: "bottom",
-        modifiers: [
-            {
-                name: "offset",
-                enabled: true,
-                options: {
-                    offset: [0, 10]
-                }
-            }
-        ]
-    }), styles = _f.styles, attributes = _f.attributes;
-    return (react_1.default.createElement("div", null,
-        react_1.default.createElement("div", { ref: setReferenceElement, onClick: function (event) {
-                setIsDropdownOpen(!isDropdownOpen);
-                // //получаем текущую кнопку меню по которой нажали
-                // const buttonMenu = (event.target as HTMLElement).closest('button');
-                // if (!buttonMenu) return;
-                // //получаем пост к которой принадлежит кнопка
-                // const currentPost = buttonMenu.parentElement?.parentElement?.parentElement?.parentElement;
-                // const idPost = currentPost?.id;
-                // setIdElement(idPost);
-            } }, button),
-        isDropdownOpen && (react_1.default.createElement("div", null,
-            react_1.default.createElement("div", { onClick: function () { return setIsDropdownOpen(false); } }, react_dom_1.default.createPortal(react_1.default.createElement("div", __assign({ ref: setPopperElement, style: styles.popper }, attributes.popper),
-                react_1.default.createElement(BodyDropdown_1.BodyDropdown, { onClose: function () { setIsDropdownOpen(false); } })), node))))));
-}
-exports.Dropdown = Dropdown;
-
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(67), exports);
-
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.BodyDropdown = void 0;
-var react_1 = __importStar(__webpack_require__(0));
-var bodydropdown_css_1 = __importDefault(__webpack_require__(68));
-var MenuItemsList_1 = __webpack_require__(69);
-var Text_1 = __webpack_require__(1);
-var Text_2 = __webpack_require__(1);
-function BodyDropdown(_a) {
-    var onClose = _a.onClose;
-    var ref = react_1.useRef(null);
-    react_1.useEffect(function () {
-        function handleClick(event) {
-            var _a;
-            if (event.target instanceof Node && !((_a = ref.current) === null || _a === void 0 ? void 0 : _a.contains(event.target))) {
-                onClose === null || onClose === void 0 ? void 0 : onClose();
-            }
-        }
-        document.addEventListener('click', handleClick);
-        return function () {
-            document.removeEventListener('click', handleClick);
-        };
-    }, []);
-    return (react_1.default.createElement("div", { className: bodydropdown_css_1.default.dropdown, ref: ref },
-        react_1.default.createElement(MenuItemsList_1.MenuItemsList, { postId: 'test' }),
-        react_1.default.createElement("button", { className: bodydropdown_css_1.default.closeButton },
-            react_1.default.createElement(Text_1.Text, { mobileSize: 12, size: 14, color: Text_2.EColor.grey66 }, "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"))));
-}
-exports.BodyDropdown = BodyDropdown;
-
-
-/***/ }),
-/* 68 */
+/***/ "./src/shared/Post/Comments/Comment/comment.css":
+/*!******************************************************!*\
+  !*** ./src/shared/Post/Comments/Comment/comment.css ***!
+  \******************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"dropdown": "bodydropdown__dropdown--IRnid",
-	"closeButton": "bodydropdown__closeButton--3uUmJ"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"comment\": \"comment__comment--1hyXR\",\n\t\"clipper\": \"comment__clipper--Jmd_P\",\n\t\"clipperDivider\": \"comment__clipperDivider--3xJfY\",\n\t\"userComment\": \"comment__userComment--19hTS\",\n\t\"userCommentTitle\": \"comment__userCommentTitle--66Mya\",\n\t\"group\": \"comment__group--3KoDu\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comment/comment.css?");
 
 /***/ }),
-/* 69 */
+
+/***/ "./src/shared/Post/Comments/Comments.tsx":
+/*!***********************************************!*\
+  !*** ./src/shared/Post/Comments/Comments.tsx ***!
+  \***********************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(70), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Comments = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar comments_css_1 = __importDefault(__webpack_require__(/*! ./comments.css */ \"./src/shared/Post/Comments/comments.css\"));\r\nvar Comment_1 = __webpack_require__(/*! ./Comment/Comment */ \"./src/shared/Post/Comments/Comment/Comment.tsx\");\r\nfunction Comments() {\r\n    return (react_1.default.createElement(\"div\", { className: comments_css_1.default.container },\r\n        react_1.default.createElement(\"div\", { className: comments_css_1.default.sort },\r\n            react_1.default.createElement(\"span\", null, \"\\u0421\\u043E\\u0440\\u0442\\u0438\\u0440\\u043E\\u0432\\u0430\\u0442\\u044C \\u043F\\u043E: \"),\r\n            react_1.default.createElement(\"select\", null,\r\n                react_1.default.createElement(\"option\", { value: \"\" }, \"\\u041B\\u0443\\u0447\\u0448\\u0438\\u0435\"),\r\n                react_1.default.createElement(\"option\", { value: \"\" }, \"\\u0414\\u0430\\u0442\\u0435 \\u0441\\u043E\\u0437\\u0434\\u0430\\u043D\\u0438\\u044F\"))),\r\n        react_1.default.createElement(\"div\", { className: comments_css_1.default.divider }),\r\n        react_1.default.createElement(Comment_1.Comment, null),\r\n        react_1.default.createElement(Comment_1.Comment, null)));\r\n}\r\nexports.Comments = Comments;\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/Comments.tsx?");
 
 /***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MenuItemsList = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var menuitemslist_css_1 = __importDefault(__webpack_require__(71));
-var Icon_1 = __webpack_require__(5);
-var Text_1 = __webpack_require__(1);
-function MenuItemsList(_a) {
-    var postId = _a.postId;
-    return (react_1.default.createElement("ul", { className: menuitemslist_css_1.default.menuItemsList },
-        react_1.default.createElement("li", { className: menuitemslist_css_1.default.menuItem },
-            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.comments, size: 12 }),
-            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0438")),
-        react_1.default.createElement("div", { className: menuitemslist_css_1.default.divider }),
-        react_1.default.createElement("li", { className: menuitemslist_css_1.default.menuItem },
-            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.share }),
-            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, "\u041F\u043E\u0434\u0435\u043B\u0438\u0442\u044C\u0441\u044F")),
-        react_1.default.createElement("div", { className: menuitemslist_css_1.default.divider }),
-        react_1.default.createElement("li", { className: menuitemslist_css_1.default.menuItem, onClick: function () { return console.log(postId); } },
-            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.block }),
-            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, "\u0421\u043A\u0440\u044B\u0442\u044C")),
-        react_1.default.createElement("div", { className: menuitemslist_css_1.default.divider }),
-        react_1.default.createElement("li", { className: menuitemslist_css_1.default.menuItem },
-            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.save }),
-            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C")),
-        react_1.default.createElement("div", { className: menuitemslist_css_1.default.divider }),
-        react_1.default.createElement("li", { className: menuitemslist_css_1.default.menuItem },
-            react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.warning }),
-            react_1.default.createElement(Text_1.Text, { size: 12, color: Text_1.EColor.grey99 }, "\u041F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C\u0441\u044F"))));
-}
-exports.MenuItemsList = MenuItemsList;
-
-
-/***/ }),
-/* 71 */
+/***/ "./src/shared/Post/Comments/comments.css":
+/*!***********************************************!*\
+  !*** ./src/shared/Post/Comments/comments.css ***!
+  \***********************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"menuItemsList": "menuitemslist__menuItemsList--15bZg",
-	"menuItem": "menuitemslist__menuItem--1kMK2",
-	"divider": "menuitemslist__divider--2gftz"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"container\": \"comments__container--3AUdb\",\n\t\"sort\": \"comments__sort--UZuUy\",\n\t\"divider\": \"comments__divider--10XbX\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/comments.css?");
 
 /***/ }),
-/* 72 */
+
+/***/ "./src/shared/Post/Comments/index.ts":
+/*!*******************************************!*\
+  !*** ./src/shared/Post/Comments/index.ts ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Comments */ \"./src/shared/Post/Comments/Comments.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/Comments/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Post/Post.tsx":
+/*!**********************************!*\
+  !*** ./src/shared/Post/Post.tsx ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Post = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nvar post_css_1 = __importDefault(__webpack_require__(/*! ./post.css */ \"./src/shared/Post/post.css\"));\r\nvar react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ \"react-dom\"));\r\nvar Comments_1 = __webpack_require__(/*! ./Comments */ \"./src/shared/Post/Comments/index.ts\");\r\nvar CommentFormContainer_1 = __webpack_require__(/*! ../CommentFormContainer */ \"./src/shared/CommentFormContainer/index.ts\");\r\nvar react_router_dom_1 = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\r\nfunction Post() {\r\n    var ref = react_1.useRef(null);\r\n    var history = react_router_dom_1.useHistory();\r\n    react_1.useEffect(function () {\r\n        function handleClick(event) {\r\n            var _a;\r\n            if (event.target instanceof Node && !((_a = ref.current) === null || _a === void 0 ? void 0 : _a.contains(event.target))) {\r\n                history.push('/posts');\r\n            }\r\n        }\r\n        document.addEventListener('click', handleClick);\r\n        return function () {\r\n            document.removeEventListener('click', handleClick);\r\n        };\r\n    }, []);\r\n    var node = document.getElementById('modal_root');\r\n    if (!node)\r\n        return null;\r\n    return react_dom_1.default.createPortal((react_1.default.createElement(\"div\", { className: post_css_1.default.modal, ref: ref },\r\n        react_1.default.createElement(\"h2\", null, \"\\u0421\\u043B\\u0435\\u0434\\u0443\\u0435\\u0442 \\u043E\\u0442\\u043C\\u0435\\u0442\\u0438\\u0442\\u044C, \\u0447\\u0442\\u043E \\u043D\\u043E\\u0432\\u0430\\u044F \\u043C\\u043E\\u0434\\u0435\\u043B\\u044C \\u043E\\u0440\\u0433\\u0430\\u043D\\u0438\\u0437\\u0430\\u0446\\u0438\\u043E\\u043D\\u043D\\u043E\\u0439 \\u0434\\u0435\\u044F\\u0442\\u0435\\u043B\\u044C\\u043D\\u043E\\u0441\\u0442\\u0438 \\u043F\\u043E\\u043C\\u043E\\u0436\\u0435\\u0442\"),\r\n        react_1.default.createElement(\"div\", { className: post_css_1.default.content },\r\n            react_1.default.createElement(\"p\", null, \"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam officia corrupti, neque, fuga ipsa vel quas explicabo quisquam ratione nihil inventore illo commodi quia deleniti qui adipisci assumenda? Distinctio, eos.\"),\r\n            react_1.default.createElement(\"p\", null, \"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae iure facilis pariatur, aliquid esse architecto illum, dolor temporibus facere, perferendis autem tenetur commodi odit aut quod explicabo quisquam reiciendis soluta!\"),\r\n            react_1.default.createElement(\"p\", null, \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quasi ipsum eos possimus ratione ipsam cupiditate, iste repellendus dicta, maiores quos aperiam hic corporis. Libero facilis suscipit optio similique? Ratione?\")),\r\n        react_1.default.createElement(CommentFormContainer_1.CommentFormContainer, null),\r\n        react_1.default.createElement(Comments_1.Comments, null))), node);\r\n}\r\nexports.Post = Post;\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/Post.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Post/index.ts":
+/*!**********************************!*\
+  !*** ./src/shared/Post/index.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Post */ \"./src/shared/Post/Post.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Post/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Post/post.css":
+/*!**********************************!*\
+  !*** ./src/shared/Post/post.css ***!
+  \**********************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-popper");
+eval("// Exports\nmodule.exports = {\n\t\"modal\": \"post__modal--yRo-c\",\n\t\"content\": \"post__content--2gFMc\",\n\t\"close\": \"post__close--1HSqz\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Post/post.css?");
 
 /***/ }),
-/* 73 */
+
+/***/ "./src/shared/Text/Text.tsx":
+/*!**********************************!*\
+  !*** ./src/shared/Text/Text.tsx ***!
+  \**********************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(74), exports);
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Text = exports.EColor = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar text_css_1 = __importDefault(__webpack_require__(/*! ./text.css */ \"./src/shared/Text/text.css\"));\r\nvar classnames_1 = __importDefault(__webpack_require__(/*! classnames */ \"classnames\"));\r\nvar EColor;\r\n(function (EColor) {\r\n    EColor[\"black\"] = \"black\";\r\n    EColor[\"orange\"] = \"orange\";\r\n    EColor[\"green\"] = \"green\";\r\n    EColor[\"white\"] = \"white\";\r\n    EColor[\"greyF4\"] = \"greyF4\";\r\n    EColor[\"greyF3\"] = \"greyF3\";\r\n    EColor[\"greyD9\"] = \"greyD9\";\r\n    EColor[\"greyC4\"] = \"greyC4\";\r\n    EColor[\"grey99\"] = \"grey99\";\r\n    EColor[\"grey66\"] = \"grey66\";\r\n})(EColor = exports.EColor || (exports.EColor = {}));\r\nfunction Text(props) {\r\n    var _a, _b, _c;\r\n    var _d = props.As, As = _d === void 0 ? 'span' : _d, _e = props.color, color = _e === void 0 ? EColor.black : _e, children = props.children, size = props.size, mobileSize = props.mobileSize, tabletSize = props.tabletSize, desktopSize = props.desktopSize;\r\n    var classes = classnames_1.default(text_css_1.default[\"s\" + size], (_a = {}, _a[text_css_1.default[\"m\" + mobileSize]] = mobileSize, _a), (_b = {}, _b[text_css_1.default[\"t\" + tabletSize]] = tabletSize, _b), (_c = {}, _c[text_css_1.default[\"d\" + desktopSize]] = desktopSize, _c), text_css_1.default[color]);\r\n    return (react_1.default.createElement(As, { className: classes }, children));\r\n}\r\nexports.Text = Text;\r\n\n\n//# sourceURL=webpack:///./src/shared/Text/Text.tsx?");
 
 /***/ }),
-/* 74 */
+
+/***/ "./src/shared/Text/index.ts":
+/*!**********************************!*\
+  !*** ./src/shared/Text/index.ts ***!
+  \**********************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Controls = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var controls_css_1 = __importDefault(__webpack_require__(75));
-var KarmaCounter_1 = __webpack_require__(76);
-var CommentsButton_1 = __webpack_require__(78);
-var Actions_1 = __webpack_require__(81);
-function Controls() {
-    return (react_1.default.createElement("div", { className: controls_css_1.default.controls },
-        react_1.default.createElement(KarmaCounter_1.KarmaCounter, null),
-        react_1.default.createElement(CommentsButton_1.CommentsButton, null),
-        react_1.default.createElement(Actions_1.Actions, null)));
-}
-exports.Controls = Controls;
-
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Text */ \"./src/shared/Text/Text.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Text/index.ts?");
 
 /***/ }),
-/* 75 */
+
+/***/ "./src/shared/Text/text.css":
+/*!**********************************!*\
+  !*** ./src/shared/Text/text.css ***!
+  \**********************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"controls": "controls__controls--5QhAn",
-	"actions": "controls__actions--3Wa_S"
-};
-
+eval("// Exports\nmodule.exports = {\n\t\"s28\": \"text__s28--Puvgs\",\n\t\"s20\": \"text__s20--3Xq66\",\n\t\"s16\": \"text__s16--G_lUr\",\n\t\"s14\": \"text__s14--jvCoO\",\n\t\"s12\": \"text__s12--2S2T2\",\n\t\"s10\": \"text__s10--DYLfy\",\n\t\"black\": \"text__black--1zchg\",\n\t\"orange\": \"text__orange--1RyAM\",\n\t\"green\": \"text__green--3mYQn\",\n\t\"white\": \"text__white--13JGE\",\n\t\"grayF4\": \"text__grayF4--2X2jV\",\n\t\"greyF3\": \"text__greyF3--2Lfsi\",\n\t\"greyD9\": \"text__greyD9--7iRFr\",\n\t\"greyC4\": \"text__greyC4--3oiNM\",\n\t\"grey99\": \"text__grey99--35u3B\",\n\t\"grey66\": \"text__grey66--373uw\",\n\t\"upperCase\": \"text__upperCase--2EMyT\",\n\t\"m28\": \"text__m28--2u2zs\",\n\t\"m20\": \"text__m20--1gFlM\",\n\t\"m16\": \"text__m16--cSY4u\",\n\t\"m14\": \"text__m14--s6pnr\",\n\t\"m12\": \"text__m12--1W0av\",\n\t\"m10\": \"text__m10--UtIkW\",\n\t\"bold\": \"text__bold--gb02H\",\n\t\"t28\": \"text__t28--A4rHF\",\n\t\"t20\": \"text__t20--78tCz\",\n\t\"t16\": \"text__t16--nkVMz\",\n\t\"t14\": \"text__t14--1Rj72\",\n\t\"t12\": \"text__t12--7txjW\",\n\t\"t10\": \"text__t10--n2R7f\",\n\t\"d28\": \"text__d28--3oIok\",\n\t\"d20\": \"text__d20--uwHxr\",\n\t\"d16\": \"text__d16--1Pwd1\",\n\t\"d14\": \"text__d14--3Futo\",\n\t\"d12\": \"text__d12--5X_qc\",\n\t\"d10\": \"text__d10--3pWnc\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Text/text.css?");
 
 /***/ }),
-/* 76 */
+
+/***/ "./src/shared/store/me/actions.ts":
+/*!****************************************!*\
+  !*** ./src/shared/store/me/actions.ts ***!
+  \****************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.KarmaCounter = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var karmacounter_css_1 = __importDefault(__webpack_require__(77));
-function KarmaCounter() {
-    return (react_1.default.createElement("div", { className: karmacounter_css_1.default.karmaCounter },
-        react_1.default.createElement("button", { className: karmacounter_css_1.default.up },
-            react_1.default.createElement("svg", { width: "19", height: "10", viewBox: "0 0 19 10", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-                react_1.default.createElement("path", { d: "M9.5 0L0 10H19L9.5 0Z", fill: "#C4C4C4" }))),
-        react_1.default.createElement("span", { className: karmacounter_css_1.default.karmaValue }, "234"),
-        react_1.default.createElement("button", { className: karmacounter_css_1.default.down },
-            react_1.default.createElement("svg", { className: karmacounter_css_1.default.down, width: "19", height: "10", viewBox: "0 0 19 10", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-                react_1.default.createElement("path", { d: "M9.5 0L0 10H19L9.5 0Z", fill: "#C4C4C4" })))));
-}
-exports.KarmaCounter = KarmaCounter;
-
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.meRequestAsync = exports.meRequestError = exports.ME_REQUEST_ERROR = exports.meRequestSuccess = exports.ME_REQUEST_SUCCESS = exports.meRequest = exports.ME_REQUEST = void 0;\r\nvar axios_1 = __importDefault(__webpack_require__(/*! axios */ \"axios\"));\r\nexports.ME_REQUEST = 'ME_REQUEST';\r\nvar meRequest = function () { return ({\r\n    type: exports.ME_REQUEST,\r\n}); };\r\nexports.meRequest = meRequest;\r\nexports.ME_REQUEST_SUCCESS = 'ME_REQUEST_SUCCESS';\r\nvar meRequestSuccess = function (data) { return ({\r\n    type: exports.ME_REQUEST_SUCCESS,\r\n    data: data\r\n}); };\r\nexports.meRequestSuccess = meRequestSuccess;\r\nexports.ME_REQUEST_ERROR = 'ME_REQUEST_ERROR';\r\nvar meRequestError = function (error) { return ({\r\n    type: exports.ME_REQUEST_ERROR,\r\n    error: error\r\n}); };\r\nexports.meRequestError = meRequestError;\r\nvar meRequestAsync = function () { return function (dispatch, getState) {\r\n    dispatch(exports.meRequest());\r\n    axios_1.default.get('https://oauth.reddit.com/api/v1/me', {\r\n        headers: { Authorization: \"bearer \" + getState().token },\r\n        params: { raw_json: 1 },\r\n    })\r\n        .then(function (resp) {\r\n        var userData = resp.data;\r\n        dispatch(exports.meRequestSuccess({ name: userData.name, iconImg: userData.icon_img }));\r\n    })\r\n        .catch(function (error) {\r\n        //очищаю хранилище от токена, если пригла ошибка, для того чтобы снова перелогиниться\r\n        localStorage.clear();\r\n        console.log(error);\r\n        dispatch(exports.meRequestError(String(error)));\r\n    });\r\n}; };\r\nexports.meRequestAsync = meRequestAsync;\r\n\n\n//# sourceURL=webpack:///./src/shared/store/me/actions.ts?");
 
 /***/ }),
-/* 77 */
+
+/***/ "./src/shared/store/me/reducer.ts":
+/*!****************************************!*\
+  !*** ./src/shared/store/me/reducer.ts ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __assign = (this && this.__assign) || function () {\r\n    __assign = Object.assign || function(t) {\r\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\r\n            s = arguments[i];\r\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\r\n                t[p] = s[p];\r\n        }\r\n        return t;\r\n    };\r\n    return __assign.apply(this, arguments);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.meReducer = void 0;\r\nvar actions_1 = __webpack_require__(/*! ./actions */ \"./src/shared/store/me/actions.ts\");\r\nvar meReducer = function (state, action) {\r\n    switch (action.type) {\r\n        case actions_1.ME_REQUEST:\r\n            return __assign(__assign({}, state), { loading: true, fetchingState: 'requesting' });\r\n        case actions_1.ME_REQUEST_ERROR:\r\n            return __assign(__assign({}, state), { error: action.error, loading: false, fetchingState: 'error' });\r\n        case actions_1.ME_REQUEST_SUCCESS:\r\n            return __assign(__assign({}, state), { data: action.data, loading: false, fetchingState: 'success' });\r\n        default:\r\n            return state;\r\n    }\r\n};\r\nexports.meReducer = meReducer;\r\n\n\n//# sourceURL=webpack:///./src/shared/store/me/reducer.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/store/store.ts":
+/*!***********************************!*\
+  !*** ./src/shared/store/store.ts ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __assign = (this && this.__assign) || function () {\r\n    __assign = Object.assign || function(t) {\r\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\r\n            s = arguments[i];\r\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\r\n                t[p] = s[p];\r\n        }\r\n        return t;\r\n    };\r\n    return __assign.apply(this, arguments);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.rootReducer = exports.setToken = exports.updateComment = void 0;\r\nvar actions_1 = __webpack_require__(/*! ./me/actions */ \"./src/shared/store/me/actions.ts\");\r\nvar reducer_1 = __webpack_require__(/*! ./me/reducer */ \"./src/shared/store/me/reducer.ts\");\r\nvar initialState = {\r\n    commentText: 'Привет, SkillBox!',\r\n    token: '',\r\n    me: {\r\n        loading: false,\r\n        error: '',\r\n        data: {},\r\n        fetchingState: 'none',\r\n    },\r\n};\r\nvar UPDATE_COMMENT = 'UPDATE_COMMENT';\r\nvar TOKEN = 'SET_TOKEN';\r\nvar updateComment = function (text) { return ({\r\n    type: UPDATE_COMMENT,\r\n    text: text,\r\n}); };\r\nexports.updateComment = updateComment;\r\nvar setToken = function (token) { return ({\r\n    type: TOKEN,\r\n    token: token,\r\n}); };\r\nexports.setToken = setToken;\r\nvar rootReducer = function (state, action) {\r\n    if (state === void 0) { state = initialState; }\r\n    switch (action.type) {\r\n        case UPDATE_COMMENT:\r\n            return __assign(__assign({}, state), { commentText: action.text });\r\n        case TOKEN:\r\n            return __assign(__assign({}, state), { token: action.token });\r\n        case actions_1.ME_REQUEST:\r\n        case actions_1.ME_REQUEST_SUCCESS:\r\n        case actions_1.ME_REQUEST_ERROR:\r\n            return __assign(__assign({}, state), { me: reducer_1.meReducer(state.me, action) });\r\n        default:\r\n            return state;\r\n    }\r\n};\r\nexports.rootReducer = rootReducer;\r\n\n\n//# sourceURL=webpack:///./src/shared/store/store.ts?");
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"karmaCounter": "karmacounter__karmaCounter--34Pmn",
-	"karmaValue": "karmacounter__karmaValue--16VP2",
-	"down": "karmacounter__down--2Fl-f",
-	"up": "karmacounter__up--1GTdr"
-};
-
+eval("module.exports = require(\"axios\");\n\n//# sourceURL=webpack:///external_%22axios%22?");
 
 /***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(79), exports);
-
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CommentsButton = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var commentsbutton_css_1 = __importDefault(__webpack_require__(80));
-function CommentsButton() {
-    return (react_1.default.createElement("button", { className: commentsbutton_css_1.default.commentsButton },
-        react_1.default.createElement("svg", { width: "15", height: "15", viewBox: "0 0 15 15", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-            react_1.default.createElement("path", { d: "M12.75 0H1.41667C0.6375 0 0 0.6375 0 1.41667V9.91667C0 10.6958 0.6375 11.3333 1.41667 11.3333H11.3333L14.1667 14.1667V1.41667C14.1667 0.6375 13.5292 0 12.75 0ZM11.3333 8.5H2.83333V7.08333H11.3333V8.5ZM11.3333 6.375H2.83333V4.95833H11.3333V6.375ZM11.3333 4.25H2.83333V2.83333H11.3333V4.25Z", fill: "#C4C4C4" })),
-        react_1.default.createElement("span", { className: commentsbutton_css_1.default.commentsNumber }, "13")));
-}
-exports.CommentsButton = CommentsButton;
-
-
-/***/ }),
-/* 80 */
+/***/ "classnames":
+/*!*****************************!*\
+  !*** external "classnames" ***!
+  \*****************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"commentsButton": "commentsbutton__commentsButton--2fxmY",
-	"commentsNumber": "commentsbutton__commentsNumber--2Yr3T"
-};
-
+eval("module.exports = require(\"classnames\");\n\n//# sourceURL=webpack:///external_%22classnames%22?");
 
 /***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(82), exports);
-
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Actions = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var actions_css_1 = __importDefault(__webpack_require__(83));
-var ShareButton_1 = __webpack_require__(84);
-var SaveButton_1 = __webpack_require__(87);
-function Actions() {
-    return (react_1.default.createElement("div", { className: actions_css_1.default.actions },
-        react_1.default.createElement(ShareButton_1.ShareButton, null),
-        react_1.default.createElement(SaveButton_1.SaveButton, null)));
-}
-exports.Actions = Actions;
-
-
-/***/ }),
-/* 83 */
+/***/ "compression":
+/*!******************************!*\
+  !*** external "compression" ***!
+  \******************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"actions": "actions__actions--1ZfuA"
-};
-
+eval("module.exports = require(\"compression\");\n\n//# sourceURL=webpack:///external_%22compression%22?");
 
 /***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(85), exports);
-
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ShareButton = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var sharebutton_css_1 = __importDefault(__webpack_require__(86));
-function ShareButton() {
-    return (react_1.default.createElement("button", { className: sharebutton_css_1.default.shareButton },
-        react_1.default.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-            react_1.default.createElement("circle", { cx: "10", cy: "10", r: "10", fill: "#C4C4C4" }),
-            react_1.default.createElement("path", { d: "M11.6667 12.0683C11.3289 12.0683 11.0267 12.2189 10.7956 12.4548L7.62667 10.3715C7.64889 10.256 7.66667 10.1406 7.66667 10.0201C7.66667 9.8996 7.64889 9.78414 7.62667 9.66867L10.76 7.60542C11 7.85643 11.3156 8.01205 11.6667 8.01205C12.4044 8.01205 13 7.33936 13 6.50602C13 5.67269 12.4044 5 11.6667 5C10.9289 5 10.3333 5.67269 10.3333 6.50602C10.3333 6.62651 10.3511 6.74197 10.3733 6.85743L7.24 8.92068C7 8.66968 6.68444 8.51406 6.33333 8.51406C5.59556 8.51406 5 9.18675 5 10.0201C5 10.8534 5.59556 11.5261 6.33333 11.5261C6.68444 11.5261 7 11.3705 7.24 11.1195L10.4044 13.2078C10.3822 13.3133 10.3689 13.4237 10.3689 13.5341C10.3689 14.3424 10.9511 15 11.6667 15C12.3822 15 12.9644 14.3424 12.9644 13.5341C12.9644 12.7259 12.3822 12.0683 11.6667 12.0683Z", fill: "white" }))));
-}
-exports.ShareButton = ShareButton;
-
-
-/***/ }),
-/* 86 */
+/***/ "express":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"shareButton": "sharebutton__shareButton--3XatJ"
-};
-
+eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
 
 /***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(88), exports);
-
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SaveButton = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var savebutton_css_1 = __importDefault(__webpack_require__(89));
-function SaveButton() {
-    return (react_1.default.createElement("button", { className: savebutton_css_1.default.saveButton },
-        react_1.default.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-            react_1.default.createElement("circle", { cx: "10", cy: "10", r: "10", fill: "#C4C4C4" }),
-            react_1.default.createElement("path", { d: "M6 7H5V14C5 14.55 5.45 15 6 15H13V14H6V7ZM14 5H8C7.45 5 7 5.45 7 6V12C7 12.55 7.45 13 8 13H14C14.55 13 15 12.55 15 12V6C15 5.45 14.55 5 14 5ZM13.5 9.5H11.5V11.5H10.5V9.5H8.5V8.5H10.5V6.5H11.5V8.5H13.5V9.5Z", fill: "white" }))));
-}
-exports.SaveButton = SaveButton;
-
-
-/***/ }),
-/* 89 */
+/***/ "helmet":
+/*!*************************!*\
+  !*** external "helmet" ***!
+  \*************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"saveButton": "savebutton__saveButton--2ywK8"
-};
-
+eval("module.exports = require(\"helmet\");\n\n//# sourceURL=webpack:///external_%22helmet%22?");
 
 /***/ }),
-/* 90 */
+
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("redux");
+eval("module.exports = require(\"moment\");\n\n//# sourceURL=webpack:///external_%22moment%22?");
 
 /***/ }),
-/* 91 */
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-devtools-extension");
+eval("module.exports = require(\"react\");\n\n//# sourceURL=webpack:///external_%22react%22?");
 
 /***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.meReducer = void 0;
-var actions_1 = __webpack_require__(2);
-var meReducer = function (state, action) {
-    switch (action.type) {
-        case actions_1.ME_REQUEST:
-            return __assign(__assign({}, state), { loading: true, fetchingState: 'requesting' });
-        case actions_1.ME_REQUEST_ERROR:
-            return __assign(__assign({}, state), { error: action.error, loading: false, fetchingState: 'error' });
-        case actions_1.ME_REQUEST_SUCCESS:
-            return __assign(__assign({}, state), { data: action.data, loading: false, fetchingState: 'success' });
-        default:
-            return state;
-    }
-};
-exports.meReducer = meReducer;
-
-
-/***/ }),
-/* 93 */
+/***/ "react-dom":
+/*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("redux-thunk");
+eval("module.exports = require(\"react-dom\");\n\n//# sourceURL=webpack:///external_%22react-dom%22?");
 
 /***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(95), exports);
-
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Post = void 0;
-var react_1 = __importStar(__webpack_require__(0));
-var post_css_1 = __importDefault(__webpack_require__(96));
-var react_dom_1 = __importDefault(__webpack_require__(10));
-var Comments_1 = __webpack_require__(97);
-var CommentFormContainer_1 = __webpack_require__(108);
-var react_router_dom_1 = __webpack_require__(6);
-function Post() {
-    var ref = react_1.useRef(null);
-    var history = react_router_dom_1.useHistory();
-    react_1.useEffect(function () {
-        function handleClick(event) {
-            var _a;
-            if (event.target instanceof Node && !((_a = ref.current) === null || _a === void 0 ? void 0 : _a.contains(event.target))) {
-                history.push('/posts');
-            }
-        }
-        document.addEventListener('click', handleClick);
-        return function () {
-            document.removeEventListener('click', handleClick);
-        };
-    }, []);
-    var node = document.getElementById('modal_root');
-    if (!node)
-        return null;
-    return react_dom_1.default.createPortal((react_1.default.createElement("div", { className: post_css_1.default.modal, ref: ref },
-        react_1.default.createElement("h2", null, "\u0421\u043B\u0435\u0434\u0443\u0435\u0442 \u043E\u0442\u043C\u0435\u0442\u0438\u0442\u044C, \u0447\u0442\u043E \u043D\u043E\u0432\u0430\u044F \u043C\u043E\u0434\u0435\u043B\u044C \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u043E\u043D\u043D\u043E\u0439 \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u043F\u043E\u043C\u043E\u0436\u0435\u0442"),
-        react_1.default.createElement("div", { className: post_css_1.default.content },
-            react_1.default.createElement("p", null, "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam officia corrupti, neque, fuga ipsa vel quas explicabo quisquam ratione nihil inventore illo commodi quia deleniti qui adipisci assumenda? Distinctio, eos."),
-            react_1.default.createElement("p", null, "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae iure facilis pariatur, aliquid esse architecto illum, dolor temporibus facere, perferendis autem tenetur commodi odit aut quod explicabo quisquam reiciendis soluta!"),
-            react_1.default.createElement("p", null, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quasi ipsum eos possimus ratione ipsam cupiditate, iste repellendus dicta, maiores quos aperiam hic corporis. Libero facilis suscipit optio similique? Ratione?")),
-        react_1.default.createElement(CommentFormContainer_1.CommentFormContainer, null),
-        react_1.default.createElement(Comments_1.Comments, null))), node);
-}
-exports.Post = Post;
-
-
-/***/ }),
-/* 96 */
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"modal": "post__modal--yRo-c",
-	"content": "post__content--2gFMc",
-	"close": "post__close--1HSqz"
-};
-
+eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:///external_%22react-dom/server%22?");
 
 /***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(98), exports);
-
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Comments = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var comments_css_1 = __importDefault(__webpack_require__(99));
-var Comment_1 = __webpack_require__(100);
-function Comments() {
-    return (react_1.default.createElement("div", { className: comments_css_1.default.container },
-        react_1.default.createElement("div", { className: comments_css_1.default.sort },
-            react_1.default.createElement("span", null, "\u0421\u043E\u0440\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043F\u043E: "),
-            react_1.default.createElement("select", null,
-                react_1.default.createElement("option", { value: "" }, "\u041B\u0443\u0447\u0448\u0438\u0435"),
-                react_1.default.createElement("option", { value: "" }, "\u0414\u0430\u0442\u0435 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F"))),
-        react_1.default.createElement("div", { className: comments_css_1.default.divider }),
-        react_1.default.createElement(Comment_1.Comment, null),
-        react_1.default.createElement(Comment_1.Comment, null)));
-}
-exports.Comments = Comments;
-
-
-/***/ }),
-/* 99 */
+/***/ "react-hook-form":
+/*!**********************************!*\
+  !*** external "react-hook-form" ***!
+  \**********************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"container": "comments__container--3AUdb",
-	"sort": "comments__sort--UZuUy",
-	"divider": "comments__divider--10XbX"
-};
-
+eval("module.exports = require(\"react-hook-form\");\n\n//# sourceURL=webpack:///external_%22react-hook-form%22?");
 
 /***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Comment = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var comment_css_1 = __importDefault(__webpack_require__(101));
-var UserLink_1 = __webpack_require__(8);
-var DateFromNow_1 = __webpack_require__(9);
-var ControlsComment_1 = __webpack_require__(102);
-function Comment() {
-    var tempCurrentDate = new Date();
-    tempCurrentDate = (tempCurrentDate.getTime() - 10800000) / 1000;
-    var author = 'Михаил Рогов';
-    return (react_1.default.createElement("div", { className: comment_css_1.default.comment },
-        react_1.default.createElement("div", { className: comment_css_1.default.clipper },
-            react_1.default.createElement("svg", { width: "19", height: "30", viewBox: "0 0 19 30", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-                react_1.default.createElement("path", { d: "M9.5 30L19 20L8.74228e-07 20L9.5 30Z", fill: "#D9D9D9" }),
-                react_1.default.createElement("path", { d: "M9.5 0L0 10H19L9.5 0Z", fill: "#D9D9D9" })),
-            react_1.default.createElement("div", { className: comment_css_1.default.clipperDivider })),
-        react_1.default.createElement("div", { className: comment_css_1.default.userComment },
-            react_1.default.createElement("div", { className: comment_css_1.default.userCommentTitle },
-                react_1.default.createElement(UserLink_1.UserLink, { author: author }),
-                react_1.default.createElement(DateFromNow_1.DateFromNow, { date: tempCurrentDate }),
-                react_1.default.createElement("span", { className: comment_css_1.default.group }, "\u041B\u0438\u0433\u0430 \u044E\u0440\u0438\u0441\u0442\u043E\u0432")),
-            react_1.default.createElement("p", null, "\u0421\u0442\u043E\u0440\u043E\u043D\u043D\u0438\u043A\u0438 \u0442\u043E\u0442\u0430\u043B\u0438\u0442\u0430\u0440\u0438\u0437\u043C\u0430 \u0432 \u043D\u0430\u0443\u043A\u0435 \u0431\u0443\u0434\u0443\u0442 \u043E\u0431\u044A\u0435\u043A\u0442\u0438\u0432\u043D\u043E \u0440\u0430\u0441\u0441\u043C\u043E\u0442\u0440\u0435\u043D\u044B \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u043C\u0438 \u0438\u043D\u0441\u0442\u0430\u043D\u0446\u0438\u044F\u043C\u0438. \u041B\u0438\u0448\u044C \u0440\u0435\u043F\u043B\u0438\u0446\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u0441 \u0437\u0430\u0440\u0443\u0431\u0435\u0436\u043D\u044B\u0445 \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A\u043E\u0432, \u0441\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u044B\u0435 \u0438\u0441\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u044F \u0431\u0443\u0434\u0443\u0442 \u043E\u043F\u0438\u0441\u0430\u043D\u044B \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E \u043F\u043E\u0434\u0440\u043E\u0431\u043D\u043E."),
-            react_1.default.createElement(ControlsComment_1.ControlsComment, { author: author }))));
-}
-exports.Comment = Comment;
-
-
-/***/ }),
-/* 101 */
+/***/ "react-hot-loader/root":
+/*!****************************************!*\
+  !*** external "react-hot-loader/root" ***!
+  \****************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"comment": "comment__comment--1hyXR",
-	"clipper": "comment__clipper--Jmd_P",
-	"clipperDivider": "comment__clipperDivider--3xJfY",
-	"userComment": "comment__userComment--19hTS",
-	"userCommentTitle": "comment__userCommentTitle--66Mya",
-	"group": "comment__group--3KoDu"
-};
-
+eval("module.exports = require(\"react-hot-loader/root\");\n\n//# sourceURL=webpack:///external_%22react-hot-loader/root%22?");
 
 /***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(103), exports);
-
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ControlsComment = void 0;
-var react_1 = __importStar(__webpack_require__(0));
-var controlscomment_css_1 = __importDefault(__webpack_require__(104));
-var Icon_1 = __webpack_require__(5);
-var Text_1 = __webpack_require__(1);
-var AnswerComment_1 = __webpack_require__(105);
-function ControlsComment(_a) {
-    var author = _a.author;
-    var _b = react_1.useState(false), isAnswerOpened = _b[0], setIsAnswerOpened = _b[1];
-    return (react_1.default.createElement("div", { className: controlscomment_css_1.default.userCommentBottom },
-        react_1.default.createElement("div", { className: controlscomment_css_1.default.userCommentControls },
-            react_1.default.createElement("button", { onClick: function () { setIsAnswerOpened(true); } },
-                react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.answer, size: 15 }),
-                react_1.default.createElement(Text_1.Text, { size: 14, color: Text_1.EColor.grey99 }, "\u041E\u0442\u0432\u0435\u0442\u0438\u0442\u044C")),
-            react_1.default.createElement("button", null,
-                react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.share, size: 15 }),
-                react_1.default.createElement(Text_1.Text, { size: 14, color: Text_1.EColor.grey99 }, "\u041F\u043E\u0434\u0435\u043B\u0438\u0442\u044C\u0441\u044F")),
-            react_1.default.createElement("button", null,
-                react_1.default.createElement(Icon_1.Icon, { name: Icon_1.EIcons.warning, size: 15 }),
-                react_1.default.createElement(Text_1.Text, { size: 14, color: Text_1.EColor.grey99 }, "\u041F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C\u0441\u044F"))),
-        react_1.default.createElement("div", { className: controlscomment_css_1.default.formAnswer }, isAnswerOpened && (react_1.default.createElement(AnswerComment_1.AnswerComment, { to: author })))));
-}
-exports.ControlsComment = ControlsComment;
-
-
-/***/ }),
-/* 104 */
+/***/ "react-popper":
+/*!*******************************!*\
+  !*** external "react-popper" ***!
+  \*******************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"userCommentBottom": "controlscomment__userCommentBottom--dW05T",
-	"userCommentControls": "controlscomment__userCommentControls--z0d0_"
-};
-
+eval("module.exports = require(\"react-popper\");\n\n//# sourceURL=webpack:///external_%22react-popper%22?");
 
 /***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(106), exports);
-
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AnswerComment = void 0;
-var react_1 = __importStar(__webpack_require__(0));
-var answercomment_css_1 = __importDefault(__webpack_require__(107));
-function AnswerComment(_a) {
-    var to = _a.to;
-    var _b = react_1.useState(to + ", "), textAreaVal = _b[0], setTextAreaVal = _b[1];
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log('click');
-    }
-    function handleTexArea(event) {
-        setTextAreaVal(event.target.value);
-    }
-    var refTextArea = react_1.useRef(null);
-    react_1.useEffect(function () {
-        var _a;
-        //устанавливаем фокус
-        refTextArea.current && refTextArea.current.focus();
-        //в конец значения по умолчанию
-        (_a = refTextArea.current) === null || _a === void 0 ? void 0 : _a.setSelectionRange(textAreaVal.length, textAreaVal.length);
-    });
-    return (
-    //неконтролируемая компонента
-    // <form className={styles.form} onSubmit={handleSubmit}>
-    //   <textarea className={styles.input} defaultValue={`${to}, `} autoFocus/>
-    //   <button type='submit' className={styles.button}>Ответить</button>
-    // </form>
-    //контролируемая компонента
-    react_1.default.createElement("form", { className: answercomment_css_1.default.form, onSubmit: handleSubmit },
-        react_1.default.createElement("textarea", { className: answercomment_css_1.default.input, value: textAreaVal, ref: refTextArea, onChange: handleTexArea }),
-        react_1.default.createElement("button", { type: 'submit', className: answercomment_css_1.default.button }, "\u041E\u0442\u0432\u0435\u0442\u0438\u0442\u044C")));
-}
-exports.AnswerComment = AnswerComment;
-
-
-/***/ }),
-/* 107 */
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"form": "answercomment__form--3RUI4",
-	"input": "answercomment__input--3L3M8",
-	"button": "answercomment__button--zRlhx"
-};
-
+eval("module.exports = require(\"react-redux\");\n\n//# sourceURL=webpack:///external_%22react-redux%22?");
 
 /***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(109), exports);
-
-
-/***/ }),
-/* 109 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CommentFormContainer = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var react_redux_1 = __webpack_require__(4);
-var store_1 = __webpack_require__(11);
-var CommentForm_1 = __webpack_require__(110);
-function CommentFormContainer() {
-    var value = react_redux_1.useSelector(function (state) { return state.commentText; });
-    var dispatch = react_redux_1.useDispatch();
-    function handleChange(event) {
-        dispatch(store_1.updateComment(event.target.value));
-    }
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log(value);
-    }
-    return (react_1.default.createElement(CommentForm_1.CommentForm
-    // value={value}
-    // onChange={handleChange}
-    // onSubmit={handleSubmit}
-    , null));
-}
-exports.CommentFormContainer = CommentFormContainer;
-
-
-/***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CommentForm = void 0;
-var react_1 = __importDefault(__webpack_require__(0));
-var commentform_css_1 = __importDefault(__webpack_require__(111));
-var react_hook_form_1 = __webpack_require__(112);
-// type Props = {
-//   value: string | undefined;
-//   onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-//   onSubmit: (event: FormEvent) => void;
-// }
-// export function CommentForm({ value, onChange, onSubmit }: Props) {
-//   return (
-//     <form className={styles.form} onSubmit={onSubmit}>
-//       <textarea className={styles.input} value={value} onChange={onChange} />
-//       <button type='submit' className={styles.button}>Комментировать</button>
-//     </form>
-//   );
-// }
-function CommentForm() {
-    var _a = react_hook_form_1.useForm(), register = _a.register, handleSubmit = _a.handleSubmit, errors = _a.formState.errors;
-    var onSubmit = function (data) {
-        console.log(data);
-    };
-    return (react_1.default.createElement("form", { className: commentform_css_1.default.form, onSubmit: handleSubmit(onSubmit) },
-        react_1.default.createElement("textarea", __assign({ className: commentform_css_1.default.input, "aria-invalid": errors.newComment ? 'true' : undefined }, register('newComment', { required: true, minLength: 4 }))),
-        errors.newComment && react_1.default.createElement("p", null, "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0431\u043E\u043B\u044C\u0448\u0435 3-\u0445 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432"),
-        react_1.default.createElement("button", { type: 'submit', className: commentform_css_1.default.button }, "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C")));
-}
-exports.CommentForm = CommentForm;
-
-
-/***/ }),
-/* 111 */
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-// Exports
-module.exports = {
-	"form": "commentform__form--Cs1Oi",
-	"input": "commentform__input--2fC-z",
-	"button": "commentform__button--35eLT"
-};
-
+eval("module.exports = require(\"react-router-dom\");\n\n//# sourceURL=webpack:///external_%22react-router-dom%22?");
 
 /***/ }),
-/* 112 */
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-hook-form");
+eval("module.exports = require(\"redux\");\n\n//# sourceURL=webpack:///external_%22redux%22?");
 
 /***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.indexTemplate = void 0;
-var indexTemplate = function (content, token) { return "\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <script src=\"/static/client.js\" type=\"application/javascript\"></script>\n    <script >\n      const token = '" + token + "';\n      window.__token__ = token;\n      if (token && token.length > 0 && token !== 'undefined') {\n        localStorage.setItem('token', token);\n      }\n    </script>\n    <title>Reddit</title>\n</head>\n<body>\n    <div id=\"react_root\">" + content + "</div>\n    <div id=\"modal_root\"></div>\n    <div id=\"dropdown_root\"></div>\n</body>\n</html>\n"; };
-exports.indexTemplate = indexTemplate;
-
-
-/***/ }),
-/* 114 */
+/***/ "redux-devtools-extension":
+/*!*******************************************!*\
+  !*** external "redux-devtools-extension" ***!
+  \*******************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("compression");
+eval("module.exports = require(\"redux-devtools-extension\");\n\n//# sourceURL=webpack:///external_%22redux-devtools-extension%22?");
 
 /***/ }),
-/* 115 */
+
+/***/ "redux-thunk":
+/*!******************************!*\
+  !*** external "redux-thunk" ***!
+  \******************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("helmet");
+eval("module.exports = require(\"redux-thunk\");\n\n//# sourceURL=webpack:///external_%22redux-thunk%22?");
 
 /***/ })
-/******/ ]);
+
+/******/ });

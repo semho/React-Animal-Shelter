@@ -9,9 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build": "cross-env NODE_ENV=production CLIENT_ID=9PRgtMtHs-M5_AK4od9OKw DOMAIN=https://React-Redit.semho.repl.co webpack --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production CLIENT_ID=s559te2-wxRpGELoMinJWA SECRET=KLkC8I9WvOmKMfhb0V7JiWub28EHHQ DOMAIN=https://soupyinnocentprinters.semho.repl.co webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development CLIENT_ID=2alpekdjsqhwgCDAvSa4uQ SECRET=xDWtvCgLgDlZ1EuSuJ27lmHqf5WkEQ DOMAIN=http://localhost:3000 node ./bin/dev.js",
-    "start": "cross-env CLIENT_ID=9PRgtMtHs-M5_AK4od9OKw SECRET=JVNflMBCp5-tl-LtwYJDEa2KSB-lFA DOMAIN=https://React-Redit.semho.repl.co node ./dist/server/server.js"
+    "start": "cross-env CLIENT_ID=s559te2-wxRpGELoMinJWA SECRET=KLkC8I9WvOmKMfhb0V7JiWub28EHHQ DOMAIN=https://soupyinnocentprinters.semho.repl.co node ./dist/server/server.js"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,7 @@
     "react-popper": "^2.3.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^5.3.3",
+    "recoil": "^0.7.4",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
