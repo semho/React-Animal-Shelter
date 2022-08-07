@@ -1,4 +1,4 @@
-export const indexTemplate = (content, token) => `
+export const indexTemplate = (content) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +6,7 @@ export const indexTemplate = (content, token) => `
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/static/client.js" type="application/javascript"></script>
-    <script >
-      const token = '${token}';
-      window.__token__ = token;
-      if (token && token.length > 0 && token !== 'undefined') {
-        localStorage.setItem('token', token);
-      }
-    </script>
-    <title>Reddit</title>
+    <title>Animals</title>
 </head>
 <body>
     <div id="react_root">${content}</div>

@@ -4,83 +4,78 @@ import { hot } from "react-hot-loader/root";
 import { Layout } from "./shared/Layout";
 import { Header } from "./shared/Header/Header";
 import { Content } from "./shared/Content";
-import { useToken } from "./hooks/useToken";
-import { PostsList } from "./shared/Content/PostsList";
-import { Action, applyMiddleware, createStore } from "redux";
-import { Provider } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { rootReducer, RootState, setToken} from "./shared/store/store";
-import thunk, { ThunkAction } from "redux-thunk";
-import { useAppDispatch } from "./hooks/hooks";
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { Post } from "./shared/Post";
-//вместо redux
-import { atom, RecoilRoot } from "recoil";
-
-export const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(thunk),
-));
-
-//Инициализируем состояние Recoil, вместо Redux
-export const textState = atom({
-  key: 'textState', // unique ID (with respect to other atoms/selectors)
-  default: 'Привет от Recoil', // default value (aka initial value)
-});
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { CardAnimal } from "./shared/CardAnimal";
+import axios from "axios";
+import { PageAnimals } from "./shared/Content/PageAnimals";
+import { PrivateRoute } from "./shared/PrivateRoute";
 
 function AppComponent() {
-
   const [mounted, setMounted] = useState(false);
+  const [getToken, setGetToken] = useState("");
 
-  useEffect(() => {
-    setMounted(true)
-  }, []);
+  async function load() {
+    const url = "https://acits-test-back.herokuapp.com/api/login";
+    const auth = {
+      login: "test_user",
+      password: "123456",
+    };
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
 
-  const dispatch = useAppDispatch();
-  const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
-    const [token] = useToken();
-    dispatch(setToken(token));
+    try {
+      const res = await axios.post(url, auth, config);
+      setGetToken(res.data.accessToken);
+    } catch (error) {
+      console.log("Message: " + String(error));
+    }
   }
 
-  dispatch(saveToken());
+  useEffect(() => {
+    setMounted(true);
+    load();
+  }, []);
 
   return (
     <>
       {mounted && (
-        <RecoilRoot>
-          <BrowserRouter>
-            <Layout>
-              <Header/>
-              <Content>
-                <Switch>
-                  <Route exact strict path="/">
-                    <Redirect to="/posts" />
-                  </Route>
-                  <Route exact strict path="/auth">
-                    <Redirect to="/posts" />
-                  </Route>
-                  <Route path="/posts">
-                    <PostsList />
-                  </Route>
-                  <Route>
-                    <div style={{textAlign: 'center'}}>404 — страница не найдена</div>
-                  </Route>
-                </Switch>
-                <Route path="/posts/:id">
-                    <Post />
+        <BrowserRouter>
+          <Layout>
+            <Header />
+            <Content>
+              <Switch>
+                <Route exact strict path="/">
+                  <Redirect to="/today" />
                 </Route>
-              </Content>
-            </Layout>
-          </BrowserRouter>
-        </RecoilRoot>
+                <Route path="/today">
+                  <div>Назначения на сегодня </div>
+                </Route>
+                <PrivateRoute
+                  auth={true}
+                  path="/animals"
+                  component={PageAnimals}
+                />
+                <Route>
+                  <div style={{ textAlign: "center" }}>
+                    404 — страница не найдена
+                  </div>
+                </Route>
+              </Switch>
+              <Route path="/today/:id">
+                <CardAnimal />
+              </Route>
+              <Route path="/animals/:id">
+                <CardAnimal />
+              </Route>
+            </Content>
+          </Layout>
+        </BrowserRouter>
       )}
     </>
   );
 }
 
-export const App = hot(() =>
-  <Provider store={store}>
-    <AppComponent />
-  </Provider>
-);
-
-
+export const App = hot(() => <AppComponent />);
