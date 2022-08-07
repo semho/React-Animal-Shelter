@@ -1,6 +1,5 @@
-import React from "react";
-import { Redirect, Route } from "react-router-dom";
-import styles from "./privateroute.css";
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
 
 interface IPrivateRoute {
   auth: boolean;
@@ -15,13 +14,14 @@ export function PrivateRoute({
 }: IPrivateRoute) {
   return (
     <Route
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
       render={(props) =>
         auth === true ? (
           <Component />
         ) : (
           <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
+            to={{ pathname: '/login', state: { from: props.location } }}
           />
         )
       }

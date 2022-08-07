@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import styles from "./cardanimal.css";
-import ReactDOM from "react-dom";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import ReactDOM from 'react-dom';
+import { useHistory } from 'react-router-dom';
+import styles from './cardanimal.css';
 
 export function CardAnimal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -13,18 +13,18 @@ export function CardAnimal() {
         event.target instanceof Node &&
         !ref.current?.contains(event.target)
       ) {
-        history.push("/today");
+        history.push('/today');
       }
     }
 
-    document.addEventListener("click", handleClick);
+    document.addEventListener('click', handleClick);
 
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener('click', handleClick);
     };
-  }, []);
+  }, [history]);
 
-  const node = document.getElementById("modal_root");
+  const node = document.getElementById('modal_root');
   if (!node) return null;
 
   return ReactDOM.createPortal(
@@ -52,6 +52,6 @@ export function CardAnimal() {
         </p>
       </div>
     </div>,
-    node
+    node,
   );
 }

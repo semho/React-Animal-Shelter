@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './text.css';
 import classNames from 'classnames';
+import styles from './text.css';
 
 export enum EColor {
   black = 'black',
@@ -18,25 +18,24 @@ export enum EColor {
 type TSizes = 28 | 20 | 16 | 14 | 12 | 10;
 
 interface ITextProps {
-  As ?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div';
-  children ?: React.ReactNode;
+  As?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div';
+  children?: React.ReactNode;
   size: TSizes;
-  mobileSize ?: TSizes;
-  tabletSize ?: TSizes;
-  desktopSize ?: TSizes;
-  color ?: EColor;
+  mobileSize?: TSizes;
+  tabletSize?: TSizes;
+  desktopSize?: TSizes;
+  color?: EColor;
 }
 
 export function Text(props: ITextProps) {
-  const { 
+  const {
     As = 'span',
     color = EColor.black,
     children,
     size,
     mobileSize,
     tabletSize,
-    desktopSize
-
+    desktopSize,
   } = props;
 
   const classes = classNames(
@@ -44,12 +43,8 @@ export function Text(props: ITextProps) {
     { [styles[`m${mobileSize}`]]: mobileSize },
     { [styles[`t${tabletSize}`]]: tabletSize },
     { [styles[`d${desktopSize}`]]: desktopSize },
-    styles[color]
-  )
-
-  return (
-    <As className={classes}>
-      {children}
-    </As>
+    styles[color],
   );
+
+  return <As className={classes}>{children}</As>;
 }
