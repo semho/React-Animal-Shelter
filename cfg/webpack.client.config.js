@@ -63,7 +63,6 @@ module.exports = {
       {
         /** настройка дла css modules */ test: /\.css$/,
         exclude: /node_modules/,
-        GLOBAL_CSS_REGEXP,
         use: [
           'style-loader',
           {
@@ -80,6 +79,8 @@ module.exports = {
             },
           },
         ],
+        // eslint-disable-next-line no-dupe-keys
+        exclude: GLOBAL_CSS_REGEXP,
       },
       {
         /** настройка глобального CSS файла */
