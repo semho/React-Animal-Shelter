@@ -11,39 +11,18 @@ import { PrivateRoute } from './shared/PrivateRoute';
 import { Login } from './shared/Login';
 import { PageToday } from './shared/Content/PageToday';
 import { Page404 } from './shared/Content/Page404';
+import { getUserLocalStorage } from './utils/react/getUserLocalStorage';
 
 function AppComponent() {
   const [mounted, setMounted] = useState(false);
-  // // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const [getToken, setGetToken] = useState('');
-
-  // async function load() {
-  //   const url = 'https://acits-test-back.herokuapp.com/api/login';
-  //   const auth = {
-  //     login: 'test_user',
-  //     password: '123456',
-  //   };
-  //   const config = {
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //   };
-
-  //   try {
-  //     const res = await axios.post(url, auth, config);
-  //     setGetToken(res.data.accessToken);
-  //   } catch (error) {
-  //     console.log(`Message: ${String(error)}`);
-  //   }
-  // }
-
-  const token = false;
+  const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // load();
+    if (getUserLocalStorage().auth) {
+      setIsAuth(true);
+    }
   }, []);
-
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
@@ -51,8 +30,8 @@ function AppComponent() {
         <BrowserRouter>
           <Layout>
             <Switch>
-              <PrivateRoute auth={!token} path="/login" component={Login} />
-              {!token && <Route component={Page404} />}
+              {!isAuth && <Route path="/login" component={Login} />}
+              {!isAuth && <Route component={Page404} />}
             </Switch>
             <Header />
             <Content>
@@ -60,17 +39,22 @@ function AppComponent() {
                 <Route exact strict path="/">
                   <Redirect to="/today" />
                 </Route>
+                {isAuth && (
+                  <Route exact strict path="/login">
+                    <Redirect to="/today" />
+                  </Route>
+                )}
                 <PrivateRoute
-                  auth={token}
+                  auth={isAuth}
                   path="/today"
                   component={PageToday}
                 />
                 <PrivateRoute
-                  auth={token}
+                  auth={isAuth}
                   path="/animals"
                   component={PageAnimals}
                 />
-                {token && <Route component={Page404} />}
+                {isAuth && <Route component={Page404} />}
               </Switch>
               <Route path="/today/:id">
                 <CardAnimal />

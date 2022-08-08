@@ -20,7 +20,6 @@ export function Login() {
   const [isSend, setIsSend] = useState(false);
   // стейт под лоадер
   const [loading, setLoading] = useState(false);
-
   // react-hook-form
   const {
     register,
@@ -53,13 +52,14 @@ export function Login() {
       // если ошибки - показываем их
       if (data.status === 'error' && data.result !== undefined) {
         setIsError(true);
-        setError(data.result);
-        // иначе записываем токен в localStorage
+        setError(String(data.result));
+        // иначе записываем данные в localStorage
       } else {
         localStorage.setItem(
-          'token',
-          JSON.stringify({ auth: true, accessToken: data.result }),
+          'user',
+          JSON.stringify({ auth: true, user: data.result }),
         );
+        window.location.href = '/';
       }
       // сбразываем стейт отправки
       setIsSend(false);

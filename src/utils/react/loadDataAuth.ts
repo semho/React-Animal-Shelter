@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-interface IData {
+export interface IDataUser {
   data: {
     accessToken?: string;
     user?: {
@@ -33,12 +33,11 @@ export async function loadDataAuth(user: string, pass: string) {
   };
 
   try {
-    const res: IData = await axios.post(url, auth, config);
-
-    if (res.data.accessToken !== undefined) {
+    const res: IDataUser = await axios.post(url, auth, config);
+    if (res.data !== undefined) {
       return {
         status: 'success',
-        result: res.data.accessToken,
+        result: res.data,
       };
     }
   } catch (error) {
