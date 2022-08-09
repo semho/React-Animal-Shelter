@@ -57,7 +57,11 @@ export function Login() {
       } else {
         localStorage.setItem(
           'user',
-          JSON.stringify({ auth: true, user: data.result }),
+          JSON.stringify({
+            auth: true,
+            user: data.result,
+            lifetime: +new Date(),
+          }),
         );
         window.location.href = '/';
       }

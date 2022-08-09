@@ -16,13 +16,20 @@ import { getUserLocalStorage } from './utils/react/getUserLocalStorage';
 function AppComponent() {
   const [mounted, setMounted] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
+  // 10 минут активности токена
+  const LIMIT = 10 * 60 * 1000;
+  // объект user из localStorage с токеном
+  const user = getUserLocalStorage();
 
   useEffect(() => {
     setMounted(true);
-    if (getUserLocalStorage().auth) {
+    // проверка объекта из localStorage
+    if (user.lifetime !== undefined && +new Date() - user.lifetime > LIMIT) {
+      localStorage.clear();
+    } else if (user.auth) {
       setIsAuth(true);
     }
-  }, []);
+  }, [LIMIT, user.auth, user.lifetime]);
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
@@ -33,7 +40,7 @@ function AppComponent() {
               {!isAuth && <Route path="/login" component={Login} />}
               {!isAuth && <Route component={Page404} />}
             </Switch>
-            <Header />
+            {isAuth && <Header />}
             <Content>
               <Switch>
                 <Route exact strict path="/">

@@ -3,6 +3,7 @@ import { IDataUser } from './loadDataAuth';
 interface IDataAuth {
   auth?: boolean;
   user?: IDataUser;
+  lifetime?: number;
 }
 /**
  * Функция достает из localStorage объект пользователя по ключу
