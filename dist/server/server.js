@@ -188,7 +188,7 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Content = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar content_css_1 = __importDefault(__webpack_require__(/*! ./content.css */ \"./src/shared/Content/content.css\"));\r\nfunction Content(_a) {\r\n    var children = _a.children;\r\n    return react_1.default.createElement(\"main\", { className: content_css_1.default.content }, children);\r\n}\r\nexports.Content = Content;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/Content.tsx?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Content = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar react_bootstrap_1 = __webpack_require__(/*! react-bootstrap */ \"react-bootstrap\");\r\nvar content_css_1 = __importDefault(__webpack_require__(/*! ./content.css */ \"./src/shared/Content/content.css\"));\r\nfunction Content(_a) {\r\n    var children = _a.children;\r\n    return (react_1.default.createElement(\"main\", { className: content_css_1.default.content },\r\n        react_1.default.createElement(react_bootstrap_1.Container, null, children)));\r\n}\r\nexports.Content = Content;\r\n\n\n//# sourceURL=webpack:///./src/shared/Content/Content.tsx?");
 
 /***/ }),
 
@@ -295,7 +295,7 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Header = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar header_css_1 = __importDefault(__webpack_require__(/*! ./header.css */ \"./src/shared/Header/header.css\"));\r\nfunction Header() {\r\n    return react_1.default.createElement(\"header\", { className: header_css_1.default.header });\r\n}\r\nexports.Header = Header;\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/Header.tsx?");
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Header = void 0;\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nvar react_bootstrap_1 = __webpack_require__(/*! react-bootstrap */ \"react-bootstrap\");\r\nvar react_router_dom_1 = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\r\nvar Logo_1 = __webpack_require__(/*! ../Icons/Logo */ \"./src/shared/Icons/Logo.tsx\");\r\nvar header_css_1 = __importDefault(__webpack_require__(/*! ./header.css */ \"./src/shared/Header/header.css\"));\r\nvar Text_1 = __webpack_require__(/*! ../Text */ \"./src/shared/Text/index.ts\");\r\nfunction Header() {\r\n    var _a = react_1.useState(true), isToday = _a[0], setIsToday = _a[1];\r\n    var come = function () {\r\n        setIsToday(!isToday);\r\n    };\r\n    return (react_1.default.createElement(\"header\", { className: header_css_1.default.header },\r\n        react_1.default.createElement(react_bootstrap_1.Container, { className: \"d-flex justify-content-between align-items-center\" },\r\n            react_1.default.createElement(react_router_dom_1.Link, { to: \"/\", className: header_css_1.default.linkWrap },\r\n                react_1.default.createElement(Logo_1.Logo, null),\r\n                react_1.default.createElement(Text_1.Text, { size: 20 }, \"Pets\")),\r\n            isToday && (react_1.default.createElement(react_router_dom_1.Link, { to: \"/animals\", onClick: come },\r\n                react_1.default.createElement(react_bootstrap_1.Button, null, \"\\u0412\\u0441\\u0435 \\u0436\\u0438\\u0432\\u043E\\u0442\\u043D\\u044B\\u0435 \\u043F\\u0440\\u0438\\u044E\\u0442\\u0430\"))),\r\n            !isToday && (react_1.default.createElement(react_router_dom_1.Link, { to: \"/today\", onClick: come },\r\n                react_1.default.createElement(react_bootstrap_1.Button, null, \"\\u041D\\u0430\\u0437\\u043D\\u0430\\u0447\\u0435\\u043D\\u0438\\u044F \\u043D\\u0430 \\u0441\\u0435\\u0433\\u043E\\u0434\\u043D\\u044F\"))))));\r\n}\r\nexports.Header = Header;\r\n\n\n//# sourceURL=webpack:///./src/shared/Header/Header.tsx?");
 
 /***/ }),
 
@@ -306,7 +306,19 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// Exports\nmodule.exports = {\n\t\"header\": \"header__header--bAgyG\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Header/header.css?");
+eval("// Exports\nmodule.exports = {\n\t\"header\": \"header__header--bAgyG\",\n\t\"linkWrap\": \"header__linkWrap--36fRD\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Header/header.css?");
+
+/***/ }),
+
+/***/ "./src/shared/Icons/Logo.tsx":
+/*!***********************************!*\
+  !*** ./src/shared/Icons/Logo.tsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\r\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\r\n}) : function(o, v) {\r\n    o[\"default\"] = v;\r\n});\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\r\n    __setModuleDefault(result, mod);\r\n    return result;\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Logo = void 0;\r\nvar React = __importStar(__webpack_require__(/*! react */ \"react\"));\r\nfunction Logo() {\r\n    return (React.createElement(\"svg\", { version: \"1.0\", xmlns: \"http://www.w3.org/2000/svg\", width: \"80\", height: \"56\", viewBox: \"0 0 840.000000 572.000000\", preserveAspectRatio: \"xMidYMid meet\" },\r\n        React.createElement(\"g\", { transform: \"translate(0.000000,572.000000) scale(0.100000,-0.100000)\", fill: \"#000000\", stroke: \"none\" },\r\n            React.createElement(\"path\", { d: \"M4080 4314 c-157 -19 -279 -73 -419 -182 -56 -45 -106 -82 -110 -82\\n          -3 1 -18 18 -33 40 -30 44 -112 111 -172 143 -81 41 -184 20 -271 -56 -50 -43\\n          -213 -287 -455 -677 -100 -162 -218 -344 -261 -405 -204 -285 -237 -469 -126\\n          -710 18 -38 83 -144 145 -235 155 -226 172 -256 236 -430 61 -165 97 -226 154\\n          -265 74 -50 148 -27 248 76 149 156 206 284 235 519 6 52 12 96 14 98 4 4 405\\n          -197 405 -203 0 -3 -20 -33 -45 -66 -58 -79 -121 -207 -141 -289 -20 -78 -22\\n          -187 -5 -258 13 -50 16 -54 70 -81 72 -37 223 -85 336 -108 129 -25 514 -25\\n          670 1 127 21 256 56 337 93 55 24 57 27 67 75 38 174 -18 384 -153 572 l-55\\n          76 190 96 c105 52 192 94 194 92 1 -2 9 -58 18 -125 27 -205 87 -335 223 -482\\n          97 -105 159 -130 237 -97 66 27 100 83 182 302 52 140 64 162 200 364 192 285\\n          235 383 235 528 0 121 -60 281 -153 407 -90 123 -123 174 -299 459 -222 358\\n          -388 609 -437 659 -49 51 -128 89 -190 90 -85 1 -218 -84 -284 -182 l-16 -24\\n          -38 27 c-21 15 -69 52 -108 82 -89 69 -190 120 -280 139 -71 16 -280 27 -345\\n          19z m403 -248 c149 -29 254 -95 354 -221 56 -71 73 -82 73 -47 0 22 54 136 80\\n          170 37 46 81 72 124 72 36 0 46 -6 96 -58 92 -97 206 -269 445 -667 272 -453\\n          289 -492 289 -660 -1 -133 -19 -196 -128 -438 -40 -89 -79 -180 -86 -202 -44\\n          -140 -155 -248 -253 -248 -52 0 -86 27 -119 93 -47 95 -69 239 -88 585 -25\\n          449 -41 631 -71 805 -37 218 -97 384 -155 429 -50 39 -57 3 -20 -105 54 -162\\n          71 -324 87 -858 l12 -389 -24 -19 c-119 -96 -419 -271 -589 -342 -228 -97\\n          -325 -106 -500 -47 -182 62 -490 228 -669 360 l-66 49 7 214 c24 694 35 829\\n          85 996 44 148 42 182 -11 141 -99 -78 -174 -410 -206 -904 -5 -93 -17 -276\\n          -25 -405 -23 -359 -53 -500 -121 -567 -95 -96 -272 17 -334 212 -7 22 -48 119\\n          -91 215 -107 242 -124 300 -123 430 0 162 16 200 283 645 126 209 256 421 291\\n          470 76 110 165 219 198 245 50 40 131 17 180 -50 30 -40 82 -150 82 -172 0\\n          -35 17 -24 73 47 152 193 312 249 682 240 88 -2 195 -11 238 -19z m76 -2273\\n          c90 -103 150 -247 151 -361 0 -37 -4 -45 -32 -62 -171 -106 -398 -160 -665\\n          -161 -84 0 -192 5 -240 11 -91 11 -242 46 -256 59 -11 11 8 100 37 170 49 121\\n          144 239 271 336 84 65 70 64 220 11 58 -21 119 -36 145 -36 51 0 155 27 245\\n          64 33 13 63 25 67 25 3 1 29 -25 57 -56z\" }),\r\n            React.createElement(\"path\", { d: \"M3650 3471 c-160 -49 -310 -242 -310 -399 l0 -45 39 61 c22 33 67 87\\n          99 119 60 58 168 131 178 120 3 -3 -3 -20 -12 -39 -27 -49 -25 -160 3 -214 28\\n          -53 61 -74 117 -74 87 0 155 91 156 206 0 191 -121 310 -270 265z\" }),\r\n            React.createElement(\"path\", { d: \"M4603 3461 c-73 -34 -123 -138 -123 -255 1 -112 69 -206 151 -206 61\\n          0 97 24 125 83 29 62 30 122 5 195 -10 28 -15 52 -11 52 4 0 34 -17 66 -39 76\\n          -48 156 -128 207 -205 l39 -61 -5 66 c-17 230 -285 449 -454 370z\" }),\r\n            React.createElement(\"path\", { d: \"M4053 2596 c-71 -18 -142 -55 -167 -90 l-21 -28 34 -28 c18 -16 79\\n          -45 135 -66 55 -20 107 -42 114 -47 17 -13 47 -73 56 -109 l6 -28 -121 0 c-67\\n          0 -120 -2 -118 -5 12 -11 133 -35 229 -45 113 -11 183 -4 246 26 38 18 94 88\\n          94 117 0 18 -1 18 -32 -3 -18 -11 -52 -30 -75 -40 -49 -22 -200 -56 -209 -47\\n          -11 11 6 74 29 107 18 26 43 40 124 70 168 63 196 89 151 137 -55 60 -172 93\\n          -323 92 -55 0 -123 -6 -152 -13z\" }))));\r\n}\r\nexports.Logo = Logo;\r\n\n\n//# sourceURL=webpack:///./src/shared/Icons/Logo.tsx?");
 
 /***/ }),
 
@@ -404,6 +416,41 @@ eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create
 
 /***/ }),
 
+/***/ "./src/shared/Text/Text.tsx":
+/*!**********************************!*\
+  !*** ./src/shared/Text/Text.tsx ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Text = exports.EColor = void 0;\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"react\"));\r\nvar classnames_1 = __importDefault(__webpack_require__(/*! classnames */ \"classnames\"));\r\nvar text_css_1 = __importDefault(__webpack_require__(/*! ./text.css */ \"./src/shared/Text/text.css\"));\r\nvar EColor;\r\n(function (EColor) {\r\n    EColor[\"black\"] = \"black\";\r\n    EColor[\"orange\"] = \"orange\";\r\n    EColor[\"green\"] = \"green\";\r\n    EColor[\"white\"] = \"white\";\r\n    EColor[\"greyF4\"] = \"greyF4\";\r\n    EColor[\"greyF3\"] = \"greyF3\";\r\n    EColor[\"greyD9\"] = \"greyD9\";\r\n    EColor[\"greyC4\"] = \"greyC4\";\r\n    EColor[\"grey99\"] = \"grey99\";\r\n    EColor[\"grey66\"] = \"grey66\";\r\n})(EColor = exports.EColor || (exports.EColor = {}));\r\nfunction Text(props) {\r\n    var _a, _b, _c;\r\n    var _d = props.As, As = _d === void 0 ? 'span' : _d, _e = props.color, color = _e === void 0 ? EColor.black : _e, children = props.children, size = props.size, mobileSize = props.mobileSize, tabletSize = props.tabletSize, desktopSize = props.desktopSize;\r\n    var classes = classnames_1.default(text_css_1.default[\"s\" + size], (_a = {}, _a[text_css_1.default[\"m\" + mobileSize]] = mobileSize, _a), (_b = {}, _b[text_css_1.default[\"t\" + tabletSize]] = tabletSize, _b), (_c = {}, _c[text_css_1.default[\"d\" + desktopSize]] = desktopSize, _c), text_css_1.default[color]);\r\n    return react_1.default.createElement(As, { className: classes }, children);\r\n}\r\nexports.Text = Text;\r\n\n\n//# sourceURL=webpack:///./src/shared/Text/Text.tsx?");
+
+/***/ }),
+
+/***/ "./src/shared/Text/index.ts":
+/*!**********************************!*\
+  !*** ./src/shared/Text/index.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });\r\n}) : (function(o, m, k, k2) {\r\n    if (k2 === undefined) k2 = k;\r\n    o[k2] = m[k];\r\n}));\r\nvar __exportStar = (this && this.__exportStar) || function(m, exports) {\r\n    for (var p in m) if (p !== \"default\" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__exportStar(__webpack_require__(/*! ./Text */ \"./src/shared/Text/Text.tsx\"), exports);\r\n\n\n//# sourceURL=webpack:///./src/shared/Text/index.ts?");
+
+/***/ }),
+
+/***/ "./src/shared/Text/text.css":
+/*!**********************************!*\
+  !*** ./src/shared/Text/text.css ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// Exports\nmodule.exports = {\n\t\"s28\": \"text__s28--Puvgs\",\n\t\"s20\": \"text__s20--3Xq66\",\n\t\"s16\": \"text__s16--G_lUr\",\n\t\"s14\": \"text__s14--jvCoO\",\n\t\"s12\": \"text__s12--2S2T2\",\n\t\"s10\": \"text__s10--DYLfy\",\n\t\"black\": \"text__black--1zchg\",\n\t\"orange\": \"text__orange--1RyAM\",\n\t\"green\": \"text__green--3mYQn\",\n\t\"white\": \"text__white--13JGE\",\n\t\"grayF4\": \"text__grayF4--2X2jV\",\n\t\"greyF3\": \"text__greyF3--2Lfsi\",\n\t\"greyD9\": \"text__greyD9--7iRFr\",\n\t\"greyC4\": \"text__greyC4--3oiNM\",\n\t\"grey99\": \"text__grey99--35u3B\",\n\t\"grey66\": \"text__grey66--373uw\",\n\t\"upperCase\": \"text__upperCase--2EMyT\",\n\t\"m28\": \"text__m28--2u2zs\",\n\t\"m20\": \"text__m20--1gFlM\",\n\t\"m16\": \"text__m16--cSY4u\",\n\t\"m14\": \"text__m14--s6pnr\",\n\t\"m12\": \"text__m12--1W0av\",\n\t\"m10\": \"text__m10--UtIkW\",\n\t\"bold\": \"text__bold--gb02H\",\n\t\"t28\": \"text__t28--A4rHF\",\n\t\"t20\": \"text__t20--78tCz\",\n\t\"t16\": \"text__t16--nkVMz\",\n\t\"t14\": \"text__t14--1Rj72\",\n\t\"t12\": \"text__t12--7txjW\",\n\t\"t10\": \"text__t10--n2R7f\",\n\t\"d28\": \"text__d28--3oIok\",\n\t\"d20\": \"text__d20--uwHxr\",\n\t\"d16\": \"text__d16--1Pwd1\",\n\t\"d14\": \"text__d14--3Futo\",\n\t\"d12\": \"text__d12--5X_qc\",\n\t\"d10\": \"text__d10--3pWnc\"\n};\n\n\n//# sourceURL=webpack:///./src/shared/Text/text.css?");
+
+/***/ }),
+
 /***/ "./src/utils/react/getUserLocalStorage.ts":
 /*!************************************************!*\
   !*** ./src/utils/react/getUserLocalStorage.ts ***!
@@ -436,6 +483,17 @@ eval("\r\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argume
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"axios\");\n\n//# sourceURL=webpack:///external_%22axios%22?");
+
+/***/ }),
+
+/***/ "classnames":
+/*!*****************************!*\
+  !*** external "classnames" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"classnames\");\n\n//# sourceURL=webpack:///external_%22classnames%22?");
 
 /***/ }),
 

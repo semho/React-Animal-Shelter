@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import styles from './content.css';
 
 interface IContentProps {
@@ -6,5 +7,9 @@ interface IContentProps {
 }
 
 export function Content({ children }: IContentProps) {
-  return <main className={styles.content}>{children}</main>;
+  return (
+    <main className={styles.content}>
+      <Container>{children}</Container>
+    </main>
+  );
 }
