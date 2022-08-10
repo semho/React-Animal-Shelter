@@ -1,4 +1,5 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 // import type { RootState, AppDispatch } from "../shared/store/store";
 
 // export const useAppDispatch: () => AppDispatch = useDispatch;
