@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { loadDataAuth } from '../../utils/react/loadDataAuth';
+import { loadDataAuth } from '../../utils/requests/loadDataAuth';
 import styles from './login.css';
 
 interface IFormData {

@@ -26,7 +26,7 @@ function AppComponent() {
     // проверка объекта из localStorage
     if (user.lifetime !== undefined && +new Date() - user.lifetime > LIMIT) {
       localStorage.removeItem('user');
-      window.location.href = '/login';
+      <Redirect to="/today" />;
     } else if (user.auth) {
       setIsAuth(true);
     }

@@ -1,4 +1,4 @@
-import { IDataUser } from './loadDataAuth';
+import { IDataUser } from '../requests/loadDataAuth';
 
 interface IDataAuth {
   auth?: boolean;
