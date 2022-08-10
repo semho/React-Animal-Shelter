@@ -25,7 +25,8 @@ function AppComponent() {
     setMounted(true);
     // проверка объекта из localStorage
     if (user.lifetime !== undefined && +new Date() - user.lifetime > LIMIT) {
-      localStorage.clear();
+      localStorage.removeItem('user');
+      window.location.href = '/login';
     } else if (user.auth) {
       setIsAuth(true);
     }
@@ -36,10 +37,12 @@ function AppComponent() {
       {mounted && (
         <BrowserRouter>
           <Layout>
-            <Switch>
-              {!isAuth && <Route path="/login" component={Login} />}
-              {!isAuth && <Route component={Page404} />}
-            </Switch>
+            {!isAuth && (
+              <Switch>
+                <Route path="/login" component={Login} />
+                <Route component={Page404} />
+              </Switch>
+            )}
             {isAuth && <Header />}
             <Content>
               <Switch>

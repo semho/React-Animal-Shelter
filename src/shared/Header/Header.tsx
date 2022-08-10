@@ -12,10 +12,14 @@ export function Header() {
     setIsToday(!isToday);
   };
 
+  const today = () => {
+    setIsToday(true);
+  };
+
   return (
     <header className={styles.header}>
       <Container className="d-flex justify-content-between align-items-center">
-        <Link to="/" className={styles.linkWrap}>
+        <Link to="/" className={styles.linkWrap} onClick={today}>
           <Logo />
           <Text size={20}>Pets</Text>
         </Link>

@@ -1,17 +1,19 @@
 import axios from 'axios';
 
-export interface IDataUser {
-  data: {
-    accessToken?: string;
-    user?: {
-      id?: string;
-      role?: string;
-      login?: string;
-      firstName?: string;
-      lastName?: string;
-    };
-  };
+interface IData {
+  data: IDataUser;
   status: number;
+}
+
+export interface IDataUser {
+  accessToken?: string;
+  user?: {
+    id?: string;
+    role?: string;
+    login?: string;
+    firstName?: string;
+    lastName?: string;
+  };
 }
 
 /**
@@ -33,7 +35,7 @@ export async function loadDataAuth(user: string, pass: string) {
   };
 
   try {
-    const res: IDataUser = await axios.post(url, auth, config);
+    const res: IData = await axios.post(url, auth, config);
     if (res.data !== undefined) {
       return {
         status: 'success',

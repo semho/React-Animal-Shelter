@@ -1,0 +1,16 @@
+.title {
+}
+
+.item {
+  cursor: pointer;
+}
+
+.item::before {
+  font-size: 16px;
+}
+
+.destination {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
