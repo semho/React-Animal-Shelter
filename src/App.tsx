@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './main.global.css';
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Layout } from './shared/Layout';
 import { Header } from './shared/Header/Header';
 import { Content } from './shared/Content';
@@ -12,14 +16,18 @@ import { Login } from './shared/Login';
 import { PageToday } from './shared/Content/PageToday';
 import { Page404 } from './shared/Content/Page404';
 import { getUserLocalStorage } from './utils/react/getUserLocalStorage';
-import { useInterval } from './hooks/useInterval';
+import { rootReducer } from './shared/store/store';
+
+export const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk)),
+);
 
 function AppComponent() {
   const [mounted, setMounted] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   // 10 минут активности токена
-  const LIMIT = 60 * 10;
-  const [count, setCount] = useState(LIMIT);
+  const LIMIT = 60 * 10 * 1000;
   // объект user из localStorage с токеном
   const user = getUserLocalStorage();
   useEffect(() => {
@@ -27,15 +35,14 @@ function AppComponent() {
     if (user.auth) {
       setIsAuth(true);
     }
-  }, [LIMIT, user.auth, user.lifetime]);
 
-  useInterval(() => {
-    setCount(count - 1);
-    if (count <= 0) {
+    const timer = setTimeout(() => {
       localStorage.removeItem('user');
       setIsAuth(false);
-    }
-  }, 1000);
+    }, LIMIT);
+
+    return () => clearInterval(timer);
+  }, [LIMIT, user.auth, user.lifetime]);
 
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
@@ -86,4 +93,8 @@ function AppComponent() {
   );
 }
 
-export const App = hot(() => <AppComponent />);
+export const App = hot(() => (
+  <Provider store={store}>
+    <AppComponent />
+  </Provider>
+));

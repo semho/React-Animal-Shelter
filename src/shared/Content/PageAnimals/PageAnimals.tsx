@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button, ListGroup, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import styles from './pageanimals.css';
 import { Text } from '../../Text';
 import { Page404 } from '../Page404';
 import { IAnimals, loadAnimals } from '../../../utils/requests/loadAnimals';
+import { addAnimal } from '../../store/store';
+import styles from './pageanimals.css';
+import { useAppDispatch } from '../../../hooks/hooks';
 
 export function PageAnimals() {
   const LIMIT = 5; // константа по сколько животных открывать
@@ -15,6 +17,8 @@ export function PageAnimals() {
   const [loadMore, setLoadMore] = useState(false); // состояние кнопки пагинации
   const [firstLoad, setFirstLoad] = useState(true); // первая загрузка списка
   const [maxAnimals, setMaxAnimals] = useState(0); // максимальное значение животных
+  const dispatch = useAppDispatch();
+  dispatch(addAnimal(animals));
 
   const handleClick = () => {
     setLoadMore(true);
