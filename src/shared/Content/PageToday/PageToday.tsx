@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Badge, ListGroup, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { IDestinations, loadToday } from '../../../utils/requests/loadToday';
 import { EColor, Text } from '../../Text';
 import { Page404 } from '../Page404';
@@ -9,7 +10,6 @@ export function PageToday() {
   const [loading, setLoading] = useState(false);
   const [errorLoading, setErrorLoading] = useState('');
   const [animals, setAnimals] = useState<IDestinations>([]);
-
   useEffect(() => {
     loadToday(setLoading, setErrorLoading, setAnimals);
   }, []);
@@ -23,27 +23,35 @@ export function PageToday() {
             <ListGroup.Item
               action
               as="li"
-              className={`${styles.item} d-flex justify-content-between align-items-start`}
+              className={`${styles.item} d-flex `}
               key={item.id}
               id={item.animal.id}
             >
-              <div className="ms-2 me-auto">
-                <div className={styles.destination}>{item.type}</div>
-                <Text size={14} As="p">
-                  Кличка:{' '}
-                  <span style={{ fontWeight: 'bold' }}>{item.animal.name}</span>
-                  . Порода:{' '}
-                  <span style={{ fontWeight: 'bold' }}>
-                    {item.animal.spec.name}
-                  </span>
-                  .
-                </Text>
-              </div>
-              <Badge bg="primary" pill>
-                <Text size={12} color={EColor.white}>
-                  Время приема: {item.time.substring(0, 5)}
-                </Text>
-              </Badge>
+              <Link
+                to={`/today/${item.animal.id}`}
+                className="d-flex justify-content-between align-items-start"
+                style={{ width: '100%' }}
+              >
+                <div className="ms-2 me-auto">
+                  <div className={styles.destination}>{item.type}</div>
+                  <Text size={14} As="p">
+                    Кличка:{' '}
+                    <span style={{ fontWeight: 'bold' }}>
+                      {item.animal.name}
+                    </span>
+                    . Порода:{' '}
+                    <span style={{ fontWeight: 'bold' }}>
+                      {item.animal.spec.name}
+                    </span>
+                    .
+                  </Text>
+                </div>
+                <Badge bg="primary" pill>
+                  <Text size={12} color={EColor.white}>
+                    Время приема: {item.time.substring(0, 5)}
+                  </Text>
+                </Badge>
+              </Link>
             </ListGroup.Item>
           );
         })}

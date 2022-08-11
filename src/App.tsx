@@ -12,25 +12,31 @@ import { Login } from './shared/Login';
 import { PageToday } from './shared/Content/PageToday';
 import { Page404 } from './shared/Content/Page404';
 import { getUserLocalStorage } from './utils/react/getUserLocalStorage';
+import { useInterval } from './hooks/useInterval';
 
 function AppComponent() {
   const [mounted, setMounted] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   // 10 минут активности токена
-  const LIMIT = 10 * 60 * 1000;
+  const LIMIT = 60 * 10;
+  const [count, setCount] = useState(LIMIT);
   // объект user из localStorage с токеном
   const user = getUserLocalStorage();
-
   useEffect(() => {
     setMounted(true);
-    // проверка объекта из localStorage
-    if (user.lifetime !== undefined && +new Date() - user.lifetime > LIMIT) {
-      localStorage.removeItem('user');
-      <Redirect to="/today" />;
-    } else if (user.auth) {
+    if (user.auth) {
       setIsAuth(true);
     }
   }, [LIMIT, user.auth, user.lifetime]);
+
+  useInterval(() => {
+    setCount(count - 1);
+    if (count <= 0) {
+      localStorage.removeItem('user');
+      setIsAuth(false);
+    }
+  }, 1000);
+
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>

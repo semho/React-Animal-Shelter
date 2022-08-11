@@ -40,7 +40,6 @@ export async function loadToday(
 ) {
   // берем токен из localStorage
   const token = getUserLocalStorage().user?.accessToken;
-
   setLoading(true);
   setErrorLoading('');
   try {
@@ -50,6 +49,7 @@ export async function loadToday(
         headers: { Authorization: `Bearer ${token}` },
       },
     );
+
     if (data.count > 0) {
       setAnimals(data.results);
     }

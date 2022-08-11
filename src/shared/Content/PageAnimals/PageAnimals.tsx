@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, ListGroup, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import styles from './pageanimals.css';
 import { Text } from '../../Text';
 import { Page404 } from '../Page404';
@@ -58,18 +59,25 @@ export function PageAnimals() {
               action
               variant="light"
               as="li"
-              className={`${styles.item} d-flex justify-content-between align-items-start`}
+              className={`${styles.item} d-flex`}
               key={item.id}
               id={item.id}
             >
-              <div className="ms-2 me-auto">
-                <Text size={14} As="p">
-                  Кличка:{' '}
-                  <span style={{ fontWeight: 'bold' }}>{item.name}</span>.
-                  Порода:{' '}
-                  <span style={{ fontWeight: 'bold' }}>{item.spec.name}</span>.
-                </Text>
-              </div>
+              <Link
+                to={`/animals/${item.id}`}
+                className="d-flex justify-content-between align-items-start"
+                style={{ width: '100%' }}
+              >
+                <div className="ms-2 me-auto">
+                  <Text size={14} As="p">
+                    Кличка:{' '}
+                    <span style={{ fontWeight: 'bold' }}>{item.name}</span>.
+                    Порода:{' '}
+                    <span style={{ fontWeight: 'bold' }}>{item.spec.name}</span>
+                    .
+                  </Text>
+                </div>
+              </Link>
             </ListGroup.Item>
           );
         })}
