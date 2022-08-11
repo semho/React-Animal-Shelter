@@ -17,6 +17,7 @@ export function PageAnimals() {
   const [loadMore, setLoadMore] = useState(false); // состояние кнопки пагинации
   const [firstLoad, setFirstLoad] = useState(true); // первая загрузка списка
   const [maxAnimals, setMaxAnimals] = useState(0); // максимальное значение животных
+  // сохраняем в redux животных
   const dispatch = useAppDispatch();
   dispatch(addAnimal(animals));
 

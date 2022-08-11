@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Badge, ListGroup, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../../hooks/hooks';
 import { IDestinations, loadToday } from '../../../utils/requests/loadToday';
+import { addAnimal } from '../../store/store';
 import { EColor, Text } from '../../Text';
 import { Page404 } from '../Page404';
 import styles from './pagetoday.css';
@@ -10,6 +12,13 @@ export function PageToday() {
   const [loading, setLoading] = useState(false);
   const [errorLoading, setErrorLoading] = useState('');
   const [animals, setAnimals] = useState<IDestinations>([]);
+  // сохраняем в redux животных
+  const dispatch = useAppDispatch();
+  const animalsNotDestinations = animals.map((item) => {
+    return item.animal;
+  });
+  dispatch(addAnimal(animalsNotDestinations));
+
   useEffect(() => {
     loadToday(setLoading, setErrorLoading, setAnimals);
   }, []);
