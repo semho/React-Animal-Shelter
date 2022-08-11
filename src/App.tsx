@@ -35,7 +35,6 @@ function AppComponent() {
     if (user.auth) {
       setIsAuth(true);
     }
-
     const timer = setTimeout(() => {
       localStorage.removeItem('user');
       setIsAuth(false);

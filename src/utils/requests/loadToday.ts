@@ -54,6 +54,7 @@ export async function loadToday(
       setAnimals(data.results);
     }
   } catch (error) {
+    localStorage.removeItem('user');
     setErrorLoading(String(error));
   }
   setLoading(false);
