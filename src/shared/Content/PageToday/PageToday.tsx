@@ -41,21 +41,26 @@ export function PageToday() {
                 className="d-flex justify-content-between align-items-start"
                 style={{ width: '100%' }}
               >
-                <div className="ms-2 me-auto">
+                <div className="ms-2 me-auto text-item">
                   <div className={styles.destination}>{item.type}</div>
                   <Text size={14} As="p">
-                    Кличка:{' '}
-                    <span style={{ fontWeight: 'bold' }}>
+                    <span className={styles.wrapText}>Кличка: </span>
+                    <span
+                      style={{ fontWeight: 'bold' }}
+                      className={styles.valNickname}
+                    >
                       {item.animal.name}
-                    </span>
-                    . Порода:{' '}
-                    <span style={{ fontWeight: 'bold' }}>
+                    </span>{' '}
+                    <span className={styles.wrapText}>Порода: </span>
+                    <span
+                      style={{ fontWeight: 'bold' }}
+                      className={styles.valNickname}
+                    >
                       {item.animal.spec.name}
                     </span>
-                    .
                   </Text>
                 </div>
-                <Badge bg="primary" pill>
+                <Badge bg="primary" pill className={styles.customBadge}>
                   <Text size={12} color={EColor.white}>
                     Время приема: {item.time.substring(0, 5)}
                   </Text>

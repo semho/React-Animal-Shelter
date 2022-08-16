@@ -1,11 +1,30 @@
 .header {
   height: 70px;
   box-shadow: 0px 10px 63px rgba(0, 0, 0, 0.07);
+  transition: color, background-color 0.3s linear;
 }
 
 .linkWrap {
   display: flex;
   align-items: center;
+}
+
+.link {
+  margin-right: 15px;
+}
+
+html[data-theme='dark'] .header {
+  background-color: var(--white);
+}
+
+html[data-theme='dark'] svg path {
+  fill: var(--black);
+}
+
+html[data-theme='dark'] button {
+  background: var(--btnDark);
+  color: var(--black);
+  border-color: var(--btnDark);
 }
 
 @media all and (min-width: 1024px) {

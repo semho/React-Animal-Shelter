@@ -75,11 +75,20 @@ export function PageAnimals() {
               >
                 <div className="ms-2 me-auto">
                   <Text size={14} As="p">
-                    Кличка:{' '}
-                    <span style={{ fontWeight: 'bold' }}>{item.name}</span>.
-                    Порода:{' '}
-                    <span style={{ fontWeight: 'bold' }}>{item.spec.name}</span>
-                    .
+                    <span className={styles.wrapText}>Кличка: </span>
+                    <span
+                      style={{ fontWeight: 'bold' }}
+                      className={styles.valNickname}
+                    >
+                      {item.name}
+                    </span>{' '}
+                    <span className={styles.wrapText}>Порода: </span>
+                    <span
+                      style={{ fontWeight: 'bold' }}
+                      className={styles.valNickname}
+                    >
+                      {item.spec.name}
+                    </span>
                   </Text>
                 </div>
               </Link>
