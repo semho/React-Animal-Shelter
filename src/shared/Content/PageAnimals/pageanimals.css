@@ -19,3 +19,19 @@
   font-size: 16px;
   font-weight: 700;
 }
+
+html[data-theme='dark'] .item {
+  background-color: var(--black);
+}
+
+html[data-theme='dark'] .listGroup {
+  --bs-list-group-color: var(--grey30);
+}
+html[data-theme='dark'] .valNickname,
+html[data-theme='dark'] .wrapText {
+  color: var(--grey30);
+}
+
+html[data-theme='dark'] .item:hover {
+  background-color: var(--darkHover);
+}

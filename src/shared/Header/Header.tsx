@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../Icons/Logo';
 import styles from './header.css';
 import { Text } from '../Text';
+import { ToggleSwitch } from '../ToggleSwitch';
 
 export function Header() {
   const [isToday, setIsToday] = useState(true);
@@ -23,16 +24,19 @@ export function Header() {
           <Logo />
           <Text size={20}>Pets</Text>
         </Link>
-        {isToday && (
-          <Link to="/animals" onClick={come}>
-            <Button>Все животные приюта</Button>
-          </Link>
-        )}
-        {!isToday && (
-          <Link to="/today" onClick={come}>
-            <Button>Назначения на сегодня</Button>
-          </Link>
-        )}
+        <div className="d-flex">
+          {isToday && (
+            <Link to="/animals" onClick={come} className={styles.link}>
+              <Button>Все животные приюта</Button>
+            </Link>
+          )}
+          {!isToday && (
+            <Link to="/today" onClick={come} className={styles.link}>
+              <Button>Назначения на сегодня</Button>
+            </Link>
+          )}
+          <ToggleSwitch />
+        </div>
       </Container>
     </header>
   );

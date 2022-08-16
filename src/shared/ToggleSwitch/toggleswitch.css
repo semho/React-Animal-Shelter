@@ -1,0 +1,46 @@
+.boxSwitch {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.boxSwitch input {
+  position: absolute;
+  left: -10000000px;
+}
+
+.boxSwitch label {
+  display: block;
+  cursor: pointer;
+  width: 50px;
+  height: 30px;
+  background: var(--greyC4);
+  border-radius: 30px;
+  position: relative;
+  transition: all ease 0.3s;
+}
+
+.boxSwitch label::before {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  background-color: var(--white);
+  top: 3px;
+  left: 3px;
+  transition: all ease 0.3s;
+}
+
+.boxSwitch input:checked + label {
+  background: var(--btnDark);
+}
+
+.boxSwitch input:checked + label::before {
+  left: 23px;
+}
+
+html[data-theme='dark'] .boxSwitch label::before {
+  background-color: var(--black);
+}

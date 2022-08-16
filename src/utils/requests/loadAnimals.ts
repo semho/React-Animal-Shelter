@@ -38,6 +38,7 @@ export async function loadAnimals(
       setMaxAnimals(data.count);
     }
   } catch (error) {
+    localStorage.removeItem('user');
     setErrorLoading(String(error));
   }
   setLoading(false);

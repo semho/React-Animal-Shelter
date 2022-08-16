@@ -1,11 +1,26 @@
 import React, { useEffect, useRef } from 'react';
+import { ListGroup } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { useAppSelector } from '../../hooks/hooks';
+import { getDeclensionWordFromNumber } from '../../utils/react/declension';
+import { IAnimal } from '../../utils/requests/loadToday';
 import styles from './cardanimal.css';
+
+interface IParams {
+  id: string;
+}
 
 export function CardAnimal() {
   const ref = useRef<HTMLDivElement>(null);
   const history = useHistory();
+  const data = useAppSelector<IAnimal[]>((state) => state.animals);
+  const idForAnimal: IParams = useParams();
+  const animal = data.find((item) => item.id === idForAnimal.id);
+  let age = 0;
+  if (animal) age = animal.age;
+
+  const pageBack = history.location.pathname.split('/');
 
   useEffect(() => {
     function handleClick(event: MouseEvent) {
@@ -13,7 +28,11 @@ export function CardAnimal() {
         event.target instanceof Node &&
         !ref.current?.contains(event.target)
       ) {
-        history.push('/today');
+        if (pageBack[1] === 'today') {
+          history.push('/today');
+        } else {
+          history.push('/animals');
+        }
       }
     }
 
@@ -22,34 +41,29 @@ export function CardAnimal() {
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  }, [history]);
+  }, [history, pageBack]);
 
   const node = document.getElementById('modal_root');
   if (!node) return null;
 
   return ReactDOM.createPortal(
     <div className={styles.modal} ref={ref}>
-      <h2>Заголовок</h2>
+      <h3>{animal && animal.name}</h3>
 
       <div className={styles.content}>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam
-          officia corrupti, neque, fuga ipsa vel quas explicabo quisquam ratione
-          nihil inventore illo commodi quia deleniti qui adipisci assumenda?
-          Distinctio, eos.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae
-          iure facilis pariatur, aliquid esse architecto illum, dolor temporibus
-          facere, perferendis autem tenetur commodi odit aut quod explicabo
-          quisquam reiciendis soluta!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-          quasi ipsum eos possimus ratione ipsam cupiditate, iste repellendus
-          dicta, maiores quos aperiam hic corporis. Libero facilis suscipit
-          optio similique? Ratione?
-        </p>
+        <ListGroup variant="flush">
+          <ListGroup.Item>Порода: {animal && animal.spec.name}</ListGroup.Item>
+          <ListGroup.Item>
+            Возраст: {age}{' '}
+            {getDeclensionWordFromNumber(age, ['год', 'года', 'лет'])}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Рост: {animal && animal.height} {animal && animal.heightUnit}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Вес: {animal && animal.weight} {animal && animal.weightUnit}
+          </ListGroup.Item>
+        </ListGroup>
       </div>
     </div>,
     node,

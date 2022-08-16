@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button, ListGroup, Spinner } from 'react-bootstrap';
-import styles from './pageanimals.css';
+import { Link } from 'react-router-dom';
 import { Text } from '../../Text';
 import { Page404 } from '../Page404';
 import { IAnimals, loadAnimals } from '../../../utils/requests/loadAnimals';
+import { addAnimal } from '../../store/store';
+import styles from './pageanimals.css';
+import { useAppDispatch } from '../../../hooks/hooks';
 
 export function PageAnimals() {
   const LIMIT = 5; // константа по сколько животных открывать
@@ -14,6 +17,9 @@ export function PageAnimals() {
   const [loadMore, setLoadMore] = useState(false); // состояние кнопки пагинации
   const [firstLoad, setFirstLoad] = useState(true); // первая загрузка списка
   const [maxAnimals, setMaxAnimals] = useState(0); // максимальное значение животных
+  // сохраняем в redux животных
+  const dispatch = useAppDispatch();
+  dispatch(addAnimal(animals));
 
   const handleClick = () => {
     setLoadMore(true);
@@ -58,18 +64,34 @@ export function PageAnimals() {
               action
               variant="light"
               as="li"
-              className={`${styles.item} d-flex justify-content-between align-items-start`}
+              className={`${styles.item} d-flex`}
               key={item.id}
               id={item.id}
             >
-              <div className="ms-2 me-auto">
-                <Text size={14} As="p">
-                  Кличка:{' '}
-                  <span style={{ fontWeight: 'bold' }}>{item.name}</span>.
-                  Порода:{' '}
-                  <span style={{ fontWeight: 'bold' }}>{item.spec.name}</span>.
-                </Text>
-              </div>
+              <Link
+                to={`/animals/${item.id}`}
+                className="d-flex justify-content-between align-items-start"
+                style={{ width: '100%' }}
+              >
+                <div className="ms-2 me-auto">
+                  <Text size={14} As="p">
+                    <span className={styles.wrapText}>Кличка: </span>
+                    <span
+                      style={{ fontWeight: 'bold' }}
+                      className={styles.valNickname}
+                    >
+                      {item.name}
+                    </span>{' '}
+                    <span className={styles.wrapText}>Порода: </span>
+                    <span
+                      style={{ fontWeight: 'bold' }}
+                      className={styles.valNickname}
+                    >
+                      {item.spec.name}
+                    </span>
+                  </Text>
+                </div>
+              </Link>
             </ListGroup.Item>
           );
         })}

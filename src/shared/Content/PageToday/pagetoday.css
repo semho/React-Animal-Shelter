@@ -10,14 +10,43 @@
 
 .item {
   cursor: pointer;
+  transition: all ease 0.3s;
 }
 
 .item::before {
   font-size: 16px;
+  transition: all ease 0.3s;
 }
 
 .destination {
   margin-bottom: 10px;
   font-size: 16px;
   font-weight: 700;
+  transition: all ease 0.3s;
+}
+
+html[data-theme='dark'] .item {
+  background-color: var(--black);
+}
+
+html[data-theme='dark'] .listGroup {
+  --bs-list-group-color: var(--grey30);
+}
+
+html[data-theme='dark'] .destination,
+html[data-theme='dark'] .valNickname,
+html[data-theme='dark'] .wrapText {
+  color: var(--grey30);
+}
+
+.customBadge {
+  transition: all ease 0.3s;
+}
+
+html[data-theme='dark'] .customBadge {
+  background-color: var(--black) !important;
+}
+
+html[data-theme='dark'] .item:hover {
+  background-color: var(--darkHover);
 }
